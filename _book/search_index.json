@@ -1,5 +1,11 @@
 [
-["index.html", "Coding togetheR Welcome to Coding togetheR", " Coding togetheR Alistair Bailey Welcome to Coding togetheR "],
+["index.html", "Coding togetheR Coding togetheR", " Coding togetheR Alistair Bailey Coding togetheR "],
 ["preface.html", "Preface", " Preface Some text "],
-["getting-started.html", "1 Getting started", " 1 Getting started Some text "]
+["getting-started.html", "1 Getting started", " 1 Getting started Some text "],
+["data-wrangle-1.html", "2 Data wrangling", " 2 Data wrangling "],
+["data-wrangle-2.html", "3 Data wrangling", " 3 Data wrangling "],
+["functions.html", "4 Functions", " 4 Functions "],
+["modelling.html", "5 Exploratory modelling", " 5 Exploratory modelling "],
+["viz.html", "6 Visualistion", " 6 Visualistion "],
+["reports.html", "7 Reports", " 7 Reports "]
 ]

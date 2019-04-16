@@ -4,10 +4,7 @@ author: "Alistair Bailey"
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
 documentclass: book
-output:
-  bookdown::gitbook: default
-  bookdown::pdf_book: 
-defaultbibliography: [bib/book.bib, bib/packages.bib]
+bibliography: [bib/book.bib, bib/packages.bib]
 biblio-style: apalike
 link-citations: true
 links-as-notes: true
@@ -25,6 +22,6 @@ knitr::write_bib(c(
 ), 'bib/packages.bib')
 ```
 
-# Welcome to Coding togetheR {-}
+# Coding togetheR {-}
 
 <img src="img/imposter.jpg" width="600" height="393" alt="Cover image" />

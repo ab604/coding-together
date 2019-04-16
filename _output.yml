@@ -2,17 +2,14 @@ bookdown::gitbook:
   #css: style.css
   config:
     toc:
-     # collapse: section
-    #  before: |
-     #   <li><a href="./">Text Mining with R</a></li>
-    #  after: |
-    #    <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    #edit:
-    #  link: https://github.com/dgrtwo/tidy-text-mining/edit/master/%s
-  #includes:
-   # in_header: _includes/analytics.html
+    collapse: none
+    before: |
+        <li><a href="./">Coding togetheR</a></li>
+    after: |
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+    download: ["pdf", "epub"]
 bookdown::pdf_book:
   includes:
-    in_header: preamble.tex
+    in_header: latex/preamble.tex
   latex_engine: xelatex
   citation_package: natbib

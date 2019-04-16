@@ -1,10 +1,30 @@
 ---
 title: "Coding togetheR"
 author: "Alistair Bailey"
+knit: "bookdown::render_book"
 site: bookdown::bookdown_site
 documentclass: book
 output:
   bookdown::gitbook: default
-  bookdown::pdf_book: default
+  bookdown::pdf_book: 
+defaultbibliography: [bib/book.bib, bib/packages.bib]
+biblio-style: apalike
+link-citations: true
+links-as-notes: true
+colorlinks: true
+github-repo: ab604/coding-together
+cover-image: img/imposter.jpg
+#url: 'https\://www.tidytextmining.com/'
+description: "Materials for the Coding TogetheR workshops"
 ---
 
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'rmallet'
+), 'bib/packages.bib')
+```
+
+# Welcome to Coding togetheR {-}
+
+<img src="img/imposter.jpg" width="600" height="393" alt="Cover image" />

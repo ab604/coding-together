@@ -24,4 +24,4 @@ knitr::write_bib(c(
 
 # Coding togetheR {-}
 
-<img src="img/imposter.jpg" width="600" height="393" alt="Cover image" />
+<img src="img/bibi-coder.jpg" width="512" height="512" alt="Cover image" />

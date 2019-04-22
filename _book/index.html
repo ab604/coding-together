@@ -49,6 +49,69 @@
 
 
 
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 </head>
 
@@ -62,7 +125,7 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Coding togetheR</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
 <li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="chapter" data-level="1" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1</b> Getting started</a></li>
 <li class="chapter" data-level="2" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html"><i class="fa fa-check"></i><b>2</b> Data wrangling</a></li>
@@ -91,11 +154,41 @@
 <div id="header">
 <h1 class="title">Coding togetheR</h1>
 <p class="author"><em>Alistair Bailey</em></p>
+<p class="date"><em>April 22 2019</em></p>
 </div>
-<div id="coding-together" class="section level1 unnumbered">
-<h1>Coding togetheR</h1>
-<p><img src="img/bibi-coder.jpg" width="512" height="512" alt="Cover image" /></p>
+<div id="welcome" class="section level1 unnumbered">
+<h1>Welcome</h1>
+<div class="figure" style="text-align: center"><span id="fig:knot"></span>
+<img src="img/Carrick-bend-Guten-Verrill-modified.png" alt="[A Carrick bend.](https://en.wikipedia.org/wiki/File:Carrick-bend-Guten-Verrill-modified.png) The Carrick bend is a type of sailor's knot used for joining two lines." width="60%" />
+<p class="caption">
+Figure .: <a href="https://en.wikipedia.org/wiki/File:Carrick-bend-Guten-Verrill-modified.png">A Carrick bend.</a> The Carrick bend is a type of sailor’s knot used for joining two lines.
+</p>
+</div>
+<!-- <img src="img/sailor-large-bw.png" width="364" height="261" alt="Cover image" /> -->
+<p>Coding togetheR is a series of collaborative workshops to teach
+foundational R codiing and data science skills at the University of Southampton
+in 2019. This book contains the materials covered over eight, two hour sessions.</p>
+<p>The workshops are for anyone at the University of Southampton with data to analyse and who is struggling with their current tools. This series of eight weekly two hour workshops provides an introduction to working with data using R in a supported environment. Unlike traditional lessons, we all code together with the emphasis on participants learning by doing and by helping each other.</p>
+<p>These materials are a mash-up of my own, and many others. I’ve endevoured to
+credit everyone appropriately, but please message <a href="https://ab604.uk/">me</a> if I’ve messed up and I’ll correct it.
+The main sources used here are: <a href="https://r4ds.had.co.nz/">r4ds</a>, <a href="https://www.rfordatasci.com/">r4ds community</a>, <a href="https://carpentries.org/">the Carpentries</a>,
+<a href="https://rstudio-education.github.io/hopr/">Hands on Programming in R</a> and
+<a href="http://teachtogether.tech/en/">Teaching Tech togetheR</a>.</p>
+<p>It was written using R <span class="citation">(R Core Team <a href="#ref-R-base">2019</a>)</span> in RStudio
+<span class="citation">(RStudio Team <a href="#ref-rstudioteam2018">2018</a>)</span> using the bookdown package <span class="citation">(Xie <a href="#ref-R-bookdown">2018</a>)</span>.</p>
 
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-base">
+<p>R Core Team. 2019. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.</p>
+</div>
+<div id="ref-rstudioteam2018">
+<p>RStudio Team. 2018. <em>RStudio: Integrated Development Environment for R</em>. Boston, MA: RStudio, Inc. <a href="http://www.rstudio.com/">http://www.rstudio.com/</a>.</p>
+</div>
+<div id="ref-R-bookdown">
+<p>Xie, Yihui. 2018. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.</p>
+</div>
 </div>
             </section>
 

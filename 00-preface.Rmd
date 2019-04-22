@@ -1,2 +1,28 @@
 # Preface {-}
-Some text
+
+To follow these materials you will need an up to date version of R [@R-base] and RStudio 
+[@rstudioteam2018]. This may require requesting permission to install software
+from Isolutions if you have a University laptop.
+
+If you are new to R, then the first thing
+to know is that R is a programming language and RStudio is a
+program for working with R called an integrated development 
+environment (IDE). You can use R without RStudio, but not the other way around. 
+Further details in Chapter \@ref(getting-started).
+
+[Download R here](https://cran.r-project.org/) and 
+[Download RStudio Desktop here](https://www.rstudio.com/products/rstudio/download/).
+
+These materials were generated using R version 3.5.3.
+
+Once you've installed R and RStudio, you'll also need
+a few R packages. Packages are collections of [functions](#function-anatomy). 
+
+Open RStudio and put the code below into the `Console` 
+window and press `Enter` to install the `tidyverse`,`janitor` and `here` packages.
+
+```{r packages, eval=FALSE}
+install.packages(c("tidyverse","janitor","here"))
+```
+
+

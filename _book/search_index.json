@@ -1,11 +1,11 @@
 [
-["index.html", "Coding togetheR Coding togetheR", " Coding togetheR Alistair Bailey Coding togetheR "],
-["preface.html", "Preface", " Preface Some text "],
+["index.html", "Coding togetheR Welcome", " Coding togetheR Alistair Bailey April 22 2019 Welcome Figure .: A Carrick bend. The Carrick bend is a type of sailor’s knot used for joining two lines. Coding togetheR is a series of collaborative workshops to teach foundational R codiing and data science skills at the University of Southampton in 2019. This book contains the materials covered over eight, two hour sessions. The workshops are for anyone at the University of Southampton with data to analyse and who is struggling with their current tools. This series of eight weekly two hour workshops provides an introduction to working with data using R in a supported environment. Unlike traditional lessons, we all code together with the emphasis on participants learning by doing and by helping each other. These materials are a mash-up of my own, and many others. I’ve endevoured to credit everyone appropriately, but please message me if I’ve messed up and I’ll correct it. The main sources used here are: r4ds, r4ds community, the Carpentries, Hands on Programming in R and Teaching Tech togetheR. It was written using R (R Core Team 2019) in RStudio (RStudio Team 2018) using the bookdown package (Xie 2018). References "],
+["preface.html", "Preface", " Preface To follow these materials you will need an up to date version of R (R Core Team 2019) and RStudio (RStudio Team 2018). This may require requesting permission to install software from Isolutions if you have a University laptop. If you are new to R, then the first thing to know is that R is a programming language and RStudio is a program for working with R called an integrated development environment (IDE). You can use R without RStudio, but not the other way around. Further details in Chapter 1. Download R here and Download RStudio Desktop here. These materials were generated using R version 3.5.3. Once you’ve installed R and RStudio, you’ll also need a few R packages. Packages are collections of functions. Open RStudio and put the code below into the Console window and press Enter to install the tidyverse,janitor and here packages. install.packages(c(&quot;tidyverse&quot;,&quot;janitor&quot;,&quot;here&quot;)) References "],
 ["getting-started.html", "1 Getting started", " 1 Getting started Some text "],
 ["data-wrangle-1.html", "2 Data wrangling", " 2 Data wrangling "],
 ["data-wrangle-2.html", "3 Data wrangling", " 3 Data wrangling "],
 ["functions.html", "4 Functions", " 4 Functions "],
 ["modelling.html", "5 Exploratory modelling", " 5 Exploratory modelling "],
 ["viz.html", "6 Visualistion", " 6 Visualistion "],
-["reports.html", "7 Reports", " 7 Reports "]
+["reports.html", "7 Reports", " 7 Reports Using R for report writing and presentations. "]
 ]

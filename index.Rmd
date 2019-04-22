@@ -11,7 +11,8 @@ link-citations: true
 links-as-notes: true
 colorlinks: true
 github-repo: ab604/coding-together
-cover-image: img/imposter.jpg
+twitter-handle: alistair604
+cover-image: img/Carrick-bend-Guten-Verrill-modified.png
 #url: 'https\://www.tidytextmining.com/'
 description: "Materials for the Coding TogetheR workshops"
 ---
@@ -40,10 +41,12 @@ in 2019. This book contains the materials covered over eight, two hour sessions.
 
 The workshops are for anyone at the University of Southampton with data to analyse and who is struggling with their current tools. This series of eight weekly two hour workshops provides an introduction to working with data using R in a supported environment. Unlike traditional lessons, we all code together with the emphasis on participants learning by doing and by helping each other.
 
-These materials are a mash-up of my own, and many others. I've endevoured to
+These materials are a mash-up of my own and many others. I've endevoured to
 credit everyone appropriately, but please message [me](https://ab604.uk/) if I've messed up and I'll correct it.
-The main sources used here are: [R for data science (R4DS)](https://r4ds.had.co.nz/), [the R4DS community](https://www.rfordatasci.com/), [the Carpentries](https://carpentries.org/),
-[Hands on Programming in R](https://rstudio-education.github.io/hopr/) and
+The main sources used here are: [R for data science (R4DS)](https://r4ds.had.co.nz/), 
+[the R4DS community](https://www.rfordatasci.com/), [the Carpentries](https://carpentries.org/),
+[Hands on Programming in R](https://rstudio-education.github.io/hopr/),
+[swiRlstats](https://swirlstats.com/) and
 [Teaching Tech togetheR](http://teachtogether.tech/en/). 
 
 It was written using R [@R-base] in RStudio 

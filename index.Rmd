@@ -28,10 +28,11 @@ knitr::write_bib(c(
 
 # Welcome {-}
 
-```{r knot,  fig.align='center', out.width="60%", fig.cap="[A Carrick bend.](https://en.wikipedia.org/wiki/File:Carrick-bend-Guten-Verrill-modified.png) The Carrick bend is a type of sailor's knot used for joining two lines.", echo=FALSE}
+```{r knot,  fig.align='center', out.width="60%", echo=FALSE}
 knitr::include_graphics("img/Carrick-bend-Guten-Verrill-modified.png")
 ```
-<!-- <img src="img/sailor-large-bw.png" width="364" height="261" alt="Cover image" /> -->
+
+> [A Carrick bend:](https://en.wikipedia.org/wiki/File:Carrick-bend-Guten-Verrill-modified.png) The Carrick bend is a type of sailor's knot used for joining two lines.
 
 Coding togetheR is a series of collaborative workshops to teach 
 foundational R codiing and data science skills at the University of Southampton
@@ -41,7 +42,7 @@ The workshops are for anyone at the University of Southampton with data to analy
 
 These materials are a mash-up of my own, and many others. I've endevoured to
 credit everyone appropriately, but please message [me](https://ab604.uk/) if I've messed up and I'll correct it.
-The main sources used here are: [r4ds](https://r4ds.had.co.nz/), [r4ds community](https://www.rfordatasci.com/), [the Carpentries](https://carpentries.org/),
+The main sources used here are: [R for data science (R4DS)](https://r4ds.had.co.nz/), [the R4DS community](https://www.rfordatasci.com/), [the Carpentries](https://carpentries.org/),
 [Hands on Programming in R](https://rstudio-education.github.io/hopr/) and
 [Teaching Tech togetheR](http://teachtogether.tech/en/). 
 

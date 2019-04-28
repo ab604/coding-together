@@ -97,7 +97,7 @@
   Url                      = {http://yihui.name/knitr/}
 }
 
-@Book{Wilson2018,
+@Book{,
   Title                    = {Teaching Tech Together. 2018,, http://teachtogether.tech/.},
   Editor                   = {Greg Wilson},
   Publisher                = {Lulu.com},

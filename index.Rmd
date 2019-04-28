@@ -19,11 +19,12 @@ description: "Materials for the Coding TogetheR workshops"
 
 ```{r include=FALSE}
 library(tidyverse)
+library(dslabs)
 library(janitor)
 library(here)
 # automatically create a bib database for R packages
 knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'rmallet','here'
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'rmallet','here','dslabs'
 ), 'bib/packages.bib')
 ```
 
@@ -36,12 +37,12 @@ knitr::include_graphics("img/Carrick-bend-Guten-Verrill-modified.png")
 > [A Carrick bend:](https://en.wikipedia.org/wiki/File:Carrick-bend-Guten-Verrill-modified.png) The Carrick bend is a type of sailor's knot used for joining two lines.
 
 Coding togetheR is a series of collaborative workshops to teach 
-foundational R codiing and data science skills at the University of Southampton
+foundational R coding and data science skills at the University of Southampton
 in 2019. This book contains the materials covered over eight, two hour sessions.
 
 The workshops are for anyone at the University of Southampton with data to analyse and who is struggling with their current tools. This series of eight weekly two hour workshops provides an introduction to working with data using R in a supported environment. Unlike traditional lessons, we all code together with the emphasis on participants learning by doing and by helping each other.
 
-These materials are a mash-up of my own and many others. I've endevoured to
+These materials are a mash-up of my own and many others. I've endeavoured to
 credit everyone appropriately, but please message [me](https://ab604.uk/) if I've messed up and I'll correct it.
 The main sources used here are: [R for data science (R4DS)](https://r4ds.had.co.nz/), 
 [the R4DS community](https://www.rfordatasci.com/), [the Carpentries](https://carpentries.org/),
@@ -52,4 +53,70 @@ The main sources used here are: [R for data science (R4DS)](https://r4ds.had.co.
 It was written using R [@R-base] in RStudio 
 [@rstudioteam2018] using the bookdown package [@R-bookdown].
 
+To follow these materials you will need an up to date version of R [@R-base] and RStudio 
+[@rstudioteam2018]. This may require requesting permission to install software
+from Isolutions if you have a University laptop.
 
+## R and RStudio {-}
+
+If you are new to R, then the first thing
+to know is that R is a programming language and RStudio is a
+program for working with R called an integrated development 
+environment (IDE). You can use R without RStudio, but not the other way around. 
+Further details in Chapter \@ref(getting-started).
+
+[Download R here](https://cran.r-project.org/) and 
+[Download RStudio Desktop here](https://www.rstudio.com/products/rstudio/download/).
+
+These materials were generated using R version 3.6.
+
+Once you've installed R and RStudio, you'll also need
+a few R packages. Packages are collections of [functions](#function-anatomy). 
+
+Open RStudio and put the code below into the `Console` 
+window and press `Enter` to install the `tidyverse`,`dslabs`,`janitor` and `here` packages.
+
+```{r packages, eval=FALSE}
+install.packages(c("tidyverse","dslabs","janitor","here"))
+```
+
+## Who is coding togetheR for? {-}
+
+Following the lesson design process of [@Wilson2018]:
+
+**Arshad**
+
+ > As a PhD student in ecology Arshad doesn't have any formal coding training,
+ but is gathering field data about bird populations. He is daunted by
+ the prospect of learning to code. These lessons will introduce Arshad to coding
+ by showing him how to organise and automate analysis of his data.
+        
+**Jenny**
+        
+> As a post doctoral researcher in gerontology Jenny has experience of research, but
+is unsatisfied with her current spreadsheet tools for analysing data. These
+lessons will show her how to write code to analyse spreadsheets. 
+        
+**Lin**
+
+> As a principal investigator Lin has experience using MATLAB, but has
+not used R and would like to know more about it. These lessons will introduce 
+Lin to R syntax and RStudio workflows.
+
+## Code of conduct {-}
+
+Coding togetheR is for everyone, and in order to make it a supportive and
+inclusive environment we subscribe to the [Carpentries Code of Conduct](https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html). 
+Please follow the link for details.
+
+In a nutshell, expected behaviour is as follows:
+
++ Use welcoming and inclusive language
++ Be respectful of different viewpoints and experiences
++ Gracefully accept constructive criticism
++ Focus on what is best for the community
++ Show courtesy and respect towards other community members
+
+Participants who violate the code of conduct, will be asked to stop immediately and if
+necessary asked to leave the workshop and incidents reported as per [University guidance
+on inappropriate behaviour](https://www.southampton.ac.uk/studentservices/need-help/student-discipline/staff-information.page).

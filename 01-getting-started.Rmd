@@ -74,6 +74,10 @@ The latest version can be downloaded here: http://www.rstudio.com/download
 
 ## Why learn R, or any language ?
 
+There are many reasons one may wish to learn to code, and a common reason
+is to automate tedious tasks so that one can spend more time on more interesting
+ones.
+
 We can write R code without saving it, but it's generally more useful to write 
 and save our code as a script. Working with scripts makes the steps you used in 
 your analysis clear, and the code you write can be inspected by someone else who 
@@ -244,8 +248,7 @@ If you need help with a specific R function, let's say `barplot()`, you can type
 ```
 
 A Google or internet search "R \<task\>" will often either send you to the appropriate package documentation or a helpful forum question that someone else already asked,
-such as [Stack Overflow](http://stackoverflow.com/questions/tagged/r) or
-the [RStudio Community](https://community.rstudio.com/).
+such as the [RStudio Community](https://community.rstudio.com/) or [Stack Overflow](http://stackoverflow.com/questions/tagged/r).
 
 ### Asking for help
 

@@ -26,6 +26,7 @@ library(here)
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'rmallet','here','dslabs'
 ), 'bib/packages.bib')
+here()
 ```
 
 # Welcome {-}

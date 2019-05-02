@@ -32,7 +32,7 @@ here()
 # Welcome {-}
 
 ```{r knot,  fig.align='center', out.width="60%", echo=FALSE}
-knitr::include_graphics("img/Carrick-bend-Guten-Verrill-modified.png")
+knitr::include_graphics("img/carrick-bend.png")
 ```
 
 > [A Carrick bend:](https://en.wikipedia.org/wiki/File:Carrick-bend-Guten-Verrill-modified.png) The Carrick bend is a type of sailor's knot used for joining two lines.

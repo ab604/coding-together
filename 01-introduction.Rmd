@@ -12,7 +12,7 @@ By the end of this chapter are you will:
 
 ## Coding is for everyone
 
-If, when faced with the thought of starting to learning to code you feel like an imposter, \@ref(fig:imposter):
+If, when faced with the thought of starting to learning to code you feel like the cat in Figure \@ref(fig:imposter).
 
 (ref:imposter) [Imposter syndrome](https://bloggerbyresearch.files.wordpress.com/2015/04/a-baa-fail-cat-among-penguins.jpg).
 
@@ -20,7 +20,7 @@ If, when faced with the thought of starting to learning to code you feel like an
 knitr::include_graphics("img/a-baa-fail-cat-among-penguins.jpg")
 ```
 
-Then hopefully by the end of these materials, you'll feel a bit more like a R cat, \@ref(fig:rcat):
+Then hopefully by the end of these materials, you'll feel a bit more like the cat in Figure \@ref(fig:rcat).
 
 (ref:r-cat) [R cat](https://stephensontam.files.wordpress.com/2017/06/lolcat-programmer.jpg)
 
@@ -159,7 +159,7 @@ but not so easily create a script from an environment.
 
 To support this notion of thinking in terms of our scripts as real, we recommend
 turning off the preservation of workspaces between sessions by setting the 
-Tools > Global Options menu in R studio as shown in Figure \@ref(fig:workspace):
+Tools > Global Options menu in R studio as shown in Figure \@ref(fig:workspace).
 
 (ref:turn-off) Don't save your workspace, save your script instead.
 
@@ -169,7 +169,7 @@ knitr::include_graphics("img/rdata_turn_off.png")
 
 ### Where am I?
 
-R studio tells you where you are in terms of directory address like so:
+R studio tells you where you are in terms of directory address as shown in Figure \@ref(fig:working-directory).
 
 (ref:working-dir) Your working directory
 
@@ -185,13 +185,13 @@ forward slashes are the branches. (Note: Windows uses backslashes, Unix type
 systems and R use forward slashes).
 
 It is good practice to keep a set of related data, analyses, and text
-self-contained in a single folder, called the **working directory**. All of the
+self-contained in a single folder, called **your working directory**. All of the
 scripts within this folder can then use *relative paths* to files that indicate
 where inside the project a file is located (as opposed to absolute paths, which
-point to where a file is on a specific computer). Working this way makes it
-a lot easier to move your project around on your computer and share it with
-others without worrying about whether or not the underlying scripts will still
-work.
+point to where a file is on a specific computer). An example
+directory structure is illustrated in Figure \@ref(fig:dir-structure).
+Working this way makes it a lot easier to move your project around on your computer.
+Section \@ref(workflow) builds upon this to create a robust workflow for data analysis.
 
 (ref:dir-structure) A typical directory structure
 

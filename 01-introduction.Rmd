@@ -77,7 +77,7 @@ knitr::include_graphics("img/data_project_pipeline.png")
 ```
 
 As shown in Figure \@ref(fig:pipeline) of typical data analysis workflow,
-to acheive this aim we need to learn tools that enable us to perform the 
+to achieve this aim we need to learn tools that enable us to perform the 
 fundamental tasks of tasks of importing, tidying and 
 often transforming the data. Transformation means for example, selecting a 
 subset of the data to work with, or calculating the mean of a set of observations.
@@ -86,11 +86,11 @@ subset of the data to work with, or calculating the mean of a set of observation
 
 Returning to our cat friend in Figure \@ref(fig:rcat), one doesn't need to be an expert programmer to find coding useful. As illustrated in Figure \@ref(fig:prac-prog)
 there is a whole spectrum of code users from 
-practioners who are focused on applying some R to their specific problems, to those
+practitioners who are focused on applying some R to their specific problems, to those
 programmers who develop the R language itself. In reality one may move
 around on that spectrum as ones interests change over time.
 
-(ref:pp) The Practioner-Programmer spectrum
+(ref:pp) The Practitioner-Programmer spectrum
 
 ```{r prac-prog, fig.cap='(ref:pp)',fig.asp=1, out.width= '80%', fig.align='center', echo=FALSE}
 knitr::include_graphics("img/practioner-programmer.png")
@@ -117,7 +117,7 @@ When you first open it, there are three panes,the console where you type
 commands, your environment/history (top-right), and your
 files/plots/packages/help/viewer (bottom-right).
 
-The enivronment shows all the R objects you have created or are using, such
+The environment shows all the R objects you have created or are using, such
 as data you have imported.
 
 The output pane can be used to view any plots you have created.
@@ -126,7 +126,7 @@ Not opened at first start up is the fourth default pane: the script editor pane,
 but this will open as soon as we create/edit a R script (or many other document types). 
 *The script editor is where will be typing much of the time.*
 
-(ref:rstudio) The Rstudio Integrated Development Environment (IDE).
+(ref:rstudio) The RStudio Integrated Development Environment (IDE).
 
 ```{r rstudio,fig.cap='(ref:rstudio)',fig.asp=1, out.width= '80%', fig.align='center', echo=FALSE}
 knitr::include_graphics("img/rstudio_ide_image.png")
@@ -135,15 +135,15 @@ knitr::include_graphics("img/rstudio_ide_image.png")
 The placement of these panes and their content can be customized (see menu, 
 R Studio -> Tools -> Global Options -> Pane Layout). One of the advantages of 
 using R Studio is that all the information you need to write code is available 
-ina single window. Additionally, with many shortcuts, auto-completion, and 
+in a single window. Additionally, with many short-cuts, auto-completion, and 
 highlighting for the major file types you use while developing in R, R Studio 
 will make typing easier and less error-prone.
 
-> RStudio has lots of keyboard shortcuts to make coding quicker and easier.
-Try to find the menu listing all the keyboard shortcuts, including the shortcut
+> RStudio has lots of keyboard short-cuts to make coding quicker and easier.
+Try to find the menu listing all the keyboard short-cuts, including the short-cut
 to find the menu!
 
-Time for another philosphical diversion...
+Time for another philosophical diversion...
 
 ### What is real?
 
@@ -155,7 +155,7 @@ that creates our objects that we'll be using in our environment.
 **As a script is a document, it is reproducible**
 
 Or to put it another way: we can easily recreate an environment from our scripts, 
-but not so easily create a script from an enivronment.
+but not so easily create a script from an environment.
 
 To support this notion of thinking in terms of our scripts as real, we recommend
 turning off the preservation of workspaces between sessions by setting the 
@@ -182,7 +182,7 @@ consider a tree with a root from which the trunk extends and branches divide.
 In the image above, the ~ symbol represents a contraction of the path from the
 root to the 'home' directory (in Windows this is 'Documents') and then the 
 forward slashes are the branches. (Note: Windows uses backslashes, Unix type 
-systems and R use forwardslashes).
+systems and R use forward slashes).
 
 It is good practice to keep a set of related data, analyses, and text
 self-contained in a single folder, called the **working directory**. All of the
@@ -258,16 +258,16 @@ to perform a specific task. Functions in R have the syntax of the name of the fu
 followed by round brackets. The round brackets are where we type the arguments 
 that the function requires to carry out its task. For example, in \@ref(install-packages)
 the function `install.packages()` requires the name of the package we want to 
-install as arguements.
+install as arguments.
 
-Many, if not most, functions can take more than one arguement. The creators of the 
+Many, if not most, functions can take more than one argument. The creators of the 
 function should have given these defaults for the situation where the user provides
-only one or some arguements. RStudio should prompt you for the arguements as you
+only one or some arguments. RStudio should prompt you for the arguments as you
 type, but if you need to see what they are, use the help function `?` with the
 function name in the Console and it will open the help panel or type the function 
 name into the help panel search box.
 
-For example, to find out all the arguements for `install.packages()` we'd
+For example, to find out all the arguments for `install.packages()` we'd
 type `?install.packages` and press `Enter`.
 
 > Try using `say()` to say "I are programmer" in the `cowsay` package and then 
@@ -374,7 +374,7 @@ that are well worth remembering.
 
 When you names something, a file or an object, ideally it should be:
   
-1. Machine readable (no whitespace, punctuation, upper AND lowercase...)
+1. Machine readable (no white space, punctuation, upper AND lower-case...)
 2. Human readable  (makes sense in 6 months or 2 years time)
 3. Plays well with default ordering (numerical or date order)
 
@@ -386,7 +386,7 @@ The [tidyverse](https://www.tidyverse.org/) [@R-tidyverse] is *"an opinionated
 collection of R packages designed for data science"* . 
 
 Tidyverse packages contain functions that *"share an underlying design 
-philosophy, grammar, and data structures."* It's this philiosophy that makes 
+philosophy, grammar, and data structures."* It's this philosophy that makes 
 tidyverse functions and packages relatively easy to learn and use.
 
 Tidy data follows three principals for tabular data as proposed in the Tidy Data 
@@ -469,7 +469,7 @@ Many people ask why we use this assignment operator when we can use `=` instead?
 
 [Colin Fay had a Twitter thread on this subject](https://twitter.com/_colinfay/status/1006139974377443328),
 but the reason I favour most is that it provides clarity. The arrow points in 
-the direction of the assigment (it is actually possible to assign in the other
+the direction of the assignment (it is actually possible to assign in the other
 direction too) and it distinguishes between creating an object in the workspace 
 and assigning a value inside a function.
 
@@ -638,7 +638,7 @@ in conjunction with the `c()` function to make the individual atomic vectors
 that comprise the data frame as follows. Note that I am naming the vectors as I make
 the data frame after the type of vector e.g. `numeric_vector = c(1,7,3)`. Also,
 as this is a base R function I need to tell the function not to treat the character
-strings as catergorical data using `stringsAsFactors = FALSE`
+strings as categorical data using `stringsAsFactors = FALSE`
 
 
 ```{r make-data-frame}
@@ -653,7 +653,7 @@ df
 Packages in the  tidyverse create a modified form of data frame called a tibble.
 You can read about tibbles [here](http://r4ds.had.co.nz/tibbles.html). One 
 advantage of tibbles is that they don't default to treating strings as factors. 
-We deal with modifying data frames in later chapters.
+We deal with transforming data frames in chapters \@ref(data-wrangle-1) and \@ref(data-wrangle-2).
 
 Here's what the code to make the same data frame as before as a tibble looks like.
 Note how we get more information from a tibble when it is returned to the Console,
@@ -703,4 +703,119 @@ dim(mpg)
 
 ## Plotting data
 
+One of the most useful and important parts of any data analysis is plotting 
+data. We'll be spending a whole lesson on it in chapter \@ref(viz), but to 
+give you an example, we'll use the `ggplot2` package as an introduction to 
+automating a task in code, and as a tool for understanding data.
+
+`ggplot2` implements the *grammar of graphics*, for describing
+and building graphs. The idea being that we construct a plot in the following way:
+
+1. Call the `ggplot()` function to create a graph.
+2. Pass our data as the first argue to the `ggplot()` function.
+3. Then pass some arguments to the aesthetics function `aes()` inside 
+the `gpplot()` which tell ggplot how to plot the data e.g. which data goes on the x and y axis.
+4. Then we follow the ggplot function with a `+` sign to indicate
+we are going to add more code, followed by a geometric object function, a `geom`
+which maps the data to type of plot we want to make e.g. a histogram or scatter plot.
+
+Don't worry if this sounds confusing, it becomes clear with practice and all plots 
+follow this grammar.
+
+We'll use the `mpg` dataset that comes with the tidyverse to examine
+the question *do cars with big engines use more fuel than cars with small engines?*
+
+Try `?mpg` to learn more about the data.
+
+1. Engine size in litres is in the `displ` column.
+2. Fuel efficiency on the highway in miles per gallon is given in the `hwy` column.
+
+To create a plot of engine size `displ` (x-axis) against fuel efficiency `hwy` 
+(y-axis)  we do the following:
+
+Now try extending this code to include to add a `colour` aesthetic to the
+the `aes()` function, let `colour = class`, `class` being the vehicle type.
+This should create a plot with as before but with the points coloured
+according to the vehicle type to expand our understanding.
+
+```{r, mpg-plot-2}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, colour = class))
+```
+
+Now we can see that as we might expect, bigger cars such as SUVs tend to have 
+bigger engines and are also less fuel efficient, but some smaller cars such as 
+2-seaters also have big engines and greater fuel efficiency. Hence we have a 
+more nuanced view with this additional aesthetic.
+
+Check out the ggplot2 documentation for all the aesthetic possibilities (and 
+Google for examples): http://ggplot2.tidyverse.org/reference/
+
+So now we have re-usable code snippet for generating plots in R:
+
+```{r, purl=FALSE,eval=FALSE}
+ggplot(data = <DATA>) + 
+  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
+```
+
+Concretely, in our first example `<DATA>` was `mpg`, the `<GEOM_FUNCTION>` 
+was `geom_point()` and the arguments we supplies to map our aesthetics 
+`<MAPPINGS>` were `x = displ, y = hwy`.
+
+As we can use this code for any tidy data set, hopefully you are beginning to 
+see how a small amount of code can do a lot.
+
+
 ## Exporting data
+
+We'll spend more time on getting data in and out of our R environment in the 
+next chapter \@ref(data-wrangle-2), but just to wrap this lesson up let's imagine
+we wanted to export our plot and data for a colleague or presentation.
+
+### readr
+
+To export tibbles and data frames, we'll use the `readr` package, and the
+`write_excel_csv()` function. This creates a table in comma separated variable
+format that can opened by spreadsheet software such as excel. 
+
+As it is a function
+is has round brackets and the main arguments we pass are the object containing
+the data we want to output and the name of the file and the location we want to
+write the file to.
+
+```{r write-data, eval=FALSE}
+write_excel_csv(df, "outputs/example-data-02-05-2019.csv")
+```
+
+Here we are writing the `df` data frame as a csv file to the `outputs` folder
+and a file called `example-data-02-05-2019.csv`.
+
+### ggsave
+
+If we want to save the last plot we made in `ggplot2` we can use the [`ggsave()`
+function](https://ggplot2.tidyverse.org/reference/ggsave.html) 
+
+We tell `ggsave()` the filename, and it will save it as that type depending
+on how we name the file. For example if we use `file.pdf` it will save a PDF and
+if we use `file.jpeg` it will save a `jpeg`.
+
+Check out `?ggsave` or the line above for more options.
+
+To save our last plot for example:
+
+```{r ggsave, eval=FALSE}
+ggsave("outputs/example-plot-02-05-2019.pdf")
+```
+
+### Exercise
+
+> 1. Create a new project called 'coding-assessment-01'
+2. Create two folders in this project: R and outputs
+3. Create a R script using best naming practices i.e. name-date.R
+4. In the script, write some comments at the top e.g. name, date, description
+5. Create a tibble comprising of a character vector, a numeric vector
+6. Install and load the `dslabs` package and create a density plot with ggplot2 using the
+`heights` dataset, using the `x = height` variable and `fill = sex` to create a density plot
+    ggplot(data = heights, aes(x =height, fill = sex)) + geom_density()
+7. Save the plot as pdf and the tibble as csv file to the output folder.
+    

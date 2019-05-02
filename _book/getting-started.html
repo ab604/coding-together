@@ -165,7 +165,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.10.1" data-path="getting-started.html"><a href="getting-started.html#attributes"><i class="fa fa-check"></i><b>1.10.1</b> Attributes</a></li>
 </ul></li>
 <li class="chapter" data-level="1.11" data-path="getting-started.html"><a href="getting-started.html#plotting-data"><i class="fa fa-check"></i><b>1.11</b> Plotting data</a></li>
-<li class="chapter" data-level="1.12" data-path="getting-started.html"><a href="getting-started.html#exporting-data"><i class="fa fa-check"></i><b>1.12</b> Exporting data</a></li>
+<li class="chapter" data-level="1.12" data-path="getting-started.html"><a href="getting-started.html#exporting-data"><i class="fa fa-check"></i><b>1.12</b> Exporting data</a><ul>
+<li class="chapter" data-level="1.12.1" data-path="getting-started.html"><a href="getting-started.html#readr"><i class="fa fa-check"></i><b>1.12.1</b> readr</a></li>
+<li class="chapter" data-level="1.12.2" data-path="getting-started.html"><a href="getting-started.html#ggsave"><i class="fa fa-check"></i><b>1.12.2</b> ggsave</a></li>
+<li class="chapter" data-level="1.12.3" data-path="getting-started.html"><a href="getting-started.html#exercise"><i class="fa fa-check"></i><b>1.12.3</b> Exercise</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html"><i class="fa fa-check"></i><b>2</b> Data wrangling I</a></li>
 <li class="chapter" data-level="3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html"><i class="fa fa-check"></i><b>3</b> Data wrangling II</a></li>
@@ -266,7 +270,7 @@ Figure 1.3: Data project workflow.
 </p>
 </div>
 <p>As shown in Figure <a href="getting-started.html#fig:pipeline">1.3</a> of typical data analysis workflow,
-to acheive this aim we need to learn tools that enable us to perform the
+to achieve this aim we need to learn tools that enable us to perform the
 fundamental tasks of tasks of importing, tidying and
 often transforming the data. Transformation means for example, selecting a
 subset of the data to work with, or calculating the mean of a set of observations.</p>
@@ -275,14 +279,14 @@ subset of the data to work with, or calculating the mean of a set of observation
 <h3><span class="header-section-number">1.2.3</span> A little goes a long way</h3>
 <p>Returning to our cat friend in Figure <a href="getting-started.html#fig:rcat">1.2</a>, one doesn’t need to be an expert programmer to find coding useful. As illustrated in Figure <a href="getting-started.html#fig:prac-prog">1.4</a>
 there is a whole spectrum of code users from
-practioners who are focused on applying some R to their specific problems, to those
+practitioners who are focused on applying some R to their specific problems, to those
 programmers who develop the R language itself. In reality one may move
 around on that spectrum as ones interests change over time.</p>
 
 <div class="figure" style="text-align: center"><span id="fig:prac-prog"></span>
-<img src="img/practioner-programmer.png" alt="The Practioner-Programmer spectrum" width="80%" />
+<img src="img/practioner-programmer.png" alt="The Practitioner-Programmer spectrum" width="80%" />
 <p class="caption">
-Figure 1.4: The Practioner-Programmer spectrum
+Figure 1.4: The Practitioner-Programmer spectrum
 </p>
 </div>
 </div>
@@ -303,7 +307,7 @@ this workshop.</p>
 <p>When you first open it, there are three panes,the console where you type
 commands, your environment/history (top-right), and your
 files/plots/packages/help/viewer (bottom-right).</p>
-<p>The enivronment shows all the R objects you have created or are using, such
+<p>The environment shows all the R objects you have created or are using, such
 as data you have imported.</p>
 <p>The output pane can be used to view any plots you have created.</p>
 <p>Not opened at first start up is the fourth default pane: the script editor pane,
@@ -311,23 +315,23 @@ but this will open as soon as we create/edit a R script (or many other document 
 <em>The script editor is where will be typing much of the time.</em></p>
 
 <div class="figure" style="text-align: center"><span id="fig:rstudio"></span>
-<img src="img/rstudio_ide_image.png" alt="The Rstudio Integrated Development Environment (IDE)." width="80%" />
+<img src="img/rstudio_ide_image.png" alt="The RStudio Integrated Development Environment (IDE)." width="80%" />
 <p class="caption">
-Figure 1.5: The Rstudio Integrated Development Environment (IDE).
+Figure 1.5: The RStudio Integrated Development Environment (IDE).
 </p>
 </div>
 <p>The placement of these panes and their content can be customized (see menu,
 R Studio -&gt; Tools -&gt; Global Options -&gt; Pane Layout). One of the advantages of
 using R Studio is that all the information you need to write code is available
-ina single window. Additionally, with many shortcuts, auto-completion, and
+in a single window. Additionally, with many short-cuts, auto-completion, and
 highlighting for the major file types you use while developing in R, R Studio
 will make typing easier and less error-prone.</p>
 <blockquote>
-<p>RStudio has lots of keyboard shortcuts to make coding quicker and easier.
-Try to find the menu listing all the keyboard shortcuts, including the shortcut
+<p>RStudio has lots of keyboard short-cuts to make coding quicker and easier.
+Try to find the menu listing all the keyboard short-cuts, including the short-cut
 to find the menu!</p>
 </blockquote>
-<p>Time for another philosphical diversion…</p>
+<p>Time for another philosophical diversion…</p>
 <div id="what-is-real" class="section level3">
 <h3><span class="header-section-number">1.3.1</span> What is real?</h3>
 <p>At the start, we might consider our environment “real” - that is to say the objects
@@ -336,7 +340,7 @@ to consider our scripts as “real” - our scripts are where we write down the 
 that creates our objects that we’ll be using in our environment.</p>
 <p><strong>As a script is a document, it is reproducible</strong></p>
 <p>Or to put it another way: we can easily recreate an environment from our scripts,
-but not so easily create a script from an enivronment.</p>
+but not so easily create a script from an environment.</p>
 <p>To support this notion of thinking in terms of our scripts as real, we recommend
 turning off the preservation of workspaces between sessions by setting the
 Tools &gt; Global Options menu in R studio as shown in Figure <a href="getting-started.html#fig:workspace">1.6</a>:</p>
@@ -363,7 +367,7 @@ consider a tree with a root from which the trunk extends and branches divide.
 In the image above, the ~ symbol represents a contraction of the path from the
 root to the ‘home’ directory (in Windows this is ‘Documents’) and then the
 forward slashes are the branches. (Note: Windows uses backslashes, Unix type
-systems and R use forwardslashes).</p>
+systems and R use forward slashes).</p>
 <p>It is good practice to keep a set of related data, analyses, and text
 self-contained in a single folder, called the <strong>working directory</strong>. All of the
 scripts within this folder can then use <em>relative paths</em> to files that indicate
@@ -427,14 +431,14 @@ to perform a specific task. Functions in R have the syntax of the name of the fu
 followed by round brackets. The round brackets are where we type the arguments
 that the function requires to carry out its task. For example, in <a href="getting-started.html#install-packages">1.3.4</a>
 the function <code>install.packages()</code> requires the name of the package we want to
-install as arguements.</p>
-<p>Many, if not most, functions can take more than one arguement. The creators of the
+install as arguments.</p>
+<p>Many, if not most, functions can take more than one argument. The creators of the
 function should have given these defaults for the situation where the user provides
-only one or some arguements. RStudio should prompt you for the arguements as you
+only one or some arguments. RStudio should prompt you for the arguments as you
 type, but if you need to see what they are, use the help function <code>?</code> with the
 function name in the Console and it will open the help panel or type the function
 name into the help panel search box.</p>
-<p>For example, to find out all the arguements for <code>install.packages()</code> we’d
+<p>For example, to find out all the arguments for <code>install.packages()</code> we’d
 type <code>?install.packages</code> and press <code>Enter</code>.</p>
 <blockquote>
 <p>Try using <code>say()</code> to say “I are programmer” in the <code>cowsay</code> package and then
@@ -526,7 +530,7 @@ also has three principles for <a href="http://www2.stat.duke.edu/~rcs46/lectures
 that are well worth remembering.</p>
 <p>When you names something, a file or an object, ideally it should be:</p>
 <ol style="list-style-type: decimal">
-<li>Machine readable (no whitespace, punctuation, upper AND lowercase…)</li>
+<li>Machine readable (no white space, punctuation, upper AND lower-case…)</li>
 <li>Human readable (makes sense in 6 months or 2 years time)</li>
 <li>Plays well with default ordering (numerical or date order)</li>
 </ol>
@@ -538,7 +542,7 @@ that are well worth remembering.</p>
 <p>The <a href="https://www.tidyverse.org/">tidyverse</a> <span class="citation">(Wickham <a href="#ref-R-tidyverse">2017</a>)</span> is <em>“an opinionated
 collection of R packages designed for data science”</em> .</p>
 <p>Tidyverse packages contain functions that <em>“share an underlying design
-philosophy, grammar, and data structures.”</em> It’s this philiosophy that makes
+philosophy, grammar, and data structures.”</em> It’s this philosophy that makes
 tidyverse functions and packages relatively easy to learn and use.</p>
 <p>Tidy data follows three principals for tabular data as proposed in the Tidy Data
 paper <a href="http://www.jstatsoft.org/v59/i10/paper" class="uri">http://www.jstatsoft.org/v59/i10/paper</a> :</p>
@@ -610,7 +614,7 @@ Alt + - (the minus sign) to make life easier.</p>
 <p>Many people ask why we use this assignment operator when we can use <code>=</code> instead?</p>
 <p><a href="https://twitter.com/_colinfay/status/1006139974377443328">Colin Fay had a Twitter thread on this subject</a>,
 but the reason I favour most is that it provides clarity. The arrow points in
-the direction of the assigment (it is actually possible to assign in the other
+the direction of the assignment (it is actually possible to assign in the other
 direction too) and it distinguishes between creating an object in the workspace
 and assigning a value inside a function.</p>
 <p>Object name style is a matter of choice, but must start with a letter and can
@@ -747,7 +751,7 @@ in conjunction with the <code>c()</code> function to make the individual atomic 
 that comprise the data frame as follows. Note that I am naming the vectors as I make
 the data frame after the type of vector e.g. <code>numeric_vector = c(1,7,3)</code>. Also,
 as this is a base R function I need to tell the function not to treat the character
-strings as catergorical data using <code>stringsAsFactors = FALSE</code></p>
+strings as categorical data using <code>stringsAsFactors = FALSE</code></p>
 <pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">numeric_vector =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">3</span>), 
                  <span class="dt">character_vector =</span> <span class="kw">c</span>(<span class="st">&quot;S&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;U&quot;</span>),
                  <span class="dt">logical_vector =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>,<span class="ot">FALSE</span>,<span class="ot">TRUE</span>), 
@@ -761,7 +765,7 @@ df</code></pre>
 <p>Packages in the tidyverse create a modified form of data frame called a tibble.
 You can read about tibbles <a href="http://r4ds.had.co.nz/tibbles.html">here</a>. One
 advantage of tibbles is that they don’t default to treating strings as factors.
-We deal with modifying data frames in later chapters.</p>
+We deal with transforming data frames in chapters <a href="data-wrangle-1.html#data-wrangle-1">2</a> and <a href="data-wrangle-2.html#data-wrangle-2">3</a>.</p>
 <p>Here’s what the code to make the same data frame as before as a tibble looks like.
 Note how we get more information from a tibble when it is returned to the Console,
 it tells us what the dimensions are, and what type of vectors it contains.</p>
@@ -803,10 +807,100 @@ we create an object, but others such as names can be added.</p>
 </div>
 <div id="plotting-data" class="section level2">
 <h2><span class="header-section-number">1.11</span> Plotting data</h2>
+<p>One of the most useful and important parts of any data analysis is plotting
+data. We’ll be spending a whole lesson on it in chapter <a href="viz.html#viz">6</a>, but to
+give you an example, we’ll use the <code>ggplot2</code> package as an introduction to
+automating a task in code, and as a tool for understanding data.</p>
+<p><code>ggplot2</code> implements the <em>grammar of graphics</em>, for describing
+and building graphs. The idea being that we construct a plot in the following way:</p>
+<ol style="list-style-type: decimal">
+<li>Call the <code>ggplot()</code> function to create a graph.</li>
+<li>Pass our data as the first argue to the <code>ggplot()</code> function.</li>
+<li>Then pass some arguments to the aesthetics function <code>aes()</code> inside
+the <code>gpplot()</code> which tell ggplot how to plot the data e.g. which data goes on the x and y axis.</li>
+<li>Then we follow the ggplot function with a <code>+</code> sign to indicate
+we are going to add more code, followed by a geometric object function, a <code>geom</code>
+which maps the data to type of plot we want to make e.g. a histogram or scatter plot.</li>
+</ol>
+<p>Don’t worry if this sounds confusing, it becomes clear with practice and all plots
+follow this grammar.</p>
+<p>We’ll use the <code>mpg</code> dataset that comes with the tidyverse to examine
+the question <em>do cars with big engines use more fuel than cars with small engines?</em></p>
+<p>Try <code>?mpg</code> to learn more about the data.</p>
+<ol style="list-style-type: decimal">
+<li>Engine size in litres is in the <code>displ</code> column.</li>
+<li>Fuel efficiency on the highway in miles per gallon is given in the <code>hwy</code> column.</li>
+</ol>
+<p>To create a plot of engine size <code>displ</code> (x-axis) against fuel efficiency <code>hwy</code>
+(y-axis) we do the following:</p>
+<p>Now try extending this code to include to add a <code>colour</code> aesthetic to the
+the <code>aes()</code> function, let <code>colour = class</code>, <code>class</code> being the vehicle type.
+This should create a plot with as before but with the points coloured
+according to the vehicle type to expand our understanding.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">colour =</span> class))</code></pre>
+<p><img src="coding-together_files/figure-html/mpg-plot-2-1.png" width="672" /></p>
+<p>Now we can see that as we might expect, bigger cars such as SUVs tend to have
+bigger engines and are also less fuel efficient, but some smaller cars such as
+2-seaters also have big engines and greater fuel efficiency. Hence we have a
+more nuanced view with this additional aesthetic.</p>
+<p>Check out the ggplot2 documentation for all the aesthetic possibilities (and
+Google for examples): <a href="http://ggplot2.tidyverse.org/reference/" class="uri">http://ggplot2.tidyverse.org/reference/</a></p>
+<p>So now we have re-usable code snippet for generating plots in R:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="op">&lt;</span>DATA<span class="op">&gt;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="er">&lt;</span>GEOM_FUNCTION<span class="op">&gt;</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="op">&lt;</span>MAPPINGS<span class="op">&gt;</span>))</code></pre>
+<p>Concretely, in our first example <code>&lt;DATA&gt;</code> was <code>mpg</code>, the <code>&lt;GEOM_FUNCTION&gt;</code>
+was <code>geom_point()</code> and the arguments we supplies to map our aesthetics
+<code>&lt;MAPPINGS&gt;</code> were <code>x = displ, y = hwy</code>.</p>
+<p>As we can use this code for any tidy data set, hopefully you are beginning to
+see how a small amount of code can do a lot.</p>
 </div>
 <div id="exporting-data" class="section level2">
 <h2><span class="header-section-number">1.12</span> Exporting data</h2>
+<p>We’ll spend more time on getting data in and out of our R environment in the
+next chapter <a href="data-wrangle-2.html#data-wrangle-2">3</a>, but just to wrap this lesson up let’s imagine
+we wanted to export our plot and data for a colleague or presentation.</p>
+<div id="readr" class="section level3">
+<h3><span class="header-section-number">1.12.1</span> readr</h3>
+<p>To export tibbles and data frames, we’ll use the <code>readr</code> package, and the
+<code>write_excel_csv()</code> function. This creates a table in comma separated variable
+format that can opened by spreadsheet software such as excel.</p>
+<p>As it is a function
+is has round brackets and the main arguments we pass are the object containing
+the data we want to output and the name of the file and the location we want to
+write the file to.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write_excel_csv</span>(df, <span class="st">&quot;outputs/example-data-02-05-2019.csv&quot;</span>)</code></pre>
+<p>Here we are writing the <code>df</code> data frame as a csv file to the <code>outputs</code> folder
+and a file called <code>example-data-02-05-2019.csv</code>.</p>
+</div>
+<div id="ggsave" class="section level3">
+<h3><span class="header-section-number">1.12.2</span> ggsave</h3>
+<p>If we want to save the last plot we made in <code>ggplot2</code> we can use the <a href="https://ggplot2.tidyverse.org/reference/ggsave.html"><code>ggsave()</code>
+function</a></p>
+<p>We tell <code>ggsave()</code> the filename, and it will save it as that type depending
+on how we name the file. For example if we use <code>file.pdf</code> it will save a PDF and
+if we use <code>file.jpeg</code> it will save a <code>jpeg</code>.</p>
+<p>Check out <code>?ggsave</code> or the line above for more options.</p>
+<p>To save our last plot for example:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggsave</span>(<span class="st">&quot;outputs/example-plot-02-05-2019.pdf&quot;</span>)</code></pre>
+</div>
+<div id="exercise" class="section level3">
+<h3><span class="header-section-number">1.12.3</span> Exercise</h3>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>Create a new project called ‘coding-assessment-01’</li>
+<li>Create two folders in this project: R and outputs</li>
+<li>Create a R script using best naming practices i.e. name-date.R</li>
+<li>In the script, write some comments at the top e.g. name, date, description</li>
+<li>Create a tibble comprising of a character vector, a numeric vector</li>
+<li>Install and load the <code>dslabs</code> package and create a density plot with ggplot2 using the
+<code>heights</code> dataset, using the <code>x = height</code> variable and <code>fill = sex</code> to create a density plot
+ggplot(data = heights, aes(x =height, fill = sex)) + geom_density()</li>
+<li>Save the plot as pdf and the tibble as csv file to the output folder.</li>
+</ol>
+</blockquote>
 
+</div>
 </div>
 </div>
 <h3>References</h3>

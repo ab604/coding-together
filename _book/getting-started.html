@@ -211,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div id="coding-is-for-everyone" class="section level2">
 <h2><span class="header-section-number">1.1</span> Coding is for everyone</h2>
-<p>If, when faced with the thought of starting to learning to code you feel like an imposter, <a href="getting-started.html#fig:imposter">1.1</a>:</p>
+<p>If, when faced with the thought of starting to learning to code you feel like the cat in Figure <a href="getting-started.html#fig:imposter">1.1</a>.</p>
 
 <div class="figure" style="text-align: center"><span id="fig:imposter"></span>
 <img src="img/a-baa-fail-cat-among-penguins.jpg" alt="Imposter syndrome." width="80%" />
@@ -219,7 +219,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Figure 1.1: <a href="https://bloggerbyresearch.files.wordpress.com/2015/04/a-baa-fail-cat-among-penguins.jpg">Imposter syndrome</a>.
 </p>
 </div>
-<p>Then hopefully by the end of these materials, you’ll feel a bit more like a R cat, <a href="getting-started.html#fig:rcat">1.2</a>:</p>
+<p>Then hopefully by the end of these materials, you’ll feel a bit more like the cat in Figure <a href="getting-started.html#fig:rcat">1.2</a>.</p>
 
 <div class="figure" style="text-align: center"><span id="fig:rcat"></span>
 <img src="img/lolcat-programmer.jpg" alt="R cat" width="80%" />
@@ -343,7 +343,7 @@ that creates our objects that we’ll be using in our environment.</p>
 but not so easily create a script from an environment.</p>
 <p>To support this notion of thinking in terms of our scripts as real, we recommend
 turning off the preservation of workspaces between sessions by setting the
-Tools &gt; Global Options menu in R studio as shown in Figure <a href="getting-started.html#fig:workspace">1.6</a>:</p>
+Tools &gt; Global Options menu in R studio as shown in Figure <a href="getting-started.html#fig:workspace">1.6</a>.</p>
 
 <div class="figure" style="text-align: center"><span id="fig:workspace"></span>
 <img src="img/rdata_turn_off.png" alt="Don’t save your workspace, save your script instead." width="80%" />
@@ -354,7 +354,7 @@ Figure 1.6: Don’t save your workspace, save your script instead.
 </div>
 <div id="where-am-i" class="section level3">
 <h3><span class="header-section-number">1.3.2</span> Where am I?</h3>
-<p>R studio tells you where you are in terms of directory address like so:</p>
+<p>R studio tells you where you are in terms of directory address as shown in Figure <a href="getting-started.html#fig:working-directory">1.7</a>.</p>
 
 <div class="figure" style="text-align: center"><span id="fig:working-directory"></span>
 <img src="img/rstudio_working_directory.png" alt="Your working directory" width="80%" />
@@ -369,13 +369,13 @@ root to the ‘home’ directory (in Windows this is ‘Documents’) and then t
 forward slashes are the branches. (Note: Windows uses backslashes, Unix type
 systems and R use forward slashes).</p>
 <p>It is good practice to keep a set of related data, analyses, and text
-self-contained in a single folder, called the <strong>working directory</strong>. All of the
+self-contained in a single folder, called <strong>your working directory</strong>. All of the
 scripts within this folder can then use <em>relative paths</em> to files that indicate
 where inside the project a file is located (as opposed to absolute paths, which
-point to where a file is on a specific computer). Working this way makes it
-a lot easier to move your project around on your computer and share it with
-others without worrying about whether or not the underlying scripts will still
-work.</p>
+point to where a file is on a specific computer). An example
+directory structure is illustrated in Figure <a href="getting-started.html#fig:dir-structure">1.8</a>.
+Working this way makes it a lot easier to move your project around on your computer.
+Section <a href="getting-started.html#workflow">1.4</a> builds upon this to create a robust workflow for data analysis.</p>
 
 <div class="figure" style="text-align: center"><span id="fig:dir-structure"></span>
 <img src="img/R-ecology-work_dir_structure.png" alt="A typical directory structure" width="80%" />
@@ -595,7 +595,7 @@ to use ?seq if you want to learn more about the function.</p>
 <div id="assignment" class="section level2">
 <h2><span class="header-section-number">1.7</span> Assigning objects</h2>
 <p>Objects are just a way to store data inside the R environment. We assign labels to
-objects using the assignment operator <code>&lt;-</code>:</p>
+objects using the assignment operator <code>&lt;-</code></p>
 <pre class="sourceCode r"><code class="sourceCode r">mass_kg &lt;-<span class="st"> </span><span class="dv">55</span></code></pre>
 <p>Read this as <em>“mass_kg is assigned to value 55”</em> in your head. A subtle but important
 point here is that the object is 55 and the value remains 55 regardless of the label we assign to it. In

@@ -444,7 +444,7 @@ to use ?seq if you want to learn more about the function.
 ## Assigning objects {#assignment}
 
 Objects are just a way to store data inside the R environment. We assign labels to
-objects using the assignment operator `<-`:
+objects using the assignment operator `<-`
 
 ```{r mass-kg}
 mass_kg <- 55

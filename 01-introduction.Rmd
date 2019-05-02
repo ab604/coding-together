@@ -12,7 +12,7 @@ By the end of this chapter are you will:
 
 ## Coding is for everyone
 
-If, when faced with the thought of starting to learning to code you feel like this:
+If, when faced with the thought of starting to learning to code you feel like an imposter, \@ref(fig:imposter):
 
 (ref:imposter) [Imposter syndrome](https://bloggerbyresearch.files.wordpress.com/2015/04/a-baa-fail-cat-among-penguins.jpg).
 
@@ -20,7 +20,7 @@ If, when faced with the thought of starting to learning to code you feel like th
 knitr::include_graphics("img/a-baa-fail-cat-among-penguins.jpg")
 ```
 
-Then hopefully by the end of these materials, you'll feel a bit more like this:
+Then hopefully by the end of these materials, you'll feel a bit more like a R cat, \@ref(fig:rcat):
 
 (ref:r-cat) [R cat](https://stephensontam.files.wordpress.com/2017/06/lolcat-programmer.jpg)
 

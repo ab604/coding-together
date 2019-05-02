@@ -1,0 +1,141 @@
+/*Custom css for rmarkdown ioslide. 
+A.Bailey 11th Jan 2017 */
+
+.mySegue {
+  font-size: 105px;
+  line-height: 65px;
+  letter-spacing: -2px;
+  color: white;
+  padding: 60px 120px;
+}
+
+.my-segue {
+  color: white;
+  }
+
+/* line 809, ../scss/default.scss */
+.my-segue {
+  padding: 60px 120px;
+}
+/* line 812, ../scss/default.scss */
+.my-segue h2 {
+  color: #e6e6e6;
+  font-size: 60px;
+}
+/* line 816, ../scss/default.scss */
+.my-segue h3 {
+  color: #e6e6e6;
+  line-height: 2.8;
+}
+/* line 820, ../scss/default.scss */
+.my-segue hgroup {
+  position: absolute;
+  bottom: 225px;
+}
+
+#career img {
+  width: 80%;
+}
+
+#myImagePage img {
+  width: 80%;
+}
+
+#fullImagePage img {
+  width: 100%;
+}
+
+#midImagePage img {
+  width: 60%;
+}
+
+#vImagePage img {
+  width: 75%;
+}
+
+#hImagePage img {
+  width: 50%;
+}
+
+slides > .backdrop {
+  background: white;
+}
+
+/*Red font*/
+.redslide {
+   color: red; 
+}
+
+/*Yellow font*/
+.yellowslide {
+   color: yellow; 
+}
+
+/*Bigger font*/
+.bigfont {
+	font-size: 1.3em;
+}
+
+/*Remove page numbers*/
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+/*Remove footer logo*/
+slides > slide:not(.nobackground):before {
+  width: 0px;
+  height: 0px;
+  /*background-size: 0px 0px;
+  /*background-color: #EDE0CF; /*; #CA9F9D*/
+}
+
+.title-slide {
+ font-family: 'Open Sans', sans-serif;
+	background-color: #005C84;
+  background-image: none;
+	background-position: left 20px top 20px;
+	background-size: 300px 75px;
+	color:white;
+}
+
+
+ 
+.title-slide hgroup > h1 {
+  font-family: 'Oswald', 'Helvetica', sanserif;
+}
+
+/* line 888, ../scss/default.scss */
+.my-title-slide hgroup {
+  bottom: 100px;
+}
+/* line 891, ../scss/default.scss */
+.title-slide hgroup h1 {
+  font-size: 65px;
+  line-height: 1.4;
+  letter-spacing: -3px;
+  color: white;
+}
+/* line 898, ../scss/default.scss */
+.title-slide hgroup h2 {
+  font-size: 34px;
+  font-weight: inherit;
+  color: white;
+}
+/* line 904, ../scss/default.scss */
+.title-slide hgroup p {
+  font-size: 20px;
+  line-height: 1.3;
+  margin-top: 2em;
+  color: white;
+}
+
+
+.gdbar img {
+  width: 150px !important;
+  height: 75px !important;
+  margin: 8px 8px;
+}
+
+.gdbar {
+  width: 200px !important;
+  height: 85px !important;
+}

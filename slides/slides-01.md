@@ -6,8 +6,7 @@
 3. Practioner-Programmer
 4. Why?
 5. Frustration 
-6. Rstudio - turn off 1
-7. Rstudio - turn off 2
+6. Rstudio - turn off restore & turn off save
 8. Rtudio layout
 9. Getting help 1
 10. Getting help 2

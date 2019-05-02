@@ -1,0 +1,62 @@
+---
+title: "Coding togetheR"
+subtitle: "Week 1"
+author: Alistair Bailey and Ben Nicholas
+date: "`r format(Sys.Date(),format='%B %d %Y')`"
+output: 
+  ioslides_presentation: 
+    logo: assets/UoS_Logo.svg
+    css: assets/custom.css
+    self_contained: yes
+    widescreen: true
+---
+
+```{r knitr-options,include=FALSE}
+library(here)
+```
+
+# {data-background=../img/a-baa-fail-cat-among-penguins.jpg data-background-size=90%}
+
+# {data-background=../img/lolcat-programmer.jpg data-background-size=90%}
+
+# {data-background=../img/155.jpg data-background-size=95%}
+
+# {data-background=../img/data_project_pipeline.png data-background-size=95%}
+
+# {data-background=../img/practioner-programmer.png data-background-size=95%}
+
+## Why code?
+
++ to get more done, in less time and with less pain.
++ to understand and communicate
++ to change the world
+
+# {data-background=../img/dani-meme.png data-background-size=100%}
+
+# {data-background=../img/rstudio_ide_image.png data-background-size=95%}
+
+# {data-background=../img/rdata_turn_off.png data-background-size=85%}
+
+# {data-background=../img/R-ecology-work_dir_structure.png data-background-size=95%}
+
+# Getting help
+
+# {data-background=../img/jesse_m.png data-background-size=95%}
+
+## Naming things 
+
+1. Machine readable (no white space, punctuation, upper AND lower-case...)
+2. Human readable  (makes sense in 6 months or 2 years time)
+3. Plays well with default ordering (numerical or date order)
+
+# {data-background=../img/r-vectors-07-10-2018.png data-background-size=40%}
+
+# {data-background=../img/bibi-data.png data-background-size=95%}
+
+# {data-background=../img/indexing.png data-background-size=75%}
+
+# {data-background=../img/r-all-vectors-07-10-2018.png data-background-size=65%}
+
+# {data-background=../img/data_frame.png data-background-size=100%}
+
+

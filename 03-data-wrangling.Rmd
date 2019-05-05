@@ -1,1 +1,9 @@
 # Data wrangling II {#data-wrangle-2}
+
+Following on from chapter 2 this lesson deals with some 
+common tidying problems with data. By the end of this chapter the learner 
+will:
+
++ have learnt some ways to deal with missing values
++ have learnt how to transform rows and columns to reorganise data
++ have learnt how to join data contained in separate tables into a single table 

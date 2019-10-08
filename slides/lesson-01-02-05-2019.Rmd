@@ -1,7 +1,7 @@
 ---
 title: "Coding togetheR"
 subtitle: "Week 1"
-author: Alistair Bailey and Ben Nicholas
+author: Alistair Bailey
 date: "`r format(Sys.Date(),format='%B %d %Y')`"
 output: 
   ioslides_presentation: 
@@ -48,6 +48,17 @@ library(here)
 1. Machine readable (no white space, punctuation, upper AND lower-case...)
 2. Human readable  (makes sense in 6 months or 2 years time)
 3. Plays well with default ordering (numerical or date order)
+
+##
+
+    To understand computations in R, two slogans are helpful:
+
+        Everything that exists is an object.
+        Everything that happens is a function call."
+
+    — John Chambers
+
+
 
 # {data-background=../img/r-vectors-07-10-2018.png data-background-size=40%}
 

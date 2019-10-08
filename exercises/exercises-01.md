@@ -8,6 +8,8 @@
 
 Tools > Keyboard shortcuts help
 
+2. Change the appearance to something different.
+
 ### Installing packages and using functions
 
 1 .Install cowsay and make it talk:
@@ -22,6 +24,29 @@ say(by = "cow")
 ### Creating folders
 
 1 .Create a folder called R and folder called outputs in your project folder
+
+### mpg dataset
+
+1. Find out about the mtcars package: 
+ - what is it? 
+ - and what kind of data does it contain?
+ 
+2. Let's make a plot and answer a question about the relationship between engine size (displ)
+and (highway) miles per gallon:
+ - mpg %>% ggplot(aes(x = displ,y = hwy)) + geom_point()
+ - your turn, repeat the plot but add a colour aesthetic for class
+ mpg %>% ggplot(aes(x = displ,y = hwy, colour = class)) + geom_point()
+ - Add a size aesthetic for number of cylinders
+ mpg %>% ggplot(aes(x = displ,y = hwy, colour = class, size = cyl)) + geom_point()
+
+3. Let's look at the object:
+glimpse() or str()
+
+4. Let's look at the data types in mtcars
+
+5. Let's save it and read it back in:
+
+ write_excel_csv(mpg,"data/mpg-dataset-10-10-2019.csv")
 
 ### Vectors and assignment
 

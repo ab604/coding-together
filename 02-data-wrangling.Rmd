@@ -1,1 +1,41 @@
 # Data wrangling I {#data-wrangle-1}
+
+By the end of this chapter you will:
+
++ have learnt to load and export csv and excel files
++ know what tidy data is and how to organise data such that it is tidy 
++ have used the key verbs of the `dplyr` package for transforming data to
+arrange and filter observations, select variables, create new variables, and
+create summaries.
++ have learnt how to combine functions with the pipe from the `magrittr` package 
+to combine tasks
+
+## Organising data in spreadsheets
+
+### tidy data revisited
+
+## Loading data
+
+### Flat formats
+
+### Excel files
+
+## Exporting data
+
+### Flat formats
+
+### Excel files
+
+## dplyr
+
+### piping functions
+
+### arranging observations by row
+
+### filtering observations by row
+
+### selecting variables by column
+
+### creating new variable columns
+
+### grouping and summarising data

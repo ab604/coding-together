@@ -1,1 +1,1 @@
-# Exploratory modelling {#modelling}
+# Exploratory data analysis {#eda}

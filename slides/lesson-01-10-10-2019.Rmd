@@ -15,6 +15,8 @@ output:
 library(here)
 ```
 
+# {data-background=../img/dog_imposter.jpg data-background-size=60%}
+
 # {data-background=../img/a-baa-fail-cat-among-penguins.jpg data-background-size=90%}
 
 # {data-background=../img/lolcat-programmer.jpg data-background-size=90%}
@@ -54,7 +56,7 @@ library(here)
     To understand computations in R, two slogans are helpful:
 
         Everything that exists is an object.
-        Everything that happens is a function call."
+        Everything that happens is a function call.
 
     — John Chambers
 

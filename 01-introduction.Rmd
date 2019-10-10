@@ -343,8 +343,24 @@ Below, we will go through the steps for creating an `Project`:
 * Click on "Create project"
 * Under the `Files` tab on the right of the screen, click on `New Folder` and
   create a folder named `data` within your newly created working directory. (e.g., `~/data`)
-* Create a new R script (File > New File > R script) and save it in your working
+* Create a R notebook (File > New File > R notebook) and save it in your working
+  directory (e.g. `01-coding-together-workshop-02-05-2019.Rmd`)
+* Or create a new R script (File > New File > R script) and save it in your working
   directory (e.g. `01-coding-together-workshop-02-05-2019.R`)
+  
+### R notebooks and R scripts
+
+[R notebooks](https://bookdown.org/yihui/rmarkdown/notebook.html) combine writing 
+text with R code in chunks. The R code chunks are indicated by three backticks and
+a lowercase r in brackets: ` ```{r} ``` `.  Text can be formatted using
+[markdown syntax](https://bookdown.org/yihui/rmarkdown/markdown-syntax.html). 
+These are great for doing analysis
+and report wrting at the same time.
+
+R scripts are text files containing the commands that you would enter into the R
+console. They are great for containing code you wish to call into another script
+such as code for a function, or if you are submitting a script as job to run
+on another computer without the need for RStudio.
   
 ### Level up with the `here` package  {#here}
 

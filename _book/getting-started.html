@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1 Getting started in R and RStudio | Coding togetheR</title>
-  <meta name="description" content="Materials for the Coding TogetheR workshops">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Materials for the Coding TogetheR workshops" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1 Getting started in R and RStudio | Coding togetheR" />
   <meta property="og:type" content="book" />
@@ -22,17 +21,17 @@
   <meta name="twitter:description" content="Materials for the Coding TogetheR workshops" />
   <meta name="twitter:image" content="img/Carrick-bend-Guten-Verrill-modified.png" />
 
-<meta name="author" content="Alistair Bailey">
+<meta name="author" content="Alistair Bailey" />
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="data-wrangle-1.html">
+<link rel="prev" href="index.html"/>
+<link rel="next" href="data-wrangle-1.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -55,7 +54,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -149,8 +147,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="getting-started.html"><a href="getting-started.html#workflow"><i class="fa fa-check"></i><b>1.4</b> A project orientated workflow</a><ul>
 <li class="chapter" data-level="1.4.1" data-path="getting-started.html"><a href="getting-started.html#rstudio-projects"><i class="fa fa-check"></i><b>1.4.1</b> RStudio Projects</a></li>
-<li class="chapter" data-level="1.4.2" data-path="getting-started.html"><a href="getting-started.html#here"><i class="fa fa-check"></i><b>1.4.2</b> Level up with the <code>here</code> package</a></li>
-<li class="chapter" data-level="1.4.3" data-path="getting-started.html"><a href="getting-started.html#names"><i class="fa fa-check"></i><b>1.4.3</b> Naming things</a></li>
+<li class="chapter" data-level="1.4.2" data-path="getting-started.html"><a href="getting-started.html#r-notebooks-and-r-scripts"><i class="fa fa-check"></i><b>1.4.2</b> R notebooks and R scripts</a></li>
+<li class="chapter" data-level="1.4.3" data-path="getting-started.html"><a href="getting-started.html#here"><i class="fa fa-check"></i><b>1.4.3</b> Level up with the <code>here</code> package</a></li>
+<li class="chapter" data-level="1.4.4" data-path="getting-started.html"><a href="getting-started.html#names"><i class="fa fa-check"></i><b>1.4.4</b> Naming things</a></li>
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#the-tidyverse-and-tidy-data"><i class="fa fa-check"></i><b>1.5</b> The tidyverse and tidy data</a></li>
 <li class="chapter" data-level="1.6" data-path="getting-started.html"><a href="getting-started.html#r-atoms"><i class="fa fa-check"></i><b>1.6</b> Atoms of R</a></li>
@@ -171,10 +170,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.12.3" data-path="getting-started.html"><a href="getting-started.html#exercise"><i class="fa fa-check"></i><b>1.12.3</b> Exercise</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html"><i class="fa fa-check"></i><b>2</b> Data wrangling I</a></li>
+<li class="chapter" data-level="2" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html"><i class="fa fa-check"></i><b>2</b> Data wrangling I</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#organising-data-in-spreadsheets"><i class="fa fa-check"></i><b>2.1</b> Organising data in spreadsheets</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#tidy-data-revisited"><i class="fa fa-check"></i><b>2.1.1</b> tidy data revisited</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#loading-data"><i class="fa fa-check"></i><b>2.2</b> Loading data</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#flat-formats"><i class="fa fa-check"></i><b>2.2.1</b> Flat formats</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#excel-files"><i class="fa fa-check"></i><b>2.2.2</b> Excel files</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#exporting-data-1"><i class="fa fa-check"></i><b>2.3</b> Exporting data</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#flat-formats-1"><i class="fa fa-check"></i><b>2.3.1</b> Flat formats</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#excel-files-1"><i class="fa fa-check"></i><b>2.3.2</b> Excel files</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#dplyr"><i class="fa fa-check"></i><b>2.4</b> dplyr</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#piping-functions"><i class="fa fa-check"></i><b>2.4.1</b> piping functions</a></li>
+<li class="chapter" data-level="2.4.2" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#arranging-observations-by-row"><i class="fa fa-check"></i><b>2.4.2</b> arranging observations by row</a></li>
+<li class="chapter" data-level="2.4.3" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#filtering-observations-by-row"><i class="fa fa-check"></i><b>2.4.3</b> filtering observations by row</a></li>
+<li class="chapter" data-level="2.4.4" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#selecting-variables-by-column"><i class="fa fa-check"></i><b>2.4.4</b> selecting variables by column</a></li>
+<li class="chapter" data-level="2.4.5" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#creating-new-variable-columns"><i class="fa fa-check"></i><b>2.4.5</b> creating new variable columns</a></li>
+<li class="chapter" data-level="2.4.6" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#grouping-and-summarising-data"><i class="fa fa-check"></i><b>2.4.6</b> grouping and summarising data</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html"><i class="fa fa-check"></i><b>3</b> Data wrangling II</a></li>
 <li class="chapter" data-level="4" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>4</b> Functions</a></li>
-<li class="chapter" data-level="5" data-path="modelling.html"><a href="modelling.html"><i class="fa fa-check"></i><b>5</b> Exploratory modelling</a></li>
+<li class="chapter" data-level="5" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>5</b> Exploratory data analysis</a></li>
 <li class="chapter" data-level="6" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>6</b> Visualistion</a></li>
 <li class="chapter" data-level="7" data-path="reports.html"><a href="reports.html"><i class="fa fa-check"></i><b>7</b> Reports</a></li>
 <li class="divider"></li>
@@ -238,7 +257,7 @@ Figure 1.2: <a href="https://stephensontam.files.wordpress.com/2017/06/lolcat-pr
 <p><strong>R</strong> is a programming language that follows the philosophy laid down by it’s
 predecessor S. The philosophy being that users begin in an interactive
 environment where they don’t consciously think of themselves as programming.
-It was created in 1993, and documented in <span class="citation">(Ihaka and Gentleman <a href="#ref-ihaka1996">1996</a>)</span>.</p>
+It was created in 1993, and documented in <span class="citation">(Ihaka and Gentleman <a href="#ref-ihaka1996" role="doc-biblioref">1996</a>)</span>.</p>
 <p>Reasons R has become popular include that it is both open source and cross platform,
 and that it has broad functionality, from the analysis of data and creating
 powerful graphical visualisations and web apps.</p>
@@ -387,7 +406,7 @@ Figure 1.8: A typical directory structure
 <div id="getting-help" class="section level3">
 <h3><span class="header-section-number">1.3.3</span> Getting help</h3>
 <p>If you need help with a specific R function, let’s say <code>barplot()</code>, you can type:</p>
-<pre class="sourceCode r"><code class="sourceCode r">?barplot</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">?barplot</a></code></pre></div>
 <p>A Google or internet search “R &lt;task&gt;” will often either send you to the appropriate package documentation or a helpful forum question that someone else already asked,
 such as the <a href="https://community.rstudio.com/">RStudio Community</a> or <a href="http://stackoverflow.com/questions/tagged/r">Stack Overflow</a>.</p>
 <p>As well as knowing <a href="https://www.tidyverse.org/help/#where-to-ask">where to ask</a>, the key to get help
@@ -504,12 +523,27 @@ for the rest of the day (e.g., <code>~/coding-together</code>)</li>
 <li>Click on “Create project”</li>
 <li>Under the <code>Files</code> tab on the right of the screen, click on <code>New Folder</code> and
 create a folder named <code>data</code> within your newly created working directory. (e.g., <code>~/data</code>)</li>
-<li>Create a new R script (File &gt; New File &gt; R script) and save it in your working
+<li>Create a R notebook (File &gt; New File &gt; R notebook) and save it in your working
+directory (e.g. <code>01-coding-together-workshop-02-05-2019.Rmd</code>)</li>
+<li>Or create a new R script (File &gt; New File &gt; R script) and save it in your working
 directory (e.g. <code>01-coding-together-workshop-02-05-2019.R</code>)</li>
 </ul>
 </div>
+<div id="r-notebooks-and-r-scripts" class="section level3">
+<h3><span class="header-section-number">1.4.2</span> R notebooks and R scripts</h3>
+<p><a href="https://bookdown.org/yihui/rmarkdown/notebook.html">R notebooks</a> combine writing
+text with R code in chunks. The R code chunks are indicated by three backticks and
+a lowercase r in brackets: <code>```{r} ```</code>. Text can be formatted using
+<a href="https://bookdown.org/yihui/rmarkdown/markdown-syntax.html">markdown syntax</a>.
+These are great for doing analysis
+and report wrting at the same time.</p>
+<p>R scripts are text files containing the commands that you would enter into the R
+console. They are great for containing code you wish to call into another script
+such as code for a function, or if you are submitting a script as job to run
+on another computer without the need for RStudio.</p>
+</div>
 <div id="here" class="section level3">
-<h3><span class="header-section-number">1.4.2</span> Level up with the <code>here</code> package</h3>
+<h3><span class="header-section-number">1.4.3</span> Level up with the <code>here</code> package</h3>
 <p>This is a bit more tricky, so you might like to come back to <code>here</code> later, but
 Jenny Bryan loves the <a href="https://here.r-lib.org/index.html"><code>here</code></a> package by
 Kirill Müller so much <a href="https://github.com/jennybc/here_here">she wrote an ode to it</a>.</p>
@@ -524,7 +558,7 @@ project on different machines where the path is different. <code>here()</code> t
 things, thus saving you some pain.</p>
 </div>
 <div id="names" class="section level3">
-<h3><span class="header-section-number">1.4.3</span> Naming things</h3>
+<h3><span class="header-section-number">1.4.4</span> Naming things</h3>
 <p><a href="https://ropensci.org/blog/2017/12/08/rprofile-jenny-bryan/">Jenny Bryan</a>
 also has three principles for <a href="http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf">naming things</a>
 that are well worth remembering.</p>
@@ -539,7 +573,7 @@ that are well worth remembering.</p>
 </div>
 <div id="the-tidyverse-and-tidy-data" class="section level2">
 <h2><span class="header-section-number">1.5</span> The tidyverse and tidy data</h2>
-<p>The <a href="https://www.tidyverse.org/">tidyverse</a> <span class="citation">(Wickham <a href="#ref-R-tidyverse">2017</a>)</span> is <em>“an opinionated
+<p>The <a href="https://www.tidyverse.org/">tidyverse</a> <span class="citation">(Wickham <a href="#ref-R-tidyverse" role="doc-biblioref">2017</a>)</span> is <em>“an opinionated
 collection of R packages designed for data science”</em> .</p>
 <p>Tidyverse packages contain functions that <em>“share an underlying design
 philosophy, grammar, and data structures.”</em> It’s this philosophy that makes
@@ -579,11 +613,11 @@ This also introduces a very important R function <code>c()</code>. This lower ca
 for <strong>combine</strong>. So when we have several objects e.g. words or numbers, we can
 combine them into a vector the length of the number of objects, as illustrated
 here for a pack of cards:</p>
-<pre class="sourceCode r"><code class="sourceCode r">cards &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ace&quot;</span>, <span class="st">&quot;king&quot;</span>, <span class="st">&quot;queen&quot;</span>, <span class="st">&quot;jack&quot;</span>, <span class="st">&quot;ten&quot;</span>)
-
-cards</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">cards &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ace&quot;</span>, <span class="st">&quot;king&quot;</span>, <span class="st">&quot;queen&quot;</span>, <span class="st">&quot;jack&quot;</span>, <span class="st">&quot;ten&quot;</span>)</a>
+<a class="sourceLine" id="cb3-2" title="2"></a>
+<a class="sourceLine" id="cb3-3" title="3">cards</a></code></pre></div>
 <pre><code>## [1] &quot;ace&quot;   &quot;king&quot;  &quot;queen&quot; &quot;jack&quot;  &quot;ten&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(cards)</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">typeof</span>(cards)</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>Note here that we see the use of the assignment operator <code>&lt;-</code> to assign our
 vector on the right as the object <code>cards</code>. We talk more about that in <a href="getting-started.html#assignment">1.7</a>.</p>
@@ -596,7 +630,7 @@ to use ?seq if you want to learn more about the function.</p>
 <h2><span class="header-section-number">1.7</span> Assigning objects</h2>
 <p>Objects are just a way to store data inside the R environment. We assign labels to
 objects using the assignment operator <code>&lt;-</code></p>
-<pre class="sourceCode r"><code class="sourceCode r">mass_kg &lt;-<span class="st"> </span><span class="dv">55</span></code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">mass_kg &lt;-<span class="st"> </span><span class="dv">55</span></a></code></pre></div>
 <p>Read this as <em>“mass_kg is assigned to value 55”</em> in your head. A subtle but important
 point here is that the object is 55 and the value remains 55 regardless of the label we assign to it. In
 fact we could assign more than one label to the same object. Another way to think
@@ -625,10 +659,10 @@ names, so watch out for those.</p>
 Look in your environment pane and you’ll see the <code>mass_kg</code> object
 containing the (data) value 55.</p>
 <p>We can inspect an object by typing it’s name:</p>
-<pre class="sourceCode r"><code class="sourceCode r">mass_kg</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">mass_kg</a></code></pre></div>
 <pre><code>## [1] 55</code></pre>
 <p>What’s wrong here?</p>
-<pre class="sourceCode r"><code class="sourceCode r">mass_KG</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">mass_KG</a></code></pre></div>
 <p><code>Error: object 'mass_KG' not found</code></p>
 <p>This error illustrates that typos matter, everything must be precise and <code>mass_KG</code>
 is not the same as <code>mass_kg</code>. <code>mass_KG</code> doesn’t exist, hence the error.</p>
@@ -638,7 +672,7 @@ add <code>q</code> to shorten the list, then use the up and down arrow to highli
 of interest <code>seq()</code> and hit Tab to select. This is tab completion.</p>
 <p>RStudio puts the cursor between the parentheses to prompt us to enter some
 arguments. Here we’ll use 1 as the start and 10 as the end:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>)</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">10</span>)</a></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 <p>If we left off a parentheses to close the function, then when we hit enter
 we’ll see a <code>+</code> indicating RStudio is expecting further code. We either add the
@@ -646,7 +680,7 @@ missing part or press Escape to cancel the code.</p>
 <p>Let’s call a function and make an assignment at the same time. Here we’ll use
 the base R function <code>seq()</code> which takes three arguments: <code>from</code>, <code>to</code> and <code>by</code>.</p>
 <p>Read the following code as <em>"assign my_sequence to an object that stores a sequence of numbers from 2 to 20 by intervals of 2</em>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">my_sequence &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">2</span>,<span class="dv">20</span>,<span class="dv">2</span>)</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">my_sequence &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">2</span>,<span class="dv">20</span>,<span class="dv">2</span>)</a></code></pre></div>
 <p>This time nothing was returned to the console, but we now have an object called
 <code>my_sequence</code> in our environment.</p>
 <div id="indexing-and-subsetting" class="section level3">
@@ -655,11 +689,11 @@ the base R function <code>seq()</code> which takes three arguments: <code>from</
 square brackets <code>[]</code> and the index number. Indexing in R starts at 1 such that
 1 is the index of the first element in the sequence, element 1 having the the value of 2.</p>
 <p>For example element five would be subset by:</p>
-<pre class="sourceCode r"><code class="sourceCode r">my_sequence[<span class="dv">5</span>]</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">my_sequence[<span class="dv">5</span>]</a></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <p>Here the number five is the index of the vector, not the value of the fifth element. The value of the fifth element is 10.</p>
 <p>And returning multiple elements uses a colon <code>:</code>, like so</p>
-<pre class="sourceCode r"><code class="sourceCode r">my_sequence[<span class="dv">5</span><span class="op">:</span><span class="dv">8</span>]</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">my_sequence[<span class="dv">5</span><span class="op">:</span><span class="dv">8</span>]</a></code></pre></div>
 <pre><code>## [1] 10 12 14 16</code></pre>
 </div>
 </div>
@@ -670,9 +704,9 @@ that list group objects instead of individual values, such as several atomic
 vectors.</p>
 <p>For example, let’s make a list containing a vector of numbers and a character
 vector</p>
-<pre class="sourceCode r"><code class="sourceCode r">list_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">110</span>,<span class="st">&quot;R&quot;</span>)
-
-list_<span class="dv">1</span></code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">list_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">110</span>,<span class="st">&quot;R&quot;</span>)</a>
+<a class="sourceLine" id="cb18-2" title="2"></a>
+<a class="sourceLine" id="cb18-3" title="3">list_<span class="dv">1</span></a></code></pre></div>
 <pre><code>## [[1]]
 ##   [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17
 ##  [18]  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34
@@ -696,7 +730,7 @@ single square brackets like so: <code>list_1[[1]][1]</code>.</p>
 R. Hadley Wickham tweeted an image to illustrate list indexing shown in <a href="getting-started.html#fig:list-index">1.12</a>.</p>
 
 <div class="figure"><span id="fig:list-index"></span>
-<img src="img/indexing.png" alt="List indexing by Hadley Wickham"  />
+<img src="img/indexing.png" alt="List indexing by Hadley Wickham" width="328" />
 <p class="caption">
 Figure 1.12: List indexing by Hadley Wickham
 </p>
@@ -752,12 +786,12 @@ that comprise the data frame as follows. Note that I am naming the vectors as I 
 the data frame after the type of vector e.g. <code>numeric_vector = c(1,7,3)</code>. Also,
 as this is a base R function I need to tell the function not to treat the character
 strings as categorical data using <code>stringsAsFactors = FALSE</code></p>
-<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">numeric_vector =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">3</span>), 
-                 <span class="dt">character_vector =</span> <span class="kw">c</span>(<span class="st">&quot;S&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;U&quot;</span>),
-                 <span class="dt">logical_vector =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>,<span class="ot">FALSE</span>,<span class="ot">TRUE</span>), 
-                 <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
-
-df</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">numeric_vector =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">3</span>), </a>
+<a class="sourceLine" id="cb20-2" title="2">                 <span class="dt">character_vector =</span> <span class="kw">c</span>(<span class="st">&quot;S&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;U&quot;</span>),</a>
+<a class="sourceLine" id="cb20-3" title="3">                 <span class="dt">logical_vector =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>,<span class="ot">FALSE</span>,<span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb20-4" title="4">                 <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb20-5" title="5"></a>
+<a class="sourceLine" id="cb20-6" title="6">df</a></code></pre></div>
 <pre><code>##   numeric_vector character_vector logical_vector
 ## 1              1                S           TRUE
 ## 2              7                A          FALSE
@@ -769,11 +803,11 @@ We deal with transforming data frames in chapters <a href="data-wrangle-1.html#d
 <p>Here’s what the code to make the same data frame as before as a tibble looks like.
 Note how we get more information from a tibble when it is returned to the Console,
 it tells us what the dimensions are, and what type of vectors it contains.</p>
-<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">numeric_vector =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">3</span>), 
-                 <span class="dt">character_vector =</span> <span class="kw">c</span>(<span class="st">&quot;S&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;U&quot;</span>),
-                 <span class="dt">logical_vector =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>,<span class="ot">FALSE</span>,<span class="ot">TRUE</span>))
-
-df</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">df &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">numeric_vector =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">3</span>), </a>
+<a class="sourceLine" id="cb22-2" title="2">                 <span class="dt">character_vector =</span> <span class="kw">c</span>(<span class="st">&quot;S&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;U&quot;</span>),</a>
+<a class="sourceLine" id="cb22-3" title="3">                 <span class="dt">logical_vector =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>,<span class="ot">FALSE</span>,<span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb22-4" title="4"></a>
+<a class="sourceLine" id="cb22-5" title="5">df</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 3
 ##   numeric_vector character_vector logical_vector
 ##            &lt;dbl&gt; &lt;chr&gt;            &lt;lgl&gt;         
@@ -787,11 +821,11 @@ column.</p>
 <p>We can also use the colon operator to choose
 several rows or columns, and by leaving the row or column blank we return all
 rows or all columns.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Subset rows 1 and 2 of column 1</span>
-df[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,<span class="dv">1</span>]
-
-<span class="co"># Subset all rows of column 3</span>
-df[,<span class="dv">3</span>]</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="co"># Subset rows 1 and 2 of column 1</span></a>
+<a class="sourceLine" id="cb24-2" title="2">df[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb24-3" title="3"></a>
+<a class="sourceLine" id="cb24-4" title="4"><span class="co"># Subset all rows of column 3</span></a>
+<a class="sourceLine" id="cb24-5" title="5">df[,<span class="dv">3</span>]</a></code></pre></div>
 <p>Don’t worry too much about this for now, we won’t be doing to much of this
 in these lessons, but it’s worth being aware of this syntax.</p>
 <div id="attributes" class="section level3">
@@ -800,8 +834,8 @@ in these lessons, but it’s worth being aware of this syntax.</p>
 names or dimensions. Attributes such as dimensions are added when
 we create an object, but others such as names can be added.</p>
 <p>Let’s look at the <code>mpg</code> data frame dimensions:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># mpg has 234 rows (observations) and 11 columns (variables)</span>
-<span class="kw">dim</span>(mpg)</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="co"># mpg has 234 rows (observations) and 11 columns (variables)</span></a>
+<a class="sourceLine" id="cb25-2" title="2"><span class="kw">dim</span>(mpg)</a></code></pre></div>
 <pre><code>## [1] 234  11</code></pre>
 </div>
 </div>
@@ -837,8 +871,8 @@ the question <em>do cars with big engines use more fuel than cars with small eng
 the <code>aes()</code> function, let <code>colour = class</code>, <code>class</code> being the vehicle type.
 This should create a plot with as before but with the points coloured
 according to the vehicle type to expand our understanding.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">colour =</span> class))</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">colour =</span> class))</a></code></pre></div>
 <p><img src="coding-together_files/figure-html/mpg-plot-2-1.png" width="672" /></p>
 <p>Now we can see that as we might expect, bigger cars such as SUVs tend to have
 bigger engines and are also less fuel efficient, but some smaller cars such as
@@ -847,8 +881,8 @@ more nuanced view with this additional aesthetic.</p>
 <p>Check out the ggplot2 documentation for all the aesthetic possibilities (and
 Google for examples): <a href="http://ggplot2.tidyverse.org/reference/" class="uri">http://ggplot2.tidyverse.org/reference/</a></p>
 <p>So now we have re-usable code snippet for generating plots in R:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="op">&lt;</span>DATA<span class="op">&gt;</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="er">&lt;</span>GEOM_FUNCTION<span class="op">&gt;</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="op">&lt;</span>MAPPINGS<span class="op">&gt;</span>))</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="op">&lt;</span>DATA<span class="op">&gt;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb28-2" title="2"><span class="st">  </span><span class="er">&lt;</span>GEOM_FUNCTION<span class="op">&gt;</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="op">&lt;</span>MAPPINGS<span class="op">&gt;</span>))</a></code></pre></div>
 <p>Concretely, in our first example <code>&lt;DATA&gt;</code> was <code>mpg</code>, the <code>&lt;GEOM_FUNCTION&gt;</code>
 was <code>geom_point()</code> and the arguments we supplies to map our aesthetics
 <code>&lt;MAPPINGS&gt;</code> were <code>x = displ, y = hwy</code>.</p>
@@ -869,7 +903,7 @@ format that can opened by spreadsheet software such as excel.</p>
 is has round brackets and the main arguments we pass are the object containing
 the data we want to output and the name of the file and the location we want to
 write the file to.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write_excel_csv</span>(df, <span class="st">&quot;outputs/example-data-02-05-2019.csv&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">write_excel_csv</span>(df, <span class="st">&quot;outputs/example-data-02-05-2019.csv&quot;</span>)</a></code></pre></div>
 <p>Here we are writing the <code>df</code> data frame as a csv file to the <code>outputs</code> folder
 and a file called <code>example-data-02-05-2019.csv</code>.</p>
 </div>
@@ -882,7 +916,7 @@ on how we name the file. For example if we use <code>file.pdf</code> it will sav
 if we use <code>file.jpeg</code> it will save a <code>jpeg</code>.</p>
 <p>Check out <code>?ggsave</code> or the line above for more options.</p>
 <p>To save our last plot for example:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggsave</span>(<span class="st">&quot;outputs/example-plot-02-05-2019.pdf&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="kw">ggsave</span>(<span class="st">&quot;outputs/example-plot-02-05-2019.pdf&quot;</span>)</a></code></pre></div>
 </div>
 <div id="exercise" class="section level3">
 <h3><span class="header-section-number">1.12.3</span> Exercise</h3>

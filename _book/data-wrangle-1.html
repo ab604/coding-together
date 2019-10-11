@@ -178,17 +178,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.1" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#flat-formats"><i class="fa fa-check"></i><b>2.2.1</b> Flat formats</a></li>
 <li class="chapter" data-level="2.2.2" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#excel-files"><i class="fa fa-check"></i><b>2.2.2</b> Excel files</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#exporting-data-1"><i class="fa fa-check"></i><b>2.3</b> Exporting data</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#flat-formats-1"><i class="fa fa-check"></i><b>2.3.1</b> Flat formats</a></li>
-<li class="chapter" data-level="2.3.2" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#excel-files-1"><i class="fa fa-check"></i><b>2.3.2</b> Excel files</a></li>
+<li class="chapter" data-level="2.3" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#the-portal-project-data"><i class="fa fa-check"></i><b>2.3</b> The Portal Project data</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#downloading-and-importing-the-data"><i class="fa fa-check"></i><b>2.3.1</b> Downloading and importing the data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#dplyr"><i class="fa fa-check"></i><b>2.4</b> dplyr</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#piping-functions"><i class="fa fa-check"></i><b>2.4.1</b> piping functions</a></li>
-<li class="chapter" data-level="2.4.2" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#arranging-observations-by-row"><i class="fa fa-check"></i><b>2.4.2</b> arranging observations by row</a></li>
-<li class="chapter" data-level="2.4.3" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#filtering-observations-by-row"><i class="fa fa-check"></i><b>2.4.3</b> filtering observations by row</a></li>
-<li class="chapter" data-level="2.4.4" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#selecting-variables-by-column"><i class="fa fa-check"></i><b>2.4.4</b> selecting variables by column</a></li>
-<li class="chapter" data-level="2.4.5" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#creating-new-variable-columns"><i class="fa fa-check"></i><b>2.4.5</b> creating new variable columns</a></li>
-<li class="chapter" data-level="2.4.6" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#grouping-and-summarising-data"><i class="fa fa-check"></i><b>2.4.6</b> grouping and summarising data</a></li>
+<li class="chapter" data-level="2.4.1" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#filter-rows-with-filter"><i class="fa fa-check"></i><b>2.4.1</b> Filter rows with <code>filter</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html"><i class="fa fa-check"></i><b>3</b> Data wrangling II</a></li>
@@ -228,6 +222,8 @@ create summaries.</li>
 <li>have learnt how to combine functions with the pipe from the <code>magrittr</code> package
 to combine tasks</li>
 </ul>
+<p>The following sections are based upon the <a href="https://r4ds.had.co.nz/transform.html">data transformation chapter</a> in R4DS and the
+<a href="https://datacarpentry.org/R-ecology-lesson/index.html">Data Carpentry ecology lesson</a>.</p>
 <div id="organising-data-in-spreadsheets" class="section level2">
 <h2><span class="header-section-number">2.1</span> Organising data in spreadsheets</h2>
 <div id="tidy-data-revisited" class="section level3">
@@ -243,34 +239,149 @@ to combine tasks</li>
 <h3><span class="header-section-number">2.2.2</span> Excel files</h3>
 </div>
 </div>
-<div id="exporting-data-1" class="section level2">
-<h2><span class="header-section-number">2.3</span> Exporting data</h2>
-<div id="flat-formats-1" class="section level3">
-<h3><span class="header-section-number">2.3.1</span> Flat formats</h3>
+<div id="the-portal-project-data" class="section level2">
+<h2><span class="header-section-number">2.3</span> The Portal Project data</h2>
+<p>In this chapter we are going to focus on data analysed
+in the 1994 paper by Heske et. al:</p>
+<p><strong>Long-Term Experimental Study of a Chihuahuan Desert Rodent Community: 13 Years
+of Competition</strong>, DOI: 10.2307/1939547.</p>
+<p>Specifically they explored the effect on the populations of small
+seed eating rodents as a result of the exclusion of larger competitor kangaroo rats over a period from 1977 to 1991.</p>
+<p>Below is an image of one of the species of kangaroo rats excluded during the
+study.</p>
+<div class="figure">
+<img src="img/kratsep12.jpg" alt="Merriam’s kangaroo rat, Dipodomys merriami, (https://portalproject.wordpress.com/)" />
+<p class="caption">Merriam’s kangaroo rat, Dipodomys merriami, (<a href="https://portalproject.wordpress.com/" class="uri">https://portalproject.wordpress.com/</a>)</p>
 </div>
-<div id="excel-files-1" class="section level3">
-<h3><span class="header-section-number">2.3.2</span> Excel files</h3>
+<p>The following image indicates how the exclusion works, where a for number of
+fenced plots the kangaroo rats were either able to enter by a hole or kept out.</p>
+<div class="figure">
+<img src="img/fence_hole.JPG" alt="Kangeroo Rat exclusion" />
+<p class="caption">Kangeroo Rat exclusion</p>
+</div>
+<p>The plots are 50 metres by 50 metres, and a survey of the species within each
+plot has been ongoing once a month for many years.</p>
+<p>The dataset is stored as a comma separated value (CSV) file.
+Each row holds information for a single animal, and the columns represent:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>record_id</td>
+<td>Unique id for the observation</td>
+<td>numeric</td>
+</tr>
+<tr class="even">
+<td>month</td>
+<td>month of observation</td>
+<td>numeric</td>
+</tr>
+<tr class="odd">
+<td>day</td>
+<td>day of observation</td>
+<td>numeric</td>
+</tr>
+<tr class="even">
+<td>year</td>
+<td>year of observation</td>
+<td>numeric</td>
+</tr>
+<tr class="odd">
+<td>plot_id</td>
+<td>ID of a particular plot</td>
+<td>numeric</td>
+</tr>
+<tr class="even">
+<td>species_id</td>
+<td>2-letter code</td>
+<td>character</td>
+</tr>
+<tr class="odd">
+<td>sex</td>
+<td>sex of animal (“M”, “F”)</td>
+<td>character</td>
+</tr>
+<tr class="even">
+<td>hindfoot_length</td>
+<td>length of the hindfoot in mm</td>
+<td>numeric</td>
+</tr>
+<tr class="odd">
+<td>weight</td>
+<td>weight of the animal in grams</td>
+<td>numeric</td>
+</tr>
+<tr class="even">
+<td>genus</td>
+<td>genus of animal</td>
+<td>character</td>
+</tr>
+<tr class="odd">
+<td>species</td>
+<td>species of animal</td>
+<td>character</td>
+</tr>
+<tr class="even">
+<td>taxa</td>
+<td>e.g. Rodent, Reptile, Bird, Rabbit</td>
+<td>character</td>
+</tr>
+<tr class="odd">
+<td>plot_type</td>
+<td>type of plot</td>
+<td>character</td>
+</tr>
+</tbody>
+</table>
+<div id="downloading-and-importing-the-data" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Downloading and importing the data</h3>
+<p><strong>First create a R project for this analysis</strong></p>
+<p>The dataset is stored online, so we use the utility function
+<code>download.file()</code> to download the csv file to our data folder.
+(Did you create a data folder in the project directory?)</p>
+<p>Here we pass the <code>url =</code> and <code>destfile =</code> arguments to <code>download.file()</code>.</p>
+<p>As we have the <code>tidyverse</code> packages we can use the <code>readr</code> package it contains, which has many functions for reading files, including <code>read_csv()</code>.
+The advantage of <code>read_csv()</code> over base R <code>read.csv()</code> is that it defaults to reading strings as
+character vectors rather than factors (catergorical variables) which
+is usually what we want.</p>
+<p>As we read the data into our environment we need to assign a label
+to the object we are creating. Here we assign the dataset to an object
+called <code>surveys</code> using the <code>&lt;-</code> assignment operator.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="co"># Download the data</span></a>
+<a class="sourceLine" id="cb31-2" title="2"><span class="kw">download.file</span>(<span class="dt">url=</span><span class="st">&quot;https://ndownloader.figshare.com/files/2292169&quot;</span>,</a>
+<a class="sourceLine" id="cb31-3" title="3">              <span class="dt">destfile =</span> <span class="st">&quot;data/portal_data_joined.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb31-4" title="4"></a>
+<a class="sourceLine" id="cb31-5" title="5"><span class="co"># Read into R as an object called surveys</span></a>
+<a class="sourceLine" id="cb31-6" title="6">surveys &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/portal_data_joined.csv&quot;</span>)</a></code></pre></div>
 </div>
 </div>
 <div id="dplyr" class="section level2">
 <h2><span class="header-section-number">2.4</span> dplyr</h2>
-<div id="piping-functions" class="section level3">
-<h3><span class="header-section-number">2.4.1</span> piping functions</h3>
-</div>
-<div id="arranging-observations-by-row" class="section level3">
-<h3><span class="header-section-number">2.4.2</span> arranging observations by row</h3>
-</div>
-<div id="filtering-observations-by-row" class="section level3">
-<h3><span class="header-section-number">2.4.3</span> filtering observations by row</h3>
-</div>
-<div id="selecting-variables-by-column" class="section level3">
-<h3><span class="header-section-number">2.4.4</span> selecting variables by column</h3>
-</div>
-<div id="creating-new-variable-columns" class="section level3">
-<h3><span class="header-section-number">2.4.5</span> creating new variable columns</h3>
-</div>
-<div id="grouping-and-summarising-data" class="section level3">
-<h3><span class="header-section-number">2.4.6</span> grouping and summarising data</h3>
+<div id="filter-rows-with-filter" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> Filter rows with <code>filter</code></h3>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="co"># Filter observations that only occurred from 1985 onwards</span></a>
+<a class="sourceLine" id="cb32-2" title="2"> <span class="kw">filter</span>(surveys, year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1985</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 25,290 x 13
+##    record_id month   day  year plot_id species_id sex   hindfoot_length
+##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;
+##  1     10606     7    24  1985       2 NL         F                  30
+##  2     10617     7    24  1985       2 NL         M                  32
+##  3     10627     7    24  1985       2 NL         F                  32
+##  4     10720     8    20  1985       2 NL         F                  31
+##  5     10923    10    13  1985       2 NL         F                  31
+##  6     10949    10    13  1985       2 NL         F                  33
+##  7     11215    12     8  1985       2 NL         F                  32
+##  8     11329     3     9  1986       2 NL         M                  34
+##  9     11496     5    11  1986       2 NL         F                  31
+## 10     11498     5    11  1986       2 NL         F                  31
+## # ... with 25,280 more rows, and 5 more variables: weight &lt;dbl&gt;,
+## #   genus &lt;chr&gt;, species &lt;chr&gt;, taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
 
 </div>
 </div>

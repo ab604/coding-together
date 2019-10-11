@@ -10,6 +10,9 @@ create summaries.
 + have learnt how to combine functions with the pipe from the `magrittr` package 
 to combine tasks
 
+The following sections are based upon the [data transformation chapter](https://r4ds.had.co.nz/transform.html) in R4DS and the 
+[Data Carpentry ecology lesson](https://datacarpentry.org/R-ecology-lesson/index.html).
+
 ## Organising data in spreadsheets
 
 ### tidy data revisited
@@ -20,22 +23,84 @@ to combine tasks
 
 ### Excel files
 
-## Exporting data
 
-### Flat formats
+## The Portal Project data
 
-### Excel files
+In this chapter we are going to focus on data analysed 
+in the 1994 paper by Heske et. al: 
+
+**Long-Term Experimental Study of a Chihuahuan Desert Rodent Community: 13 Years 
+of Competition**, DOI: 10.2307/1939547.
+
+Specifically they explored the effect on the populations of small
+seed eating rodents as a result of the exclusion of larger competitor kangaroo rats over a period from 1977 to 1991.
+
+Below is an image of one of the species of kangaroo rats excluded during the
+study.
+
+![Merriam's kangaroo rat, Dipodomys merriami, (https://portalproject.wordpress.com/)](./img/kratsep12.jpg)
+
+The following image indicates how the exclusion works, where a for number of
+fenced plots the kangaroo rats were either able to enter by a hole or kept out.
+
+![Kangeroo Rat exclusion](./img/fence_hole.JPG)
+
+The plots are 50 metres by 50 metres, and a survey of the species within each
+plot has been ongoing once a month for many years.
+
+The dataset is stored as a comma separated value (CSV) file.
+Each row holds information for a single animal, and the columns represent:
+
+| Column           | Description                        | Type      |
+|------------------|------------------------------------|-----------|
+| record\_id       | Unique id for the observation      | numeric   |
+| month            | month of observation               | numeric   |
+| day              | day of observation                 | numeric   |
+| year             | year of observation                | numeric   |
+| plot\_id         | ID of a particular plot            | numeric   |
+| species\_id      | 2-letter code                      | character |
+| sex              | sex of animal ("M", "F")           | character |
+| hindfoot\_length | length of the hindfoot in mm       | numeric   |
+| weight           | weight of the animal in grams      | numeric   |
+| genus            | genus of animal                    | character |
+| species          | species of animal                  | character |
+| taxa             | e.g. Rodent, Reptile, Bird, Rabbit | character |
+| plot\_type       | type of plot                       | character |
+
+### Downloading and importing the data 
+
+**First create a R project for this analysis**
+
+The dataset is stored online, so we use the utility function 
+`download.file()` to download the csv file to our data folder. 
+(Did you create a data folder in the project directory?)
+
+Here we pass the `url = ` and `destfile = ` arguments to `download.file()`.
+
+As we have the `tidyverse` packages we can use the `readr` package it contains, which has many functions for reading files, including `read_csv()`.
+The advantage of `read_csv()` over base R `read.csv()` is that it defaults to reading strings as
+character vectors rather than factors (catergorical variables) which 
+is usually what we want.
+
+As we read the data into our environment we need to assign a label 
+to the object we are creating. Here we assign the dataset to an object 
+called `surveys` using the `<-` assignment operator.
+
+```{r download-portal-data, eval=FALSE}
+# Download the data
+download.file(url="https://ndownloader.figshare.com/files/2292169",
+              destfile = "data/portal_data_joined.csv")
+
+# Read into R as an object called surveys
+surveys <- read_csv("data/portal_data_joined.csv")
+```
 
 ## dplyr
 
-### piping functions
+### Filter rows with `filter`
 
-### arranging observations by row
+```{r filter}
+# Filter observations that only occurred from 1985 onwards
+ filter(surveys, year >= 1985)
+```
 
-### filtering observations by row
-
-### selecting variables by column
-
-### creating new variable columns
-
-### grouping and summarising data

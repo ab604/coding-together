@@ -27,6 +27,7 @@ knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'rmallet','here','dslabs'
 ), 'bib/packages.bib')
 here()
+surveys <- read_csv("exercises/portal_data_joined.csv")
 ```
 
 # Welcome {-}

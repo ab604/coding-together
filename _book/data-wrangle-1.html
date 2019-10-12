@@ -182,7 +182,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.1" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#downloading-and-importing-the-data"><i class="fa fa-check"></i><b>2.3.1</b> Downloading and importing the data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#dplyr"><i class="fa fa-check"></i><b>2.4</b> dplyr</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#filter-rows-with-filter"><i class="fa fa-check"></i><b>2.4.1</b> Filter rows with <code>filter</code></a></li>
+<li class="chapter" data-level="2.4.1" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#filter-rows-with-filter"><i class="fa fa-check"></i><b>2.4.1</b> Filter rows with <code>filter()</code></a></li>
+<li class="chapter" data-level="2.4.2" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#arrange-rows-with-arrange"><i class="fa fa-check"></i><b>2.4.2</b> Arrange rows with <code>arrange()</code></a></li>
+<li class="chapter" data-level="2.4.3" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#select-columns-with-select"><i class="fa fa-check"></i><b>2.4.3</b> Select columns with <code>select()</code></a></li>
+<li class="chapter" data-level="2.4.4" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#create-new-variables-with-mutate"><i class="fa fa-check"></i><b>2.4.4</b> Create new variables with <code>mutate()</code></a></li>
+<li class="chapter" data-level="2.4.5" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#grouped-summaries-with-group_by-and-summarise"><i class="fa fa-check"></i><b>2.4.5</b> Grouped summaries with <code>group_by()</code> and <code>summarise()</code></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html"><i class="fa fa-check"></i><b>3</b> Data wrangling II</a></li>
@@ -247,17 +251,23 @@ in the 1994 paper by Heske et. al:</p>
 of Competition</strong>, DOI: 10.2307/1939547.</p>
 <p>Specifically they explored the effect on the populations of small
 seed eating rodents as a result of the exclusion of larger competitor kangaroo rats over a period from 1977 to 1991.</p>
-<p>Below is an image of one of the species of kangaroo rats excluded during the
+<p>Figure <a href="data-wrangle-1.html#fig:k-rat">2.1</a> shows an image of one of the species of kangaroo rats excluded during the
 study.</p>
-<div class="figure">
-<img src="img/kratsep12.jpg" alt="Merriam’s kangaroo rat, Dipodomys merriami, (https://portalproject.wordpress.com/)" />
-<p class="caption">Merriam’s kangaroo rat, Dipodomys merriami, (<a href="https://portalproject.wordpress.com/" class="uri">https://portalproject.wordpress.com/</a>)</p>
+
+<div class="figure" style="text-align: center"><span id="fig:k-rat"></span>
+<img src="img/kratsep12.jpg" alt="Merriam’s kangaroo rat, Dipodomys merriami" width="2160" />
+<p class="caption">
+Figure 2.1: <a href="https://portalproject.wordpress.com/">Merriam’s kangaroo rat, Dipodomys merriami</a>
+</p>
 </div>
-<p>The following image indicates how the exclusion works, where a for number of
+<p>Figure <a href="data-wrangle-1.html#fig:fence">2.2</a> indicates how the exclusion works, where a for number of
 fenced plots the kangaroo rats were either able to enter by a hole or kept out.</p>
-<div class="figure">
-<img src="img/fence_hole.JPG" alt="Kangeroo Rat exclusion" />
-<p class="caption">Kangeroo Rat exclusion</p>
+
+<div class="figure" style="text-align: center"><span id="fig:fence"></span>
+<img src="img/fence_hole.JPG" alt="Kangeroo Rat exclusion" width="50%" />
+<p class="caption">
+Figure 2.2: Kangeroo Rat exclusion
+</p>
 </div>
 <p>The plots are 50 metres by 50 metres, and a survey of the species within each
 plot has been ongoing once a month for many years.</p>
@@ -339,6 +349,71 @@ Each row holds information for a single animal, and the columns represent:</p>
 </tr>
 </tbody>
 </table>
+<p>The rodents species surveyed are:</p>
+<p><strong>Kangeroo Rats</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>species_id</th>
+<th>Scientific name</th>
+<th>Common name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DM</td>
+<td>Dipodomys merriami</td>
+<td>Merriam’s kangaroo rat</td>
+</tr>
+<tr class="even">
+<td>DO</td>
+<td>Dipodomys ordii</td>
+<td>Ord’s kangaroo rat</td>
+</tr>
+<tr class="odd">
+<td>DS</td>
+<td>Dipodomys spectabilis</td>
+<td>Banner-tailed kangaroo rat</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Granivores</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>species_id</th>
+<th>Scientific name</th>
+<th>Common name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PP</td>
+<td>Chaetodipus penicillatus</td>
+<td>Desert pocket mouse</td>
+</tr>
+<tr class="even">
+<td>PF</td>
+<td>Perognathus flavus</td>
+<td>Silky pocket mouse</td>
+</tr>
+<tr class="odd">
+<td>PE</td>
+<td>Peromyscus eremicus</td>
+<td>Cactus mouse</td>
+</tr>
+<tr class="even">
+<td>PM</td>
+<td>Peromyscus maniculatus</td>
+<td>Deer Mouse</td>
+</tr>
+<tr class="odd">
+<td>RM</td>
+<td>Reithrodontomys megalotis</td>
+<td>Western harvest mouse</td>
+</tr>
+</tbody>
+</table>
 <div id="downloading-and-importing-the-data" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> Downloading and importing the data</h3>
 <p><strong>First create a R project for this analysis</strong></p>
@@ -364,7 +439,14 @@ called <code>surveys</code> using the <code>&lt;-</code> assignment operator.</p
 <div id="dplyr" class="section level2">
 <h2><span class="header-section-number">2.4</span> dplyr</h2>
 <div id="filter-rows-with-filter" class="section level3">
-<h3><span class="header-section-number">2.4.1</span> Filter rows with <code>filter</code></h3>
+<h3><span class="header-section-number">2.4.1</span> Filter rows with <code>filter()</code></h3>
+
+<div class="figure" style="text-align: center"><span id="fig:dplyr-filter"></span>
+<img src="img/dplyr_filter.png" alt="dplyr::filter()" width="80%" />
+<p class="caption">
+Figure 2.3: <code>dplyr::filter()</code>
+</p>
+</div>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="co"># Filter observations that only occurred from 1985 onwards</span></a>
 <a class="sourceLine" id="cb32-2" title="2"> <span class="kw">filter</span>(surveys, year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1985</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 25,290 x 13
@@ -382,6 +464,84 @@ called <code>surveys</code> using the <code>&lt;-</code> assignment operator.</p
 ## 10     11498     5    11  1986       2 NL         F                  31
 ## # ... with 25,280 more rows, and 5 more variables: weight &lt;dbl&gt;,
 ## #   genus &lt;chr&gt;, species &lt;chr&gt;, taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
+</div>
+<div id="arrange-rows-with-arrange" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> Arrange rows with <code>arrange()</code></h3>
+
+<div class="figure" style="text-align: center"><span id="fig:dplyr-arrange"></span>
+<img src="img/dplyr_arrange.png" alt="dplyr::arrange()" width="80%" />
+<p class="caption">
+Figure 2.4: <code>dplyr::arrange()</code>
+</p>
+</div>
+<p>Use arrange to find the shortest hindfoot</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1">surveys <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(hindfoot_length)</a></code></pre></div>
+<pre><code>## # A tibble: 34,786 x 13
+##    record_id month   day  year plot_id species_id sex   hindfoot_length
+##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;
+##  1     31400     9    30  2000      19 PB         M                   2
+##  2     10067     3    16  1985      19 RM         M                   6
+##  3     19567     1     8  1992      19 BA         M                   6
+##  4     19015     9     9  1991      19 BA         F                   7
+##  5     21036     8    19  1993      21 PF         F                   7
+##  6     31457     9    31  2000       6 RM         M                   8
+##  7     19191    10    11  1991      13 PF         F                   8
+##  8      5801     4    29  1982       7 RM         &lt;NA&gt;                8
+##  9     33647     3    14  2002       3 PF         M                   9
+## 10     20562    12    22  1992       5 RM         F                   9
+## # ... with 34,776 more rows, and 5 more variables: weight &lt;dbl&gt;,
+## #   genus &lt;chr&gt;, species &lt;chr&gt;, taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
+<p>Find the Cactus Mouse, (<code>species_id == "PE"</code>) with the longest hindfoot:</p>
+<p><em>Hint</em> Use the <code>desc()</code> function to arrange from biggest to smallest.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1">surveys <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb36-2" title="2"><span class="st">        </span><span class="kw">filter</span>(species_id <span class="op">==</span><span class="st"> &quot;PE&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb36-3" title="3"><span class="st">        </span><span class="kw">arrange</span>(<span class="kw">desc</span>(hindfoot_length))</a></code></pre></div>
+<pre><code>## # A tibble: 1,299 x 13
+##    record_id month   day  year plot_id species_id sex   hindfoot_length
+##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;
+##  1      1202     9     3  1978       7 PE         F                  30
+##  2       517     1     8  1978       2 PE         M                  26
+##  3     32443     8    25  2001      23 PE         F                  24
+##  4      5080    12    30  1981      15 PE         F                  23
+##  5      5090    12    30  1981      15 PE         F                  23
+##  6     33700     3    14  2002       9 PE         F                  23
+##  7       604     2    18  1978       2 PE         M                  22
+##  8     12459     3     2  1987       2 PE         F                  22
+##  9     13992     1    24  1988       2 PE         M                  22
+## 10     14516     5    15  1988       2 PE         F                  22
+## # ... with 1,289 more rows, and 5 more variables: weight &lt;dbl&gt;,
+## #   genus &lt;chr&gt;, species &lt;chr&gt;, taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
+</div>
+<div id="select-columns-with-select" class="section level3">
+<h3><span class="header-section-number">2.4.3</span> Select columns with <code>select()</code></h3>
+
+<div class="figure" style="text-align: center"><span id="fig:dplyr-select"></span>
+<img src="img/dplyr_select.png" alt="dplyr::select()" width="80%" />
+<p class="caption">
+Figure 2.5: <code>dplyr::select()</code>
+</p>
+</div>
+</div>
+<div id="create-new-variables-with-mutate" class="section level3">
+<h3><span class="header-section-number">2.4.4</span> Create new variables with <code>mutate()</code></h3>
+
+<div class="figure" style="text-align: center"><span id="fig:dplyr-mutate"></span>
+<img src="img/dplyr_mutate.png" alt="dplyr::mutate()" width="80%" />
+<p class="caption">
+Figure 2.6: <code>dplyr::mutate()</code>
+</p>
+</div>
+</div>
+<div id="grouped-summaries-with-group_by-and-summarise" class="section level3">
+<h3><span class="header-section-number">2.4.5</span> Grouped summaries with <code>group_by()</code> and <code>summarise()</code></h3>
+
+<div class="figure" style="text-align: center"><span id="fig:dplyr-gb-summarise"></span>
+<img src="img/dplyr_summarise.png" alt="dplyr::group_by() and dplyr::summarise()" width="982" />
+<p class="caption">
+Figure 2.7: <code>dplyr::group_by()</code> and <code>dplyr::summarise()</code>
+</p>
+</div>
+<p><img src="img/dplyr_group_by.png" alt="<code>dplyr::group_by()</code> and <code>dplyr::summarise()</code>" width="954" /></p>
 
 </div>
 </div>

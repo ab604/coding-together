@@ -20,7 +20,13 @@ right_join()
 
 ## Formative exercises
 
-arrange
+arrange:
+
+Use arrange and filter to find the heaviest Kangeroo rat
+```{r}
+surveys %>% filter(species_id == "DM" | species_id == "DO" | species_id == "DS") %>% 
+arrange(desc(weight))
+```
 
 filter
 

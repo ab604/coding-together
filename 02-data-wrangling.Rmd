@@ -35,15 +35,24 @@ of Competition**, DOI: 10.2307/1939547.
 Specifically they explored the effect on the populations of small
 seed eating rodents as a result of the exclusion of larger competitor kangaroo rats over a period from 1977 to 1991.
 
-Below is an image of one of the species of kangaroo rats excluded during the
+Figure \@ref(fig:k-rat) shows an image of one of the species of kangaroo rats excluded during the
 study.
 
-![Merriam's kangaroo rat, Dipodomys merriami, (https://portalproject.wordpress.com/)](./img/kratsep12.jpg)
+(ref:krat) [Merriam's kangaroo rat, Dipodomys merriami](https://portalproject.wordpress.com/)
 
-The following image indicates how the exclusion works, where a for number of
+
+```{r k-rat, fig.cap='(ref:krat)',fig.asp=1, fig.align='center', echo=FALSE,cache=TRUE}
+knitr::include_graphics("img/kratsep12.jpg")
+```
+
+Figure \@ref(fig:fence) indicates how the exclusion works, where a for number of
 fenced plots the kangaroo rats were either able to enter by a hole or kept out.
 
-![Kangeroo Rat exclusion](./img/fence_hole.JPG)
+(ref:fence) Kangeroo Rat exclusion
+
+```{r fence,  fig.cap='(ref:fence)',fig.asp=1, out.width= '50%', fig.align='center', echo=FALSE,cache=TRUE}
+knitr::include_graphics("img/fence_hole.JPG")
+```
 
 The plots are 50 metres by 50 metres, and a survey of the species within each
 plot has been ongoing once a month for many years.
@@ -66,6 +75,26 @@ Each row holds information for a single animal, and the columns represent:
 | species          | species of animal                  | character |
 | taxa             | e.g. Rodent, Reptile, Bird, Rabbit | character |
 | plot\_type       | type of plot                       | character |
+
+The rodents species surveyed are:
+
+**Kangeroo Rats**                                                     
+
+| species_id | Scientific name       | Common name                  |
+|------------|-----------------------|------------------------------|
+| DM         | Dipodomys merriami    | Merriam's kangaroo rat       |
+| DO         | Dipodomys ordii       | Ord's kangaroo rat           |
+| DS         | Dipodomys spectabilis | Banner-tailed kangaroo rat   |
+
+**Granivores**                                                        
+
+| species_id | Scientific name           | Common name              |
+|------------|---------------------------|--------------------------|
+| PP         | Chaetodipus penicillatus  | Desert pocket mouse      |
+| PF         | Perognathus flavus        | Silky pocket mouse       |
+| PE         | Peromyscus eremicus       | Cactus mouse             |
+| PM         | Peromyscus maniculatus    | Deer Mouse               |
+| RM         | Reithrodontomys megalotis | Western harvest mouse    |
 
 ### Downloading and importing the data 
 
@@ -97,10 +126,68 @@ surveys <- read_csv("data/portal_data_joined.csv")
 
 ## dplyr
 
-### Filter rows with `filter`
+### Filter rows with `filter()`
+
+(ref:filter) `dplyr::filter()`
+
+```{r dplyr-filter, fig.cap='(ref:filter)',fig.asp=1, out.width= '80%', fig.align='center', echo=FALSE,cache=TRUE}
+
+knitr::include_graphics("img/dplyr_filter.png")
+```
+
 
 ```{r filter}
 # Filter observations that only occurred from 1985 onwards
  filter(surveys, year >= 1985)
 ```
 
+### Arrange rows with `arrange()`
+
+(ref:arrange) `dplyr::arrange()`
+
+```{r dplyr-arrange, fig.cap='(ref:arrange)',fig.asp=1, out.width= '80%', fig.align='center', echo=FALSE,cache=TRUE}
+knitr::include_graphics("img/dplyr_arrange.png")
+```
+
+Use arrange to find the shortest hindfoot 
+
+```{r arrange-short-foot}
+surveys %>% arrange(hindfoot_length)
+```
+
+Find the Cactus Mouse, (`species_id == "PE"`) with the longest hindfoot:
+
+*Hint* Use the `desc()` function to arrange from biggest to smallest.
+
+```{r}
+surveys %>% 
+        filter(species_id == "PE") %>% 
+        arrange(desc(hindfoot_length))
+```
+
+
+### Select columns with `select()`
+
+(ref:select) `dplyr::select()`
+
+```{r dplyr-select, fig.cap='(ref:select)',fig.asp=1, out.width= '80%', fig.align='center', echo=FALSE,cache=TRUE}
+knitr::include_graphics("img/dplyr_select.png")
+```
+
+### Create new variables with `mutate()`
+
+(ref:mutate) `dplyr::mutate()`
+
+```{r dplyr-mutate, fig.cap='(ref:mutate)',fig.asp=1, out.width= '80%', fig.align='center', echo=FALSE,cache=TRUE}
+knitr::include_graphics("img/dplyr_mutate.png")
+```
+
+### Grouped summaries with `group_by()` and `summarise()`
+
+(ref:gb-summarise) `dplyr::group_by()` and `dplyr::summarise()`
+
+```{r dplyr-gb-summarise, fig.cap='(ref:gb-summarise)', fig.show='hold',fig.align='center', echo=FALSE,cache=TRUE}
+knitr::include_graphics("img/dplyr_summarise.png")
+
+knitr::include_graphics("img/dplyr_group_by.png")
+```

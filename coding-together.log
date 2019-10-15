@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.9.10)  12 OCT 2019 17:31
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.9.10)  15 OCT 2019 16:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1066,92 +1066,95 @@ Chapter 2.
 File: img/kratsep12.jpg Graphic file (type bmp)
 <img/kratsep12.jpg>
 
-Overfull \hbox (631.96591pt too wide) in paragraph at lines 1437--1438
+Overfull \hbox (631.96591pt too wide) in paragraph at lines 1441--1442
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 23.94005pt on input line 1442.
+LaTeX Warning: Float too large for page by 23.94005pt on input line 1446.
 
 File: img/fence_hole.jpg Graphic file (type bmp)
 <img/fence_hole.jpg>
-[36] [37] [38]
+[36] [37]
+Overfull \vbox (79.98013pt too high) has occurred while \output is active []
+
+[38]
 File: img/dplyr_filter.png Graphic file (type bmp)
 <img/dplyr_filter.png>
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1586--1586
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1608--1608
 []\T1/lmtt/m/n/10 ##    record_id month   day  year plot_id species_id sex   hi
 ndfoot_length[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1586--1586
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1608--1608
 []\T1/lmtt/m/n/10 ##        <dbl> <dbl> <dbl> <dbl>   <dbl> <chr>      <chr>   
         <dbl>[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1586--1586
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1608--1608
 []\T1/lmtt/m/n/10 ##  1     10606     7    24  1985       2 NL         F       
            30[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1586--1586
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1608--1608
 []\T1/lmtt/m/n/10 ##  2     10617     7    24  1985       2 NL         M       
            32[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1586--1586
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1608--1608
 []\T1/lmtt/m/n/10 ##  3     10627     7    24  1985       2 NL         F       
            32[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1586--1586
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1608--1608
 []\T1/lmtt/m/n/10 ##  4     10720     8    20  1985       2 NL         F       
            31[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1586--1586
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1608--1608
 []\T1/lmtt/m/n/10 ##  5     10923    10    13  1985       2 NL         F       
            31[] 
  []
 
-[39]
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1586--1586
+
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1608--1608
 []\T1/lmtt/m/n/10 ##  6     10949    10    13  1985       2 NL         F       
            33[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1586--1586
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1608--1608
 []\T1/lmtt/m/n/10 ##  7     11215    12     8  1985       2 NL         F       
            32[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1586--1586
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1608--1608
 []\T1/lmtt/m/n/10 ##  8     11329     3     9  1986       2 NL         M       
            34[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1586--1586
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1608--1608
 []\T1/lmtt/m/n/10 ##  9     11496     5    11  1986       2 NL         F       
            31[] 
  []
 
-
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1586--1586
+[39]
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1608--1608
 []\T1/lmtt/m/n/10 ## 10     11498     5    11  1986       2 NL         F       
            31[] 
  []
 
 
-Overfull \hbox (6.74898pt too wide) in paragraph at lines 1586--1586
+Overfull \hbox (6.74898pt too wide) in paragraph at lines 1608--1608
 []\T1/lmtt/m/n/10 ## # ... with 25,280 more rows, and 5 more variables: weight 
 <dbl>,[] 
  []
@@ -1159,167 +1162,168 @@ Overfull \hbox (6.74898pt too wide) in paragraph at lines 1586--1586
 File: img/dplyr_arrange.png Graphic file (type bmp)
 <img/dplyr_arrange.png>
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1626--1626
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1661--1661
 []\T1/lmtt/m/n/10 ##    record_id month   day  year plot_id species_id sex   hi
 ndfoot_length[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1626--1626
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1661--1661
 []\T1/lmtt/m/n/10 ##        <dbl> <dbl> <dbl> <dbl>   <dbl> <chr>      <chr>   
         <dbl>[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1626--1626
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1661--1661
 []\T1/lmtt/m/n/10 ##  1     31400     9    30  2000      19 PB         M       
             2[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1626--1626
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1661--1661
 []\T1/lmtt/m/n/10 ##  2     10067     3    16  1985      19 RM         M       
             6[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1626--1626
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1661--1661
 []\T1/lmtt/m/n/10 ##  3     19567     1     8  1992      19 BA         M       
             6[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1626--1626
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1661--1661
 []\T1/lmtt/m/n/10 ##  4     19015     9     9  1991      19 BA         F       
             7[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1626--1626
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1661--1661
 []\T1/lmtt/m/n/10 ##  5     21036     8    19  1993      21 PF         F       
             7[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1626--1626
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1661--1661
 []\T1/lmtt/m/n/10 ##  6     31457     9    31  2000       6 RM         M       
             8[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1626--1626
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1661--1661
 []\T1/lmtt/m/n/10 ##  7     19191    10    11  1991      13 PF         F       
             8[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1626--1626
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1661--1661
 []\T1/lmtt/m/n/10 ##  8      5801     4    29  1982       7 RM         <NA>    
             8[] 
  []
 
-
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1626--1626
+[40]
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1661--1661
 []\T1/lmtt/m/n/10 ##  9     33647     3    14  2002       3 PF         M       
             9[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1626--1626
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1661--1661
 []\T1/lmtt/m/n/10 ## 10     20562    12    22  1992       5 RM         F       
             9[] 
  []
 
 
-Overfull \hbox (6.74898pt too wide) in paragraph at lines 1626--1626
+Overfull \hbox (6.74898pt too wide) in paragraph at lines 1661--1661
 []\T1/lmtt/m/n/10 ## # ... with 34,776 more rows, and 5 more variables: weight 
 <dbl>,[] 
  []
 
-[40]
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1656--1656
+
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1691--1691
 []\T1/lmtt/m/n/10 ##    record_id month   day  year plot_id species_id sex   hi
 ndfoot_length[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1656--1656
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1691--1691
 []\T1/lmtt/m/n/10 ##        <dbl> <dbl> <dbl> <dbl>   <dbl> <chr>      <chr>   
         <dbl>[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1656--1656
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1691--1691
 []\T1/lmtt/m/n/10 ##  1      1202     9     3  1978       7 PE         F       
            30[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1656--1656
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1691--1691
 []\T1/lmtt/m/n/10 ##  2       517     1     8  1978       2 PE         M       
            26[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1656--1656
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1691--1691
 []\T1/lmtt/m/n/10 ##  3     32443     8    25  2001      23 PE         F       
            24[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1656--1656
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1691--1691
 []\T1/lmtt/m/n/10 ##  4      5080    12    30  1981      15 PE         F       
            23[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1656--1656
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1691--1691
 []\T1/lmtt/m/n/10 ##  5      5090    12    30  1981      15 PE         F       
            23[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1656--1656
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1691--1691
 []\T1/lmtt/m/n/10 ##  6     33700     3    14  2002       9 PE         F       
            23[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1656--1656
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1691--1691
 []\T1/lmtt/m/n/10 ##  7       604     2    18  1978       2 PE         M       
            22[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1656--1656
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1691--1691
 []\T1/lmtt/m/n/10 ##  8     12459     3     2  1987       2 PE         F       
            22[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1656--1656
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1691--1691
 []\T1/lmtt/m/n/10 ##  9     13992     1    24  1988       2 PE         M       
            22[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 1656--1656
+Overfull \hbox (43.49887pt too wide) in paragraph at lines 1691--1691
 []\T1/lmtt/m/n/10 ## 10     14516     5    15  1988       2 PE         F       
            22[] 
  []
 
 
-Overfull \hbox (1.499pt too wide) in paragraph at lines 1656--1656
+Overfull \hbox (1.499pt too wide) in paragraph at lines 1691--1691
 []\T1/lmtt/m/n/10 ## # ... with 1,289 more rows, and 5 more variables: weight <
 dbl>,[] 
  []
 
 File: img/dplyr_select.png Graphic file (type bmp)
 <img/dplyr_select.png>
+[41]
 File: img/dplyr_mutate.png Graphic file (type bmp)
 <img/dplyr_mutate.png>
-
-Overfull \hbox (5.94199pt too wide) in paragraph at lines 1687--1687
+[42]
+Overfull \hbox (5.94199pt too wide) in paragraph at lines 1792--1792
 []\T1/lmr/bx/n/12 Grouped sum-maries with \T1/lmtt/b/n/12 group_-by() \T1/lmr/b
 x/n/12 and \T1/lmtt/b/n/12 summarise() 
  []
@@ -1327,44 +1331,62 @@ x/n/12 and \T1/lmtt/b/n/12 summarise()
 File: img/dplyr_summarise.png Graphic file (type bmp)
 <img/dplyr_summarise.png>
 
-Overfull \hbox (1356.95244pt too wide) in paragraph at lines 1693--1694
+Overfull \hbox (1356.95244pt too wide) in paragraph at lines 1798--1799
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 24.217pt on input line 1698.
+LaTeX Warning: Float too large for page by 24.217pt on input line 1803.
 
 File: img/dplyr_group_by.png Graphic file (type bmp)
 <img/dplyr_group_by.png>
 
-Overfull \hbox (1154.2504pt too wide) in paragraph at lines 1700--1701
+Overfull \hbox (1154.2504pt too wide) in paragraph at lines 1805--1806
 [] 
  []
 
-[41] [42] [43]
-Overfull \vbox (76.01273pt too high) has occurred while \output is active []
+[43] [44] [45]
+Overfull \vbox (25.09625pt too high) has occurred while \output is active []
 
-[44]
+[46]
+Overfull \hbox (1.499pt too wide) in paragraph at lines 1841--1841
+[]\T1/lmtt/m/n/10 ## Warning: Removed 5 rows containing missing values (geom_po
+int).[] 
+ []
+
+File: coding-together_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (ty
+pe pdf)
+<use coding-together_files/figure-latex/unnamed-chunk-9-1.pdf>
+[47]
+Overfull \hbox (1.499pt too wide) in paragraph at lines 1863--1863
+[]\T1/lmtt/m/n/10 ## Warning: Removed 3 rows containing missing values (geom_po
+int).[] 
+ []
+
+File: coding-together_files/figure-latex/unnamed-chunk-10-1.pdf Graphic file (t
+ype pdf)
+<use coding-together_files/figure-latex/unnamed-chunk-10-1.pdf>
+[48]
 Chapter 3.
-[45
+[49
 
-] [46
+] [50
 
 ]
 Chapter 4.
-[47] [48
-
-]
-Chapter 5.
-[49] [50
-
-]
-Chapter 6.
 [51] [52
 
 ]
+Chapter 5.
+[53] [54
+
+]
+Chapter 6.
+[55] [56
+
+]
 Chapter 7.
-(./coding-together.bbl [53] [54
+(./coding-together.bbl [57] [58
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 25--28
@@ -1373,23 +1395,23 @@ o-gether. 2018,,
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1736.
-[55]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1736.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1901.
+[59]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1901.
 (./coding-together.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1736.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1736.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1901.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1901.
 
 Package rerunfilecheck Info: File `coding-together.out' has not changed.
-(rerunfilecheck)             Checksum: 1EF80FBCC7375EE890F24D4D7805A253.
+(rerunfilecheck)             Checksum: C8E5A3542E043514B311A86945AE5985.
  ) 
 Here is how much of TeX's memory you used:
- 24193 strings out of 494894
- 453414 string characters out of 6175663
- 541865 words of memory out of 5000000
- 27851 multiletter control sequences out of 15000+600000
- 609738 words of font info for 77 fonts, out of 8000000 for 9000
+ 24200 strings out of 494894
+ 453851 string characters out of 6175663
+ 541672 words of memory out of 5000000
+ 27855 multiletter control sequences out of 15000+600000
+ 610045 words of font info for 78 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 45i,10n,47p,812b,452s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 45i,10n,47p,812b,454s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on coding-together.pdf (55 pages).
+Output written on coding-together.pdf (59 pages).

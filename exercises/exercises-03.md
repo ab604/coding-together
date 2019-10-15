@@ -17,3 +17,9 @@ complete() Complete a data frame with missing combinations of data
 drop_na() Drop rows containing missing values
 replace_na() Replace missing values
 
+Joining tables:
+bind_rows()
+bind_cols()
+inner_join()
+left_join()
+right_join()

@@ -13,16 +13,22 @@ to combine tasks
 The following sections are based upon the [data transformation chapter](https://r4ds.had.co.nz/transform.html) in R4DS and the 
 [Data Carpentry ecology lesson](https://datacarpentry.org/R-ecology-lesson/index.html).
 
-## Organising data in spreadsheets
+## Data organisation in spreadsheets
 
-### tidy data revisited
+Karl Broman and Kara Woo wrote as 
+paper all about [Data Organization in Spreadsheets](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989).
 
-## Loading data
+It's full of practical advice and context.
 
-### Flat formats
+### Flat formats and Excel files
 
-### Excel files
+File formats like `.csv` and `.tsv`, comma separated variables and tab separated variables
+respectively are plain text files. That is to 
+say they contain only the data, as text information, and are the simplest and most convenient way to share data as most software can read and 
+interpret them.
 
+Excel files saves files into its own proprietary format viz xls or xlsx that holds information in addition to the data itself. For reading and
+writing excel files in R, the tidyverse `readxl` package is very useful.
 
 ## The Portal Project data
 
@@ -128,6 +134,24 @@ surveys <- read_csv("data/portal_data_joined.csv")
 
 ### Filter rows with `filter()`
 
+The first verb to consider is the `filter()` function which enables us to subset observations
+based on their value.
+
+Consider the surveys data and sub-setting observations that only occurred from
+1985 onwards. It's fairly natural to say *"filter the survey where the year
+variable is equal or greater than 1985"*. And indeed this is how we use `filter()`
+as a verb. 
+
+Figure \@ref(fig:dplyr-filter) shows how 
+we give the filter function two arguments. The first is the
+data frame, the second is the variable and condition on which we wish to filter.
+
+Alternatively we can pipe the `surveys` object
+to the function and it implicitly uses `surveys`
+as the first argument.
+
+(Note that we aren't assigning the output to an object here, so we can see it.)
+
 (ref:filter) `dplyr::filter()`
 
 ```{r dplyr-filter, fig.cap='(ref:filter)',fig.asp=1, out.width= '80%', fig.align='center', echo=FALSE,cache=TRUE}
@@ -140,6 +164,18 @@ knitr::include_graphics("img/dplyr_filter.png")
 # Filter observations that only occurred from 1985 onwards
  filter(surveys, year >= 1985)
 ```
+
+```{r}
+# Control Plots: 2,8,12,22
+# Treatment Plots: 3,15,19,21
+
+# Create a vector for the experimental plots
+exp_plots <- c(8,11,12,14,3,15,19,21)
+
+# Keep only the rows corresponding with the experimental plot_id's
+surveys_filtered <- surveys %>% filter(plot_id %in% exp_plots)
+```
+
 
 ### Arrange rows with `arrange()`
 
@@ -174,12 +210,42 @@ surveys %>%
 knitr::include_graphics("img/dplyr_select.png")
 ```
 
+```{r select}
+# Select the year and plot type columns
+surveys %>% select(year,plot_type)
+```
+
+```{r}
+# Select everything except sex, hindfoot and weight
+surveys_selected <- surveys_filtered %>% select(-sex,-hindfoot_length,-weight)
+```
+
+
 ### Create new variables with `mutate()`
 
 (ref:mutate) `dplyr::mutate()`
 
 ```{r dplyr-mutate, fig.cap='(ref:mutate)',fig.asp=1, out.width= '80%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/dplyr_mutate.png")
+```
+
+```{r}
+# Mutate surveys_selected
+surveys_mutated <- surveys_selected %>%
+  #filter(species_id %in% names(lut)) %>% 
+  mutate(rodent_type = case_when(
+         species_id == "DM" ~ "Kangaroo Rat",
+         species_id == "DO" ~ "Kangaroo Rat",
+         species_id == "DS" ~ "Kangaroo Rat",
+         species_id == "PP" ~ "Granivore",
+         species_id == "PF" ~ "Granivore",
+         species_id == "PE" ~ "Granivore",
+         species_id == "PM" ~ "Granivore",
+         species_id == "RM" ~ "Granivore",
+         TRUE ~ "Other"))
+ 
+# Check the output using a summary pipe, we should have 8 species of 2 types
+surveys_mutated %>% group_by(species_id,rodent_type) %>% summarise()
 ```
 
 ### Grouped summaries with `group_by()` and `summarise()`
@@ -190,4 +256,36 @@ knitr::include_graphics("img/dplyr_mutate.png")
 knitr::include_graphics("img/dplyr_summarise.png")
 
 knitr::include_graphics("img/dplyr_group_by.png")
+```
+
+```{r}
+library(lubridate)
+surveys_subset <- surveys_mutated %>% 
+        mutate(date = make_date(day = day, month = month, year = year), 
+               quarter = quarter(date,with_year = TRUE)) %>%
+        filter(!is.na(rodent_type))
+```
+
+```{r}
+by_quarter <- surveys_subset %>% 
+        group_by(rodent_type,plot_type,quarter) %>% 
+        summarise(captures = n()/4)
+```
+
+```{r}
+ggplot(by_quarter,
+       aes(x=quarter,y=captures,colour=rodent_type)) +
+  geom_line() +
+  geom_point() +
+  facet_wrap(~ plot_type)
+```
+
+```{r}
+by_quarter %>% 
+        filter(rodent_type != "Other") %>% 
+        ggplot(aes(x=quarter,y=captures,colour=rodent_type)) +
+  geom_line() +
+  geom_point() +
+  facet_wrap(~ plot_type) +
+        theme(legend.position = "bottom")
 ```

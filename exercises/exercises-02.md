@@ -57,6 +57,11 @@ group_by
 
 summarise
 
+```{r} 
+# Check the output using a summary pipe, we should have 8 species of 2 types
+surveys_mutated %>% group_by(rodent_type) %>% summarise()
+```
+
 ## Summative exercise
 
 By semester from 1980 to 2000.

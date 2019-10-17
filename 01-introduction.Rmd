@@ -595,7 +595,7 @@ R. Hadley Wickham tweeted an image to illustrate list indexing shown in \@ref(fi
 
 (ref:list-index) List indexing by Hadley Wickham
 
-```{r list-index, fig.cap='(ref:list-index)', echo=FALSE}
+```{r list-index, fig.cap='(ref:list-index)',out.width = '100%', echo=FALSE}
 knitr::include_graphics("img/indexing.png")
 ```
 
@@ -613,7 +613,7 @@ knitr::include_graphics("img/r-all-vectors-07-10-2018.png")
 Matrices store values in a two dimensional array, whilst arrays can have n 
 dimensions. We won't be using these either, but they are also valid R objects.
 
-## Factors
+## Factors {#factors}
 
 Factors are Rs way of storing categorical information such as eye colour or
 car type. A factor is something that can only have certain values, and can be
@@ -629,7 +629,7 @@ Historically R converts strings to factors when we load and create data, but
 it's often not what we want as a default. Fortunately, in the tidyverse strings
 are not treated as factors by default.
 
-## Data frames
+## Data frames {#data-frames}
 
 For data analysis in R, we mostly be using data frames.
 

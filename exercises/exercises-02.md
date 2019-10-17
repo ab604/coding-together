@@ -20,16 +20,6 @@ arrange() changes the ordering of the rows.
 
 ## Formative exercises
 
-filter: 
-
-Use filter to
-
-Filter observations that only occurred on the 9th of March 1986:
-
-```{r}
-filter(surveys, month == 3 & day == 9 & year == 1986 & species_id == "NL") %>% View()
-```
-
 arrange:
 
 Use arrange to find the earliest and latest years in the dataset:
@@ -40,6 +30,15 @@ surveys %>% arrange(year)
 surveys %>% arrange(desc(year))
 ```
 
+filter: 
+
+Use filter to
+
+Filter observations that only occurred on the 9th of March 1986:
+
+```{r}
+filter(surveys, month == 3 & day == 9 & year == 1986 & species_id == "NL") %>% View()
+```
 
 Use arrange and filter to find the heaviest 
 Kangeroo rat, Krats are DM,DO and DS.
@@ -49,18 +48,63 @@ surveys %>% filter(species_id == "DM" | species_id == "DO" | species_id == "DS")
 arrange(desc(weight))
 ```
 
-select
+select:
 
-mutate
+Create an object called surveys small that filters weight less than 5 and
+selects the columns species_id, sex and weight. Use the pipe.
 
-group_by
+```{r}
+surveys_sml <- surveys %>%
+  filter(weight < 5) %>%
+  select(species_id, sex, weight)
 
-summarise
+surveys_sml
+```
+
+mutate:
+
+Use mutate to first create a weight_kg variable and
+then create another variable weight_lb using weight_kg multiplied by 2.2.
+You don't need to create an object.
+
+```{r}
+surveys %>%
+  mutate(weight_kg = weight / 1000,
+         weight_lb = weight_kg * 2.2)
+```
+summarise:
+
+Use filter with is.na() to remove the NA values from the weight variable,
+the use summarise to create mean_weight and min_weight variables, using mean()
+and min() functions.
+
+```{r}
+surveys %>%
+  filter(!is.na(weight)) %>%
+  summarize(mean_weight = mean(weight),
+  min_weight = min(weight))
+```
+
+
+group_by:
+
+Group the surveys data by sex and then use summarise with the n() function
+to create a count variable, that gives the number of male and female animals.
+
+```{r}
+surveys %>%
+    group_by(sex) %>%
+    summarise(count = n())
+```
+
+Use surveys_mutated to group_by rodent_type and then summarrise,
+we should have 8 species of 2 types.
 
 ```{r} 
-# Check the output using a summary pipe, we should have 8 species of 2 types
+
 surveys_mutated %>% group_by(rodent_type) %>% summarise()
 ```
+
 
 ## Summative exercise
 
@@ -88,6 +132,9 @@ mutate(rodent_type = case_when(
         ggplot(aes(x=semester,y=captures,colour=rodent_type)) +
   geom_line() +
   geom_point() +
-  facet_wrap(~ plot_type)
+  facet_wrap(~ plot_type) +
+        theme(legend.position = "bottom") +
+        ggtitle("How does excluding Kangeroo Rats effect Granivore populations?", 
+                subtitle = "Mean half yearly observations")
 ```
 

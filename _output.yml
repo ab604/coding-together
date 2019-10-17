@@ -6,10 +6,8 @@ bookdown::gitbook:
           <li><a href="./">Coding togetheR</a></li>
       after: |
           <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    download: ["pdf", "epub"]
+    download: ["pdf"]
     css: style.css
 bookdown::pdf_book:
-  includes:
-    in_header: latex/preamble.tex
-  latex_engine: xelatex
-  citation_package: natbib
+    includes:
+      in_header: latex/preamble.tex

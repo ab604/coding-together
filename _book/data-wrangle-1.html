@@ -10,8 +10,8 @@
 
   <meta property="og:title" content="2 Data wrangling I | Coding togetheR" />
   <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="img/Carrick-bend-Guten-Verrill-modified.png" />
+  <meta property="og:url" content="https://ab604.github.io/docs/coding-together-2019/" />
+  <meta property="og:image" content="https://ab604.github.io/docs/coding-together-2019/img/Carrick-bend-Guten-Verrill-modified.png" />
   <meta property="og:description" content="Materials for the Coding TogetheR workshops" />
   <meta name="github-repo" content="ab604/coding-together" />
 
@@ -19,7 +19,7 @@
   <meta name="twitter:title" content="2 Data wrangling I | Coding togetheR" />
   <meta name="twitter:site" content="@alistair604" />
   <meta name="twitter:description" content="Materials for the Coding TogetheR workshops" />
-  <meta name="twitter:image" content="img/Carrick-bend-Guten-Verrill-modified.png" />
+  <meta name="twitter:image" content="https://ab604.github.io/docs/coding-together-2019/img/Carrick-bend-Guten-Verrill-modified.png" />
 
 <meta name="author" content="Alistair Bailey" />
 
@@ -184,7 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.4" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#create-new-variables-with-mutate"><i class="fa fa-check"></i><b>2.3.4</b> Create new variables with <code>mutate()</code></a></li>
 <li class="chapter" data-level="2.3.5" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#grouped-summaries-with-group_by-and-summarise"><i class="fa fa-check"></i><b>2.3.5</b> Grouped summaries with <code>group_by()</code> and <code>summarise()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#using-dpylr-to-explore-the-effect-of-kangeroo-rats-on-granivore-populations"><i class="fa fa-check"></i><b>2.4</b> Using <code>dpylr</code> to explore the effect of Kangeroo Rats on Granivore populations</a><ul>
+<li class="chapter" data-level="2.4" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#using-dpylr-to-explore-the-effect-of-kangaroo-rat-exclusion-on-granivore-populations"><i class="fa fa-check"></i><b>2.4</b> Using <code>dpylr</code> to explore the effect of Kangaroo Rat exclusion on Granivore populations</a><ul>
 <li class="chapter" data-level="2.4.1" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#re-cap-of-filter-and-mutate"><i class="fa fa-check"></i><b>2.4.1</b> Re-cap of <code>filter()</code> and <code>mutate()</code></a></li>
 <li class="chapter" data-level="2.4.2" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#use-lubridate-to-create-new-time-variables"><i class="fa fa-check"></i><b>2.4.2</b> Use <code>lubridate</code> to create new time variables</a></li>
 <li class="chapter" data-level="2.4.3" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#group-and-summarise-the-data-into-quarterly-observations"><i class="fa fa-check"></i><b>2.4.3</b> Group and summarise the data into quarterly observations</a></li>
@@ -233,7 +233,8 @@ to combine tasks</li>
 <h2><span class="header-section-number">2.1</span> Data organisation in spreadsheets</h2>
 <p>Karl Broman and Kara Woo wrote as
 paper all about <a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989">Data Organization in Spreadsheets</a>.</p>
-<p>It’s full of practical advice and context.</p>
+<p>It’s full of practical advice and context and well worth reading for helping
+you think about best practices for organising your data for yourself, and when working with others.</p>
 <div id="flat-formats-and-excel-files" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Flat formats and Excel files</h3>
 <p>File formats like <code>.csv</code> and <code>.tsv</code>, comma separated variables and tab separated variables
@@ -241,7 +242,7 @@ respectively are plain text files. That is to
 say they contain only the data, as text information, and are the simplest and most
 convenient way to share data as most software can read and
 interpret them.</p>
-<p>Excel files saves files into its own proprietary format xls or xlsx that holds
+<p>Excel files saves files into its own proprietary format <code>.xls</code> or <code>.xlsx</code> that holds
 information in addition to the data itself. For reading and
 writing excel files in R, the tidyverse <code>readxl</code> package is very useful.</p>
 </div>
@@ -256,13 +257,13 @@ of Competition</strong>, DOI: 10.2307/1939547.</p>
 <p>Specifically they explored the effect on the populations of small
 seed eating rodents as a result of the exclusion of larger competitor kangaroo
 rats over a period from 1977 to 1991.</p>
-<p>Let’s also use some of their data to explore this question: <strong>What is the effect
-of the exclusion of kangeroo rats from a plot of land on the granivore population?</strong></p>
+<p>We’ll also use some of their data to explore this question: <strong>What is the effect
+of the exclusion of kangaroo rats from a plot of land on the granivore population?</strong></p>
 <p>Figure <a href="data-wrangle-1.html#fig:k-rat">2.1</a> shows an image of one of the species of kangaroo rats excluded during the
 study.</p>
 
 <div class="figure" style="text-align: center"><span id="fig:k-rat"></span>
-<img src="img/kratsep12.jpg" alt="Merriam’s kangaroo rat, Dipodomys merriami" width="2160" />
+<img src="img/kratsep12.jpg" alt="Merriam’s kangaroo rat, Dipodomys merriami" width="100%" />
 <p class="caption">
 Figure 2.1: <a href="https://portalproject.wordpress.com/">Merriam’s kangaroo rat, Dipodomys merriami</a>
 </p>
@@ -271,9 +272,9 @@ Figure 2.1: <a href="https://portalproject.wordpress.com/">Merriam’s kangaroo 
 fenced plots the kangaroo rats were either able to enter by a hole or kept out.</p>
 
 <div class="figure" style="text-align: center"><span id="fig:fence"></span>
-<img src="img/fence_hole.JPG" alt="Kangeroo Rat exclusion" width="50%" />
+<img src="img/fence_hole.JPG" alt="Kangaroo Rat exclusion" width="60%" />
 <p class="caption">
-Figure 2.2: Kangeroo Rat exclusion
+Figure 2.2: Kangaroo Rat exclusion
 </p>
 </div>
 <p>The plots are 50 metres by 50 metres, and a survey of the species within each
@@ -357,7 +358,7 @@ Each row holds information for a single animal, and the columns represent:</p>
 </tbody>
 </table>
 <p>The rodents species surveyed are:</p>
-<p><strong>Kangeroo Rats</strong></p>
+<p><strong>Kangaroo Rats</strong></p>
 <table>
 <thead>
 <tr class="header">
@@ -423,15 +424,15 @@ Each row holds information for a single animal, and the columns represent:</p>
 </table>
 <div id="downloading-and-importing-the-data" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> Downloading and importing the data</h3>
-<p><strong>First create a R project for this analysis</strong></p>
-<p>The dataset is stored online, so we use the utility function
+<p><strong>First create a <a href="getting-started.html#workflow">R project</a> for this analysis e.g <code>coding-together-week-2</code></strong></p>
+<p>The dataset is stored on-line, so we use the utility function
 <code>download.file()</code> to download the csv file to our data folder.
 (Did you create a data folder in the project directory?)</p>
 <p>Here we pass the <code>url =</code> and <code>destfile =</code> arguments to <code>download.file()</code>.</p>
 <p>As we have the <code>tidyverse</code> packages we can use the <code>readr</code> package it contains,
 which has many functions for reading files, including <code>read_csv()</code>.
 The advantage of <code>read_csv()</code> over base R <code>read.csv()</code> is that it defaults to reading strings as
-character vectors rather than factors (catergorical variables) which
+character vectors rather than factors (categorical variables) which
 is usually what we want.</p>
 <p>As we read the data into our environment we need to assign a label
 to the object we are creating. Here we assign the dataset to an object
@@ -447,7 +448,8 @@ called <code>surveys</code> using the <code>&lt;-</code> assignment operator.</p
 <div id="dplyr" class="section level2">
 <h2><span class="header-section-number">2.3</span> <code>dplyr</code></h2>
 <p><a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a> <em>“is a grammar of data manipulation”</em>.
-Concretely, it’s a package of functions from the tidyverse.</p>
+Concretely, it’s a package of functions from the tidyverse that have been
+created for tasks that require manipulation of data stored in <a href="data-frames">data frames</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:dplyr-name"></span>
 <img src="img/dplyr-name-github.png" alt="[Why is it called `dplyr`?](https://github.com/tidyverse/dplyr/issues/1857)" width="100%" />
 <p class="caption">
@@ -471,9 +473,9 @@ data frame, the second is the variable and condition on which we wish to filter.
 which you can think of as using the word <em>“then”</em>. We take our data set <em>then</em> filter it.
 Using the pipe makes more sense when combining several operations.</p>
 <blockquote>
-<p>Ctl+Shift+M is a keyboard shortcut to create a pipe.</p>
+<p>Ctl+Shift+M is a keyboard short cut to create a pipe.</p>
 </blockquote>
-<p>For the filter iteself, from R4DS:</p>
+<p>For the filter itself, from R4DS:</p>
 <p><em>“To use filtering effectively, you have to know how to select the observations t
 hat you want using the comparison operators. R provides the standard suite: <code>&gt;</code>,
 <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>!=</code> (not equal), and <code>==</code> (equal)….For other types of combinations,
@@ -483,7 +485,7 @@ to see how these operators work.</p>
 <p>(Note that we aren’t assigning the output to an object here, so we can see it.)</p>
 
 <div class="figure" style="text-align: center"><span id="fig:dplyr-filter"></span>
-<img src="img/dplyr_filter.png" alt="dplyr::filter()" width="80%" />
+<img src="img/dplyr_filter.png" alt="dplyr::filter()" width="100%" />
 <p class="caption">
 Figure 2.4: <code>dplyr::filter()</code>
 </p>
@@ -506,15 +508,33 @@ Figure 2.4: <code>dplyr::filter()</code>
 ## # ... with 25,280 more rows, and 5 more variables: weight &lt;dbl&gt;,
 ## #   genus &lt;chr&gt;, species &lt;chr&gt;, taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
 <p>An example using Boolean logic, would be to use the “or” operator <code>|</code> to filter
-for the observations only occuring on <code>plot_type</code>’s control or long term kangeroo
+for the observations only occurring on <code>plot_type</code>’s control or long term kangaroo
 rat exclusion. This time we assign the output to a new data frame called <code>surveys_filtered</code>.</p>
-<p><strong>Note:</strong> as <code>plot_type</code> is a charater vector we put the terms in quotes,
+<p><strong>Note:</strong> as <code>plot_type</code> is a character vector we put the terms in quotes,
 and also the double equals sign <code>==</code> “for equal to”.</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="co"># Keep only the rows corresponding with the Control and Long-term Krat Exclosure</span></a>
 <a class="sourceLine" id="cb34-2" title="2">surveys_filtered &lt;-<span class="st"> </span>surveys <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb34-3" title="3"><span class="st">        </span><span class="kw">filter</span>(plot_type <span class="op">==</span><span class="st"> &quot;Control&quot;</span> <span class="op">|</span><span class="st"> </span>plot_type <span class="op">==</span><span class="st"> &quot;Long-term Krat Exclosure&quot;</span>)</a></code></pre></div>
 <p><strong>Note:</strong> <code>filter()</code> only includes rows where the condition is TRUE; it excludes both <code>FALSE</code> and missing <code>NA</code> values.
 We have to explicitly ask to keep <code>NA</code> values using <code>is.na()</code> as an additional filter.</p>
+<blockquote>
+<p>How did I know which <code>plot_type</code>’s to filter?
+I used the <code>dplyr::distinct()</code> function, passing the <code>surveys</code> data frame
+and the <code>plot_type</code> variable to obtain a list of the unique plot types,
+from which I determined the <code>Control</code> and <code>Long-term Krat Exclosure</code> plots
+were the ones I was after. Note that you need to add the argument
+<code>.keep_all = TRUE</code> to <code>distinct()</code> to return all the columns in the
+data frame</p>
+</blockquote>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="kw">distinct</span>(surveys, plot_type)</a></code></pre></div>
+<pre><code>## # A tibble: 5 x 1
+##   plot_type                
+##   &lt;chr&gt;                    
+## 1 Control                  
+## 2 Long-term Krat Exclosure 
+## 3 Short-term Krat Exclosure
+## 4 Rodent Exclosure         
+## 5 Spectab exclosure</code></pre>
 </div>
 <div id="arrange-rows-with-arrange" class="section level3">
 <h3><span class="header-section-number">2.3.2</span> Arrange rows with <code>arrange()</code></h3>
@@ -530,12 +550,12 @@ Missing values are always sorted at the end.”</em></p>
 variable.</p>
 
 <div class="figure" style="text-align: center"><span id="fig:dplyr-arrange"></span>
-<img src="img/dplyr_arrange.png" alt="dplyr::arrange()" width="80%" />
+<img src="img/dplyr_arrange.png" alt="dplyr::arrange()" width="100%" />
 <p class="caption">
 Figure 2.5: <code>dplyr::arrange()</code>
 </p>
 </div>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">surveys <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(record_id)</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1">surveys <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(record_id)</a></code></pre></div>
 <pre><code>## # A tibble: 34,786 x 13
 ##    record_id month   day  year plot_id species_id sex   hindfoot_length
 ##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;
@@ -551,9 +571,9 @@ Figure 2.5: <code>dplyr::arrange()</code>
 ## 10        10     7    16  1977       6 PF         F                  20
 ## # ... with 34,776 more rows, and 5 more variables: weight &lt;dbl&gt;,
 ## #   genus &lt;chr&gt;, species &lt;chr&gt;, taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
-<p>Or we could use <code>arrange()</code> to find the reocrd with the shortest hindfoot.
-<em>Note:</em> <code>arrange()</code> defualts to ascending order.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1">surveys <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(hindfoot_length)</a></code></pre></div>
+<p>Or we could use <code>arrange()</code> to find the record with the shortest hindfoot.
+<em>Note:</em> <code>arrange()</code> defaults to ascending order.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1">surveys <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(hindfoot_length)</a></code></pre></div>
 <pre><code>## # A tibble: 34,786 x 13
 ##    record_id month   day  year plot_id species_id sex   hindfoot_length
 ##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;
@@ -572,9 +592,9 @@ Figure 2.5: <code>dplyr::arrange()</code>
 <p>To find the Cactus Mouse, (<code>species_id == "PE"</code>) with the longest hindfoot we combine
 <code>filter()</code> with <code>arrangee()</code> using the pipe:</p>
 <p><em>Hint</em> Use the <code>desc()</code> function to arrange from biggest to smallest.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1">surveys <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb39-2" title="2"><span class="st">        </span><span class="kw">filter</span>(species_id <span class="op">==</span><span class="st"> &quot;PE&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb39-3" title="3"><span class="st">        </span><span class="kw">arrange</span>(<span class="kw">desc</span>(hindfoot_length))</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">surveys <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb41-2" title="2"><span class="st">        </span><span class="kw">filter</span>(species_id <span class="op">==</span><span class="st"> &quot;PE&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb41-3" title="3"><span class="st">        </span><span class="kw">arrange</span>(<span class="kw">desc</span>(hindfoot_length))</a></code></pre></div>
 <pre><code>## # A tibble: 1,299 x 13
 ##    record_id month   day  year plot_id species_id sex   hindfoot_length
 ##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;
@@ -593,7 +613,7 @@ Figure 2.5: <code>dplyr::arrange()</code>
 </div>
 <div id="select-columns-with-select" class="section level3">
 <h3><span class="header-section-number">2.3.3</span> Select columns with <code>select()</code></h3>
-<p>Often your data contains variables you don’t need for the analysis you are performing.
+<p>Often your data contains variables you don’t need for the analysis you are performing, or you want to subset them to share with others.
 To select only the ones you need, or explore subsets of the variables, the
 <code>select()</code> verb enables you to keep only the columns of interest.</p>
 <p>Figure <a href="data-wrangle-1.html#fig:dplyr-select">2.6</a> shows the use of <code>select()</code> to choose only
@@ -603,13 +623,13 @@ For example, by the column number, the variable name or by range.
 Check the help function <code>?select</code> for more options.</p>
 
 <div class="figure" style="text-align: center"><span id="fig:dplyr-select"></span>
-<img src="img/dplyr_select.png" alt="dplyr::select()" width="80%" />
+<img src="img/dplyr_select.png" alt="dplyr::select()" width="100%" />
 <p class="caption">
 Figure 2.6: <code>dplyr::select()</code>
 </p>
 </div>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="co"># Select the year and plot type columns</span></a>
-<a class="sourceLine" id="cb41-2" title="2">surveys <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(year,plot_type)</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="co"># Select the year and plot type columns</span></a>
+<a class="sourceLine" id="cb43-2" title="2">surveys <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(year,plot_type)</a></code></pre></div>
 <pre><code>## # A tibble: 34,786 x 2
 ##     year plot_type
 ##    &lt;dbl&gt; &lt;chr&gt;    
@@ -627,8 +647,8 @@ Figure 2.6: <code>dplyr::select()</code>
 <p>We can also use negative selection by adding a minus sign <code>-</code> to variables we
 wish to discard. Here we discard <code>sex</code>,<code>hindfoot_length</code> and <code>weight</code> from the
 <code>surveys_filtered</code> object and keep everything else:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="co"># Select everything except sex, hindfoot and weight</span></a>
-<a class="sourceLine" id="cb43-2" title="2">surveys_filtered <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>sex,<span class="op">-</span>hindfoot_length,<span class="op">-</span>weight)</a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="co"># Select everything except sex, hindfoot and weight</span></a>
+<a class="sourceLine" id="cb45-2" title="2">surveys_filtered <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>sex,<span class="op">-</span>hindfoot_length,<span class="op">-</span>weight)</a></code></pre></div>
 <pre><code>## # A tibble: 20,729 x 10
 ##    record_id month   day  year plot_id species_id genus species taxa 
 ##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;
@@ -649,26 +669,26 @@ wish to discard. Here we discard <code>sex</code>,<code>hindfoot_length</code> a
 <p>Another common task is to create a new variable or variables, often from existing data
 within the data frame. For this we use the <code>mutate()</code> verb. It follows the
 same syntax as for <code>filter()</code>, <code>arrange()</code> and <code>select()</code> in that the first
-arguement is the dataset, and the subsequent arguments are the new variables we wish
+argument is the dataset, and the subsequent arguments are the new variables we wish
 to create.</p>
 <p>Figure <a href="data-wrangle-1.html#fig:dplyr-mutate">2.7</a> shows how to create a new variable <code>weight_kg</code> by
 dividing the existing <code>weight</code> variable in grams by 1000.</p>
 
 <div class="figure" style="text-align: center"><span id="fig:dplyr-mutate"></span>
-<img src="img/dplyr-mutate-16-10-2019.png" alt="dplyr::mutate()" width="80%" />
+<img src="img/dplyr-mutate-16-10-2019.png" alt="dplyr::mutate()" width="100%" />
 <p class="caption">
 Figure 2.7: <code>dplyr::mutate()</code>
 </p>
 </div>
 <p>A more complicated mutation, and key to to our analysis exploring the question
-as to whether Kangeroo rats effect the size of the granivore population would
+as to whether Kangaroo rats effect the size of the granivore population would
 be to create a variable that indicates which type of rodent an observation is
 recording.</p>
 <p>To do this we can make use of another <code>dplyr</code> function called <code>case_when()</code>.
-This allows us to pass diferent values to our new <code>rodent_type</code> variable <strong>if</strong>
-they match either <code>species_id</code> values corresponding with Kangeroo rats or Granivores.</p>
+This allows us to pass different values to our new <code>rodent_type</code> variable <strong>if</strong>
+they match either <code>species_id</code> values corresponding with Kangaroo rats or Granivores.</p>
 <p>To remind us, the rodents species surveyed are:</p>
-<p><strong>Kangeroo Rats</strong></p>
+<p><strong>Kangaroo Rats</strong></p>
 <table>
 <thead>
 <tr class="header">
@@ -732,34 +752,34 @@ they match either <code>species_id</code> values corresponding with Kangeroo rat
 </tr>
 </tbody>
 </table>
-<p>The first arguement to <code>case_when()</code> is the variable and value we want to match,
+<p>The first argument to <code>case_when()</code> is the variable and value we want to match,
 just like <code>filter()</code>, for example <code>species_id == "DM"</code>, and then we use the tilde
 operator <code>~</code> followed by the value we want give our new variable <strong>if</strong> a we match
-this condition. Here we want our new variable <code>rodent_type</code> to be “Kangeroo Rat”.</p>
+this condition. Here we want our new variable <code>rodent_type</code> to be “Kangaroo Rat”.</p>
 <p>We do this for every case we want to match. There are other species than rodents
 in this data, and we have choice to either provide values for each one, ignore them
 which will lead to the value <code>NA</code> for those rows or we can supply a single value
-to the rest by giving the arguement <code>TRUE</code> followed by the value. This means if
+to the rest by giving the argument <code>TRUE</code> followed by the value. This means if
 there are other values in <code>species_id</code> - if this is true - then give them all the
 same value. Here we supply the value “Other” for the remaining species: <code>TRUE ~ "Other"</code>.</p>
 <p>Below is how this looks in practice and is assigned to a new <code>surveys_mutated</code> object.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="co"># Mutate surveys_filtered</span></a>
-<a class="sourceLine" id="cb45-2" title="2">surveys_mutated &lt;-<span class="st"> </span>surveys_filtered <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb45-3" title="3"><span class="st">  </span><span class="co"># Create rodent type variable for K-rats and Granivores.Everything else, Other.</span></a>
-<a class="sourceLine" id="cb45-4" title="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rodent_type =</span> <span class="kw">case_when</span>(</a>
-<a class="sourceLine" id="cb45-5" title="5">         species_id <span class="op">==</span><span class="st"> &quot;DM&quot;</span> <span class="op">~</span><span class="st"> &quot;Kangaroo Rat&quot;</span>,</a>
-<a class="sourceLine" id="cb45-6" title="6">         species_id <span class="op">==</span><span class="st"> &quot;DO&quot;</span> <span class="op">~</span><span class="st"> &quot;Kangaroo Rat&quot;</span>,</a>
-<a class="sourceLine" id="cb45-7" title="7">         species_id <span class="op">==</span><span class="st"> &quot;DS&quot;</span> <span class="op">~</span><span class="st"> &quot;Kangaroo Rat&quot;</span>,</a>
-<a class="sourceLine" id="cb45-8" title="8">         species_id <span class="op">==</span><span class="st"> &quot;PP&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
-<a class="sourceLine" id="cb45-9" title="9">         species_id <span class="op">==</span><span class="st"> &quot;PF&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
-<a class="sourceLine" id="cb45-10" title="10">         species_id <span class="op">==</span><span class="st"> &quot;PE&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
-<a class="sourceLine" id="cb45-11" title="11">         species_id <span class="op">==</span><span class="st"> &quot;PM&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
-<a class="sourceLine" id="cb45-12" title="12">         species_id <span class="op">==</span><span class="st"> &quot;RM&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
-<a class="sourceLine" id="cb45-13" title="13">         <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> &quot;Other&quot;</span>))</a>
-<a class="sourceLine" id="cb45-14" title="14"></a>
-<a class="sourceLine" id="cb45-15" title="15"><span class="co"># Check output using distinct()</span></a>
-<a class="sourceLine" id="cb45-16" title="16">surveys_mutated <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(species_id,rodent_type) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb45-17" title="17"><span class="st">        </span><span class="kw">distinct</span>(species_id, <span class="dt">.keep_all =</span> T)</a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1"><span class="co"># Mutate surveys_filtered</span></a>
+<a class="sourceLine" id="cb47-2" title="2">surveys_mutated &lt;-<span class="st"> </span>surveys_filtered <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb47-3" title="3"><span class="st">  </span><span class="co"># Create rodent type variable for K-rats and Granivores.Everything else, Other.</span></a>
+<a class="sourceLine" id="cb47-4" title="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rodent_type =</span> <span class="kw">case_when</span>(</a>
+<a class="sourceLine" id="cb47-5" title="5">         species_id <span class="op">==</span><span class="st"> &quot;DM&quot;</span> <span class="op">~</span><span class="st"> &quot;Kangaroo Rat&quot;</span>,</a>
+<a class="sourceLine" id="cb47-6" title="6">         species_id <span class="op">==</span><span class="st"> &quot;DO&quot;</span> <span class="op">~</span><span class="st"> &quot;Kangaroo Rat&quot;</span>,</a>
+<a class="sourceLine" id="cb47-7" title="7">         species_id <span class="op">==</span><span class="st"> &quot;DS&quot;</span> <span class="op">~</span><span class="st"> &quot;Kangaroo Rat&quot;</span>,</a>
+<a class="sourceLine" id="cb47-8" title="8">         species_id <span class="op">==</span><span class="st"> &quot;PP&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
+<a class="sourceLine" id="cb47-9" title="9">         species_id <span class="op">==</span><span class="st"> &quot;PF&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
+<a class="sourceLine" id="cb47-10" title="10">         species_id <span class="op">==</span><span class="st"> &quot;PE&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
+<a class="sourceLine" id="cb47-11" title="11">         species_id <span class="op">==</span><span class="st"> &quot;PM&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
+<a class="sourceLine" id="cb47-12" title="12">         species_id <span class="op">==</span><span class="st"> &quot;RM&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
+<a class="sourceLine" id="cb47-13" title="13">         <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> &quot;Other&quot;</span>))</a>
+<a class="sourceLine" id="cb47-14" title="14"></a>
+<a class="sourceLine" id="cb47-15" title="15"><span class="co"># Check output using distinct()</span></a>
+<a class="sourceLine" id="cb47-16" title="16">surveys_mutated <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(species_id,rodent_type) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb47-17" title="17"><span class="st">        </span><span class="kw">distinct</span>(species_id, <span class="dt">.keep_all =</span> T)</a></code></pre></div>
 <pre><code>## # A tibble: 42 x 2
 ##    species_id rodent_type 
 ##    &lt;chr&gt;      &lt;chr&gt;       
@@ -787,13 +807,13 @@ otherwise R would return <code>NA</code> when trying to average.)</p>
 
 
 <div class="figure" style="text-align: center"><span id="fig:dplyr-summarise"></span>
-<img src="img/dplyr-summarise-16-10-2019.png" alt="dplyr::summarise()" width="1572" />
+<img src="img/dplyr-summarise-16-10-2019.png" alt="dplyr::summarise()" width="100%" />
 <p class="caption">
 Figure 2.8: <code>dplyr::summarise()</code>
 </p>
 </div>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1">surveys <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb47-2" title="2"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_weight =</span> <span class="kw">mean</span>(weight, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1">surveys <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb49-2" title="2"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_weight =</span> <span class="kw">mean</span>(weight, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 1
 ##   mean_weight
 ##         &lt;dbl&gt;
@@ -804,15 +824,15 @@ which defines the variables upon which we operate upon.</p>
 <code>sex</code> and <code>species_id</code> variables, we can then calculate the <code>mean_weight</code> for
 each of these groups.</p>
 <div class="figure" style="text-align: center"><span id="fig:group-by"></span>
-<img src="img/dplyr-group-by-16-10-2019.png" alt="dplyr::group_by()" width="1908" />
+<img src="img/dplyr-group-by-16-10-2019.png" alt="dplyr::group_by()" width="100%" />
 <p class="caption">
 Figure 2.9: <code>dplyr::group_by()</code>
 </p>
 </div>
 <p>Using <code>group_by()</code> with <code>summarise()</code> now returns a table with 92 rows instead of single row.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1">surveys <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb49-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(sex, species_id) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb49-3" title="3"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_weight =</span> <span class="kw">mean</span>(weight, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">surveys <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(sex, species_id) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-3" title="3"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_weight =</span> <span class="kw">mean</span>(weight, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 92 x 3
 ## # Groups:   sex [3]
 ##    sex   species_id mean_weight
@@ -830,74 +850,75 @@ Figure 2.9: <code>dplyr::group_by()</code>
 ## # ... with 82 more rows</code></pre>
 </div>
 </div>
-<div id="using-dpylr-to-explore-the-effect-of-kangeroo-rats-on-granivore-populations" class="section level2">
-<h2><span class="header-section-number">2.4</span> Using <code>dpylr</code> to explore the effect of Kangeroo Rats on Granivore populations</h2>
-<p>Let’s use what we’ve learnt so far to explore the effect of Kangeroo Rats on Granivore populations
+<div id="using-dpylr-to-explore-the-effect-of-kangaroo-rat-exclusion-on-granivore-populations" class="section level2">
+<h2><span class="header-section-number">2.4</span> Using <code>dpylr</code> to explore the effect of Kangaroo Rat exclusion on Granivore populations</h2>
+<p>Let’s use what we’ve learnt so far to explore the effect of Kangaroo Rats on Granivore populations
 for the entire time covered in the <code>surveys</code> dataset.</p>
 <p>A line plot with time on the x-axis and number of rodents on the y-axis would be
-one way to visual this, comparing the observations between the control plots and the Kangeroo
+one way to visual this, comparing the observations between the control plots and the Kangaroo
 rat exclusion plots.</p>
 <p>One way to do this is to:</p>
 <ol style="list-style-type: decimal">
-<li><code>filter()</code> the observations for the control and exlusion plots.</li>
-<li>Create a new <code>rodent_type</code> variable for Kangeroo Rats and Granivores.</li>
+<li><code>filter()</code> the observations for the control and exclusion plots.</li>
+<li>Create a new <code>rodent_type</code> variable for Kangaroo Rats and Granivores.</li>
 <li>Create a new variable for time from the existing <code>day</code>,<code>month</code> and <code>year</code> variables.</li>
 <li>Group the data according to the <code>rodent_type</code>, <code>plot_type</code> our time variable, and use <code>summarise()</code> to calculate the number of observations for each group.</li>
 </ol>
 <div id="re-cap-of-filter-and-mutate" class="section level3">
 <h3><span class="header-section-number">2.4.1</span> Re-cap of <code>filter()</code> and <code>mutate()</code></h3>
 <p>Let’s re-cap steps one and two:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="co"># Keep only the rows corresponding with the Control and Long-term Krat Exclosure</span></a>
-<a class="sourceLine" id="cb51-2" title="2">surveys_filtered &lt;-<span class="st"> </span>surveys <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb51-3" title="3"><span class="st">        </span><span class="kw">filter</span>(plot_type <span class="op">==</span><span class="st"> &quot;Control&quot;</span> <span class="op">|</span><span class="st"> </span>plot_type <span class="op">==</span><span class="st"> &quot;Long-term Krat Exclosure&quot;</span>)</a>
-<a class="sourceLine" id="cb51-4" title="4"></a>
-<a class="sourceLine" id="cb51-5" title="5"><span class="co"># Mutate surveys_filtered</span></a>
-<a class="sourceLine" id="cb51-6" title="6">surveys_mutated &lt;-<span class="st"> </span>surveys_filtered <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-7" title="7"><span class="st">  </span><span class="co"># Create rodent type variable for K-rats and Granivores.Everything else, Other.</span></a>
-<a class="sourceLine" id="cb51-8" title="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rodent_type =</span> <span class="kw">case_when</span>(</a>
-<a class="sourceLine" id="cb51-9" title="9">         species_id <span class="op">==</span><span class="st"> &quot;DM&quot;</span> <span class="op">~</span><span class="st"> &quot;Kangaroo Rat&quot;</span>,</a>
-<a class="sourceLine" id="cb51-10" title="10">         species_id <span class="op">==</span><span class="st"> &quot;DO&quot;</span> <span class="op">~</span><span class="st"> &quot;Kangaroo Rat&quot;</span>,</a>
-<a class="sourceLine" id="cb51-11" title="11">         species_id <span class="op">==</span><span class="st"> &quot;DS&quot;</span> <span class="op">~</span><span class="st"> &quot;Kangaroo Rat&quot;</span>,</a>
-<a class="sourceLine" id="cb51-12" title="12">         species_id <span class="op">==</span><span class="st"> &quot;PP&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
-<a class="sourceLine" id="cb51-13" title="13">         species_id <span class="op">==</span><span class="st"> &quot;PF&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
-<a class="sourceLine" id="cb51-14" title="14">         species_id <span class="op">==</span><span class="st"> &quot;PE&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
-<a class="sourceLine" id="cb51-15" title="15">         species_id <span class="op">==</span><span class="st"> &quot;PM&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
-<a class="sourceLine" id="cb51-16" title="16">         species_id <span class="op">==</span><span class="st"> &quot;RM&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
-<a class="sourceLine" id="cb51-17" title="17">         <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> &quot;Other&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1"><span class="co"># Keep only the rows corresponding with the Control and Long-term Krat Exclosure</span></a>
+<a class="sourceLine" id="cb53-2" title="2">surveys_filtered &lt;-<span class="st"> </span>surveys <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb53-3" title="3"><span class="st">        </span><span class="kw">filter</span>(plot_type <span class="op">==</span><span class="st"> &quot;Control&quot;</span> <span class="op">|</span><span class="st"> </span>plot_type <span class="op">==</span><span class="st"> &quot;Long-term Krat Exclosure&quot;</span>)</a>
+<a class="sourceLine" id="cb53-4" title="4"></a>
+<a class="sourceLine" id="cb53-5" title="5"><span class="co"># Mutate surveys_filtered</span></a>
+<a class="sourceLine" id="cb53-6" title="6">surveys_mutated &lt;-<span class="st"> </span>surveys_filtered <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb53-7" title="7"><span class="st">  </span><span class="co"># Create rodent type variable for K-rats and Granivores.Everything else, Other.</span></a>
+<a class="sourceLine" id="cb53-8" title="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rodent_type =</span> <span class="kw">case_when</span>(</a>
+<a class="sourceLine" id="cb53-9" title="9">         species_id <span class="op">==</span><span class="st"> &quot;DM&quot;</span> <span class="op">~</span><span class="st"> &quot;Kangaroo Rat&quot;</span>,</a>
+<a class="sourceLine" id="cb53-10" title="10">         species_id <span class="op">==</span><span class="st"> &quot;DO&quot;</span> <span class="op">~</span><span class="st"> &quot;Kangaroo Rat&quot;</span>,</a>
+<a class="sourceLine" id="cb53-11" title="11">         species_id <span class="op">==</span><span class="st"> &quot;DS&quot;</span> <span class="op">~</span><span class="st"> &quot;Kangaroo Rat&quot;</span>,</a>
+<a class="sourceLine" id="cb53-12" title="12">         species_id <span class="op">==</span><span class="st"> &quot;PP&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
+<a class="sourceLine" id="cb53-13" title="13">         species_id <span class="op">==</span><span class="st"> &quot;PF&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
+<a class="sourceLine" id="cb53-14" title="14">         species_id <span class="op">==</span><span class="st"> &quot;PE&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
+<a class="sourceLine" id="cb53-15" title="15">         species_id <span class="op">==</span><span class="st"> &quot;PM&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
+<a class="sourceLine" id="cb53-16" title="16">         species_id <span class="op">==</span><span class="st"> &quot;RM&quot;</span> <span class="op">~</span><span class="st"> &quot;Granivore&quot;</span>,</a>
+<a class="sourceLine" id="cb53-17" title="17">         <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> &quot;Other&quot;</span>))</a></code></pre></div>
 </div>
 <div id="use-lubridate-to-create-new-time-variables" class="section level3">
 <h3><span class="header-section-number">2.4.2</span> Use <code>lubridate</code> to create new time variables</h3>
 <p>Step three introduces the tidyverse <a href="https://lubridate.tidyverse.org/"><code>lubridate</code> package</a>.
 As the name suggests, this is a package for wrangling dates and times.</p>
-<p>It would be clearer to plot the data on three month (quartley) basis rather than
+<p>It would be clearer to plot the data on three month (quarterly) basis rather than
 plotting every date in the dataset, so we need to create a variable that contains
-the quarter in which the observation was made, for each observiation.</p>
+the quarter in which the observation was made, for each observation.</p>
 <p>From <code>lubridate</code> we will use the function <code>make_date()</code> in combination with <code>mutate()</code>
 first to create a single column <code>date</code> variable from the <code>day</code>,<code>month</code> and <code>year</code> variables.
 We then use this <code>date</code> variable to create another new variable containing a value for the
 quarter of the year in which the observation was made <code>quarter</code> using the <code>quarter()</code> function.</p>
 <p>We’ll assign this output to a new data frame called <code>surveys_subset</code>.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="kw">library</span>(lubridate)</a>
-<a class="sourceLine" id="cb52-2" title="2">surveys_subset &lt;-<span class="st"> </span>surveys_mutated <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb52-3" title="3"><span class="st">        </span><span class="kw">mutate</span>(<span class="dt">date =</span> <span class="kw">make_date</span>(<span class="dt">day =</span> day, <span class="dt">month =</span> month, <span class="dt">year =</span> year), </a>
-<a class="sourceLine" id="cb52-4" title="4">               <span class="dt">quarter =</span> <span class="kw">quarter</span>(date,<span class="dt">with_year =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1"><span class="kw">library</span>(lubridate)</a>
+<a class="sourceLine" id="cb54-2" title="2">surveys_subset &lt;-<span class="st"> </span>surveys_mutated <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb54-3" title="3"><span class="st">        </span><span class="kw">mutate</span>(<span class="dt">date =</span> <span class="kw">make_date</span>(<span class="dt">day =</span> day, <span class="dt">month =</span> month, <span class="dt">year =</span> year), </a>
+<a class="sourceLine" id="cb54-4" title="4">               <span class="dt">quarter =</span> <span class="kw">quarter</span>(date,<span class="dt">with_year =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
 </div>
 <div id="group-and-summarise-the-data-into-quarterly-observations" class="section level3">
 <h3><span class="header-section-number">2.4.3</span> Group and summarise the data into quarterly observations</h3>
 <p>Step four is to group and summarise our quarterly observations.</p>
 <p>We group by <code>rodent_type</code>, <code>plot_type</code> and
-<code>quarter</code> variables. In other words we’ve grouped the data according to Kangeroo Rat or
+<code>quarter</code> variables. In other words we’ve grouped the data according to Kangaroo Rat or
 Granivore, Control plot or Exclusion plot, and the quarter of the year in which
 the observation occurred.</p>
 <p>Then we can calculate the number of captures for each of these groups by
 using <code>summarise()</code> to create a <code>mean_captures</code> variable which is equal to the number
 of rows for that group using the <code>n()</code> function divided by 4 to calculate
 the average over each quarter.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">by_quarter &lt;-<span class="st"> </span>surveys_subset <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb53-2" title="2"><span class="st">        </span><span class="kw">group_by</span>(rodent_type,plot_type,quarter) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb53-3" title="3"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">mean_captures =</span> <span class="kw">n</span>()<span class="op">/</span><span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb53-4" title="4"></a>
-<a class="sourceLine" id="cb53-5" title="5">by_quarter</a></code></pre></div>
+<p><strong>Note:</strong> <code>n()</code> is a <code>dplyr</code> function that returns the number of observations in the current group.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1">by_quarter &lt;-<span class="st"> </span>surveys_subset <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb55-2" title="2"><span class="st">        </span><span class="kw">group_by</span>(rodent_type,plot_type,quarter) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb55-3" title="3"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">mean_captures =</span> <span class="kw">n</span>()<span class="op">/</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb55-4" title="4"></a>
+<a class="sourceLine" id="cb55-5" title="5">by_quarter</a></code></pre></div>
 <pre><code>## # A tibble: 567 x 4
 ## # Groups:   rodent_type, plot_type [6]
 ##    rodent_type plot_type quarter mean_captures
@@ -924,29 +945,30 @@ x-axis using the <code>quarter</code> variable, and the quarterly <code>mean_cap
 y-axis, and we colour the data by <code>rodent_type</code>.</p>
 <p>Then we create line and point geometric mappings, and split the plot into two
 facets using <code>facet_wrap</code> according to <code>plot_type</code>.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1"><span class="kw">ggplot</span>(by_quarter,</a>
-<a class="sourceLine" id="cb55-2" title="2">       <span class="kw">aes</span>(<span class="dt">x=</span>quarter,<span class="dt">y=</span>mean_captures,<span class="dt">colour=</span>rodent_type)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb55-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb55-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb55-5" title="5"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>plot_type)</a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1"><span class="kw">ggplot</span>(by_quarter,</a>
+<a class="sourceLine" id="cb57-2" title="2">       <span class="kw">aes</span>(<span class="dt">x=</span>quarter,<span class="dt">y=</span>mean_captures,<span class="dt">colour=</span>rodent_type)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb57-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb57-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb57-5" title="5"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>plot_type)</a></code></pre></div>
 <pre><code>## Warning: Removed 2 rows containing missing values (geom_path).</code></pre>
 <pre><code>## Warning: Removed 5 rows containing missing values (geom_point).</code></pre>
-<p><img src="coding-together_files/figure-html/plot-quarter-all-1.png" width="672" /></p>
-<p>But it would be more useful to only plot the Kangeroo Rats and Granivores
+<p><img src="coding-together_files/figure-html/plot-quarter-all-1.png" width="100%" /></p>
+<p>But it would be more useful to only plot the Kangaroo Rats and Granivores
 data, so let’s filter out the other species. And move the legend to the bottom
 of the plot and add a title.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1">by_quarter <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb58-2" title="2"><span class="st">        </span><span class="kw">filter</span>(rodent_type <span class="op">!=</span><span class="st"> &quot;Other&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb58-3" title="3"><span class="st">        </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>quarter,<span class="dt">y=</span>mean_captures,<span class="dt">colour=</span>rodent_type)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb58-4" title="4"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb58-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb58-6" title="6"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>plot_type) <span class="op">+</span></a>
-<a class="sourceLine" id="cb58-7" title="7"><span class="st">        </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb58-8" title="8"><span class="st">        </span><span class="kw">ggtitle</span>(<span class="st">&quot;How does excluding Kangeroo Rats effect Granivore populations?&quot;</span>, </a>
-<a class="sourceLine" id="cb58-9" title="9">                <span class="dt">subtitle =</span> <span class="st">&quot;Mean quarterly observations&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1">by_quarter <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-2" title="2"><span class="st">        </span><span class="kw">filter</span>(rodent_type <span class="op">!=</span><span class="st"> &quot;Other&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb60-3" title="3"><span class="st">        </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>quarter,<span class="dt">y=</span>mean_captures,<span class="dt">colour=</span>rodent_type)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb60-4" title="4"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb60-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb60-6" title="6"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>plot_type) <span class="op">+</span></a>
+<a class="sourceLine" id="cb60-7" title="7"><span class="st">        </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb60-8" title="8"><span class="st">        </span><span class="kw">ggtitle</span>(<span class="st">&quot;How does excluding Kangaroo Rats </span></a>
+<a class="sourceLine" id="cb60-9" title="9"><span class="st">                effect Granivore populations?&quot;</span>, </a>
+<a class="sourceLine" id="cb60-10" title="10">                <span class="dt">subtitle =</span> <span class="st">&quot;Mean quarterly observations&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Removed 1 rows containing missing values (geom_path).</code></pre>
 <pre><code>## Warning: Removed 3 rows containing missing values (geom_point).</code></pre>
-<p><img src="coding-together_files/figure-html/plot-quarter-1.png" width="672" /></p>
+<p><img src="coding-together_files/figure-html/plot-quarter-1.png" width="100%" /></p>
 <blockquote>
 <p><strong>Challenge</strong> Can you do a similar analysis, but plotting the data only from 1980 to 2000 and by semester?</p>
 </blockquote>
@@ -997,7 +1019,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["coding-together.pdf", "coding-together.epub"],
+"download": ["coding-together.pdf"],
 "toc": {
 "collapse": "section"
 },

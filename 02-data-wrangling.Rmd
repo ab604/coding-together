@@ -17,7 +17,8 @@ The following sections are based upon the [data transformation chapter](https://
 Karl Broman and Kara Woo wrote as 
 paper all about [Data Organization in Spreadsheets](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989).
 
-It's full of practical advice and context.
+It's full of practical advice and context and well worth reading for helping
+you think about best practices for organising your data for yourself, and when working with others. 
 
 ### Flat formats and Excel files
 
@@ -27,7 +28,7 @@ say they contain only the data, as text information, and are the simplest and mo
 convenient way to share data as most software can read and 
 interpret them.
 
-Excel files saves files into its own proprietary format xls or xlsx that holds 
+Excel files saves files into its own proprietary format `.xls` or `.xlsx` that holds 
 information in addition to the data itself. For reading and
 writing excel files in R, the tidyverse `readxl` package is very useful.
 
@@ -44,8 +45,8 @@ Specifically they explored the effect on the populations of small
 seed eating rodents as a result of the exclusion of larger competitor kangaroo 
 rats over a period from 1977 to 1991.
 
-Let's also use some of their data to explore this question: **What is the effect 
-of the exclusion of kangeroo rats from a plot of land on the granivore population?**
+We'll also use some of their data to explore this question: **What is the effect 
+of the exclusion of kangaroo rats from a plot of land on the granivore population?**
 
 Figure \@ref(fig:k-rat) shows an image of one of the species of kangaroo rats excluded during the
 study.
@@ -53,16 +54,16 @@ study.
 (ref:krat) [Merriam's kangaroo rat, Dipodomys merriami](https://portalproject.wordpress.com/)
 
 
-```{r k-rat, fig.cap='(ref:krat)',fig.asp=1, fig.align='center', echo=FALSE,cache=TRUE}
+```{r k-rat, fig.cap='(ref:krat)',fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/kratsep12.jpg")
 ```
 
 Figure \@ref(fig:fence) indicates how the exclusion works, where a for number of
 fenced plots the kangaroo rats were either able to enter by a hole or kept out.
 
-(ref:fence) Kangeroo Rat exclusion
+(ref:fence) Kangaroo Rat exclusion
 
-```{r fence,  fig.cap='(ref:fence)',fig.asp=1, out.width= '50%', fig.align='center', echo=FALSE,cache=TRUE}
+```{r fence,  fig.cap='(ref:fence)',fig.asp=1, out.width= '60%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/fence_hole.JPG")
 ```
 
@@ -90,7 +91,7 @@ Each row holds information for a single animal, and the columns represent:
 
 The rodents species surveyed are:
 
-**Kangeroo Rats**                                                     
+**Kangaroo Rats**                                                     
 
 | species_id | Scientific name       | Common name                  |
 |------------|-----------------------|------------------------------|
@@ -110,9 +111,9 @@ The rodents species surveyed are:
 
 ### Downloading and importing the data 
 
-**First create a R project for this analysis**
+**First create a [R project](#workflow) for this analysis e.g `coding-together-week-2`**
 
-The dataset is stored online, so we use the utility function 
+The dataset is stored on-line, so we use the utility function 
 `download.file()` to download the csv file to our data folder. 
 (Did you create a data folder in the project directory?)
 
@@ -121,7 +122,7 @@ Here we pass the `url = ` and `destfile = ` arguments to `download.file()`.
 As we have the `tidyverse` packages we can use the `readr` package it contains, 
 which has many functions for reading files, including `read_csv()`.
 The advantage of `read_csv()` over base R `read.csv()` is that it defaults to reading strings as
-character vectors rather than factors (catergorical variables) which 
+character vectors rather than factors (categorical variables) which 
 is usually what we want.
 
 As we read the data into our environment we need to assign a label 
@@ -140,7 +141,8 @@ surveys <- read_csv("data/portal_data_joined.csv")
 ## `dplyr`
 
 [`dplyr`](https://dplyr.tidyverse.org/) *"is a grammar of data manipulation"*.
-Concretely, it's a package of functions from the tidyverse.
+Concretely, it's a package of functions from the tidyverse that have been
+created for tasks that require manipulation of data stored in [data frames](data-frames).
 
 ```{r dplyr-name, fig.cap="[Why is it called `dplyr`?](https://github.com/tidyverse/dplyr/issues/1857)",fig.asp=1, out.width= '100%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/dplyr-name-github.png")
@@ -168,9 +170,9 @@ An alternative way to use `filter()` is to "pipe" the function using pipe `%>%` 
 which you can think of as using the word *"then"*. We take our data set *then* filter it. 
 Using the pipe makes more sense when combining several operations.
 
-> Ctl+Shift+M is a keyboard shortcut to create a pipe.
+> Ctl+Shift+M is a keyboard short cut to create a pipe.
 
-For the filter iteself, from R4DS:
+For the filter itself, from R4DS:
 
 *"To use filtering effectively, you have to know how to select the observations t
 hat you want using the comparison operators. R provides the standard suite: `>`, 
@@ -184,7 +186,7 @@ to see how these operators work.
 
 (ref:filter) `dplyr::filter()`
 
-```{r dplyr-filter, fig.cap='(ref:filter)',fig.asp=1, out.width= '80%', fig.align='center', echo=FALSE,cache=TRUE}
+```{r dplyr-filter, fig.cap='(ref:filter)',fig.asp=1, out.width= '100%', fig.align='center', echo=FALSE,cache=TRUE}
 
 knitr::include_graphics("img/dplyr_filter.png")
 ```
@@ -196,10 +198,10 @@ knitr::include_graphics("img/dplyr_filter.png")
 ```
 
 An example using Boolean logic, would be to use the "or" operator `|` to filter
-for the observations only occuring on `plot_type`'s control or long term kangeroo 
+for the observations only occurring on `plot_type`'s control or long term kangaroo 
 rat exclusion. This time we assign the output to a new data frame called `surveys_filtered`.
 
-**Note:** as `plot_type` is a charater vector we put the terms in quotes,
+**Note:** as `plot_type` is a character vector we put the terms in quotes,
 and also the double equals sign `==` "for equal to".
 
 ```{r surveys-filtered}
@@ -210,6 +212,19 @@ surveys_filtered <- surveys %>%
 
 **Note:** `filter()` only includes rows where the condition is TRUE; it excludes both `FALSE` and missing `NA` values.
 We have to explicitly ask to keep `NA` values using `is.na()` as an additional filter.
+
+> How did I know which `plot_type`'s to filter? 
+I used the `dplyr::distinct()` function, passing the `surveys` data frame
+and the `plot_type` variable to obtain a list of the unique plot types, 
+from which I determined the `Control` and `Long-term Krat Exclosure` plots
+were the ones I was after. Note that you need to add the argument
+`.keep_all = TRUE` to `distinct()` to return all the columns in the 
+data frame
+
+```{r distinct}
+distinct(surveys, plot_type)
+```
+
 
 ### Arrange rows with `arrange()`
 
@@ -230,7 +245,7 @@ variable.
 
 (ref:arrange) `dplyr::arrange()`
 
-```{r dplyr-arrange, fig.cap='(ref:arrange)',fig.asp=1, out.width= '80%', fig.align='center', echo=FALSE,cache=TRUE}
+```{r dplyr-arrange, fig.cap='(ref:arrange)',fig.asp=1, out.width= '100%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/dplyr_arrange.png")
 ```
 
@@ -238,8 +253,8 @@ knitr::include_graphics("img/dplyr_arrange.png")
 surveys %>% arrange(record_id)
 ```
 
-Or we could use `arrange()` to find the reocrd with the shortest hindfoot. 
-*Note:* `arrange()` defualts to ascending order.
+Or we could use `arrange()` to find the record with the shortest hindfoot. 
+*Note:* `arrange()` defaults to ascending order.
 
 ```{r arrange-short-foot}
 surveys %>% arrange(hindfoot_length)
@@ -258,7 +273,7 @@ surveys %>%
 
 ### Select columns with `select()`
 
-Often your data contains variables you don't need for the analysis you are performing.
+Often your data contains variables you don't need for the analysis you are performing, or you want to subset them to share with others.
 To select only the ones you need, or explore subsets of the variables, the 
 `select()` verb enables you to keep only the columns of interest.
 
@@ -271,7 +286,7 @@ Check the help function `?select` for more options.
 
 (ref:select) `dplyr::select()`
 
-```{r dplyr-select, fig.cap='(ref:select)',fig.asp=1, out.width= '80%', fig.align='center', echo=FALSE,cache=TRUE}
+```{r dplyr-select, fig.cap='(ref:select)',fig.asp=1, out.width= '100%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/dplyr_select.png")
 ```
 
@@ -295,7 +310,7 @@ surveys_filtered %>% select(-sex,-hindfoot_length,-weight)
 Another common task is to create a new variable or variables, often from existing data
 within the data frame. For this we use the `mutate()` verb. It follows the 
 same syntax as for `filter()`, `arrange()` and `select()` in that the first
-arguement is the dataset, and the subsequent arguments are the new variables we wish
+argument is the dataset, and the subsequent arguments are the new variables we wish
 to create.
 
 Figure \@ref(fig:dplyr-mutate) shows how to create a new variable `weight_kg` by
@@ -303,22 +318,22 @@ dividing the existing `weight` variable in grams by 1000.
 
 (ref:mutate) `dplyr::mutate()`
 
-```{r dplyr-mutate, fig.cap='(ref:mutate)',fig.asp=1, out.width= '80%', fig.align='center', echo=FALSE,cache=TRUE}
+```{r dplyr-mutate, fig.cap='(ref:mutate)',fig.asp=1, out.width= '100%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/dplyr-mutate-16-10-2019.png")
 ```
 
 A more complicated mutation, and key to to our analysis exploring the question
-as to whether Kangeroo rats effect the size of the granivore population would
+as to whether Kangaroo rats effect the size of the granivore population would
 be to create a variable that indicates which type of rodent an observation is
 recording.
 
 To do this we can make use of another `dplyr` function called `case_when()`. 
-This allows us to pass diferent values to our new `rodent_type` variable **if**
-they match either `species_id` values corresponding with Kangeroo rats or Granivores.
+This allows us to pass different values to our new `rodent_type` variable **if**
+they match either `species_id` values corresponding with Kangaroo rats or Granivores.
 
 To remind us, the rodents species surveyed are:
 
-**Kangeroo Rats**                                                     
+**Kangaroo Rats**                                                     
 
 | species_id | Scientific name       | Common name                  |
 |------------|-----------------------|------------------------------|
@@ -336,15 +351,15 @@ To remind us, the rodents species surveyed are:
 | PM         | Peromyscus maniculatus    | Deer Mouse               |
 | RM         | Reithrodontomys megalotis | Western harvest mouse    |
 
-The first arguement to `case_when()` is the variable and value we want to match,
+The first argument to `case_when()` is the variable and value we want to match,
 just like `filter()`, for example `species_id == "DM"`, and then we use the tilde
 operator `~` followed by the value we want give our new variable **if** a we match
-this condition. Here we want our new variable `rodent_type` to be "Kangeroo Rat".
+this condition. Here we want our new variable `rodent_type` to be "Kangaroo Rat".
 
 We do this for every case we want to match. There are other species than rodents 
 in this data, and we have choice to either provide values for each one, ignore them
 which will lead to the value `NA` for those rows or we can supply a single value 
-to the rest by giving the arguement `TRUE` followed by the value. This means if
+to the rest by giving the argument `TRUE` followed by the value. This means if
 there are other values in `species_id` - if this is true - then give them all the
 same value. Here we supply the value "Other" for the remaining species: `TRUE ~ "Other"`.
 
@@ -386,7 +401,7 @@ otherwise R would return `NA` when trying to average.)
 
 (ref:group-by) `dplyr::group_by()`
 
-```{r dplyr-summarise, fig.cap='(ref:summarise)', fig.show='hold',fig.align='center', echo=FALSE,cache=TRUE}
+```{r dplyr-summarise, fig.cap='(ref:summarise)',out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/dplyr-summarise-16-10-2019.png")
 ```
 
@@ -403,7 +418,7 @@ Figure \@ref(fig:group-by) shows how by grouping the observations according to t
 each of these groups.
 
 
-```{r group-by, fig.cap='(ref:group-by)',fig.align='center', echo=FALSE,cache=TRUE}
+```{r group-by, fig.cap='(ref:group-by)',fig.align='center',out.width = '100%', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/dplyr-group-by-16-10-2019.png")
 ```
 
@@ -415,19 +430,19 @@ surveys %>%
   summarize(mean_weight = mean(weight, na.rm = TRUE))
 ```
 
-## Using `dpylr` to explore the effect of Kangeroo Rats on Granivore populations
+## Using `dpylr` to explore the effect of Kangaroo Rat exclusion on Granivore populations
 
-Let's use what we've learnt so far to explore the effect of Kangeroo Rats on Granivore populations
+Let's use what we've learnt so far to explore the effect of Kangaroo Rats on Granivore populations
 for the entire time covered in the `surveys` dataset. 
 
 A line plot with time on the x-axis and number of rodents on the y-axis would be
-one way to visual this, comparing the observations between the control plots and the Kangeroo
+one way to visual this, comparing the observations between the control plots and the Kangaroo
 rat exclusion plots.
 
 One way to do this is to:
 
-1. `filter()` the observations for the control and exlusion plots.
-2.  Create a new `rodent_type` variable for Kangeroo Rats and Granivores.
+1. `filter()` the observations for the control and exclusion plots.
+2.  Create a new `rodent_type` variable for Kangaroo Rats and Granivores.
 3.  Create a new variable for time from the existing `day`,`month` and `year` variables.
 4.  Group the data according to the `rodent_type`, `plot_type` our time variable, and use `summarise()` to calculate the number of observations for each group. 
 
@@ -460,9 +475,9 @@ surveys_mutated <- surveys_filtered %>%
 Step three introduces the tidyverse [`lubridate` package](https://lubridate.tidyverse.org/). 
 As the name suggests, this is a package for wrangling dates and times.
 
-It would be clearer to plot the data on three month (quartley) basis rather than
+It would be clearer to plot the data on three month (quarterly) basis rather than
 plotting every date in the dataset, so we need to create a variable that contains
-the quarter in which the observation was made, for each observiation.
+the quarter in which the observation was made, for each observation.
 
 From `lubridate` we will use the function `make_date()` in combination with `mutate()` 
 first to create a single column `date` variable from the `day`,`month` and `year` variables. 
@@ -483,7 +498,7 @@ surveys_subset <- surveys_mutated %>%
 Step four is to group and summarise our quarterly observations. 
 
 We group by `rodent_type`, `plot_type` and
-`quarter` variables. In other words we've grouped the data according to Kangeroo Rat or
+`quarter` variables. In other words we've grouped the data according to Kangaroo Rat or
 Granivore, Control plot or Exclusion plot, and the quarter of the year in which 
 the observation occurred. 
 
@@ -491,6 +506,8 @@ Then we can calculate the number of captures for each of these groups by
 using `summarise()` to create a `mean_captures` variable which is equal to the number
 of rows for that group using the `n()` function divided by 4 to calculate
 the average over each quarter.
+
+**Note:** `n()` is a `dplyr` function that returns the number of observations in the current group.
 
 ```{r by-quarter,  cache=TRUE}
 by_quarter <- surveys_subset %>% 
@@ -514,7 +531,7 @@ y-axis, and we colour the data by `rodent_type`.
 Then we create line and point geometric mappings, and split the plot into two
 facets using `facet_wrap` according to `plot_type`.
 
-```{r plot-quarter-all, cache=TRUE}
+```{r plot-quarter-all,out.width = '100%', cache=TRUE}
 ggplot(by_quarter,
        aes(x=quarter,y=mean_captures,colour=rodent_type)) +
   geom_line() +
@@ -522,11 +539,11 @@ ggplot(by_quarter,
   facet_wrap(~ plot_type)
 ```
 
-But it would be more useful to only plot the Kangeroo Rats and Granivores
+But it would be more useful to only plot the Kangaroo Rats and Granivores
 data, so let's filter out the other species. And move the legend to the bottom
 of the plot and add a title.
 
-```{r plot-quarter, cache=TRUE}
+```{r plot-quarter, out.width = '100%',cache=TRUE}
 by_quarter %>% 
         filter(rodent_type != "Other") %>% 
         ggplot(aes(x=quarter,y=mean_captures,colour=rodent_type)) +
@@ -534,7 +551,8 @@ by_quarter %>%
   geom_point() +
   facet_wrap(~ plot_type) +
         theme(legend.position = "bottom") +
-        ggtitle("How does excluding Kangeroo Rats effect Granivore populations?", 
+        ggtitle("How does excluding Kangaroo Rats 
+                effect Granivore populations?", 
                 subtitle = "Mean quarterly observations")
 ```
 

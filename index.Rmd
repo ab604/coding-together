@@ -13,7 +13,7 @@ colorlinks: true
 github-repo: ab604/coding-together
 twitter-handle: alistair604
 cover-image: img/Carrick-bend-Guten-Verrill-modified.png
-#url: 'https\://www.tidytextmining.com/'
+url: 'https://ab604.github.io/docs/coding-together-2019/'
 description: "Materials for the Coding TogetheR workshops"
 ---
 

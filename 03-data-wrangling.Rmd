@@ -1,9 +1,70 @@
 # Data wrangling II {#data-wrangle-2}
 
 Following on from chapter 2 this lesson deals with some 
-common tidying problems with data. By the end of this chapter the learner 
+common tidying problems with data using the [`tidyr` package](https://tidyr.tidyverse.org/) . By the end of this chapter the learner 
 will:
 
-+ have learnt some ways to deal with missing values
 + have learnt how to transform rows and columns to reorganise data
 + have learnt how to join data contained in separate tables into a single table 
++ have learnt some ways to deal with missing values
+
+## Reshaping data with pivots
+
+As you will recall [tidy data](tidy-data) means that in a table:
+
+1. Every variable has its own column.
+2. Every observation has its own row.
+3. Each value has its own cell.
+
+Two common problems making your data untidy are that:
+
+1. A single variable is spread across multiple colummns.
+2. A single observation is distributed across multiple rows.
+
+In the first case the column names are actually the variable we are 
+interested in, making our table **wide**. 
+
+In the second case, the observation is contained in several rows instead
+of a single row, making our table **long**.
+
+Hence `tidyr` has functions that **pivot** (as in turning) a table from **wide-to-long** by reducing the number of columns and increasing the number of rows. Or from **long-to-wide** by reducing the number of rows and increasing the number of columns.
+
+Usually, the hard part is identifying in a dataset our variables and our 
+observations, as it is not always obvious which is which.
+
+### `tidyr::pivot_longer`
+
+First we'll consider the case when our variable has been recorded as 
+column names by returning to a version of the [Portal surveys data](portal-project). 
+
+```{r surveys-spread, eval=FALSE}
+surveys_spread <- read_csv("https://raw.githubusercontent.com/ab604/ab604.github.io/master/docs/surveys_spread.csv")
+```
+
+(ref:pivl) `tidyr::pivot_longer`
+
+```{r pivot-long, fig.cap='(ref:pivl)',fig.asp=1, out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
+knitr::include_graphics("img/pivot_longer_R.png")
+```
+
+### `tidyr::pivot_wider`
+
+(ref:pivw) `tidyr::pivot_wider`
+
+```{r surveys-gw, eval=FALSE}
+surveys_gw <- read_csv("https://raw.githubusercontent.com/ab604/ab604.github.io/master/docs/surveys_grouped_weight.csv")
+```
+
+
+```{r pivot-wider, fig.cap='(ref:pivw)' ,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
+knitr::include_graphics("img/pivot_wider_R.png")
+```
+
+## Missing values
+
+As discussed in [R4DS](https://r4ds.had.co.nz/tidy-data.html#missing-values-3) values can be missing in two ways:
+
++ **Explicitly**, i.e. flagged with NA.
++ **Implicitly**, i.e. simply not present in the data.
+
+

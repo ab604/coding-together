@@ -396,7 +396,7 @@ When you names something, a file or an object, ideally it should be:
 
 We'll see examples of this as we go along.
 
-## The tidyverse and tidy data
+## The tidyverse and tidy data {#tidy-data}
 
 The [tidyverse](https://www.tidyverse.org/) [@R-tidyverse] is *"an opinionated 
 collection of R packages designed for data science"* . 

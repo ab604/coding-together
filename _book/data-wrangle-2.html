@@ -151,7 +151,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.4.3" data-path="getting-started.html"><a href="getting-started.html#here"><i class="fa fa-check"></i><b>1.4.3</b> Level up with the <code>here</code> package</a></li>
 <li class="chapter" data-level="1.4.4" data-path="getting-started.html"><a href="getting-started.html#names"><i class="fa fa-check"></i><b>1.4.4</b> Naming things</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#the-tidyverse-and-tidy-data"><i class="fa fa-check"></i><b>1.5</b> The tidyverse and tidy data</a></li>
+<li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#tidy-data"><i class="fa fa-check"></i><b>1.5</b> The tidyverse and tidy data</a></li>
 <li class="chapter" data-level="1.6" data-path="getting-started.html"><a href="getting-started.html#r-atoms"><i class="fa fa-check"></i><b>1.6</b> Atoms of R</a></li>
 <li class="chapter" data-level="1.7" data-path="getting-started.html"><a href="getting-started.html#assignment"><i class="fa fa-check"></i><b>1.7</b> Assigning objects</a><ul>
 <li class="chapter" data-level="1.7.1" data-path="getting-started.html"><a href="getting-started.html#indexing-and-subsetting"><i class="fa fa-check"></i><b>1.7.1</b> Indexing and subsetting</a></li>
@@ -191,7 +191,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.4" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#create-a-plot-with-ggplot"><i class="fa fa-check"></i><b>2.4.4</b> Create a plot with <code>ggplot</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html"><i class="fa fa-check"></i><b>3</b> Data wrangling II</a></li>
+<li class="chapter" data-level="3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html"><i class="fa fa-check"></i><b>3</b> Data wrangling II</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#reshaping-data-with-pivots"><i class="fa fa-check"></i><b>3.1</b> Reshaping data with pivots</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#tidyrpivot_longer"><i class="fa fa-check"></i><b>3.1.1</b> <code>tidyr::pivot_longer</code></a></li>
+<li class="chapter" data-level="3.1.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#tidyrpivot_wider"><i class="fa fa-check"></i><b>3.1.2</b> <code>tidyr::pivot_wider</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#missing-values"><i class="fa fa-check"></i><b>3.2</b> Missing values</a></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>4</b> Functions</a></li>
 <li class="chapter" data-level="5" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>5</b> Exploratory data analysis</a></li>
 <li class="chapter" data-level="6" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>6</b> Visualistion</a></li>
@@ -219,14 +225,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="data-wrangle-2" class="section level1">
 <h1><span class="header-section-number">3</span> Data wrangling II</h1>
 <p>Following on from chapter 2 this lesson deals with some
-common tidying problems with data. By the end of this chapter the learner
+common tidying problems with data using the <a href="https://tidyr.tidyverse.org/"><code>tidyr</code> package</a> . By the end of this chapter the learner
 will:</p>
 <ul>
-<li>have learnt some ways to deal with missing values</li>
 <li>have learnt how to transform rows and columns to reorganise data</li>
 <li>have learnt how to join data contained in separate tables into a single table</li>
+<li>have learnt some ways to deal with missing values</li>
+</ul>
+<div id="reshaping-data-with-pivots" class="section level2">
+<h2><span class="header-section-number">3.1</span> Reshaping data with pivots</h2>
+<p>As you will recall <a href="tidy-data">tidy data</a> means that in a table:</p>
+<ol style="list-style-type: decimal">
+<li>Every variable has its own column.</li>
+<li>Every observation has its own row.</li>
+<li>Each value has its own cell.</li>
+</ol>
+<p>Two common problems making your data untidy are that:</p>
+<ol style="list-style-type: decimal">
+<li>A single variable is spread across multiple colummns.</li>
+<li>A single observation is distributed across multiple rows.</li>
+</ol>
+<p>In the first case the column names are actually the variable we are
+interested in, making our table <strong>wide</strong>.</p>
+<p>In the second case, the observation is contained in several rows instead
+of a single row, making our table <strong>long</strong>.</p>
+<p>Hence <code>tidyr</code> has functions that <strong>pivot</strong> (as in turning) a table from <strong>wide-to-long</strong> by reducing the number of columns and increasing the number of rows. Or from <strong>long-to-wide</strong> by reducing the number of rows and increasing the number of columns.</p>
+<p>Usually, the hard part is identifying in a dataset our variables and our
+observations, as it is not always obvious which is which.</p>
+<div id="tidyrpivot_longer" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> <code>tidyr::pivot_longer</code></h3>
+<p>First we’ll consider the case when our variable has been recorded as
+column names by returning to a version of the <a href="portal-project">Portal surveys data</a>.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1">surveys_spread &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/ab604/ab604.github.io/master/docs/surveys_spread.csv&quot;</span>)</a></code></pre></div>
+
+<div class="figure" style="text-align: center"><span id="fig:pivot-long"></span>
+<img src="img/pivot_longer_R.png" alt="tidyr::pivot_longer" width="100%" />
+<p class="caption">
+Figure 3.1: <code>tidyr::pivot_longer</code>
+</p>
+</div>
+</div>
+<div id="tidyrpivot_wider" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> <code>tidyr::pivot_wider</code></h3>
+
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1">surveys_gw &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/ab604/ab604.github.io/master/docs/surveys_grouped_weight.csv&quot;</span>)</a></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:pivot-wider"></span>
+<img src="img/pivot_wider_R.png" alt="tidyr::pivot_wider" width="100%" />
+<p class="caption">
+Figure 3.2: <code>tidyr::pivot_wider</code>
+</p>
+</div>
+</div>
+</div>
+<div id="missing-values" class="section level2">
+<h2><span class="header-section-number">3.2</span> Missing values</h2>
+<p>As discussed in <a href="https://r4ds.had.co.nz/tidy-data.html#missing-values-3">R4DS</a> values can be missing in two ways:</p>
+<ul>
+<li><strong>Explicitly</strong>, i.e. flagged with NA.</li>
+<li><strong>Implicitly</strong>, i.e. simply not present in the data.</li>
 </ul>
 
+</div>
 </div>
             </section>
 

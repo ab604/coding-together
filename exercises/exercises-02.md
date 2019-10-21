@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Coding together week 2 - Data wrangling I
 
 ## This lesson covers:

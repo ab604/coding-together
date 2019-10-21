@@ -11,8 +11,11 @@
 
 ## filter
 
+Filter for observations that occurred on the 9th of March 1986.
+
 ## arrange
 
+Filter and arrange to find the heaviest kangeroo rat. For that you need species_id, and Krats are DM,DO and DS. Arrange to weight. Tip desc()
 
 ## select
 

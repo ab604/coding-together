@@ -28,6 +28,8 @@ knitr::write_bib(c(
 ), 'bib/packages.bib')
 here()
 surveys <- read_csv("exercises/portal_data_joined.csv")
+surveys_spread <- read_csv("exercises/surveys_spread.csv")
+surveys_gw <- read_csv("exercises/surveys_grouped_weight.csv")
 ```
 
 # Welcome {-}

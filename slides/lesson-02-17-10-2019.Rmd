@@ -125,7 +125,7 @@ knitr::include_graphics('../img/data_frame.png')
 
 1. Each variable forms a <span style="color:red">column</span> 
 2. Each observation forms a <span style="color:red">row</span>
-3. Each observational unit forms a table
+3. Each cell contains a <span style="color:red">single value</span>
 
 ## `dplyr::filter()`
 

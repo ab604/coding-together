@@ -93,47 +93,23 @@ As discussed in [R4DS](https://r4ds.had.co.nz/tidy-data.html#missing-values-3) v
 
 ## Joining tables
 
-The `dslabs` package contains a variety of interesting data. 
+Species
+Portal_rodent_species contains the species codes used in Portal_rodent. Any animal found in a trap is recorded. Non-rodent species are occasionally trapped and so are given species codes. Several columns are also included in the species table to restrict the species list to only rodents, only target species, or only granivores.
 
-For example there are two tables, one called `murders` containing the number
-of homicides in 2010 for each state in the USA,
-and another called `results_us_election_2016` containing the US presidential election
-results for 2016 for each state.
+Rodent adundance data
+Portal_rodent contains the rodent trapping data. Each individual of a target species is PIT tagged and data on species, location caught (plot and stake), sex, reproductive condition, weight, and hindfoot length are recorded. In almost all cases, you will want to remove negative period codes before using this data. Negative period codes indicate data collected outside of the normal census protocols, and should absolutely not be used as regular trapping data.
 
-Let's take a `glimpse()` at these tables:
+```{r, eval=FALSE}
+rodent_species <- read_csv("https://raw.githubusercontent.com/weecology/PortalData/master/Rodents/Portal_rodent_species.csv")
+rodent_data <- read_csv("https://raw.githubusercontent.com/weecology/PortalData/master/Rodents/Portal_rodent.csv", 
+                        col_types = cols(tag = col_character(),
+                                         prevrt = col_character(),
+                                         ltag = col_character(),
+                                         note2 = col_character(),
+                                         note3 = col_character(), 
+                                         note4 = col_character(), 
+                                         note5 = col_character()))
 
-```{r dslabs-murders-elections}
-# Number of homicides in 2010 for each state in the US
-glimpse(murders)
-# US presidential election results for 2016 for each state
-glimpse(results_us_election_2016)
+rodent_species %>% left_join(rodent_data, by = c("speciescode" = "species"))
 ```
-
-Although these are tables of different data, they both have a `state` variable,
-which means we can use that to join them together and combine the datasets.
-
-For example, in the USA the president is elected not through a popular vote, but 
-via a process called the electoral college by which
-[electoral vote allocation](https://www.archives.gov/federal-register/electoral-college/allocation.html)
-is based upon the US census and the population size in each state such that
-more populated states have more votes than less populated ones.
-
-We can look at this relationship by joining these two tables, as the `murders`
-table contains `population` information for each state and the `results_us_election_2016`
-contains the `electoral_votes` for each state.
-
-```{r}
-library(scales)
-library(ggrepel)
-murders %>% inner_join(results_us_election_2016, by = "state") %>% 
-        ggplot(aes(x = population, y = electoral_votes,label = abb)) +
-        geom_point() +
-        geom_text_repel() +
-        geom_smooth(method = "lm",se = FALSE) +
-        scale_x_log10(labels = comma_format()) +
-        scale_y_log10() 
-        
-        
-```
-
 

@@ -1,5 +1,13 @@
 # Coding together week 3 - Data wrangling II
 
+## Warm-up
+
++ Open RStudio and open the project for week 2
++ What is in your environment?
++ What packages are loaded? 
++ What directory is RStudio in?
++ Please draw a picture of where you think your project exists?
+
 ## This lesson covers:
 
 An intro to tidyr

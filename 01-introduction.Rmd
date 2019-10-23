@@ -167,7 +167,7 @@ Tools > Global Options menu in R studio as shown in Figure \@ref(fig:workspace).
 knitr::include_graphics("img/rdata_turn_off.png")
 ```
 
-### Where am I?
+### Where am I? {#file-structure}
 
 R studio tells you where you are in terms of directory address as shown in Figure \@ref(fig:working-directory).
 
@@ -195,10 +195,29 @@ Section \@ref(workflow) builds upon this to create a robust workflow for data an
 
 (ref:dir-structure) A typical directory structure
 
-```{r dir-structure,fig.cap='(ref:dir-structure)',fig.asp=1, out.width= '80%', fig.align='center', echo=FALSE}
+```{r dir-structure,fig.cap='(ref:dir-structure)',fig.asp=1, out.width= '80%', fig.align='center', cache=TRUE,echo=FALSE}
 knitr::include_graphics("img/R-ecology-work_dir_structure.png")
 ```
 
+#### Absolute path from the root `/`
+
+```{r abs-path,fig.asp=1, out.width= '100%', fig.align='center', cache=TRUE,echo=FALSE}
+knitr::include_graphics("img/abs-filepath-23-10-2019.png")
+```
+
+
+#### Relative path from where you are `../`
+
+```{r rel-path,fig.asp=1, out.width= '100%', fig.align='center', cache=TRUE,echo=FALSE}
+knitr::include_graphics("img/rel-filepath-23-10-2019.png")
+```
+
+
+#### Home directory path `~`
+
+```{r home-path,fig.asp=1, out.width= '100%', fig.align='center', cache=TRUE,echo=FALSE}
+knitr::include_graphics("img/home-filepath-23-10-2019.png")
+```
 
 ### Getting help {#getting-help}
 

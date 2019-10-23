@@ -140,7 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="getting-started.html"><a href="getting-started.html#rstudio"><i class="fa fa-check"></i><b>1.3</b> RStudio</a><ul>
 <li class="chapter" data-level="1.3.1" data-path="getting-started.html"><a href="getting-started.html#what-is-real"><i class="fa fa-check"></i><b>1.3.1</b> What is real?</a></li>
-<li class="chapter" data-level="1.3.2" data-path="getting-started.html"><a href="getting-started.html#where-am-i"><i class="fa fa-check"></i><b>1.3.2</b> Where am I?</a></li>
+<li class="chapter" data-level="1.3.2" data-path="getting-started.html"><a href="getting-started.html#file-structure"><i class="fa fa-check"></i><b>1.3.2</b> Where am I?</a></li>
 <li class="chapter" data-level="1.3.3" data-path="getting-started.html"><a href="getting-started.html#getting-help"><i class="fa fa-check"></i><b>1.3.3</b> Getting help</a></li>
 <li class="chapter" data-level="1.3.4" data-path="getting-started.html"><a href="getting-started.html#install-packages"><i class="fa fa-check"></i><b>1.3.4</b> Installing and loading packages</a></li>
 <li class="chapter" data-level="1.3.5" data-path="getting-started.html"><a href="getting-started.html#functions-1"><i class="fa fa-check"></i><b>1.3.5</b> Using functions</a></li>
@@ -197,6 +197,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#tidyrpivot_wider"><i class="fa fa-check"></i><b>3.1.2</b> <code>tidyr::pivot_wider</code></a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#missing-values"><i class="fa fa-check"></i><b>3.2</b> Missing values</a></li>
+<li class="chapter" data-level="3.3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#joining-tables"><i class="fa fa-check"></i><b>3.3</b> Joining tables</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>4</b> Functions</a></li>
 <li class="chapter" data-level="5" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>5</b> Exploratory data analysis</a></li>
@@ -263,7 +264,7 @@ Figure 1.2: <a href="https://stephensontam.files.wordpress.com/2017/06/lolcat-pr
 <p><strong>R</strong> is a programming language that follows the philosophy laid down by it’s
 predecessor S. The philosophy being that users begin in an interactive
 environment where they don’t consciously think of themselves as programming.
-It was created in 1993, and documented in <span class="citation">(Ihaka and Gentleman <a href="#ref-ihaka1996" role="doc-biblioref">1996</a>)</span>.</p>
+It was created in 1993, and documented in <span class="citation">(Ihaka and Gentleman <a href="#ref-ihaka1996">1996</a>)</span>.</p>
 <p>Reasons R has become popular include that it is both open source and cross platform,
 and that it has broad functionality, from the analysis of data and creating
 powerful graphical visualisations and web apps.</p>
@@ -377,7 +378,7 @@ Figure 1.6: Don’t save your workspace, save your script instead.
 </p>
 </div>
 </div>
-<div id="where-am-i" class="section level3">
+<div id="file-structure" class="section level3">
 <h3><span class="header-section-number">1.3.2</span> Where am I?</h3>
 <p>R studio tells you where you are in terms of directory address as shown in Figure <a href="getting-started.html#fig:working-directory">1.7</a>.</p>
 
@@ -407,6 +408,18 @@ Section <a href="getting-started.html#workflow">1.4</a> builds upon this to crea
 <p class="caption">
 Figure 1.8: A typical directory structure
 </p>
+</div>
+<div id="absolute-path-from-the-root" class="section level4">
+<h4><span class="header-section-number">1.3.2.1</span> Absolute path from the root <code>/</code></h4>
+<p><img src="img/abs-filepath-23-10-2019.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="relative-path-from-where-you-are-.." class="section level4">
+<h4><span class="header-section-number">1.3.2.2</span> Relative path from where you are <code>../</code></h4>
+<p><img src="img/rel-filepath-23-10-2019.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="home-directory-path" class="section level4">
+<h4><span class="header-section-number">1.3.2.3</span> Home directory path <code>~</code></h4>
+<p><img src="img/home-filepath-23-10-2019.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="getting-help" class="section level3">
@@ -579,7 +592,7 @@ that are well worth remembering.</p>
 </div>
 <div id="tidy-data" class="section level2">
 <h2><span class="header-section-number">1.5</span> The tidyverse and tidy data</h2>
-<p>The <a href="https://www.tidyverse.org/">tidyverse</a> <span class="citation">(Wickham <a href="#ref-R-tidyverse" role="doc-biblioref">2017</a>)</span> is <em>“an opinionated
+<p>The <a href="https://www.tidyverse.org/">tidyverse</a> <span class="citation">(Wickham <a href="#ref-R-tidyverse">2017</a>)</span> is <em>“an opinionated
 collection of R packages designed for data science”</em> .</p>
 <p>Tidyverse packages contain functions that <em>“share an underlying design
 philosophy, grammar, and data structures.”</em> It’s this philosophy that makes

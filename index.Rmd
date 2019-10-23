@@ -15,6 +15,7 @@ twitter-handle: alistair604
 cover-image: img/Carrick-bend-Guten-Verrill-modified.png
 url: 'https://ab604.github.io/docs/coding-together-2019/'
 description: "Materials for the Coding TogetheR workshops"
+always_allow_html: yes
 ---
 
 ```{r include=FALSE}
@@ -22,6 +23,7 @@ library(tidyverse)
 library(dslabs)
 library(janitor)
 library(here)
+library(DiagrammeR)
 # automatically create a bib database for R packages
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'rmallet','here','dslabs','scales','ggrepel'

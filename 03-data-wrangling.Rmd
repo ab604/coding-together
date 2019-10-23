@@ -44,7 +44,7 @@ can be read directly into a `surveys_spread` object using the code below.
 surveys_spread <- read_csv("https://raw.githubusercontent.com/ab604/ab604.github.io/master/docs/surveys_spread.csv")
 ```
 
-Feel free to explore the data, and snapshot is shown in Figure \@ref(fig:pivl).
+Feel free to explore the data, and snapshot is shown in Figure \@ref(fig:pivot-long).
 
 Imagine that we recorded the mean weight of each rodent species on a plot in the field. 
 It makes sense to put the species as column headings, along with the plot id and

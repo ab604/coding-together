@@ -140,7 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="getting-started.html"><a href="getting-started.html#rstudio"><i class="fa fa-check"></i><b>1.3</b> RStudio</a><ul>
 <li class="chapter" data-level="1.3.1" data-path="getting-started.html"><a href="getting-started.html#what-is-real"><i class="fa fa-check"></i><b>1.3.1</b> What is real?</a></li>
-<li class="chapter" data-level="1.3.2" data-path="getting-started.html"><a href="getting-started.html#where-am-i"><i class="fa fa-check"></i><b>1.3.2</b> Where am I?</a></li>
+<li class="chapter" data-level="1.3.2" data-path="getting-started.html"><a href="getting-started.html#file-structure"><i class="fa fa-check"></i><b>1.3.2</b> Where am I?</a></li>
 <li class="chapter" data-level="1.3.3" data-path="getting-started.html"><a href="getting-started.html#getting-help"><i class="fa fa-check"></i><b>1.3.3</b> Getting help</a></li>
 <li class="chapter" data-level="1.3.4" data-path="getting-started.html"><a href="getting-started.html#install-packages"><i class="fa fa-check"></i><b>1.3.4</b> Installing and loading packages</a></li>
 <li class="chapter" data-level="1.3.5" data-path="getting-started.html"><a href="getting-started.html#functions-1"><i class="fa fa-check"></i><b>1.3.5</b> Using functions</a></li>
@@ -197,6 +197,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#tidyrpivot_wider"><i class="fa fa-check"></i><b>3.1.2</b> <code>tidyr::pivot_wider</code></a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#missing-values"><i class="fa fa-check"></i><b>3.2</b> Missing values</a></li>
+<li class="chapter" data-level="3.3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#joining-tables"><i class="fa fa-check"></i><b>3.3</b> Joining tables</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>4</b> Functions</a></li>
 <li class="chapter" data-level="5" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>5</b> Exploratory data analysis</a></li>
@@ -256,7 +257,20 @@ observations, as it is not always obvious which is which.</p>
 <h3><span class="header-section-number">3.1.1</span> <code>tidyr::pivot_longer</code></h3>
 <p>First we’ll consider the case when our variable has been recorded as
 column names by returning to a version of the <a href="portal-project">Portal surveys data</a>.</p>
+<p>A table containing the mean weight of 10 rodent species on each plot from the rodent survey data
+can be read directly into a <code>surveys_spread</code> object using the code below.</p>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1">surveys_spread &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/ab604/ab604.github.io/master/docs/surveys_spread.csv&quot;</span>)</a></code></pre></div>
+<p>Feel free to explore the data, and snapshot is shown in Figure <a href="data-wrangle-2.html#fig:pivot-long">3.1</a>.</p>
+<p>Imagine that we recorded the mean weight of each rodent species on a plot in the field.
+It makes sense to put the species as column headings, along with the plot id and
+then record the values in each cell.</p>
+<p>However, really our variables of interest are the rodent species and our observational
+units, the rows, should contain the mean weight for a rodent species in a plot. Hence we
+need to reduce the number of columns and create a longer table.</p>
+<p>To do this we <code>pivot_longer()</code> by using <code>names_to = "genus"</code> to create a new <code>genus</code>
+variable for the exisiting column heading, and <code>values_to = "mean_weight"</code> to create
+a variable <code>mean_weight</code> for the values. We put a minus sign before the
+variable <code>-plot_id</code> to tell the function not to use these values in the new variable column.</p>
 
 <div class="figure" style="text-align: center"><span id="fig:pivot-long"></span>
 <img src="img/pivot_longer_R.png" alt="tidyr::pivot_longer" width="100%" />
@@ -264,11 +278,27 @@ column names by returning to a version of the <a href="portal-project">Portal su
 Figure 3.1: <code>tidyr::pivot_longer</code>
 </p>
 </div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1">surveys_spread <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb64-2" title="2"><span class="st">        </span><span class="kw">pivot_longer</span>(<span class="dt">names_to =</span> <span class="st">&quot;genus&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;mean_weight&quot;</span>, <span class="op">-</span>plot_id) </a></code></pre></div>
+<pre><code>## # A tibble: 240 x 3
+##    plot_id genus           mean_weight
+##      &lt;dbl&gt; &lt;chr&gt;                 &lt;dbl&gt;
+##  1       1 Baiomys                7   
+##  2       1 Chaetodipus           22.2 
+##  3       1 Dipodomys             60.2 
+##  4       1 Neotoma              156.  
+##  5       1 Onychomys             27.7 
+##  6       1 Perognathus            9.62
+##  7       1 Peromyscus            22.2 
+##  8       1 Reithrodontomys       11.4 
+##  9       1 Sigmodon              NA   
+## 10       1 Spermophilus          NA   
+## # ... with 230 more rows</code></pre>
 </div>
 <div id="tidyrpivot_wider" class="section level3">
 <h3><span class="header-section-number">3.1.2</span> <code>tidyr::pivot_wider</code></h3>
 
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1">surveys_gw &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/ab604/ab604.github.io/master/docs/surveys_grouped_weight.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1">surveys_gw &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/ab604/ab604.github.io/master/docs/surveys_grouped_weight.csv&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:pivot-wider"></span>
 <img src="img/pivot_wider_R.png" alt="tidyr::pivot_wider" width="100%" />
 <p class="caption">
@@ -284,6 +314,24 @@ Figure 3.2: <code>tidyr::pivot_wider</code>
 <li><strong>Explicitly</strong>, i.e. flagged with NA.</li>
 <li><strong>Implicitly</strong>, i.e. simply not present in the data.</li>
 </ul>
+</div>
+<div id="joining-tables" class="section level2">
+<h2><span class="header-section-number">3.3</span> Joining tables</h2>
+<p>Species
+Portal_rodent_species contains the species codes used in Portal_rodent. Any animal found in a trap is recorded. Non-rodent species are occasionally trapped and so are given species codes. Several columns are also included in the species table to restrict the species list to only rodents, only target species, or only granivores.</p>
+<p>Rodent adundance data
+Portal_rodent contains the rodent trapping data. Each individual of a target species is PIT tagged and data on species, location caught (plot and stake), sex, reproductive condition, weight, and hindfoot length are recorded. In almost all cases, you will want to remove negative period codes before using this data. Negative period codes indicate data collected outside of the normal census protocols, and should absolutely not be used as regular trapping data.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">rodent_species &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/weecology/PortalData/master/Rodents/Portal_rodent_species.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb67-2" title="2">rodent_data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/weecology/PortalData/master/Rodents/Portal_rodent.csv&quot;</span>, </a>
+<a class="sourceLine" id="cb67-3" title="3">                        <span class="dt">col_types =</span> <span class="kw">cols</span>(<span class="dt">tag =</span> <span class="kw">col_character</span>(),</a>
+<a class="sourceLine" id="cb67-4" title="4">                                         <span class="dt">prevrt =</span> <span class="kw">col_character</span>(),</a>
+<a class="sourceLine" id="cb67-5" title="5">                                         <span class="dt">ltag =</span> <span class="kw">col_character</span>(),</a>
+<a class="sourceLine" id="cb67-6" title="6">                                         <span class="dt">note2 =</span> <span class="kw">col_character</span>(),</a>
+<a class="sourceLine" id="cb67-7" title="7">                                         <span class="dt">note3 =</span> <span class="kw">col_character</span>(), </a>
+<a class="sourceLine" id="cb67-8" title="8">                                         <span class="dt">note4 =</span> <span class="kw">col_character</span>(), </a>
+<a class="sourceLine" id="cb67-9" title="9">                                         <span class="dt">note5 =</span> <span class="kw">col_character</span>()))</a>
+<a class="sourceLine" id="cb67-10" title="10"></a>
+<a class="sourceLine" id="cb67-11" title="11">rodent_species <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(rodent_data, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;speciescode&quot;</span> =<span class="st"> &quot;species&quot;</span>))</a></code></pre></div>
 
 </div>
 </div>

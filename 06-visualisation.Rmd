@@ -1,1 +1,3 @@
-# Visualistion {#viz}
+# Visualistion and communication {#viz}
+
+Using R for report writing and presentations.

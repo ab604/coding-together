@@ -10,11 +10,11 @@ output:
 An intro to dplyr:
 
 Transforming tables:
-mutate() adds new variables that are functions of existing variables
-select() picks variables based on their names.
 filter() picks cases based on their values.
-summarise() reduces multiple values down to a single summary.
 arrange() changes the ordering of the rows.
+select() picks variables based on their names.
+mutate() adds new variables that are functions of existing variables
+summarise() reduces multiple values down to a single summary.
 
 ## Vectors, types, indexing and data frames
 

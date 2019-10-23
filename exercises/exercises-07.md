@@ -1,2 +1,2 @@
-# Coding together week 7 - Tidy Tuesday Part 1
+# Coding together week 7 - exploratory data analysis
 ## Graduate outcomes

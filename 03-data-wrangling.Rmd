@@ -66,7 +66,7 @@ knitr::include_graphics("img/pivot_longer_R.png")
 ```
 
 
-```{r}
+```{r wide-to-long}
 surveys_spread %>% 
         pivot_longer(names_to = "genus", values_to = "mean_weight", -plot_id) 
 ```
@@ -84,6 +84,13 @@ surveys_gw <- read_csv("https://raw.githubusercontent.com/ab604/ab604.github.io/
 knitr::include_graphics("img/pivot_wider_R.png")
 ```
 
+
+```{r long-to-wide}
+surveys_gw %>% 
+        pivot_wider(names_from = genus, values_from = mean_weight) 
+```
+
+
 ## Missing values
 
 As discussed in [R4DS](https://r4ds.had.co.nz/tidy-data.html#missing-values-3) values can be missing in two ways:
@@ -99,17 +106,20 @@ Portal_rodent_species contains the species codes used in Portal_rodent. Any anim
 Rodent adundance data
 Portal_rodent contains the rodent trapping data. Each individual of a target species is PIT tagged and data on species, location caught (plot and stake), sex, reproductive condition, weight, and hindfoot length are recorded. In almost all cases, you will want to remove negative period codes before using this data. Negative period codes indicate data collected outside of the normal census protocols, and should absolutely not be used as regular trapping data.
 
-```{r, eval=FALSE}
+```{r, cache=TRUE,eval=TRUE}
 rodent_species <- read_csv("https://raw.githubusercontent.com/weecology/PortalData/master/Rodents/Portal_rodent_species.csv")
-rodent_data <- read_csv("https://raw.githubusercontent.com/weecology/PortalData/master/Rodents/Portal_rodent.csv", 
-                        col_types = cols(tag = col_character(),
+# 
+rodent_data <-  read_csv("https://raw.githubusercontent.com/weecology/PortalData/master/Rodents/Portal_rodent.csv",
+                         col_types = cols(tag = col_character(),
                                          prevrt = col_character(),
                                          ltag = col_character(),
                                          note2 = col_character(),
                                          note3 = col_character(), 
                                          note4 = col_character(), 
                                          note5 = col_character()))
+```
 
+```{r inner-join}
 rodent_species %>% left_join(rodent_data, by = c("speciescode" = "species"))
 ```
 

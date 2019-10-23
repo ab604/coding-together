@@ -1,3 +1,0 @@
-# Reports {#reports}
-
-Using R for report writing and presentations.

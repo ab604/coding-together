@@ -91,7 +91,7 @@ surveys_gw %>%
 ```
 
 
-## Missing values
+<!--  ## Missing values 
 
 As discussed in [R4DS](https://r4ds.had.co.nz/tidy-data.html#missing-values-3) values can be missing in two ways:
 
@@ -122,4 +122,4 @@ rodent_data <-  read_csv("https://raw.githubusercontent.com/weecology/PortalData
 ```{r inner-join}
 rodent_species %>% left_join(rodent_data, by = c("speciescode" = "species"))
 ```
-
+-->

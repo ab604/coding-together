@@ -20,10 +20,11 @@ always_allow_html: yes
 
 ```{r include=FALSE}
 library(tidyverse)
+library(lubridate)
 library(dslabs)
 library(janitor)
 library(here)
-library(DiagrammeR)
+#library(DiagrammeR)
 # automatically create a bib database for R packages
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'rmallet','here','dslabs','scales','ggrepel'

@@ -91,7 +91,9 @@ surveys_gw %>%
 ```
 
 
-<!--  ## Missing values 
+<!--  
+
+## Missing values 
 
 As discussed in [R4DS](https://r4ds.had.co.nz/tidy-data.html#missing-values-3) values can be missing in two ways:
 
@@ -100,15 +102,81 @@ As discussed in [R4DS](https://r4ds.had.co.nz/tidy-data.html#missing-values-3) v
 
 ## Joining tables
 
-Species
-Portal_rodent_species contains the species codes used in Portal_rodent. Any animal found in a trap is recorded. Non-rodent species are occasionally trapped and so are given species codes. Several columns are also included in the species table to restrict the species list to only rodents, only target species, or only granivores.
+See also [R4DS Relational data chapter](https://r4ds.had.co.nz/relational-data.html)
 
-Rodent adundance data
-Portal_rodent contains the rodent trapping data. Each individual of a target species is PIT tagged and data on species, location caught (plot and stake), sex, reproductive condition, weight, and hindfoot length are recorded. In almost all cases, you will want to remove negative period codes before using this data. Negative period codes indicate data collected outside of the normal census protocols, and should absolutely not be used as regular trapping data.
+Previously we've used data from the [Portal project](portal-project) where
+everything we needed was already contained within a single table, but often
+we have *related* information spread across multiples tables that we want to analyse. 
+In these situations we need to join pairs of tables to explore relationships of interest.
+
+> **Note** Joins always use two tables. To add a third relationship it would 
+require joining the table created from the first join to another table. And so on.
+
+We can think of three types of join, two of which correspond with `dplyr` verbs:
+
+1. Joins that **mutate** the table. These are joins that create a new variable in one table using
+observations from another.
+2. Joins that **filter** the table. These are joins that keep only a subset of observations from 
+one table based on whether they match the observations in another.
+3. Joins that perform **set operations**. These are joins corresponding with the 
+mathematical operation of intersection $\cap$, union $\cup$, and difference $-$.
+
+### Keys
+
+A key is a variable or set of variables that uniquely identifies an observation
+in a table. In a simple case only one variable is sufficient, but often several variables
+are required.
+
++ Primary key: a key that uniquely identifies the observation in its own table e.g. `record_id` in `surveys` is unique to each set of rodent observations. 
++ Foreign key: a key that uniquely identifies the observation in another table. e.g. if `date` appeared in another table that recorded weather information that we wished to join `surveys` to. The `date` is not unique in `surveys` but it would be in the weather table.
+
+Keys can be both primary and foreign, as they might be primary for one table and foreign in another or vice versa. 
+
+It's a good idea to verify a key is primary i.e. uniquely identifies an observation.
+See the examples in [R4DS keys](https://r4ds.had.co.nz/relational-data.html#keys)
+
+If you discover your table lacks a primary key you can add one with `mutate()`.
+
+### Mutating joins
+
+`inner_join()`, `left_join()`, `right_join()` and `full_join()`
+
+The data on the 
+
+### Species
+
+*"`Portal_rodent_species.csv` contains the species codes used in Portal_rodent. Any animal found in a trap is recorded. Non-rodent species are occasionally trapped and so are given species codes. Several columns are also included in the species table to restrict the species list to only rodents, only target species, or only granivores."*
+
+### Rodent adundance data
+
+*"`Portal_rodent.csv` contains the rodent trapping data. Each individual of a target species is PIT tagged and data on species, location caught (plot and stake), sex, reproductive condition, weight, and hindfoot length are recorded. In almost all cases, you will want to remove negative period codes before using this data. Negative period codes indicate data collected outside of the normal census protocols, and should absolutely not be used as regular trapping data."*
+
+The rodent survey data is a good example of 
 
 ```{r, cache=TRUE,eval=TRUE}
-rodent_species <- read_csv("https://raw.githubusercontent.com/weecology/PortalData/master/Rodents/Portal_rodent_species.csv")
-# 
+# Species data
+weather <- read_csv("https://raw.githubusercontent.com/weecology/PortalData/master/Weather/Portal_weather.csv",
+                    col_types = cols(RH = col_double(),
+                                     battv = col_double(),
+                                     PTemp_C = col_double(),
+                                     BP_mmHg_Avg = col_double(),
+                                     SlrkW = col_double(),
+                                     SlrMJ_Tot = col_double(),
+                                     ETos =col_double(),
+                                     Rso = col_double(),
+                                     WS_ms_Avg = col_double(),
+                                     WindDir  = col_double(),
+                                     WS_ms_S_WVT= col_double(),
+                                     WindDir_D1_WVT = col_double(),
+                                     WindDir_SD1_WVT = col_double(),
+                                     HI_C_Avg = col_double(),     
+                                     SunHrs_Tot = col_double(),
+                                     PotSlrW_Avg = col_double(), 
+                                     WC_C_Avg = col_double()
+                                     )) %>% 
+        mutate(date = make_date(day = day, month = month, year = year)) %>% 
+        distinct(date, .keep_all = T)
+# Rodent survey data
 rodent_data <-  read_csv("https://raw.githubusercontent.com/weecology/PortalData/master/Rodents/Portal_rodent.csv",
                          col_types = cols(tag = col_character(),
                                          prevrt = col_character(),
@@ -116,10 +184,40 @@ rodent_data <-  read_csv("https://raw.githubusercontent.com/weecology/PortalData
                                          note2 = col_character(),
                                          note3 = col_character(), 
                                          note4 = col_character(), 
-                                         note5 = col_character()))
+                                         note5 = col_character())) %>% 
+        mutate(date = make_date(day = day, month = month, year = year))
 ```
 
 ```{r inner-join}
-rodent_species %>% left_join(rodent_data, by = c("speciescode" = "species"))
+#weather %>% count(date) %>% filter(n > 1)
+weather %>% inner_join(rodent_data, by = "date") %>% 
+        glimpse()
+```
+
+```{r left-join}
+weather %>% left_join(rodent_data, by = "date") %>% 
+        glimpse()
+```
+
+```{r right-join}
+weather %>% right_join(rodent_data, by = "date") %>% 
+        glimpse()
+```
+
+```{r full-join}
+weather %>% full_join(rodent_data, by = "date") %>% 
+        glimpse()
+```
+### Filtering joins
+
+`semi_join()` and `anti_join()`
+
+### Set operations
+
+These are joins corresponding with the 
+mathematical operation of intersection $\cap$, union $\cup$, and difference $-$.
+
+```{r set-operations, fig.align='center',out.width = '50%', echo=FALSE,cache=TRUE}
+knitr::include_graphics("img/set-operations.png")
 ```
 -->

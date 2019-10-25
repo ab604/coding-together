@@ -91,7 +91,7 @@ surveys_gw %>%
 ```
 
 
-<!--  
+  
 
 ## Missing values 
 
@@ -153,6 +153,10 @@ The data on the
 
 The rodent survey data is a good example of 
 
+Does the weather influence the census? The data in this file are hourly and span three weather stations. 
+The first only recorded Air Temperature and Precipitation, so I've created a dataset
+for the only the date, the air temperature and rainfall columns for the three weather stations.
+
 ```{r, cache=TRUE,eval=TRUE}
 # Species data
 weather <- read_csv("https://raw.githubusercontent.com/weecology/PortalData/master/Weather/Portal_weather.csv",
@@ -174,8 +178,8 @@ weather <- read_csv("https://raw.githubusercontent.com/weecology/PortalData/mast
                                      PotSlrW_Avg = col_double(), 
                                      WC_C_Avg = col_double()
                                      )) %>% 
-        mutate(date = make_date(day = day, month = month, year = year)) %>% 
-        distinct(date, .keep_all = T)
+        mutate(date = make_date(day = day, month = month, year = year)) #%>% 
+        #distinct(date, .keep_all = T)
 # Rodent survey data
 rodent_data <-  read_csv("https://raw.githubusercontent.com/weecology/PortalData/master/Rodents/Portal_rodent.csv",
                          col_types = cols(tag = col_character(),
@@ -188,24 +192,35 @@ rodent_data <-  read_csv("https://raw.githubusercontent.com/weecology/PortalData
         mutate(date = make_date(day = day, month = month, year = year))
 ```
 
+
+```{r}
+weather %>% select(date,airtemp,precipitation) %>% filter(is.na(airtemp))
+weather %>% select(date,airtemp,precipitation) %>% filter(is.na(precipitation))
+
+mean_weather <- weather %>% select(date,airtemp,precipitation) %>% 
+        drop_na() %>% 
+        group_by(date) %>% 
+        summarise(mean_temp = mean(airtemp), mean_rain = mean(precipitation))
+```
+
 ```{r inner-join}
 #weather %>% count(date) %>% filter(n > 1)
-weather %>% inner_join(rodent_data, by = "date") %>% 
+mean_weather %>% inner_join(rodent_data, by = "date") %>% 
         glimpse()
 ```
 
 ```{r left-join}
-weather %>% left_join(rodent_data, by = "date") %>% 
+mean_weather %>% left_join(rodent_data, by = "date") %>% 
         glimpse()
 ```
 
 ```{r right-join}
-weather %>% right_join(rodent_data, by = "date") %>% 
+mean_weather %>% right_join(rodent_data, by = "date") %>% 
         glimpse()
 ```
 
 ```{r full-join}
-weather %>% full_join(rodent_data, by = "date") %>% 
+mean_weather %>% full_join(rodent_data, by = "date") %>% 
         glimpse()
 ```
 ### Filtering joins

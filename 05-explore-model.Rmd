@@ -1,3 +1,5 @@
 # Exploratory data analysis {#eda}
  
  Putting everything together to perform exploratory data analysis.
+ 
+ *Art of data science* checklist

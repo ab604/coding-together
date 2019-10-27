@@ -1,3 +1,13 @@
 # Visualistion and communication {#viz}
 
+## Visualistion
+
+### Exploratory plots
+
+### Polished plots
+
+## Reports
+
 Using R for report writing and presentations.
+
+## Presentations

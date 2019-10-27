@@ -200,10 +200,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.1" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#tidyrpivot_longer"><i class="fa fa-check"></i><b>3.1.1</b> <code>tidyr::pivot_longer</code></a></li>
 <li class="chapter" data-level="3.1.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#tidyrpivot_wider"><i class="fa fa-check"></i><b>3.1.2</b> <code>tidyr::pivot_wider</code></a></li>
 </ul></li>
+<li class="chapter" data-level="3.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#missing-values"><i class="fa fa-check"></i><b>3.2</b> Missing values</a></li>
+<li class="chapter" data-level="3.3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#joining-tables"><i class="fa fa-check"></i><b>3.3</b> Joining tables</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#keys"><i class="fa fa-check"></i><b>3.3.1</b> Keys</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#mutating-joins"><i class="fa fa-check"></i><b>3.3.2</b> Mutating joins</a></li>
+<li class="chapter" data-level="3.3.3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#species"><i class="fa fa-check"></i><b>3.3.3</b> Species</a></li>
+<li class="chapter" data-level="3.3.4" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#rodent-adundance-data"><i class="fa fa-check"></i><b>3.3.4</b> Rodent adundance data</a></li>
+<li class="chapter" data-level="3.3.5" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#filtering-joins"><i class="fa fa-check"></i><b>3.3.5</b> Filtering joins</a></li>
+<li class="chapter" data-level="3.3.6" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#set-operations"><i class="fa fa-check"></i><b>3.3.6</b> Set operations</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>4</b> Functions</a></li>
-<li class="chapter" data-level="5" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>5</b> Visualistion and communication</a></li>
-<li class="chapter" data-level="6" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>6</b> Exploratory data analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>4</b> Visualistion and communication</a><ul>
+<li class="chapter" data-level="4.1" data-path="viz.html"><a href="viz.html#visualistion"><i class="fa fa-check"></i><b>4.1</b> Visualistion</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="viz.html"><a href="viz.html#exploratory-plots"><i class="fa fa-check"></i><b>4.1.1</b> Exploratory plots</a></li>
+<li class="chapter" data-level="4.1.2" data-path="viz.html"><a href="viz.html#polished-plots"><i class="fa fa-check"></i><b>4.1.2</b> Polished plots</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="viz.html"><a href="viz.html#reports"><i class="fa fa-check"></i><b>4.2</b> Reports</a></li>
+<li class="chapter" data-level="4.3" data-path="viz.html"><a href="viz.html#presentations"><i class="fa fa-check"></i><b>4.3</b> Presentations</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>5</b> Exploratory data analysis</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -265,7 +280,7 @@ Figure 1.2: <a href="https://stephensontam.files.wordpress.com/2017/06/lolcat-pr
 <p><strong>R</strong> is a programming language that follows the philosophy laid down by it’s
 predecessor S. The philosophy being that users begin in an interactive
 environment where they don’t consciously think of themselves as programming.
-It was created in 1993, and documented in <span class="citation">(Ihaka and Gentleman <a href="#ref-ihaka1996" role="doc-biblioref">1996</a>)</span>.</p>
+It was created in 1993, and documented in <span class="citation">(Ihaka and Gentleman <a href="#ref-ihaka1996">1996</a>)</span>.</p>
 <p>Reasons R has become popular include that it is both open source and cross platform,
 and that it has broad functionality, from the analysis of data and creating
 powerful graphical visualisations and web apps.</p>
@@ -653,7 +668,7 @@ that are well worth remembering.</p>
 </div>
 <div id="tidy-data" class="section level2">
 <h2><span class="header-section-number">1.8</span> The tidyverse and tidy data</h2>
-<p>The <a href="https://www.tidyverse.org/">tidyverse</a> <span class="citation">(Wickham <a href="#ref-R-tidyverse" role="doc-biblioref">2017</a>)</span> is <em>“an opinionated
+<p>The <a href="https://www.tidyverse.org/">tidyverse</a> <span class="citation">(Wickham <a href="#ref-R-tidyverse">2017</a>)</span> is <em>“an opinionated
 collection of R packages designed for data science”</em> .</p>
 <p>Tidyverse packages contain functions that <em>“share an underlying design
 philosophy, grammar, and data structures.”</em> It’s this philosophy that makes
@@ -922,7 +937,7 @@ we create an object, but others such as names can be added.</p>
 <div id="plotting-data" class="section level2">
 <h2><span class="header-section-number">1.14</span> Plotting data</h2>
 <p>One of the most useful and important parts of any data analysis is plotting
-data. We’ll be spending a whole lesson on it in chapter <a href="viz.html#viz">5</a>, but to
+data. We’ll be spending a whole lesson on it in chapter <a href="viz.html#viz">4</a>, but to
 give you an example, we’ll use the <code>ggplot2</code> package as an introduction to
 automating a task in code, and as a tool for understanding data.</p>
 <p><code>ggplot2</code> implements the <em>grammar of graphics</em>, for describing
@@ -1078,6 +1093,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

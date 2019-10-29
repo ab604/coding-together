@@ -252,48 +252,120 @@ surveys %>%
 
 ### Completing missing values
 
+There are numerous ways to complete missing values, but what they generally
+have in common is the approach of guessing the missing value based on existing information, otherwise known as [imputation](https://en.wikipedia.org/wiki/Imputation_(statistics)).
+Here we'll cover a couple of ways to do it with `dplyr` and `tidyr` functions.
+
+First, let's deal with implicit missing values using `tidyr::complete()`.
+
+Imagine we have the table `surveys_ms` which is missing the value 
+for the `mean_weight` for the third quarter of 1991 and all observations
+for the third quarter of 1992:
+
+```{r}
+surveys_ms
+```
+
+To add the row for the third quarter of 1992 we use `complete()` with the 
+`year` and `qtr` variables as arguments. The function finds all the unique
+combinations of `year` and `qtr` and then adds any that are missing to create
+a complete set of observations for 1991 and 1992 with explicit missing values.
+
 ```{r tidyr-complete, cache=TRUE}
 surveys_ms %>% 
         complete(year,qtr)
 ```
 
+Next let's consider a complete table `surveys_ic` with an explicit missing value for
+the `species_id`. 
+
 ```{r surveys-ic}
 surveys_ic <- tibble(species_id = c("DM","DM",NA,"DS","DS","DS"),
-                     mean_weight = c(3.75,2.50,8.50,7.50,NA,2.50))
+                     mean_weight = c(3.75,2.50,8.50,7.50,5.50,2.50))
 surveys_ic
 ```
 
-Replace `NA` with the last non-missing value, last observation carried forward.
+In this case we might reasonably assume that the missing value is `DM` as we
+have six observations on two species.
+
+We can use `tidyr::fill()` to replace `NA` with the last non-missing value for
+`species_id`. This is also known as last observation carried forward.
+
+Passing `species_id` to `fill()` completes the table:
 
 ```{r tidyr-fill, cache=TRUE}
 surveys_ic %>% 
         fill(species_id)
 ```
 
-Other strategies might be to impute values by using 
+Another common strategy is to impute missing values by using the mean or the
+median of exisiting values for the same variable.
+
+We can do that using `dplyr::coalesce()` which is a function that finds the 
+first non-missing value in a variable and then replaces it using the second
+argument.
+
+For example, if we return to `surveys_ms` we used `complete()` to complete
+the observations, but we have two `NA`s in the `mean_weight` column.
+
+Let's impute the missing values bt using the median value for `mean_weight` to
+replace the `NA` values.
+
+We can `mutate()` to overwrite the `mean_weight` variable (be careful when 
+you do this!) using `coalesce()` with `mean_weight` as the first argument to look
+for missing values, and then the `median()` function is used to replace the missing
+values with the median `mean_weight`, remembering to remove `NA`.
 
 ```{r dplyr-coalesce, cache=TRUE}
-surveys_ic %>% 
+surveys_ms %>% 
+        complete(year,qtr) %>% 
         mutate(mean_weight = coalesce(mean_weight, 
                                       median(mean_weight, na.rm = TRUE)))
 ```
 
-Let's repeat the analysis but having filled our table
+This gives us a complete table with . Whether it makes sense to do this is another
+question, and you should think carefully about your missing value strategy as it
+will influence your final output and conclusions.
 
-```{r mk-krats, cache=TRUE}
+Let's repeat part of the analysis we did to find the `mean_weight`, and now 
+`mean_hindfoot`, for the full `surveys` dataset, but this time we'll 
+complete the table by imputing values and compare the result to the result when 
+we drop the observations with missing values.
+
+For simplicity, let's just look at kangaroo rats. Here I introduce the `%in%`
+operator with filter and vector containing the `species_id` for the kangaroo
+rats. 
+
+This leaves 16,127 observations.
+
+```{r krats, cache=TRUE}
 krats <- surveys %>% 
         filter(species_id %in% c("DM","DS","DO"))
 
+krats %>% glimpse()
+```
+
+How many missing values are there in `krats` and for which variables?
+
+```{r krats-missing}
 # How many missing values
 krats %>% map_dfr(~ sum(is.na(.))) %>% glimpse()
 ```
 
-Mean w
+Grouping by `species_id` and `sex`, find the `mean_weight` and `mean_hindfoot` when observations with missing values are dropped:
 
 ```{r mean-drop-krats, cache=TRUE}
-krats %>% drop_na %>% group_by(species_id,sex) %>% 
-        summarise(mean_weight = mean(weight))
+krats %>% drop_na() %>% group_by(species_id,sex) %>% 
+        summarise(mean_weight = mean(weight), 
+                  mean_hindfoot = mean(hindfoot_length))
 ```
+
+Now we complete the table, first using `fill()` to impute the missing `sex` of
+each kangaroo rat based on the last non-missing sex observation. Then we group
+the kangaroo rats according to species and sex. Then we impute the missing `weight`
+and `hindfoot_length` values with `mutate()` and `coalesce()` from each groups median
+value. Finally we summarise again to find the `mean_weight` and `mean_hindfoot`
+for each group.
 
 ```{r mean-impute-krats, cache=TRUE}
 krats %>% 
@@ -302,9 +374,11 @@ krats %>%
         mutate(weight = coalesce(weight, median(weight, na.rm = TRUE)),
                hindfoot_length = coalesce(hindfoot_length, 
                                           median(hindfoot_length, na.rm = TRUE))) %>%
-        summarise(mean_weight = mean(weight))
+        summarise(mean_weight = mean(weight),
+                  mean_hindfoot = mean(hindfoot_length))
 ```
 
+The results are very similar.
 
 ## Joining tables
 

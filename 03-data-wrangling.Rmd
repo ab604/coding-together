@@ -159,7 +159,7 @@ surveys_ms %>%
 Or with `filter()` to return the row where there is a missing value
 for `mean_weight`.
 
-```{r filter_na, cache=TRUE}
+```{r filter_na, cache=F}
 surveys_ms %>% 
         filter(is.na(mean_weight) == TRUE)
 ```

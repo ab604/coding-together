@@ -301,7 +301,7 @@ surveys_ic %>%
 Another common strategy is to impute missing values by using the mean or the
 median of exisiting values for the same variable.
 
-We can do that using `dplyr::coalesce()` which is a function that finds the 
+We can do that using [`dplyr::coalesce()`](https://dplyr.tidyverse.org/reference/coalesce.html) which is a function that finds the 
 first non-missing value in a variable and then replaces it using the second
 argument.
 

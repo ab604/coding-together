@@ -5,8 +5,8 @@ common tidying problems with data using the [`tidyr` package](https://tidyr.tidy
 will:
 
 + have learnt how to transform rows and columns to reorganise data
-+ have learnt how to join data contained in separate tables into a single table 
 + have learnt some ways to deal with missing values
++ have learnt how to join data contained in separate tables into a single table 
 
 ## Reshaping data with pivots
 
@@ -59,7 +59,7 @@ variable for the exisiting column heading, and `values_to = "mean_weight"` to cr
 a variable `mean_weight` for the values. We put a minus sign before the 
 variable `-plot_id` to tell the function not to use these values in the new variable column. 
 
-(ref:pivl) `tidyr::pivot_longer`
+(ref:pivl) `tidyr::pivot_longer` The genus of the rodents have been used as column headings for the weights of each animal. By creating new variables `genus` which takes the column names, and another variable `mean_weight` which takes the cell values, and but not the `plot_id` column we pivot from a wide table to a long table.
 
 ```{r pivot-long, fig.cap='(ref:pivl)',fig.asp=1, out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/pivot_longer_R.png")
@@ -73,17 +73,26 @@ surveys_spread %>%
 
 ### `tidyr::pivot_wider`
 
-(ref:pivw) `tidyr::pivot_wider`
+If we wanted to go the other way, from wide to long, then we need to take values
+from a single column to become variables names of multiple columns, populated 
+with values from an existing variable.
+
+A version of the wide table in Figure \@ref(fig:pivot-wider) can be downloaded
+into our environment and assigned as `surveys_gw` as before.
+
+(ref:pivw) `tidyr::pivot_wider` From long table `surveys_gw` the `genus` column contains the values that become variables using `names_from` and the `mean_weight` column contains the values that fill the new columns using `values_from` in the pivot from long to wide.
 
 ```{r surveys-gw, eval=FALSE}
 surveys_gw <- read_csv("https://raw.githubusercontent.com/ab604/ab604.github.io/master/docs/surveys_grouped_weight.csv")
 ```
 
+This time we use `pivot_wider()` with the arguments `names_from` for the column
+we want to use to create variables, and `values_from` for the column
+whose values we want populate our new variable columns with.
 
 ```{r pivot-wider, fig.cap='(ref:pivw)' ,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/pivot_wider_R.png")
 ```
-
 
 ```{r long-to-wide}
 surveys_gw %>% 
@@ -92,14 +101,127 @@ surveys_gw %>%
 
 ## Missing values 
 
+In R missing values are represented as `NA` (or `NaN` for an undefined mathematical
+operation such as dividing by zero).
+
 As discussed in [R4DS](https://r4ds.had.co.nz/tidy-data.html#missing-values-3) values can be missing in two ways:
 
 + **Explicitly**, i.e. flagged with NA.
 + **Implicitly**, i.e. simply not present in the data.
 
-1. How to check for them.
-2. How to drop incomplete observations
-3. Other strategies: fill or impute.
+If we had a subset of the surveys data that looked like this table:
+
+```{r surveys-missing, cache=TRUE}
+# Create a table with missing values
+surveys_ms <- tibble(quarter = c(1991.1,1991.2,1991.3,1991.4,1992.1,1992.2,1992.4),
+                     mean_weight = c(3.75,2.50,NA,8.50,7.50,2.25,2.50))
+
+surveys_ms %>% glimpse()
+```
+
+Then we can see that in the third quarter of 1991, no data was recorded by the 
+explicit `NA` value. However the third quarter of 1992 is missing altogether,
+hence it is *implicitly* missing. 
+
+Another issue is that explicit missing values
+are often recorded in real data in various ways e.g. an empty cell or as a dash.
+We can't cover all cases, but the general advice is to do some manual inspection
+of your data in addition to using R to understand how missing values have been 
+recorded if there are any. In an ideal world data comes with a "code book" that
+explains the data, but this often doesn't happen. 
+Functions such as `read_csv()` allow you to 
+supply a vector of values representing `NA` which will convert these values in 
+your input to `NA`s.
+
+Once you have identified missing values, in general there two ways to deal with them: 
+
+1. Drop incomplete observations
+2. Complete the missing observations: fill or impute values.
+
+See also [`tidyr` functions for missing values](https://tidyr.tidyverse.org/reference/index.html#section-missing-values).
+ 
+### Checking for explicit missing values using R
+
+In addition to manual inspection, one way to check for explicit missing 
+values coded as `NA` in your data frame is to use the `is.na()` function which
+returns a logical `TRUE` or `FALSE` vector of values.
+
+Using this to check a single variable could be done by combining it with `select()`
+for example using `surveys_ms`:
+
+```{r select_na, cache=TRUE}
+surveys_ms %>% 
+        select(mean_weight) %>% 
+        is.na()
+```
+
+Or with `filter()` to return the row where there is a missing value
+for `mean_weight`.
+
+```{r filter_na, cache=TRUE}
+surveys_ms %>% 
+        filter(is.na(mean_weight) == TRUE)
+```
+
+A more complicated use would be to combine `is.na()` with another function such
+`sum()` to provide the total number of missing values for a variable or for 
+all variables.
+
+For a single variable, we'd extend our use of `select`:
+
+```{r select_sum_na, cache=TRUE}
+surveys_ms %>% 
+        select(mean_weight) %>% 
+        is.na() %>% 
+        sum()
+```
+
+Extending this a whole data frame requires introducing more syntax and the use
+of a map function from the `purr` package. (Base R can also do this, but we're
+staying in the tidyverse where possible). 
+
+The idea here is that we want to do the same calculation *mapped* across each
+variable. The calculation here being count the number of missing values in each
+column.
+
+We pipe `surveys` to the `map_dfr()` function where `dfr` means return a data frame.
+The `~` means we are applying a formula to the `surveys` input, which in this case
+the formula is going to be `sum(is.na(.))` where `.` is the argument for the input 
+variable. The map function then does this for each variable in the `surveys` dataframe 
+and returns the output as a data frame. I've piped the output to `glimpse()` for 
+readability.
+
+In words what this syntax is saying is **"take the surveys dataframe and for 
+each column check if each value is `NA`, then sum the number of `NA`s in each
+column and return the totals for all the columns as a dataframe."**
+
+This is pretty complicated if you've never seen this before, but hopefully you 
+can follow the idea.
+
+This could be combined with `filter()` or `select()` prior to the map function
+if you wanted to subset the data further for example.
+
+See [R4DS map functions](https://r4ds.had.co.nz/iteration.html#the-map-functions)
+for more details.
+
+```{r map_na, cache=TRUE}
+surveys %>% 
+        map_dfr(~ sum(is.na(.))) %>% 
+        glimpse()
+```
+
+As we might expect the missing values are all for variables that record measurements
+for the rodents.
+
+### Dropping missing values
+
+The simplest solution to observations with missing values is to drop those 
+from the data set. If it makes sense to do this, then `tidyr::drop_na()` makes
+it easy to do this.
+
+
+
+### Completing missing values
 
 ## Joining tables
 
@@ -204,23 +326,23 @@ mean_weather <- weather %>% select(date,airtemp,precipitation) %>%
         summarise(mean_temp = mean(airtemp), mean_rain = mean(precipitation))
 ```
 
-```{r inner-join}
+```{r inner-join, cache=TRUE}
 #weather %>% count(date) %>% filter(n > 1)
 mean_weather %>% inner_join(rodent_data, by = "date") %>% 
         glimpse()
 ```
 
-```{r left-join}
+```{r left-join, cache=TRUE}
 mean_weather %>% left_join(rodent_data, by = "date") %>% 
         glimpse()
 ```
 
-```{r right-join}
+```{r right-join, cache=TRUE}
 mean_weather %>% right_join(rodent_data, by = "date") %>% 
         glimpse()
 ```
 
-```{r full-join}
+```{r full-join, cache=TRUE}
 mean_weather %>% full_join(rodent_data, by = "date") %>% 
         glimpse()
 ```

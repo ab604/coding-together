@@ -113,10 +113,11 @@ If we had a subset of the surveys data that looked like this table:
 
 ```{r surveys-missing, cache=TRUE}
 # Create a table with missing values
-surveys_ms <- tibble(quarter = c(1991.1,1991.2,1991.3,1991.4,1992.1,1992.2,1992.4),
+surveys_ms <- tibble(year = c(1991,1991,1991,1991,1992,1992,1992),
+                     qtr = c(1,2,3,4,1,2,4),
                      mean_weight = c(3.75,2.50,NA,8.50,7.50,2.25,2.50))
 
-surveys_ms %>% glimpse()
+surveys_ms
 ```
 
 Then we can see that in the third quarter of 1991, no data was recorded by the 
@@ -140,7 +141,7 @@ Once you have identified missing values, in general there two ways to deal with 
 
 See also [`tidyr` functions for missing values](https://tidyr.tidyverse.org/reference/index.html#section-missing-values).
  
-### Checking for explicit missing values using R
+### Checking for explicit missing values using R {#find-na}
 
 In addition to manual inspection, one way to check for explicit missing 
 values coded as `NA` in your data frame is to use the `is.na()` function which
@@ -164,10 +165,16 @@ surveys_ms %>%
 ```
 
 A more complicated use would be to combine `is.na()` with another function such
-`sum()` to provide the total number of missing values for a variable or for 
-all variables.
+`sum()` to provide the total number of missing values for a variable, or to 
+combine `sum()` with `complete.cases()` to check each row for for missing values.
 
-For a single variable, we'd extend our use of `select`:
+For example, to find the number of observations (rows) in `surveys` with no missing values:
+
+```{r complete-cases, cache=TRUE}
+sum(complete.cases(surveys))
+```
+
+And for a single variable, we could extend our use of `select`:
 
 ```{r select_sum_na, cache=TRUE}
 surveys_ms %>% 
@@ -176,9 +183,9 @@ surveys_ms %>%
         sum()
 ```
 
-Extending this a whole data frame requires introducing more syntax and the use
-of a map function from the `purr` package. (Base R can also do this, but we're
-staying in the tidyverse where possible). 
+Extending this find the missing values per variable in a whole data frame 
+requires introducing more syntax and the use of a map function from the `purr` 
+package. (Base R can also do this, but we're staying in the tidyverse where possible). 
 
 The idea here is that we want to do the same calculation *mapped* across each
 variable. The calculation here being count the number of missing values in each
@@ -217,11 +224,87 @@ for the rodents.
 
 The simplest solution to observations with missing values is to drop those 
 from the data set. If it makes sense to do this, then `tidyr::drop_na()` makes
-it easy to do this.
+it easy to do this. **Note:** This will create implicit missing values.
 
+In Section \@ref(find-na) we found 30,676 rows with no missing values
+by using `complete.cases()` on the `surveys` data of 34,786 observations.
 
+Therefore we expect passing `surveys` to `drop_na()` will return a dataframe
+of 30,676 observations:
+
+```{r drop-na, cache=TRUE}
+surveys %>% 
+        drop_na() %>% 
+        glimpse()
+```
+ 
+ `drop_na()` can accept variables arguments, meaning only the observations with
+ missing values in those columns will be dropped. 
+ 
+For example, here we drop only missing `weight` observations, so the rows which
+have missing values for `hindfoot_length` or `sex` are kept.
+ 
+```{r drop-weight, cache=TRUE}
+surveys %>% 
+        drop_na(weight) %>% 
+        glimpse()
+```
 
 ### Completing missing values
+
+```{r tidyr-complete, cache=TRUE}
+surveys_ms %>% 
+        complete(year,qtr)
+```
+
+```{r surveys-ic}
+surveys_ic <- tibble(species_id = c("DM","DM",NA,"DS","DS","DS"),
+                     mean_weight = c(3.75,2.50,8.50,7.50,NA,2.50))
+surveys_ic
+```
+
+Replace `NA` with the last non-missing value, last observation carried forward.
+
+```{r tidyr-fill, cache=TRUE}
+surveys_ic %>% 
+        fill(species_id)
+```
+
+Other strategies might be to impute values by using 
+
+```{r dplyr-coalesce, cache=TRUE}
+surveys_ic %>% 
+        mutate(mean_weight = coalesce(mean_weight, 
+                                      median(mean_weight, na.rm = TRUE)))
+```
+
+Let's repeat the analysis but having filled our table
+
+```{r mk-krats, cache=TRUE}
+krats <- surveys %>% 
+        filter(species_id %in% c("DM","DS","DO"))
+
+# How many missing values
+krats %>% map_dfr(~ sum(is.na(.))) %>% glimpse()
+```
+
+Mean w
+
+```{r mean-drop-krats, cache=TRUE}
+krats %>% drop_na %>% group_by(species_id,sex) %>% 
+        summarise(mean_weight = mean(weight))
+```
+
+```{r mean-impute-krats, cache=TRUE}
+krats %>% 
+        fill(sex) %>% 
+        group_by(species_id,sex) %>% 
+        mutate(weight = coalesce(weight, median(weight, na.rm = TRUE)),
+               hindfoot_length = coalesce(hindfoot_length, 
+                                          median(hindfoot_length, na.rm = TRUE))) %>%
+        summarise(mean_weight = mean(weight))
+```
+
 
 ## Joining tables
 

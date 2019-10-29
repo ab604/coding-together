@@ -201,7 +201,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#tidyrpivot_wider"><i class="fa fa-check"></i><b>3.1.2</b> <code>tidyr::pivot_wider</code></a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#missing-values"><i class="fa fa-check"></i><b>3.2</b> Missing values</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#checking-for-explicit-missing-values-using-r"><i class="fa fa-check"></i><b>3.2.1</b> Checking for explicit missing values using R</a></li>
+<li class="chapter" data-level="3.2.1" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#find-na"><i class="fa fa-check"></i><b>3.2.1</b> Checking for explicit missing values using R</a></li>
 <li class="chapter" data-level="3.2.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#dropping-missing-values"><i class="fa fa-check"></i><b>3.2.2</b> Dropping missing values</a></li>
 <li class="chapter" data-level="3.2.3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#completing-missing-values"><i class="fa fa-check"></i><b>3.2.3</b> Completing missing values</a></li>
 </ul></li>
@@ -363,14 +363,21 @@ operation such as dividing by zero).</p>
 </ul>
 <p>If we had a subset of the surveys data that looked like this table:</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="co"># Create a table with missing values</span></a>
-<a class="sourceLine" id="cb69-2" title="2">surveys_ms &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">quarter =</span> <span class="kw">c</span>(<span class="fl">1991.1</span>,<span class="fl">1991.2</span>,<span class="fl">1991.3</span>,<span class="fl">1991.4</span>,<span class="fl">1992.1</span>,<span class="fl">1992.2</span>,<span class="fl">1992.4</span>),</a>
-<a class="sourceLine" id="cb69-3" title="3">                     <span class="dt">mean_weight =</span> <span class="kw">c</span>(<span class="fl">3.75</span>,<span class="fl">2.50</span>,<span class="ot">NA</span>,<span class="fl">8.50</span>,<span class="fl">7.50</span>,<span class="fl">2.25</span>,<span class="fl">2.50</span>))</a>
-<a class="sourceLine" id="cb69-4" title="4"></a>
-<a class="sourceLine" id="cb69-5" title="5">surveys_ms <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()</a></code></pre></div>
-<pre><code>## Observations: 7
-## Variables: 2
-## $ quarter     &lt;dbl&gt; 1991.1, 1991.2, 1991.3, 1991.4, 1992.1, 1992.2, 19...
-## $ mean_weight &lt;dbl&gt; 3.75, 2.50, NA, 8.50, 7.50, 2.25, 2.50</code></pre>
+<a class="sourceLine" id="cb69-2" title="2">surveys_ms &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">year =</span> <span class="kw">c</span>(<span class="dv">1991</span>,<span class="dv">1991</span>,<span class="dv">1991</span>,<span class="dv">1991</span>,<span class="dv">1992</span>,<span class="dv">1992</span>,<span class="dv">1992</span>),</a>
+<a class="sourceLine" id="cb69-3" title="3">                     <span class="dt">qtr =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>),</a>
+<a class="sourceLine" id="cb69-4" title="4">                     <span class="dt">mean_weight =</span> <span class="kw">c</span>(<span class="fl">3.75</span>,<span class="fl">2.50</span>,<span class="ot">NA</span>,<span class="fl">8.50</span>,<span class="fl">7.50</span>,<span class="fl">2.25</span>,<span class="fl">2.50</span>))</a>
+<a class="sourceLine" id="cb69-5" title="5"></a>
+<a class="sourceLine" id="cb69-6" title="6">surveys_ms</a></code></pre></div>
+<pre><code>## # A tibble: 7 x 3
+##    year   qtr mean_weight
+##   &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;
+## 1  1991     1        3.75
+## 2  1991     2        2.5 
+## 3  1991     3       NA   
+## 4  1991     4        8.5 
+## 5  1992     1        7.5 
+## 6  1992     2        2.25
+## 7  1992     4        2.5</code></pre>
 <p>Then we can see that in the third quarter of 1991, no data was recorded by the
 explicit <code>NA</code> value. However the third quarter of 1992 is missing altogether,
 hence it is <em>implicitly</em> missing.</p>
@@ -389,7 +396,7 @@ your input to <code>NA</code>s.</p>
 <li>Complete the missing observations: fill or impute values.</li>
 </ol>
 <p>See also <a href="https://tidyr.tidyverse.org/reference/index.html#section-missing-values"><code>tidyr</code> functions for missing values</a>.</p>
-<div id="checking-for-explicit-missing-values-using-r" class="section level3">
+<div id="find-na" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> Checking for explicit missing values using R</h3>
 <p>In addition to manual inspection, one way to check for explicit missing
 values coded as <code>NA</code> in your data frame is to use the <code>is.na()</code> function which
@@ -416,17 +423,20 @@ for <code>mean_weight</code>.</p>
 ##     &lt;dbl&gt;       &lt;dbl&gt;
 ## 1   1991.          NA</code></pre>
 <p>A more complicated use would be to combine <code>is.na()</code> with another function such
-<code>sum()</code> to provide the total number of missing values for a variable or for
-all variables.</p>
-<p>For a single variable, we’d extend our use of <code>select</code>:</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1">surveys_ms <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb75-2" title="2"><span class="st">        </span><span class="kw">select</span>(mean_weight) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb75-3" title="3"><span class="st">        </span><span class="kw">is.na</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb75-4" title="4"><span class="st">        </span><span class="kw">sum</span>()</a></code></pre></div>
+<code>sum()</code> to provide the total number of missing values for a variable, or to
+combine <code>sum()</code> with <code>complete.cases()</code> to check each row for for missing values.</p>
+<p>For example, to find the number of observations (rows) in <code>surveys</code> with no missing values:</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="kw">sum</span>(<span class="kw">complete.cases</span>(surveys))</a></code></pre></div>
+<pre><code>## [1] 30676</code></pre>
+<p>And for a single variable, we could extend our use of <code>select</code>:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1">surveys_ms <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb77-2" title="2"><span class="st">        </span><span class="kw">select</span>(mean_weight) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb77-3" title="3"><span class="st">        </span><span class="kw">is.na</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb77-4" title="4"><span class="st">        </span><span class="kw">sum</span>()</a></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<p>Extending this a whole data frame requires introducing more syntax and the use
-of a map function from the <code>purr</code> package. (Base R can also do this, but we’re
-staying in the tidyverse where possible).</p>
+<p>Extending this find the missing values per variable in a whole data frame
+requires introducing more syntax and the use of a map function from the <code>purr</code>
+package. (Base R can also do this, but we’re staying in the tidyverse where possible).</p>
 <p>The idea here is that we want to do the same calculation <em>mapped</em> across each
 variable. The calculation here being count the number of missing values in each
 column.</p>
@@ -445,9 +455,9 @@ can follow the idea.</p>
 if you wanted to subset the data further for example.</p>
 <p>See <a href="https://r4ds.had.co.nz/iteration.html#the-map-functions">R4DS map functions</a>
 for more details.</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1">surveys <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb77-2" title="2"><span class="st">        </span><span class="kw">map_dfr</span>(<span class="op">~</span><span class="st"> </span><span class="kw">sum</span>(<span class="kw">is.na</span>(.))) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb77-3" title="3"><span class="st">        </span><span class="kw">glimpse</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1">surveys <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb79-2" title="2"><span class="st">        </span><span class="kw">map_dfr</span>(<span class="op">~</span><span class="st"> </span><span class="kw">sum</span>(<span class="kw">is.na</span>(.))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb79-3" title="3"><span class="st">        </span><span class="kw">glimpse</span>()</a></code></pre></div>
 <pre><code>## Observations: 1
 ## Variables: 13
 ## $ record_id       &lt;int&gt; 0
@@ -470,10 +480,155 @@ for the rodents.</p>
 <h3><span class="header-section-number">3.2.2</span> Dropping missing values</h3>
 <p>The simplest solution to observations with missing values is to drop those
 from the data set. If it makes sense to do this, then <code>tidyr::drop_na()</code> makes
-it easy to do this.</p>
+it easy to do this. <strong>Note:</strong> This will create implicit missing values.</p>
+<p>In Section <a href="data-wrangle-2.html#find-na">3.2.1</a> we found 30,676 rows with no missing values
+by using <code>complete.cases()</code> on the <code>surveys</code> data of 34,786 observations.</p>
+<p>Therefore we expect passing <code>surveys</code> to <code>drop_na()</code> will return a dataframe
+of 30,676 observations:</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1">surveys <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb81-2" title="2"><span class="st">        </span><span class="kw">drop_na</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb81-3" title="3"><span class="st">        </span><span class="kw">glimpse</span>()</a></code></pre></div>
+<pre><code>## Observations: 30,676
+## Variables: 13
+## $ record_id       &lt;dbl&gt; 845, 1164, 1261, 1756, 1818, 1882, 2133, 2184,...
+## $ month           &lt;dbl&gt; 5, 8, 9, 4, 5, 7, 10, 11, 1, 5, 5, 7, 10, 11, ...
+## $ day             &lt;dbl&gt; 6, 5, 4, 29, 30, 4, 25, 17, 16, 18, 18, 8, 1, ...
+## $ year            &lt;dbl&gt; 1978, 1978, 1978, 1979, 1979, 1979, 1979, 1979...
+## $ plot_id         &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2...
+## $ species_id      &lt;chr&gt; &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;...
+## $ sex             &lt;chr&gt; &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;...
+## $ hindfoot_length &lt;dbl&gt; 32, 34, 32, 33, 32, 32, 33, 30, 33, 31, 33, 30...
+## $ weight          &lt;dbl&gt; 204, 199, 197, 166, 184, 206, 274, 186, 184, 8...
+## $ genus           &lt;chr&gt; &quot;Neotoma&quot;, &quot;Neotoma&quot;, &quot;Neotoma&quot;, &quot;Neotoma&quot;, &quot;N...
+## $ species         &lt;chr&gt; &quot;albigula&quot;, &quot;albigula&quot;, &quot;albigula&quot;, &quot;albigula&quot;...
+## $ taxa            &lt;chr&gt; &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Roden...
+## $ plot_type       &lt;chr&gt; &quot;Control&quot;, &quot;Control&quot;, &quot;Control&quot;, &quot;Control&quot;, &quot;C...</code></pre>
+<p><code>drop_na()</code> can accept variables arguments, meaning only the observations with
+missing values in those columns will be dropped.</p>
+<p>For example, here we drop only missing <code>weight</code> observations, so the rows which
+have missing values for <code>hindfoot_length</code> or <code>sex</code> are kept.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1">surveys <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb83-2" title="2"><span class="st">        </span><span class="kw">drop_na</span>(weight) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb83-3" title="3"><span class="st">        </span><span class="kw">glimpse</span>()</a></code></pre></div>
+<pre><code>## Observations: 32,283
+## Variables: 13
+## $ record_id       &lt;dbl&gt; 588, 845, 990, 1164, 1261, 1453, 1756, 1818, 1...
+## $ month           &lt;dbl&gt; 2, 5, 6, 8, 9, 11, 4, 5, 7, 10, 11, 1, 5, 5, 7...
+## $ day             &lt;dbl&gt; 18, 6, 9, 5, 4, 5, 29, 30, 4, 25, 17, 16, 18, ...
+## $ year            &lt;dbl&gt; 1978, 1978, 1978, 1978, 1978, 1978, 1979, 1979...
+## $ plot_id         &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2...
+## $ species_id      &lt;chr&gt; &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;...
+## $ sex             &lt;chr&gt; &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;...
+## $ hindfoot_length &lt;dbl&gt; NA, 32, NA, 34, 32, NA, 33, 32, 32, 33, 30, 33...
+## $ weight          &lt;dbl&gt; 218, 204, 200, 199, 197, 218, 166, 184, 206, 2...
+## $ genus           &lt;chr&gt; &quot;Neotoma&quot;, &quot;Neotoma&quot;, &quot;Neotoma&quot;, &quot;Neotoma&quot;, &quot;N...
+## $ species         &lt;chr&gt; &quot;albigula&quot;, &quot;albigula&quot;, &quot;albigula&quot;, &quot;albigula&quot;...
+## $ taxa            &lt;chr&gt; &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Roden...
+## $ plot_type       &lt;chr&gt; &quot;Control&quot;, &quot;Control&quot;, &quot;Control&quot;, &quot;Control&quot;, &quot;C...</code></pre>
 </div>
 <div id="completing-missing-values" class="section level3">
 <h3><span class="header-section-number">3.2.3</span> Completing missing values</h3>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1">surveys_ms <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb85-2" title="2"><span class="st">        </span><span class="kw">complete</span>(year,qtr)</a></code></pre></div>
+<pre><code>## # A tibble: 8 x 3
+##    year   qtr mean_weight
+##   &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;
+## 1  1991     1        3.75
+## 2  1991     2        2.5 
+## 3  1991     3       NA   
+## 4  1991     4        8.5 
+## 5  1992     1        7.5 
+## 6  1992     2        2.25
+## 7  1992     3       NA   
+## 8  1992     4        2.5</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1">surveys_ic &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">species_id =</span> <span class="kw">c</span>(<span class="st">&quot;DM&quot;</span>,<span class="st">&quot;DM&quot;</span>,<span class="ot">NA</span>,<span class="st">&quot;DS&quot;</span>,<span class="st">&quot;DS&quot;</span>,<span class="st">&quot;DS&quot;</span>),</a>
+<a class="sourceLine" id="cb87-2" title="2">                     <span class="dt">mean_weight =</span> <span class="kw">c</span>(<span class="fl">3.75</span>,<span class="fl">2.50</span>,<span class="fl">8.50</span>,<span class="fl">7.50</span>,<span class="ot">NA</span>,<span class="fl">2.50</span>))</a>
+<a class="sourceLine" id="cb87-3" title="3">surveys_ic</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##   species_id mean_weight
+##   &lt;chr&gt;            &lt;dbl&gt;
+## 1 DM                3.75
+## 2 DM                2.5 
+## 3 &lt;NA&gt;              8.5 
+## 4 DS                7.5 
+## 5 DS               NA   
+## 6 DS                2.5</code></pre>
+<p>Replace <code>NA</code> with the last non-missing value, last observation carried forward.</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1">surveys_ic <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb89-2" title="2"><span class="st">        </span><span class="kw">fill</span>(species_id)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##   species_id mean_weight
+##   &lt;chr&gt;            &lt;dbl&gt;
+## 1 DM                3.75
+## 2 DM                2.5 
+## 3 DM                8.5 
+## 4 DS                7.5 
+## 5 DS               NA   
+## 6 DS                2.5</code></pre>
+<p>Other strategies might be to impute values by using</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1">surveys_ic <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb91-2" title="2"><span class="st">        </span><span class="kw">mutate</span>(<span class="dt">mean_weight =</span> <span class="kw">coalesce</span>(mean_weight, </a>
+<a class="sourceLine" id="cb91-3" title="3">                                      <span class="kw">median</span>(mean_weight, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##   species_id mean_weight
+##   &lt;chr&gt;            &lt;dbl&gt;
+## 1 DM                3.75
+## 2 DM                2.5 
+## 3 &lt;NA&gt;              8.5 
+## 4 DS                7.5 
+## 5 DS                3.75
+## 6 DS                2.5</code></pre>
+<p>Let’s repeat the analysis but having filled our table</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1">krats &lt;-<span class="st"> </span>surveys <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb93-2" title="2"><span class="st">        </span><span class="kw">filter</span>(species_id <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;DM&quot;</span>,<span class="st">&quot;DS&quot;</span>,<span class="st">&quot;DO&quot;</span>))</a>
+<a class="sourceLine" id="cb93-3" title="3"></a>
+<a class="sourceLine" id="cb93-4" title="4"><span class="co"># How many missing values</span></a>
+<a class="sourceLine" id="cb93-5" title="5">krats <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">map_dfr</span>(<span class="op">~</span><span class="st"> </span><span class="kw">sum</span>(<span class="kw">is.na</span>(.))) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()</a></code></pre></div>
+<pre><code>## Observations: 1
+## Variables: 13
+## $ record_id       &lt;int&gt; 0
+## $ month           &lt;int&gt; 0
+## $ day             &lt;int&gt; 0
+## $ year            &lt;int&gt; 0
+## $ plot_id         &lt;int&gt; 0
+## $ species_id      &lt;int&gt; 0
+## $ sex             &lt;int&gt; 131
+## $ hindfoot_length &lt;int&gt; 1136
+## $ weight          &lt;int&gt; 617
+## $ genus           &lt;int&gt; 0
+## $ species         &lt;int&gt; 0
+## $ taxa            &lt;int&gt; 0
+## $ plot_type       &lt;int&gt; 0</code></pre>
+<p>Mean w</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1">krats <span class="op">%&gt;%</span><span class="st"> </span>drop_na <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(species_id,sex) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb95-2" title="2"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">mean_weight =</span> <span class="kw">mean</span>(weight))</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+## # Groups:   species_id [3]
+##   species_id sex   mean_weight
+##   &lt;chr&gt;      &lt;chr&gt;       &lt;dbl&gt;
+## 1 DM         F            41.6
+## 2 DM         M            44.3
+## 3 DO         F            48.5
+## 4 DO         M            49.1
+## 5 DS         F           117. 
+## 6 DS         M           123.</code></pre>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1">krats <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb97-2" title="2"><span class="st">        </span><span class="kw">fill</span>(sex) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb97-3" title="3"><span class="st">        </span><span class="kw">group_by</span>(species_id,sex) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb97-4" title="4"><span class="st">        </span><span class="kw">mutate</span>(<span class="dt">weight =</span> <span class="kw">coalesce</span>(weight, <span class="kw">median</span>(weight, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)),</a>
+<a class="sourceLine" id="cb97-5" title="5">               <span class="dt">hindfoot_length =</span> <span class="kw">coalesce</span>(hindfoot_length, </a>
+<a class="sourceLine" id="cb97-6" title="6">                                          <span class="kw">median</span>(hindfoot_length, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb97-7" title="7"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">mean_weight =</span> <span class="kw">mean</span>(weight))</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+## # Groups:   species_id [3]
+##   species_id sex   mean_weight
+##   &lt;chr&gt;      &lt;chr&gt;       &lt;dbl&gt;
+## 1 DM         F            41.6
+## 2 DM         M            44.4
+## 3 DO         F            48.5
+## 4 DO         M            49.2
+## 5 DS         F           118. 
+## 6 DS         M           123.</code></pre>
 </div>
 </div>
 <div id="joining-tables" class="section level2">
@@ -526,57 +681,57 @@ See the examples in <a href="https://r4ds.had.co.nz/relational-data.html#keys">R
 <p>Does the weather influence the census? The data in this file are hourly and span three weather stations.
 The first only recorded Air Temperature and Precipitation, so I’ve created a dataset
 for the only the date, the air temperature and rainfall columns for the three weather stations.</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1"><span class="co"># Species data</span></a>
-<a class="sourceLine" id="cb79-2" title="2">weather &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/weecology/PortalData/master/Weather/Portal_weather.csv&quot;</span>,</a>
-<a class="sourceLine" id="cb79-3" title="3">                    <span class="dt">col_types =</span> <span class="kw">cols</span>(<span class="dt">RH =</span> <span class="kw">col_double</span>(),</a>
-<a class="sourceLine" id="cb79-4" title="4">                                     <span class="dt">battv =</span> <span class="kw">col_double</span>(),</a>
-<a class="sourceLine" id="cb79-5" title="5">                                     <span class="dt">PTemp_C =</span> <span class="kw">col_double</span>(),</a>
-<a class="sourceLine" id="cb79-6" title="6">                                     <span class="dt">BP_mmHg_Avg =</span> <span class="kw">col_double</span>(),</a>
-<a class="sourceLine" id="cb79-7" title="7">                                     <span class="dt">SlrkW =</span> <span class="kw">col_double</span>(),</a>
-<a class="sourceLine" id="cb79-8" title="8">                                     <span class="dt">SlrMJ_Tot =</span> <span class="kw">col_double</span>(),</a>
-<a class="sourceLine" id="cb79-9" title="9">                                     <span class="dt">ETos =</span><span class="kw">col_double</span>(),</a>
-<a class="sourceLine" id="cb79-10" title="10">                                     <span class="dt">Rso =</span> <span class="kw">col_double</span>(),</a>
-<a class="sourceLine" id="cb79-11" title="11">                                     <span class="dt">WS_ms_Avg =</span> <span class="kw">col_double</span>(),</a>
-<a class="sourceLine" id="cb79-12" title="12">                                     <span class="dt">WindDir  =</span> <span class="kw">col_double</span>(),</a>
-<a class="sourceLine" id="cb79-13" title="13">                                     <span class="dt">WS_ms_S_WVT=</span> <span class="kw">col_double</span>(),</a>
-<a class="sourceLine" id="cb79-14" title="14">                                     <span class="dt">WindDir_D1_WVT =</span> <span class="kw">col_double</span>(),</a>
-<a class="sourceLine" id="cb79-15" title="15">                                     <span class="dt">WindDir_SD1_WVT =</span> <span class="kw">col_double</span>(),</a>
-<a class="sourceLine" id="cb79-16" title="16">                                     <span class="dt">HI_C_Avg =</span> <span class="kw">col_double</span>(),     </a>
-<a class="sourceLine" id="cb79-17" title="17">                                     <span class="dt">SunHrs_Tot =</span> <span class="kw">col_double</span>(),</a>
-<a class="sourceLine" id="cb79-18" title="18">                                     <span class="dt">PotSlrW_Avg =</span> <span class="kw">col_double</span>(), </a>
-<a class="sourceLine" id="cb79-19" title="19">                                     <span class="dt">WC_C_Avg =</span> <span class="kw">col_double</span>()</a>
-<a class="sourceLine" id="cb79-20" title="20">                                     )) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb79-21" title="21"><span class="st">        </span><span class="kw">mutate</span>(<span class="dt">date =</span> <span class="kw">make_date</span>(<span class="dt">day =</span> day, <span class="dt">month =</span> month, <span class="dt">year =</span> year)) <span class="co">#%&gt;% </span></a>
-<a class="sourceLine" id="cb79-22" title="22">        <span class="co">#distinct(date, .keep_all = T)</span></a>
-<a class="sourceLine" id="cb79-23" title="23"><span class="co"># Rodent survey data</span></a>
-<a class="sourceLine" id="cb79-24" title="24">rodent_data &lt;-<span class="st">  </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/weecology/PortalData/master/Rodents/Portal_rodent.csv&quot;</span>,</a>
-<a class="sourceLine" id="cb79-25" title="25">                         <span class="dt">col_types =</span> <span class="kw">cols</span>(<span class="dt">tag =</span> <span class="kw">col_character</span>(),</a>
-<a class="sourceLine" id="cb79-26" title="26">                                         <span class="dt">prevrt =</span> <span class="kw">col_character</span>(),</a>
-<a class="sourceLine" id="cb79-27" title="27">                                         <span class="dt">ltag =</span> <span class="kw">col_character</span>(),</a>
-<a class="sourceLine" id="cb79-28" title="28">                                         <span class="dt">note2 =</span> <span class="kw">col_character</span>(),</a>
-<a class="sourceLine" id="cb79-29" title="29">                                         <span class="dt">note3 =</span> <span class="kw">col_character</span>(), </a>
-<a class="sourceLine" id="cb79-30" title="30">                                         <span class="dt">note4 =</span> <span class="kw">col_character</span>(), </a>
-<a class="sourceLine" id="cb79-31" title="31">                                         <span class="dt">note5 =</span> <span class="kw">col_character</span>())) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb79-32" title="32"><span class="st">        </span><span class="kw">mutate</span>(<span class="dt">date =</span> <span class="kw">make_date</span>(<span class="dt">day =</span> day, <span class="dt">month =</span> month, <span class="dt">year =</span> year))</a></code></pre></div>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1">weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(date,airtemp,precipitation) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">is.na</span>(airtemp))</a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1"><span class="co"># Species data</span></a>
+<a class="sourceLine" id="cb99-2" title="2">weather &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/weecology/PortalData/master/Weather/Portal_weather.csv&quot;</span>,</a>
+<a class="sourceLine" id="cb99-3" title="3">                    <span class="dt">col_types =</span> <span class="kw">cols</span>(<span class="dt">RH =</span> <span class="kw">col_double</span>(),</a>
+<a class="sourceLine" id="cb99-4" title="4">                                     <span class="dt">battv =</span> <span class="kw">col_double</span>(),</a>
+<a class="sourceLine" id="cb99-5" title="5">                                     <span class="dt">PTemp_C =</span> <span class="kw">col_double</span>(),</a>
+<a class="sourceLine" id="cb99-6" title="6">                                     <span class="dt">BP_mmHg_Avg =</span> <span class="kw">col_double</span>(),</a>
+<a class="sourceLine" id="cb99-7" title="7">                                     <span class="dt">SlrkW =</span> <span class="kw">col_double</span>(),</a>
+<a class="sourceLine" id="cb99-8" title="8">                                     <span class="dt">SlrMJ_Tot =</span> <span class="kw">col_double</span>(),</a>
+<a class="sourceLine" id="cb99-9" title="9">                                     <span class="dt">ETos =</span><span class="kw">col_double</span>(),</a>
+<a class="sourceLine" id="cb99-10" title="10">                                     <span class="dt">Rso =</span> <span class="kw">col_double</span>(),</a>
+<a class="sourceLine" id="cb99-11" title="11">                                     <span class="dt">WS_ms_Avg =</span> <span class="kw">col_double</span>(),</a>
+<a class="sourceLine" id="cb99-12" title="12">                                     <span class="dt">WindDir  =</span> <span class="kw">col_double</span>(),</a>
+<a class="sourceLine" id="cb99-13" title="13">                                     <span class="dt">WS_ms_S_WVT=</span> <span class="kw">col_double</span>(),</a>
+<a class="sourceLine" id="cb99-14" title="14">                                     <span class="dt">WindDir_D1_WVT =</span> <span class="kw">col_double</span>(),</a>
+<a class="sourceLine" id="cb99-15" title="15">                                     <span class="dt">WindDir_SD1_WVT =</span> <span class="kw">col_double</span>(),</a>
+<a class="sourceLine" id="cb99-16" title="16">                                     <span class="dt">HI_C_Avg =</span> <span class="kw">col_double</span>(),     </a>
+<a class="sourceLine" id="cb99-17" title="17">                                     <span class="dt">SunHrs_Tot =</span> <span class="kw">col_double</span>(),</a>
+<a class="sourceLine" id="cb99-18" title="18">                                     <span class="dt">PotSlrW_Avg =</span> <span class="kw">col_double</span>(), </a>
+<a class="sourceLine" id="cb99-19" title="19">                                     <span class="dt">WC_C_Avg =</span> <span class="kw">col_double</span>()</a>
+<a class="sourceLine" id="cb99-20" title="20">                                     )) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb99-21" title="21"><span class="st">        </span><span class="kw">mutate</span>(<span class="dt">date =</span> <span class="kw">make_date</span>(<span class="dt">day =</span> day, <span class="dt">month =</span> month, <span class="dt">year =</span> year)) <span class="co">#%&gt;% </span></a>
+<a class="sourceLine" id="cb99-22" title="22">        <span class="co">#distinct(date, .keep_all = T)</span></a>
+<a class="sourceLine" id="cb99-23" title="23"><span class="co"># Rodent survey data</span></a>
+<a class="sourceLine" id="cb99-24" title="24">rodent_data &lt;-<span class="st">  </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/weecology/PortalData/master/Rodents/Portal_rodent.csv&quot;</span>,</a>
+<a class="sourceLine" id="cb99-25" title="25">                         <span class="dt">col_types =</span> <span class="kw">cols</span>(<span class="dt">tag =</span> <span class="kw">col_character</span>(),</a>
+<a class="sourceLine" id="cb99-26" title="26">                                         <span class="dt">prevrt =</span> <span class="kw">col_character</span>(),</a>
+<a class="sourceLine" id="cb99-27" title="27">                                         <span class="dt">ltag =</span> <span class="kw">col_character</span>(),</a>
+<a class="sourceLine" id="cb99-28" title="28">                                         <span class="dt">note2 =</span> <span class="kw">col_character</span>(),</a>
+<a class="sourceLine" id="cb99-29" title="29">                                         <span class="dt">note3 =</span> <span class="kw">col_character</span>(), </a>
+<a class="sourceLine" id="cb99-30" title="30">                                         <span class="dt">note4 =</span> <span class="kw">col_character</span>(), </a>
+<a class="sourceLine" id="cb99-31" title="31">                                         <span class="dt">note5 =</span> <span class="kw">col_character</span>())) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb99-32" title="32"><span class="st">        </span><span class="kw">mutate</span>(<span class="dt">date =</span> <span class="kw">make_date</span>(<span class="dt">day =</span> day, <span class="dt">month =</span> month, <span class="dt">year =</span> year))</a></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1">weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(date,airtemp,precipitation) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">is.na</span>(airtemp))</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 3
 ##   date       airtemp precipitation
 ##   &lt;date&gt;       &lt;dbl&gt;         &lt;dbl&gt;
 ## 1 2019-01-30      NA            NA
 ## 2 2019-05-17      NA            NA</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1">weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(date,airtemp,precipitation) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">is.na</span>(precipitation))</a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1">weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(date,airtemp,precipitation) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">is.na</span>(precipitation))</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 3
 ##   date       airtemp precipitation
 ##   &lt;date&gt;       &lt;dbl&gt;         &lt;dbl&gt;
 ## 1 2019-01-30      NA            NA
 ## 2 2019-05-17      NA            NA</code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1">mean_weather &lt;-<span class="st"> </span>weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(date,airtemp,precipitation) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb84-2" title="2"><span class="st">        </span><span class="kw">drop_na</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb84-3" title="3"><span class="st">        </span><span class="kw">group_by</span>(date) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb84-4" title="4"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">mean_temp =</span> <span class="kw">mean</span>(airtemp), <span class="dt">mean_rain =</span> <span class="kw">mean</span>(precipitation))</a></code></pre></div>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1"><span class="co">#weather %&gt;% count(date) %&gt;% filter(n &gt; 1)</span></a>
-<a class="sourceLine" id="cb85-2" title="2">mean_weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(rodent_data, <span class="dt">by =</span> <span class="st">&quot;date&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb85-3" title="3"><span class="st">        </span><span class="kw">glimpse</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1">mean_weather &lt;-<span class="st"> </span>weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(date,airtemp,precipitation) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb104-2" title="2"><span class="st">        </span><span class="kw">drop_na</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb104-3" title="3"><span class="st">        </span><span class="kw">group_by</span>(date) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb104-4" title="4"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">mean_temp =</span> <span class="kw">mean</span>(airtemp), <span class="dt">mean_rain =</span> <span class="kw">mean</span>(precipitation))</a></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1"><span class="co">#weather %&gt;% count(date) %&gt;% filter(n &gt; 1)</span></a>
+<a class="sourceLine" id="cb105-2" title="2">mean_weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(rodent_data, <span class="dt">by =</span> <span class="st">&quot;date&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb105-3" title="3"><span class="st">        </span><span class="kw">glimpse</span>()</a></code></pre></div>
 <pre><code>## Observations: 50,929
 ## Variables: 32
 ## $ date      &lt;date&gt; 1989-06-04, 1989-06-04, 1989-06-04, 1989-06-04, 198...
@@ -611,8 +766,8 @@ for the only the date, the air temperature and rainfall columns for the three we
 ## $ neststk   &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...
 ## $ note4     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...
 ## $ note5     &lt;chr&gt; NA, &quot;R&quot;, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1">mean_weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(rodent_data, <span class="dt">by =</span> <span class="st">&quot;date&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb87-2" title="2"><span class="st">        </span><span class="kw">glimpse</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1">mean_weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(rodent_data, <span class="dt">by =</span> <span class="st">&quot;date&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb107-2" title="2"><span class="st">        </span><span class="kw">glimpse</span>()</a></code></pre></div>
 <pre><code>## Observations: 60,752
 ## Variables: 32
 ## $ date      &lt;date&gt; 1989-06-04, 1989-06-04, 1989-06-04, 1989-06-04, 198...
@@ -647,8 +802,8 @@ for the only the date, the air temperature and rainfall columns for the three we
 ## $ neststk   &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...
 ## $ note4     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...
 ## $ note5     &lt;chr&gt; NA, &quot;R&quot;, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...</code></pre>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1">mean_weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">right_join</span>(rodent_data, <span class="dt">by =</span> <span class="st">&quot;date&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb89-2" title="2"><span class="st">        </span><span class="kw">glimpse</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1">mean_weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">right_join</span>(rodent_data, <span class="dt">by =</span> <span class="st">&quot;date&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb109-2" title="2"><span class="st">        </span><span class="kw">glimpse</span>()</a></code></pre></div>
 <pre><code>## Observations: 69,980
 ## Variables: 32
 ## $ date      &lt;date&gt; 1977-07-16, 1977-07-16, 1977-07-16, 1977-07-16, 197...
@@ -683,8 +838,8 @@ for the only the date, the air temperature and rainfall columns for the three we
 ## $ neststk   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NA, 0, 0, 0, ...
 ## $ note4     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...
 ## $ note5     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1">mean_weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(rodent_data, <span class="dt">by =</span> <span class="st">&quot;date&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb91-2" title="2"><span class="st">        </span><span class="kw">glimpse</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1">mean_weather <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(rodent_data, <span class="dt">by =</span> <span class="st">&quot;date&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb111-2" title="2"><span class="st">        </span><span class="kw">glimpse</span>()</a></code></pre></div>
 <pre><code>## Observations: 79,803
 ## Variables: 32
 ## $ date      &lt;date&gt; 1989-06-04, 1989-06-04, 1989-06-04, 1989-06-04, 198...

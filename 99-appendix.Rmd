@@ -1,0 +1,30 @@
+## Apendix {-}
+
+Create weather data for lesson
+
+```{r create-portal-weather-subset, eval=FALSE}
+# Species data
+weather <- read_csv("https://raw.githubusercontent.com/weecology/PortalData/master/Weather/Portal_weather.csv",
+                    col_types = cols(RH = col_double(),
+                                     battv = col_double(),
+                                     PTemp_C = col_double(),
+                                     BP_mmHg_Avg = col_double(),
+                                     SlrkW = col_double(),
+                                     SlrMJ_Tot = col_double(),
+                                     ETos =col_double(),
+                                     Rso = col_double(),
+                                     WS_ms_Avg = col_double(),
+                                     WindDir  = col_double(),
+                                     WS_ms_S_WVT= col_double(),
+                                     WindDir_D1_WVT = col_double(),
+                                     WindDir_SD1_WVT = col_double(),
+                                     HI_C_Avg = col_double(),     
+                                     SunHrs_Tot = col_double(),
+                                     PotSlrW_Avg = col_double(), 
+                                     WC_C_Avg = col_double()
+                                     )) %>% 
+        mutate(date = make_date(day = day, month = month, year = year))
+
+weather %>% select(date,airtemp,precipitation) %>% write_csv("exercises/portal-weather-subset.csv")
+```
+

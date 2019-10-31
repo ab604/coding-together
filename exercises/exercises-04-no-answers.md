@@ -39,8 +39,6 @@ pivot_wider() Pivot data from long to wide
 
 ## pivot_longer()
 
-Using an example from the tidyr website:
-
 relig_income is a dataset that comes with tidyr that contains observations
 of the income bands for 18 religons.
 
@@ -50,13 +48,8 @@ Let's consider the income bands that are column headings as a variable.
 Pivot them into a single variable called "income" with the values as a variable 
 called "count". Don't use the religon variable.
 
-```{r}
-relig_income %>% 
-        pivot_longer(names_to = "income", values_to = "count" , -religion)
-```
 
 ## pivot_wider()
-
 
 Using an example from the tidyr website:
 
@@ -71,20 +64,6 @@ in the new columns are from seen.
 
 Pivot the table again, but this time fill in the missing values with zeros.
 Use ?pivot_wider to find out how to do this. Or google.
-
-
-```{r}
-fish_encounters %>% 
-        pivot_wider(names_from = station, values_from = seen)
-```
-
-```{r}
-fish_encounters %>% pivot_wider(
-  names_from = station, 
-  values_from = seen,
-  values_fill = list(seen = 0)
-)
-```
 
 ## Missing values
 

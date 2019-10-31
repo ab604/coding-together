@@ -380,6 +380,8 @@ krats %>%
 
 The results are very similar.
 
+<!---
+
 ## Joining tables
 
 See also [R4DS Relational data chapter](https://r4ds.had.co.nz/relational-data.html)

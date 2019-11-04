@@ -471,7 +471,7 @@ mean_weather <- weather %>% select(date,airtemp,precipitation) %>%
         summarise(avg_temp = median(airtemp), avg_rain = mean(precipitation))
 ```
 
-```{r inner-join, cache=TRUE}
+```{r inner-join, cache=F}
 mean_weather %>% inner_join(rodent_data, by = "date") %>% 
         glimpse()
 ```
@@ -482,11 +482,13 @@ mean_weather %>% inner_join(rodent_data, by = "date") %>%
         group_by(date, avg_temp, avg_rain) %>% summarise(count = n()) %>% 
         ggplot(aes(date,count, colour = avg_rain)) +
         geom_point()
+
+glimpse(mean_weather)
 ```
 
 
-```{r left-join, cache=TRUE}
-mean_weather %>% left_join(rodent_data, by = "date") %>% 
+```{r left-join, cache=F}
+mean_weather %>% left_join(rodent_data) %>% 
         glimpse()
 ```
 

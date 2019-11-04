@@ -205,6 +205,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#dropping-missing-values"><i class="fa fa-check"></i><b>3.2.2</b> Dropping missing values</a></li>
 <li class="chapter" data-level="3.2.3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#completing-missing-values"><i class="fa fa-check"></i><b>3.2.3</b> Completing missing values</a></li>
 </ul></li>
+<li class="chapter" data-level="3.3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#joining-tables"><i class="fa fa-check"></i><b>3.3</b> Joining tables</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#keys"><i class="fa fa-check"></i><b>3.3.1</b> Keys</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#mutating-joins"><i class="fa fa-check"></i><b>3.3.2</b> Mutating joins</a></li>
+<li class="chapter" data-level="3.3.3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#species"><i class="fa fa-check"></i><b>3.3.3</b> Species</a></li>
+<li class="chapter" data-level="3.3.4" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#rodent-adundance-data"><i class="fa fa-check"></i><b>3.3.4</b> Rodent adundance data</a></li>
+<li class="chapter" data-level="3.3.5" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#filtering-joins"><i class="fa fa-check"></i><b>3.3.5</b> Filtering joins</a></li>
+<li class="chapter" data-level="3.3.6" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#set-operations"><i class="fa fa-check"></i><b>3.3.6</b> Set operations</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>4</b> Visualistion and communication</a><ul>
 <li class="chapter" data-level="4.1" data-path="viz.html"><a href="viz.html#visualistion"><i class="fa fa-check"></i><b>4.1</b> Visualistion</a><ul>
@@ -966,9 +974,9 @@ total number of captures for each group per quarter. A quarter of a year is
 argument.</p>
 <p>For the aesthetics we are plotting the time on the
 x-axis using the <code>quarter</code> variable, and the quarterly <code>mean_captures</code> on the
-y-axis, and we colour the data by <code>rodent_type</code>.</p>
+y-axis, and we colour the data by <code>plot_type</code>.</p>
 <p>Then we create line and point geometric mappings, and split the plot into two
-facets using <code>facet_wrap</code> according to <code>plot_type</code>.</p>
+facets using <code>facet_wrap</code> according to <code>rodent_type</code>.</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1"><span class="kw">ggplot</span>(by_quarter,</a>
 <a class="sourceLine" id="cb57-2" title="2">       <span class="kw">aes</span>(<span class="dt">x=</span>quarter,<span class="dt">y=</span>mean_captures,<span class="dt">colour=</span>plot_type)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb57-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
@@ -1052,6 +1060,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

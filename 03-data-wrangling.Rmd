@@ -439,15 +439,7 @@ for the only the date, the air temperature and rainfall columns for the three we
 
 ```{r read-rodent, cache=TRUE,eval=FALSE}
 # Rodent survey data
-rodent_data <-  read_csv("https://raw.githubusercontent.com/weecology/PortalData/master/Rodents/Portal_rodent.csv",
-                         col_types = cols(tag = col_character(),
-                                         prevrt = col_character(),
-                                         ltag = col_character(),
-                                         note2 = col_character(),
-                                         note3 = col_character(), 
-                                         note4 = col_character(), 
-                                         note5 = col_character())) %>% 
-        mutate(date = make_date(day = day, month = month, year = year))
+rodent_data <-  read_csv("https://raw.githubusercontent.com/ab604/coding-together/master/exercises/portal_rodent.csv")
 ```
 
 Take a look:
@@ -461,26 +453,37 @@ rodent_data
 weather <- read_csv("https://raw.githubusercontent.com/ab604/coding-together/master/exercises/portal-weather-subset.csv")
 ```
 
+Take a look:
+
 ```{r glimpse-weather}
 weather
 ```
 
+There are multiple observations on the same date as the air temperature and
+rainfall are measured several times over each 24 hour period. Let's use the 
+median for the air temperature and the mean for the precipitation to create
+single values for each day.
 
 ```{r}
-weather %>% select(date,airtemp,precipitation) %>% filter(is.na(airtemp))
-weather %>% select(date,airtemp,precipitation) %>% filter(is.na(precipitation))
-
 mean_weather <- weather %>% select(date,airtemp,precipitation) %>% 
         drop_na() %>% 
         group_by(date) %>% 
-        summarise(mean_temp = mean(airtemp), mean_rain = mean(precipitation))
+        summarise(avg_temp = median(airtemp), avg_rain = mean(precipitation))
 ```
 
 ```{r inner-join, cache=TRUE}
-#weather %>% count(date) %>% filter(n > 1)
 mean_weather %>% inner_join(rodent_data, by = "date") %>% 
         glimpse()
 ```
+
+```{r}
+mean_weather %>% inner_join(rodent_data, by = "date") %>% 
+        filter(species == "DM", plot == 4, date >= '1990-01-01' & date <= '2000-01-01') %>% 
+        group_by(date, avg_temp, avg_rain) %>% summarise(count = n()) %>% 
+        ggplot(aes(date,count, colour = avg_rain)) +
+        geom_point()
+```
+
 
 ```{r left-join, cache=TRUE}
 mean_weather %>% left_join(rodent_data, by = "date") %>% 

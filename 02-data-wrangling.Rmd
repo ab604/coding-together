@@ -424,12 +424,15 @@ each of these groups.
 knitr::include_graphics("img/dplyr-group-by-16-10-2019.png")
 ```
 
-Using `group_by()` with `summarise()` now returns a table with 92 rows instead of single row.
+Using `group_by()` with `summarise()` now returns a table with 23 rows instead of single row.
+Here I use `drop_na(weight)` to only keep rows with no missing values in `weight`. This
+ensures that no groups with only `NA` values are returned as `NaN`
+which is what would happen if we used `mean(weight, na.rm = TRUE)`.
 
 ```{r grouped-summarise,  cache=TRUE}
-surveys %>%
-  group_by(sex, species_id) %>%
-  summarize(mean_weight = mean(weight, na.rm = TRUE))
+surveys_mutated %>%
+  group_by(species_id,rodent_type) %>% drop_na(weight) %>% 
+  summarize(mean_weight = mean(weight))
 ```
 
 ## Using `dpylr` to explore the effect of Kangaroo Rat exclusion on Granivore populations
@@ -506,15 +509,16 @@ the observation occurred.
 
 Then we can calculate the number of captures for each of these groups by
 using `summarise()` to create a `mean_captures` variable which is equal to the number
-of rows for that group using the `n()` function divided by 4 to calculate
-the average over each quarter.
+of rows for that group using the `n()` function. The value of `n` represents the 
+total number of captures for each group per quarter. A quarter of a year is 
+3 months, so we divide by 3 to calculate the average captures per quarter.
 
 **Note:** `n()` is a `dplyr` function that returns the number of observations in the current group.
 
 ```{r by-quarter,  cache=TRUE}
 by_quarter <- surveys_subset %>% 
         group_by(rodent_type,plot_type,quarter) %>% 
-        summarise(mean_captures = n()/4)
+        summarise(mean_captures = n()/3)
 
 by_quarter
 ```
@@ -528,17 +532,17 @@ argument.
 
 For the aesthetics we are plotting the time on the
 x-axis using the `quarter` variable, and the quarterly `mean_captures` on the
-y-axis, and we colour the data by `rodent_type`.
+y-axis, and we colour the data by `plot_type`.
 
 Then we create line and point geometric mappings, and split the plot into two
-facets using `facet_wrap` according to `plot_type`.
+facets using `facet_wrap` according to `rodent_type`.
 
 ```{r plot-quarter-all,out.width = '100%', cache=TRUE}
 ggplot(by_quarter,
-       aes(x=quarter,y=mean_captures,colour=rodent_type)) +
+       aes(x=quarter,y=mean_captures,colour=plot_type)) +
   geom_line() +
   geom_point() +
-  facet_wrap(~ plot_type)
+  facet_wrap(~ rodent_type)
 ```
 
 But it would be more useful to only plot the Kangaroo Rats and Granivores
@@ -548,10 +552,10 @@ of the plot and add a title.
 ```{r plot-quarter, out.width = '100%',cache=TRUE}
 by_quarter %>% 
         filter(rodent_type != "Other") %>% 
-        ggplot(aes(x=quarter,y=mean_captures,colour=rodent_type)) +
+        ggplot(aes(x=quarter,y=mean_captures,colour=plot_type)) +
   geom_line() +
   geom_point() +
-  facet_wrap(~ plot_type) +
+  facet_wrap(~ rodent_type) +
         theme(legend.position = "bottom") +
         ggtitle("How does excluding Kangaroo Rats 
                 effect Granivore populations?", 

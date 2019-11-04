@@ -849,25 +849,28 @@ each of these groups.</p>
 Figure 2.9: <code>dplyr::group_by()</code>
 </p>
 </div>
-<p>Using <code>group_by()</code> with <code>summarise()</code> now returns a table with 92 rows instead of single row.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">surveys <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(sex, species_id) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-3" title="3"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_weight =</span> <span class="kw">mean</span>(weight, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
-<pre><code>## # A tibble: 92 x 3
-## # Groups:   sex [3]
-##    sex   species_id mean_weight
-##    &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;
-##  1 F     BA                9.16
-##  2 F     DM               41.6 
-##  3 F     DO               48.5 
-##  4 F     DS              118.  
-##  5 F     NL              154.  
-##  6 F     OL               31.1 
-##  7 F     OT               24.8 
-##  8 F     OX               21   
-##  9 F     PB               30.2 
-## 10 F     PE               22.8 
-## # ... with 82 more rows</code></pre>
+<p>Using <code>group_by()</code> with <code>summarise()</code> now returns a table with 23 rows instead of single row.
+Here I use <code>drop_na(weight)</code> to only keep rows with no missing values in <code>weight</code>. This
+ensures that no groups with only <code>NA</code> values are returned as <code>NaN</code>
+which is what would happen if we used <code>mean(weight, na.rm = TRUE)</code>.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">surveys_mutated <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(species_id,rodent_type) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>(weight) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb51-3" title="3"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_weight =</span> <span class="kw">mean</span>(weight))</a></code></pre></div>
+<pre><code>## # A tibble: 23 x 3
+## # Groups:   species_id [23]
+##    species_id rodent_type  mean_weight
+##    &lt;chr&gt;      &lt;chr&gt;              &lt;dbl&gt;
+##  1 BA         Other               8.76
+##  2 DM         Kangaroo Rat       43.4 
+##  3 DO         Kangaroo Rat       48.7 
+##  4 DS         Kangaroo Rat      120.  
+##  5 NL         Other             159.  
+##  6 OL         Other              31.4 
+##  7 OT         Other              24.2 
+##  8 OX         Other              21.2 
+##  9 PB         Other              31.8 
+## 10 PE         Granivore          21.4 
+## # ... with 13 more rows</code></pre>
 </div>
 </div>
 <div id="using-dpylr-to-explore-the-effect-of-kangaroo-rat-exclusion-on-granivore-populations" class="section level2">
@@ -931,28 +934,29 @@ Granivore, Control plot or Exclusion plot, and the quarter of the year in which
 the observation occurred.</p>
 <p>Then we can calculate the number of captures for each of these groups by
 using <code>summarise()</code> to create a <code>mean_captures</code> variable which is equal to the number
-of rows for that group using the <code>n()</code> function divided by 4 to calculate
-the average over each quarter.</p>
+of rows for that group using the <code>n()</code> function. The value of <code>n</code> represents the
+total number of captures for each group per quarter. A quarter of a year is
+3 months, so we divide by 3 to calculate the average captures per quarter.</p>
 <p><strong>Note:</strong> <code>n()</code> is a <code>dplyr</code> function that returns the number of observations in the current group.</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1">by_quarter &lt;-<span class="st"> </span>surveys_subset <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb55-2" title="2"><span class="st">        </span><span class="kw">group_by</span>(rodent_type,plot_type,quarter) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb55-3" title="3"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">mean_captures =</span> <span class="kw">n</span>()<span class="op">/</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb55-3" title="3"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">mean_captures =</span> <span class="kw">n</span>()<span class="op">/</span><span class="dv">3</span>)</a>
 <a class="sourceLine" id="cb55-4" title="4"></a>
 <a class="sourceLine" id="cb55-5" title="5">by_quarter</a></code></pre></div>
 <pre><code>## # A tibble: 567 x 4
 ## # Groups:   rodent_type, plot_type [6]
 ##    rodent_type plot_type quarter mean_captures
 ##    &lt;chr&gt;       &lt;chr&gt;       &lt;dbl&gt;         &lt;dbl&gt;
-##  1 Granivore   Control     1977.          3.75
-##  2 Granivore   Control     1977.          2   
-##  3 Granivore   Control     1978.          2.75
-##  4 Granivore   Control     1978.          2.25
-##  5 Granivore   Control     1978.          3.25
-##  6 Granivore   Control     1978.          1   
-##  7 Granivore   Control     1979.          1.25
-##  8 Granivore   Control     1979.          1.5 
-##  9 Granivore   Control     1979.          1.25
-## 10 Granivore   Control     1980.          5.5 
+##  1 Granivore   Control     1977.          5   
+##  2 Granivore   Control     1977.          2.67
+##  3 Granivore   Control     1978.          3.67
+##  4 Granivore   Control     1978.          3   
+##  5 Granivore   Control     1978.          4.33
+##  6 Granivore   Control     1978.          1.33
+##  7 Granivore   Control     1979.          1.67
+##  8 Granivore   Control     1979.          2   
+##  9 Granivore   Control     1979.          1.67
+## 10 Granivore   Control     1980.          7.33
 ## # ... with 557 more rows</code></pre>
 <p>These steps have taken us from a table of 34,786 observations to a table of 567 observations.</p>
 </div>
@@ -966,10 +970,10 @@ y-axis, and we colour the data by <code>rodent_type</code>.</p>
 <p>Then we create line and point geometric mappings, and split the plot into two
 facets using <code>facet_wrap</code> according to <code>plot_type</code>.</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1"><span class="kw">ggplot</span>(by_quarter,</a>
-<a class="sourceLine" id="cb57-2" title="2">       <span class="kw">aes</span>(<span class="dt">x=</span>quarter,<span class="dt">y=</span>mean_captures,<span class="dt">colour=</span>rodent_type)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb57-2" title="2">       <span class="kw">aes</span>(<span class="dt">x=</span>quarter,<span class="dt">y=</span>mean_captures,<span class="dt">colour=</span>plot_type)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb57-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb57-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb57-5" title="5"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>plot_type)</a></code></pre></div>
+<a class="sourceLine" id="cb57-5" title="5"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>rodent_type)</a></code></pre></div>
 <pre><code>## Warning: Removed 2 rows containing missing values (geom_path).</code></pre>
 <pre><code>## Warning: Removed 5 rows containing missing values (geom_point).</code></pre>
 <p><img src="coding-together_files/figure-html/plot-quarter-all-1.png" width="100%" /></p>
@@ -978,10 +982,10 @@ data, so let’s filter out the other species. And move the legend to the bottom
 of the plot and add a title.</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1">by_quarter <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb60-2" title="2"><span class="st">        </span><span class="kw">filter</span>(rodent_type <span class="op">!=</span><span class="st"> &quot;Other&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb60-3" title="3"><span class="st">        </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>quarter,<span class="dt">y=</span>mean_captures,<span class="dt">colour=</span>rodent_type)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb60-3" title="3"><span class="st">        </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>quarter,<span class="dt">y=</span>mean_captures,<span class="dt">colour=</span>plot_type)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb60-4" title="4"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb60-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb60-6" title="6"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>plot_type) <span class="op">+</span></a>
+<a class="sourceLine" id="cb60-6" title="6"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>rodent_type) <span class="op">+</span></a>
 <a class="sourceLine" id="cb60-7" title="7"><span class="st">        </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb60-8" title="8"><span class="st">        </span><span class="kw">ggtitle</span>(<span class="st">&quot;How does excluding Kangaroo Rats </span></a>
 <a class="sourceLine" id="cb60-9" title="9"><span class="st">                effect Granivore populations?&quot;</span>, </a>

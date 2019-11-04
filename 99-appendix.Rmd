@@ -28,3 +28,20 @@ weather <- read_csv("https://raw.githubusercontent.com/weecology/PortalData/mast
 weather %>% select(date,airtemp,precipitation) %>% write_csv("exercises/portal-weather-subset.csv")
 ```
 
+Create rodent data for lesson
+
+```{r rodent-data eval=FALSE}
+# Rodent survey data
+rodent_data <-  read_csv("https://raw.githubusercontent.com/weecology/PortalData/master/Rodents/Portal_rodent.csv",
+                         col_types = cols(tag = col_character(),
+                                         prevrt = col_character(),
+                                         ltag = col_character(),
+                                         note2 = col_character(),
+                                         note3 = col_character(), 
+                                         note4 = col_character(), 
+                                         note5 = col_character())) %>% 
+        mutate(date = make_date(day = day, month = month, year = year))
+
+rodent_data %>% select(date,plot,species,sex,hfl,wgt) %>% write_csv("exercises/portal_rodent.csv")
+```
+

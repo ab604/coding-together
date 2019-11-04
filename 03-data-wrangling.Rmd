@@ -380,8 +380,6 @@ krats %>%
 
 The results are very similar.
 
-<!---
-
 ## Joining tables
 
 See also [R4DS Relational data chapter](https://r4ds.had.co.nz/relational-data.html)
@@ -439,29 +437,7 @@ Does the weather influence the census? The data in this file are hourly and span
 The first only recorded Air Temperature and Precipitation, so I've created a dataset
 for the only the date, the air temperature and rainfall columns for the three weather stations.
 
-```{r, cache=TRUE,eval=TRUE}
-# Species data
-weather <- read_csv("https://raw.githubusercontent.com/weecology/PortalData/master/Weather/Portal_weather.csv",
-                    col_types = cols(RH = col_double(),
-                                     battv = col_double(),
-                                     PTemp_C = col_double(),
-                                     BP_mmHg_Avg = col_double(),
-                                     SlrkW = col_double(),
-                                     SlrMJ_Tot = col_double(),
-                                     ETos =col_double(),
-                                     Rso = col_double(),
-                                     WS_ms_Avg = col_double(),
-                                     WindDir  = col_double(),
-                                     WS_ms_S_WVT= col_double(),
-                                     WindDir_D1_WVT = col_double(),
-                                     WindDir_SD1_WVT = col_double(),
-                                     HI_C_Avg = col_double(),     
-                                     SunHrs_Tot = col_double(),
-                                     PotSlrW_Avg = col_double(), 
-                                     WC_C_Avg = col_double()
-                                     )) %>% 
-        mutate(date = make_date(day = day, month = month, year = year)) #%>% 
-        #distinct(date, .keep_all = T)
+```{r read-rodent, cache=TRUE,eval=FALSE}
 # Rodent survey data
 rodent_data <-  read_csv("https://raw.githubusercontent.com/weecology/PortalData/master/Rodents/Portal_rodent.csv",
                          col_types = cols(tag = col_character(),
@@ -472,6 +448,21 @@ rodent_data <-  read_csv("https://raw.githubusercontent.com/weecology/PortalData
                                          note4 = col_character(), 
                                          note5 = col_character())) %>% 
         mutate(date = make_date(day = day, month = month, year = year))
+```
+
+Take a look:
+
+```{r glimpse-rd}
+rodent_data
+```
+
+
+```{r read-weather, eval=FALSE}
+weather <- read_csv("https://raw.githubusercontent.com/ab604/coding-together/master/exercises/portal-weather-subset.csv")
+```
+
+```{r glimpse-weather}
+weather
 ```
 
 

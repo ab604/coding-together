@@ -4,6 +4,7 @@
 
 + Complete the questionaire and quiz
 + Open RStudio and open the project for week 2
++ Set up your environment to work with the tidyverse and surveys data
 + How many distinct taxa are there in the surveys dataset?
 + How would we do the grouped summary we did at the end of week three, 
 but only for the rodents?
@@ -12,9 +13,8 @@ but only for the rodents?
 
 ## summarise:
 
-Use filter with is.na() to remove the NA values from the weight variable,
-the use summarise to create mean_weight and min_weight variables, using mean()
-and min() functions.
+Use summarise to create mean_weight and min_weight variables, using mean()
+and min() functions. na.rm = TRUE.
 
 ## group_by:
 

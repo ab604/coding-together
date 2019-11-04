@@ -1,1 +1,4 @@
-# Coding together week 6 - Communicating data
+# Coding together week 6
+
+## Visualisation and reports
+Communicating data

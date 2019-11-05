@@ -3,6 +3,7 @@
 Create weather data for lesson
 
 ```{r create-portal-weather-subset, eval=FALSE}
+set.seed(1792)
 # Species data
 weather <- read_csv("https://raw.githubusercontent.com/weecology/PortalData/master/Weather/Portal_weather.csv",
                     col_types = cols(RH = col_double(),

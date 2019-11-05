@@ -459,63 +459,59 @@ Take a look:
 weather
 ```
 
-There are multiple observations on the same date as the air temperature and
-rainfall are measured several times over each 24 hour period. Let's use the 
-median for the air temperature and the mean for the precipitation to create
-single values for each day.
 
-```{r}
-mean_weather <- weather %>%
-        drop_na() %>% 
-        group_by(date,plot) %>% 
-        summarise(avg_temp = median(airtemp), avg_rain = mean(precipitation))
+```{r one-week-data, cache=TRUE}
+airtemp <- tibble(date = date(c('1990-01-07','1990-01-07','1990-01-07')),
+               plot = c(4,8,1),
+               airtemp = c(7.3,9.5,11))
+
+krat <- tibble(date = date(c('1990-01-07','1990-01-07','1990-01-07')),
+               plot = c(4,4,6),
+               species = c("DM","DM","RM"))
 ```
 
-```{r inner-join, cache=F}
-mean_weather %>% inner_join(rodent_data, by = "date") %>% 
-        glimpse()
+```{r one-week-glimpse}
+airtemp %>% glimpse()
+krat %>% glimpse()
 ```
 
-```{r}
-mean_weather %>% inner_join(rodent_data, by = "date") %>% 
-        filter(species == "DM", plot == 4, date >= '1990-01-01' & date <= '2000-01-01') %>% 
-        group_by(date, avg_temp, avg_rain) %>% summarise(count = n()) %>% 
-        ggplot(aes(date,count, colour = avg_rain)) +
-        geom_point()
+### Inner join
 
-glimpse(mean_weather)
+```{r inner-join-fig,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
+knitr::include_graphics("img/inner_join.png")
 ```
 
 
-```{r left-join, cache=F}
+```{r inner-join, cache=TRUE}
+airtemp %>% inner_join(krat)
+```
 
-one_week_weather <- weather %>% filter(date >= '1990-01-01' & date <= '1990-01-07', plot == 4 | plot == 8) 
-one_week_rodents <- rodent_data %>% filter(date >= '1990-01-01' & date <= '1990-01-07', plot == 4 | plot == 6)
-                                           
 
-one_week_weather %>% distinct(date)
-one_week_rodents %>% distinct(date)
-
-one_week_weather %>% left_join(one_week_rodents) %>% glimpse()
-one_week_weather %>% right_join(one_week_rodents) %>% glimpse()
-one_week_weather %>% inner_join(one_week_rodents) %>% glimpse()
-one_week_weather %>% anti_join(one_week_rodents) %>% glimpse()
-one_week_weather %>% semi_join(one_week_rodents) %>% glimpse()
-one_week_weather %>% full_join(one_week_rodents) %>% glimpse()
+```{r left-join, cache=T}
+airtemp %>% left_join(krat)
 ```
 
 ```{r right-join, cache=TRUE}
-mean_weather %>% right_join(rodent_data, by = "date") %>% 
-        glimpse()
+airtemp %>% right_join(krat)
 ```
 
 ```{r full-join, cache=TRUE}
-mean_weather %>% full_join(rodent_data, by = "date") %>% 
-        glimpse()
+airtemp %>% full_join(krat)
 ```
+
 ### Filtering joins
 
 `semi_join()` and `anti_join()`
+
+```{r semi-join, cache=T}
+airtemp %>% semi_join(krat)
+```
+
+
+```{r ant-join, cache=TRUE}
+airtemp %>% anti_join(krat)
+
+```
 
 ### Set operations
 

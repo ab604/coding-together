@@ -465,9 +465,9 @@ median for the air temperature and the mean for the precipitation to create
 single values for each day.
 
 ```{r}
-mean_weather <- weather %>% select(date,airtemp,precipitation) %>% 
+mean_weather <- weather %>%
         drop_na() %>% 
-        group_by(date) %>% 
+        group_by(date,plot) %>% 
         summarise(avg_temp = median(airtemp), avg_rain = mean(precipitation))
 ```
 
@@ -488,8 +488,20 @@ glimpse(mean_weather)
 
 
 ```{r left-join, cache=F}
-mean_weather %>% left_join(rodent_data) %>% 
-        glimpse()
+
+one_week_weather <- weather %>% filter(date >= '1990-01-01' & date <= '1990-01-07', plot == 4 | plot == 8) 
+one_week_rodents <- rodent_data %>% filter(date >= '1990-01-01' & date <= '1990-01-07', plot == 4 | plot == 6)
+                                           
+
+one_week_weather %>% distinct(date)
+one_week_rodents %>% distinct(date)
+
+one_week_weather %>% left_join(one_week_rodents) %>% glimpse()
+one_week_weather %>% right_join(one_week_rodents) %>% glimpse()
+one_week_weather %>% inner_join(one_week_rodents) %>% glimpse()
+one_week_weather %>% anti_join(one_week_rodents) %>% glimpse()
+one_week_weather %>% semi_join(one_week_rodents) %>% glimpse()
+one_week_weather %>% full_join(one_week_rodents) %>% glimpse()
 ```
 
 ```{r right-join, cache=TRUE}

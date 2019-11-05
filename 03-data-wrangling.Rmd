@@ -421,44 +421,6 @@ If you discover your table lacks a primary key you can add one with `mutate()`.
 
 `inner_join()`, `left_join()`, `right_join()` and `full_join()`
 
-The data on the 
-
-### Species
-
-*"`Portal_rodent_species.csv` contains the species codes used in Portal_rodent. Any animal found in a trap is recorded. Non-rodent species are occasionally trapped and so are given species codes. Several columns are also included in the species table to restrict the species list to only rodents, only target species, or only granivores."*
-
-### Rodent adundance data
-
-*"`Portal_rodent.csv` contains the rodent trapping data. Each individual of a target species is PIT tagged and data on species, location caught (plot and stake), sex, reproductive condition, weight, and hindfoot length are recorded. In almost all cases, you will want to remove negative period codes before using this data. Negative period codes indicate data collected outside of the normal census protocols, and should absolutely not be used as regular trapping data."*
-
-The rodent survey data is a good example of 
-
-Does the weather influence the census? The data in this file are hourly and span three weather stations. 
-The first only recorded Air Temperature and Precipitation, so I've created a dataset
-for the only the date, the air temperature and rainfall columns for the three weather stations.
-
-```{r read-rodent, cache=TRUE,eval=FALSE}
-# Rodent survey data
-rodent_data <-  read_csv("https://raw.githubusercontent.com/ab604/coding-together/master/exercises/portal_rodent.csv")
-```
-
-Take a look:
-
-```{r glimpse-rd}
-rodent_data
-```
-
-
-```{r read-weather, eval=FALSE}
-weather <- read_csv("https://raw.githubusercontent.com/ab604/coding-together/master/exercises/portal-weather-subset.csv")
-```
-
-Take a look:
-
-```{r glimpse-weather}
-weather
-```
-
 
 ```{r one-week-data, cache=TRUE}
 airtemp <- tibble(date = date(c('1990-01-07','1990-01-07','1990-01-07')),
@@ -475,7 +437,7 @@ airtemp %>% glimpse()
 krat %>% glimpse()
 ```
 
-### Inner join
+#### Inner join
 
 ```{r inner-join-fig,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/inner_join.png")
@@ -486,13 +448,29 @@ knitr::include_graphics("img/inner_join.png")
 airtemp %>% inner_join(krat)
 ```
 
+#### Left join
+
+```{r left-join-fig,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
+knitr::include_graphics("img/left_join.png")
+```
 
 ```{r left-join, cache=T}
 airtemp %>% left_join(krat)
 ```
 
+#### Right join
+
+```{r right-join-fig,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
+knitr::include_graphics("img/right_join.png")
+```
+
 ```{r right-join, cache=TRUE}
 airtemp %>% right_join(krat)
+```
+#### Full join
+
+```{r full-join-fig,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
+knitr::include_graphics("img/full_join.png")
 ```
 
 ```{r full-join, cache=TRUE}

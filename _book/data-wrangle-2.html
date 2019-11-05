@@ -208,11 +208,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#joining-tables"><i class="fa fa-check"></i><b>3.3</b> Joining tables</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#keys"><i class="fa fa-check"></i><b>3.3.1</b> Keys</a></li>
 <li class="chapter" data-level="3.3.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#mutating-joins"><i class="fa fa-check"></i><b>3.3.2</b> Mutating joins</a></li>
-<li class="chapter" data-level="3.3.3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#species"><i class="fa fa-check"></i><b>3.3.3</b> Species</a></li>
-<li class="chapter" data-level="3.3.4" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#rodent-adundance-data"><i class="fa fa-check"></i><b>3.3.4</b> Rodent adundance data</a></li>
-<li class="chapter" data-level="3.3.5" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#inner-join"><i class="fa fa-check"></i><b>3.3.5</b> Inner join</a></li>
-<li class="chapter" data-level="3.3.6" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#filtering-joins"><i class="fa fa-check"></i><b>3.3.6</b> Filtering joins</a></li>
-<li class="chapter" data-level="3.3.7" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#set-operations"><i class="fa fa-check"></i><b>3.3.7</b> Set operations</a></li>
+<li class="chapter" data-level="3.3.3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#filtering-joins"><i class="fa fa-check"></i><b>3.3.3</b> Filtering joins</a></li>
+<li class="chapter" data-level="3.3.4" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#set-operations"><i class="fa fa-check"></i><b>3.3.4</b> Set operations</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>4</b> Visualistion and communication</a><ul>
@@ -748,85 +745,40 @@ See the examples in <a href="https://r4ds.had.co.nz/relational-data.html#keys">R
 <div id="mutating-joins" class="section level3">
 <h3><span class="header-section-number">3.3.2</span> Mutating joins</h3>
 <p><code>inner_join()</code>, <code>left_join()</code>, <code>right_join()</code> and <code>full_join()</code></p>
-<p>The data on the</p>
-</div>
-<div id="species" class="section level3">
-<h3><span class="header-section-number">3.3.3</span> Species</h3>
-<p><em>“<code>Portal_rodent_species.csv</code> contains the species codes used in Portal_rodent. Any animal found in a trap is recorded. Non-rodent species are occasionally trapped and so are given species codes. Several columns are also included in the species table to restrict the species list to only rodents, only target species, or only granivores.”</em></p>
-</div>
-<div id="rodent-adundance-data" class="section level3">
-<h3><span class="header-section-number">3.3.4</span> Rodent adundance data</h3>
-<p><em>“<code>Portal_rodent.csv</code> contains the rodent trapping data. Each individual of a target species is PIT tagged and data on species, location caught (plot and stake), sex, reproductive condition, weight, and hindfoot length are recorded. In almost all cases, you will want to remove negative period codes before using this data. Negative period codes indicate data collected outside of the normal census protocols, and should absolutely not be used as regular trapping data.”</em></p>
-<p>The rodent survey data is a good example of</p>
-<p>Does the weather influence the census? The data in this file are hourly and span three weather stations.
-The first only recorded Air Temperature and Precipitation, so I’ve created a dataset
-for the only the date, the air temperature and rainfall columns for the three weather stations.</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1"><span class="co"># Rodent survey data</span></a>
-<a class="sourceLine" id="cb103-2" title="2">rodent_data &lt;-<span class="st">  </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/ab604/coding-together/master/exercises/portal_rodent.csv&quot;</span>)</a></code></pre></div>
-<p>Take a look:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1">rodent_data</a></code></pre></div>
-<pre><code>## # A tibble: 53,824 x 6
-##    date        plot species sex     hfl   wgt
-##    &lt;date&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1 1989-06-04     4 DM      M        37    46
-##  2 1989-06-04     7 RM      F        17     9
-##  3 1989-06-04     3 SH      M        32    67
-##  4 1989-06-04     3 RM      F        16     8
-##  5 1989-06-04     4 SS      &lt;NA&gt;     NA    NA
-##  6 1989-06-04     8 DM      M        36    34
-##  7 1989-06-04    14 DM      M        37    51
-##  8 1989-06-04     2 SS      &lt;NA&gt;     NA    NA
-##  9 1989-06-04     3 SH      F        33   111
-## 10 1989-06-04    13 RF      F        15    11
-## # ... with 53,814 more rows</code></pre>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1">weather &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/ab604/coding-together/master/exercises/portal-weather-subset.csv&quot;</span>)</a></code></pre></div>
-<p>Take a look:</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1">weather</a></code></pre></div>
-<pre><code>## # A tibble: 252,047 x 4
-##    date        plot airtemp precipitation
-##    &lt;date&gt;     &lt;dbl&gt;   &lt;dbl&gt;         &lt;dbl&gt;
-##  1 1989-06-04    18    27.5             0
-##  2 1989-06-04    12    28.5             0
-##  3 1989-06-04    23    29.6             0
-##  4 1989-06-04    14    30.4             0
-##  5 1989-06-04    24    30.7             0
-##  6 1989-06-04    23    30.7             0
-##  7 1989-06-04     1    30.5             0
-##  8 1989-06-04    24    30.4             0
-##  9 1989-06-04     3    28.9             0
-## 10 1989-06-04     5    25.8             0
-## # ... with 252,037 more rows</code></pre>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1">airtemp &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">date =</span> <span class="kw">date</span>(<span class="kw">c</span>(<span class="st">&#39;1990-01-07&#39;</span>,<span class="st">&#39;1990-01-07&#39;</span>,<span class="st">&#39;1990-01-07&#39;</span>)),</a>
-<a class="sourceLine" id="cb109-2" title="2">               <span class="dt">plot =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">1</span>),</a>
-<a class="sourceLine" id="cb109-3" title="3">               <span class="dt">airtemp =</span> <span class="kw">c</span>(<span class="fl">7.3</span>,<span class="fl">9.5</span>,<span class="dv">11</span>))</a>
-<a class="sourceLine" id="cb109-4" title="4"></a>
-<a class="sourceLine" id="cb109-5" title="5">krat &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">date =</span> <span class="kw">date</span>(<span class="kw">c</span>(<span class="st">&#39;1990-01-07&#39;</span>,<span class="st">&#39;1990-01-07&#39;</span>,<span class="st">&#39;1990-01-07&#39;</span>)),</a>
-<a class="sourceLine" id="cb109-6" title="6">               <span class="dt">plot =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">6</span>),</a>
-<a class="sourceLine" id="cb109-7" title="7">               <span class="dt">species =</span> <span class="kw">c</span>(<span class="st">&quot;DM&quot;</span>,<span class="st">&quot;DM&quot;</span>,<span class="st">&quot;RM&quot;</span>))</a></code></pre></div>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1">airtemp &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">date =</span> <span class="kw">date</span>(<span class="kw">c</span>(<span class="st">&#39;1990-01-07&#39;</span>,<span class="st">&#39;1990-01-07&#39;</span>,<span class="st">&#39;1990-01-07&#39;</span>)),</a>
+<a class="sourceLine" id="cb103-2" title="2">               <span class="dt">plot =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb103-3" title="3">               <span class="dt">airtemp =</span> <span class="kw">c</span>(<span class="fl">7.3</span>,<span class="fl">9.5</span>,<span class="dv">11</span>))</a>
+<a class="sourceLine" id="cb103-4" title="4"></a>
+<a class="sourceLine" id="cb103-5" title="5">krat &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">date =</span> <span class="kw">date</span>(<span class="kw">c</span>(<span class="st">&#39;1990-01-07&#39;</span>,<span class="st">&#39;1990-01-07&#39;</span>,<span class="st">&#39;1990-01-07&#39;</span>)),</a>
+<a class="sourceLine" id="cb103-6" title="6">               <span class="dt">plot =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">6</span>),</a>
+<a class="sourceLine" id="cb103-7" title="7">               <span class="dt">species =</span> <span class="kw">c</span>(<span class="st">&quot;DM&quot;</span>,<span class="st">&quot;DM&quot;</span>,<span class="st">&quot;RM&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()</a></code></pre></div>
 <pre><code>## Observations: 3
 ## Variables: 3
 ## $ date    &lt;date&gt; 1990-01-07, 1990-01-07, 1990-01-07
 ## $ plot    &lt;dbl&gt; 4, 8, 1
 ## $ airtemp &lt;dbl&gt; 7.3, 9.5, 11.0</code></pre>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1">krat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1">krat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()</a></code></pre></div>
 <pre><code>## Observations: 3
 ## Variables: 3
 ## $ date    &lt;date&gt; 1990-01-07, 1990-01-07, 1990-01-07
 ## $ plot    &lt;dbl&gt; 4, 4, 6
 ## $ species &lt;chr&gt; &quot;DM&quot;, &quot;DM&quot;, &quot;RM&quot;</code></pre>
-</div>
-<div id="inner-join" class="section level3">
-<h3><span class="header-section-number">3.3.5</span> Inner join</h3>
+<div id="inner-join" class="section level4">
+<h4><span class="header-section-number">3.3.2.1</span> Inner join</h4>
 <p><img src="img/inner_join.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(krat)</a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 2 x 4
 ##   date        plot airtemp species
 ##   &lt;date&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  
 ## 1 1990-01-07     4     7.3 DM     
 ## 2 1990-01-07     4     7.3 DM</code></pre>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(krat)</a></code></pre></div>
+</div>
+<div id="left-join" class="section level4">
+<h4><span class="header-section-number">3.3.2.2</span> Left join</h4>
+<p><img src="img/left_join.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 4 x 4
 ##   date        plot airtemp species
@@ -835,7 +787,11 @@ for the only the date, the air temperature and rainfall columns for the three we
 ## 2 1990-01-07     4     7.3 DM     
 ## 3 1990-01-07     8     9.5 &lt;NA&gt;   
 ## 4 1990-01-07     1    11   &lt;NA&gt;</code></pre>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">right_join</span>(krat)</a></code></pre></div>
+</div>
+<div id="right-join" class="section level4">
+<h4><span class="header-section-number">3.3.2.3</span> Right join</h4>
+<p><img src="img/right_join.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">right_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 3 x 4
 ##   date        plot airtemp species
@@ -843,7 +799,11 @@ for the only the date, the air temperature and rainfall columns for the three we
 ## 1 1990-01-07     4     7.3 DM     
 ## 2 1990-01-07     4     7.3 DM     
 ## 3 1990-01-07     6    NA   RM</code></pre>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(krat)</a></code></pre></div>
+</div>
+<div id="full-join" class="section level4">
+<h4><span class="header-section-number">3.3.2.4</span> Full join</h4>
+<p><img src="img/full_join.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 5 x 4
 ##   date        plot airtemp species
@@ -854,16 +814,17 @@ for the only the date, the air temperature and rainfall columns for the three we
 ## 4 1990-01-07     1    11   &lt;NA&gt;   
 ## 5 1990-01-07     6    NA   RM</code></pre>
 </div>
+</div>
 <div id="filtering-joins" class="section level3">
-<h3><span class="header-section-number">3.3.6</span> Filtering joins</h3>
+<h3><span class="header-section-number">3.3.3</span> Filtering joins</h3>
 <p><code>semi_join()</code> and <code>anti_join()</code></p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">semi_join</span>(krat)</a></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">semi_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 1 x 3
 ##   date        plot airtemp
 ##   &lt;date&gt;     &lt;dbl&gt;   &lt;dbl&gt;
 ## 1 1990-01-07     4     7.3</code></pre>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">anti_join</span>(krat)</a></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">anti_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 2 x 3
 ##   date        plot airtemp
@@ -872,7 +833,7 @@ for the only the date, the air temperature and rainfall columns for the three we
 ## 2 1990-01-07     1    11</code></pre>
 </div>
 <div id="set-operations" class="section level3">
-<h3><span class="header-section-number">3.3.7</span> Set operations</h3>
+<h3><span class="header-section-number">3.3.4</span> Set operations</h3>
 <p>These are joins corresponding with the
 mathematical operation of intersection <span class="math inline">\(\cap\)</span>, union <span class="math inline">\(\cup\)</span>, and difference <span class="math inline">\(-\)</span>.</p>
 <p><img src="img/set-operations.png" width="50%" style="display: block; margin: auto;" />

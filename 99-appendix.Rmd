@@ -49,3 +49,26 @@ rodent_data %>% select(date,plot,species,sex,hfl,wgt) %>%
         write_csv("exercises/portal_rodent.csv")
 ```
 
+```{r read-rodent, cache=TRUE,eval=FALSE}
+# Rodent survey data
+rodent_data <-  read_csv("https://raw.githubusercontent.com/ab604/coding-together/master/exercises/portal_rodent.csv")
+```
+
+Take a look:
+
+```{r glimpse-rd}
+rodent_data
+```
+
+
+```{r read-weather, eval=FALSE}
+weather <- read_csv("https://raw.githubusercontent.com/ab604/coding-together/master/exercises/portal-weather-subset.csv")
+```
+
+Take a look:
+
+```{r glimpse-weather}
+weather
+```
+
+

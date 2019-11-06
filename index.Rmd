@@ -34,7 +34,7 @@ surveys <- read_csv("exercises/portal_data_joined.csv")
 surveys_spread <- read_csv("exercises/surveys_spread.csv")
 surveys_gw <- read_csv("exercises/surveys_grouped_weight.csv")
 #rodent_data <- read_csv("exercises/portal_rodent.csv")
-#weather <- read_csv("exercises/portal-weather-subset.csv")
+weather <- read_csv("exercises/portal-weather-subset.csv")
 ```
 
 # Welcome {-}

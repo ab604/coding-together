@@ -27,7 +27,11 @@ weather <- read_csv("https://raw.githubusercontent.com/weecology/PortalData/mast
         mutate(date = make_date(day = day, month = month, year = year), 
                plot = sample(1:24,252047,replace=T))
 
-weather %>% select(date,plot,airtemp,precipitation) %>% write_csv("exercises/portal-weather-subset.csv")
+weather %>% select(date,plot,airtemp,precipitation) %>%
+        group_by(plot,date) %>% 
+        summarise(avg_temp = median(airtemp, na.rm = T), 
+                  avg_rain = mean(precipitation, na.rm = T)) %>% 
+write_csv("exercises/portal-weather-subset.csv")
 ```
 
 Create rodent data for lesson

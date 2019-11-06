@@ -462,6 +462,8 @@ From `dplyr` we have:
 
 #### Inner join
 
+> `inner_join()` : keeps only the observations with matching keys in both tables
+
 An inner join between `airtemp` and `krat` keeps only the observations which 
 have match in both tables using the primary key of `date` and `plot`.
 
@@ -476,6 +478,11 @@ airtemp %>% inner_join(krat)
 
 #### Left join
 
+> `left_join()` : keeps all the observations in the left hand table 
+
+An left join between `airtemp` and `krat` keeps all the observations in
+`airtemp` and fills the missing observations in `species` with `NA`.
+
 ```{r left-join-fig,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/left_join.png")
 ```
@@ -486,6 +493,11 @@ airtemp %>% left_join(krat)
 
 #### Right join
 
+> `right_join()` : keeps all the observations in the right hand tables
+
+An right join between `airtemp` and `krat` keeps all the observations in
+`krat` and fills the missing observations in `airtemp` with `NA`.
+
 ```{r right-join-fig,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/right_join.png")
 ```
@@ -494,6 +506,11 @@ knitr::include_graphics("img/right_join.png")
 airtemp %>% right_join(krat)
 ```
 #### Full join
+
+> `full_join()` : keeps all the observations in both tables
+
+An full join between `airtemp` and `krat` keeps all the observations in
+both tables and fills the missing observations in `airtemp` and `species` with `NA`.
 
 ```{r full-join-fig,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/full_join.png")
@@ -505,9 +522,18 @@ airtemp %>% full_join(krat)
 
 ### Filtering joins
 
+Filtering joins act like the `filter` function keeping only observations
+that match the join without adding or removing columns.
+
 `semi_join()` and `anti_join()`
 
 #### Semi join
+
+> `semi_join()` keeps only the observations in the left hand table that
+have a match in the right hand table.
+
+A semi-join between between `airtemp` and `krat` keeps only the observation
+in `airtemp` that matches in `krat`. 
 
 ```{r semi-join-fig,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/semi_join.png")
@@ -518,6 +544,12 @@ airtemp %>% semi_join(krat)
 ```
 
 #### Anti join
+
+> `anti_join()` drops the observations in the left hand table that
+have a match in the right hand table.
+
+A anti-join between between `airtemp` and `krat` drops the observations
+in `airtemp` that match in `krat`. 
 
 ```{r anti-join-fig,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/anti_join.png")
@@ -536,4 +568,6 @@ mathematical operation of intersection $\cap$, union $\cup$, and difference $-$.
 ```{r set-operations, fig.align='center',out.width = '50%', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/set-operations.png")
 ```
--->
+
+
+### Duplicate keys

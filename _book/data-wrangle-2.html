@@ -210,6 +210,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#mutating-joins"><i class="fa fa-check"></i><b>3.3.2</b> Mutating joins</a></li>
 <li class="chapter" data-level="3.3.3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#filtering-joins"><i class="fa fa-check"></i><b>3.3.3</b> Filtering joins</a></li>
 <li class="chapter" data-level="3.3.4" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#set-operations"><i class="fa fa-check"></i><b>3.3.4</b> Set operations</a></li>
+<li class="chapter" data-level="3.3.5" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#duplicate-keys"><i class="fa fa-check"></i><b>3.3.5</b> Duplicate keys</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>4</b> Visualistion and communication</a><ul>
@@ -796,6 +797,9 @@ See the examples in <a href="https://r4ds.had.co.nz/relational-data.html#keys">R
 </ul>
 <div id="inner-join" class="section level4">
 <h4><span class="header-section-number">3.3.2.1</span> Inner join</h4>
+<blockquote>
+<p><code>inner_join()</code> : keeps only the observations with matching keys in both tables</p>
+</blockquote>
 <p>An inner join between <code>airtemp</code> and <code>krat</code> keeps only the observations which
 have match in both tables using the primary key of <code>date</code> and <code>plot</code>.</p>
 <p><img src="img/inner_join.png" width="100%" style="display: block; margin: auto;" /></p>
@@ -809,6 +813,11 @@ have match in both tables using the primary key of <code>date</code> and <code>p
 </div>
 <div id="left-join" class="section level4">
 <h4><span class="header-section-number">3.3.2.2</span> Left join</h4>
+<blockquote>
+<p><code>left_join()</code> : keeps all the observations in the left hand table</p>
+</blockquote>
+<p>An left join between <code>airtemp</code> and <code>krat</code> keeps all the observations in
+<code>airtemp</code> and fills the missing observations in <code>species</code> with <code>NA</code>.</p>
 <p><img src="img/left_join.png" width="100%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
@@ -822,6 +831,11 @@ have match in both tables using the primary key of <code>date</code> and <code>p
 </div>
 <div id="right-join" class="section level4">
 <h4><span class="header-section-number">3.3.2.3</span> Right join</h4>
+<blockquote>
+<p><code>right_join()</code> : keeps all the observations in the right hand tables</p>
+</blockquote>
+<p>An right join between <code>airtemp</code> and <code>krat</code> keeps all the observations in
+<code>krat</code> and fills the missing observations in <code>airtemp</code> with <code>NA</code>.</p>
 <p><img src="img/right_join.png" width="100%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">right_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
@@ -834,6 +848,11 @@ have match in both tables using the primary key of <code>date</code> and <code>p
 </div>
 <div id="full-join" class="section level4">
 <h4><span class="header-section-number">3.3.2.4</span> Full join</h4>
+<blockquote>
+<p><code>full_join()</code> : keeps all the observations in both tables</p>
+</blockquote>
+<p>An full join between <code>airtemp</code> and <code>krat</code> keeps all the observations in
+both tables and fills the missing observations in <code>airtemp</code> and <code>species</code> with <code>NA</code>.</p>
 <p><img src="img/full_join.png" width="100%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
@@ -849,9 +868,17 @@ have match in both tables using the primary key of <code>date</code> and <code>p
 </div>
 <div id="filtering-joins" class="section level3">
 <h3><span class="header-section-number">3.3.3</span> Filtering joins</h3>
+<p>Filtering joins act like the <code>filter</code> function keeping only observations
+that match the join without adding or removing columns.</p>
 <p><code>semi_join()</code> and <code>anti_join()</code></p>
 <div id="semi-join" class="section level4">
 <h4><span class="header-section-number">3.3.3.1</span> Semi join</h4>
+<blockquote>
+<p><code>semi_join()</code> keeps only the observations in the left hand table that
+have a match in the right hand table.</p>
+</blockquote>
+<p>A semi-join between between <code>airtemp</code> and <code>krat</code> keeps only the observation
+in <code>airtemp</code> that matches in <code>krat</code>.</p>
 <p><img src="img/semi_join.png" width="100%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">semi_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
@@ -862,6 +889,12 @@ have match in both tables using the primary key of <code>date</code> and <code>p
 </div>
 <div id="anti-join" class="section level4">
 <h4><span class="header-section-number">3.3.3.2</span> Anti join</h4>
+<blockquote>
+<p><code>anti_join()</code> drops the observations in the left hand table that
+have a match in the right hand table.</p>
+</blockquote>
+<p>A anti-join between between <code>airtemp</code> and <code>krat</code> drops the observations
+in <code>airtemp</code> that match in <code>krat</code>.</p>
 <p><img src="img/anti_join.png" width="100%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">anti_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
@@ -876,8 +909,10 @@ have match in both tables using the primary key of <code>date</code> and <code>p
 <h3><span class="header-section-number">3.3.4</span> Set operations</h3>
 <p>These are joins corresponding with the
 mathematical operation of intersection <span class="math inline">\(\cap\)</span>, union <span class="math inline">\(\cup\)</span>, and difference <span class="math inline">\(-\)</span>.</p>
-<p><img src="img/set-operations.png" width="50%" style="display: block; margin: auto;" />
-–&gt;</p>
+<p><img src="img/set-operations.png" width="50%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="duplicate-keys" class="section level3">
+<h3><span class="header-section-number">3.3.5</span> Duplicate keys</h3>
 
 </div>
 </div>

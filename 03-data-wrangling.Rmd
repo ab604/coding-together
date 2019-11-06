@@ -481,10 +481,21 @@ airtemp %>% full_join(krat)
 
 `semi_join()` and `anti_join()`
 
+#### Semi join
+
+```{r semi-join-fig,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
+knitr::include_graphics("img/semi_join.png")
+```
+
 ```{r semi-join, cache=T}
 airtemp %>% semi_join(krat)
 ```
 
+#### Anti join
+
+```{r anti-join-fig,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
+knitr::include_graphics("img/anti_join.png")
+```
 
 ```{r ant-join, cache=TRUE}
 airtemp %>% anti_join(krat)

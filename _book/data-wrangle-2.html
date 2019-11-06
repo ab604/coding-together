@@ -818,12 +818,19 @@ See the examples in <a href="https://r4ds.had.co.nz/relational-data.html#keys">R
 <div id="filtering-joins" class="section level3">
 <h3><span class="header-section-number">3.3.3</span> Filtering joins</h3>
 <p><code>semi_join()</code> and <code>anti_join()</code></p>
+<div id="semi-join" class="section level4">
+<h4><span class="header-section-number">3.3.3.1</span> Semi join</h4>
+<p><img src="img/semi_join.png" width="100%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">semi_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 1 x 3
 ##   date        plot airtemp
 ##   &lt;date&gt;     &lt;dbl&gt;   &lt;dbl&gt;
 ## 1 1990-01-07     4     7.3</code></pre>
+</div>
+<div id="anti-join" class="section level4">
+<h4><span class="header-section-number">3.3.3.2</span> Anti join</h4>
+<p><img src="img/anti_join.png" width="100%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">anti_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 2 x 3
@@ -831,6 +838,7 @@ See the examples in <a href="https://r4ds.had.co.nz/relational-data.html#keys">R
 ##   &lt;date&gt;     &lt;dbl&gt;   &lt;dbl&gt;
 ## 1 1990-01-07     8     9.5
 ## 2 1990-01-07     1    11</code></pre>
+</div>
 </div>
 <div id="set-operations" class="section level3">
 <h3><span class="header-section-number">3.3.4</span> Set operations</h3>

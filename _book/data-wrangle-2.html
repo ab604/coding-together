@@ -715,43 +715,19 @@ for each group.</p>
 everything we needed was already contained within a single table, but often
 we have <em>related</em> information spread across multiples tables that we want to analyse.
 In these situations we need to join pairs of tables to explore relationships of interest.</p>
-<blockquote>
-<p><strong>Note</strong> Joins always use two tables. To add a third relationship it would
-require joining the table created from the first join to another table. And so on.</p>
-</blockquote>
-<p>We can think of three types of join, two of which correspond with <code>dplyr</code> verbs:</p>
-<ol style="list-style-type: decimal">
-<li>Joins that <strong>mutate</strong> the table. These are joins that create a new variable in one table using
-observations from another.</li>
-<li>Joins that <strong>filter</strong> the table. These are joins that keep only a subset of observations from
-one table based on whether they match the observations in another.</li>
-<li>Joins that perform <strong>set operations</strong>. These are joins corresponding with the
-mathematical operation of intersection <span class="math inline">\(\cap\)</span>, union <span class="math inline">\(\cup\)</span>, and difference <span class="math inline">\(-\)</span>.</li>
-</ol>
-<div id="keys" class="section level3">
-<h3><span class="header-section-number">3.3.1</span> Keys</h3>
-<p>A key is a variable or set of variables that uniquely identifies an observation
-in a table. In a simple case only one variable is sufficient, but often several variables
-are required.</p>
-<ul>
-<li>Primary key: a key that uniquely identifies the observation in its own table e.g. <code>record_id</code> in <code>surveys</code> is unique to each set of rodent observations.</li>
-<li>Foreign key: a key that uniquely identifies the observation in another table. e.g. if <code>date</code> appeared in another table that recorded weather information that we wished to join <code>surveys</code> to. The <code>date</code> is not unique in <code>surveys</code> but it would be in the weather table.</li>
-</ul>
-<p>Keys can be both primary and foreign, as they might be primary for one table and foreign in another or vice versa.</p>
-<p>It’s a good idea to verify a key is primary i.e. uniquely identifies an observation.
-See the examples in <a href="https://r4ds.had.co.nz/relational-data.html#keys">R4DS keys</a></p>
-<p>If you discover your table lacks a primary key you can add one with <code>mutate()</code>.</p>
-</div>
-<div id="mutating-joins" class="section level3">
-<h3><span class="header-section-number">3.3.2</span> Mutating joins</h3>
-<p><code>inner_join()</code>, <code>left_join()</code>, <code>right_join()</code> and <code>full_join()</code></p>
+<p>We’ll use a dummy dataset here that recreates part of the data the Portal project
+collects. As well as the animal census they separately record weather information.</p>
+<p>Imagine we had two small tables, one called <code>airtemp</code> that contains the air temperature
+in Celsius for three plots for one timepoint on one day. And another called <code>krat</code>
+that records the observations for three plots on the same day for kangaroo rat
+speciecs <code>DM</code>, <code>DS</code> and <code>RM</code>.</p>
 <div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1">airtemp &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">date =</span> <span class="kw">date</span>(<span class="kw">c</span>(<span class="st">&#39;1990-01-07&#39;</span>,<span class="st">&#39;1990-01-07&#39;</span>,<span class="st">&#39;1990-01-07&#39;</span>)),</a>
 <a class="sourceLine" id="cb103-2" title="2">               <span class="dt">plot =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">1</span>),</a>
 <a class="sourceLine" id="cb103-3" title="3">               <span class="dt">airtemp =</span> <span class="kw">c</span>(<span class="fl">7.3</span>,<span class="fl">9.5</span>,<span class="dv">11</span>))</a>
 <a class="sourceLine" id="cb103-4" title="4"></a>
 <a class="sourceLine" id="cb103-5" title="5">krat &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">date =</span> <span class="kw">date</span>(<span class="kw">c</span>(<span class="st">&#39;1990-01-07&#39;</span>,<span class="st">&#39;1990-01-07&#39;</span>,<span class="st">&#39;1990-01-07&#39;</span>)),</a>
 <a class="sourceLine" id="cb103-6" title="6">               <span class="dt">plot =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">6</span>),</a>
-<a class="sourceLine" id="cb103-7" title="7">               <span class="dt">species =</span> <span class="kw">c</span>(<span class="st">&quot;DM&quot;</span>,<span class="st">&quot;DM&quot;</span>,<span class="st">&quot;RM&quot;</span>))</a></code></pre></div>
+<a class="sourceLine" id="cb103-7" title="7">               <span class="dt">species =</span> <span class="kw">c</span>(<span class="st">&quot;DM&quot;</span>,<span class="st">&quot;DS&quot;</span>,<span class="st">&quot;RM&quot;</span>))</a></code></pre></div>
 <div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()</a></code></pre></div>
 <pre><code>## Observations: 3
 ## Variables: 3
@@ -763,11 +739,67 @@ See the examples in <a href="https://r4ds.had.co.nz/relational-data.html#keys">R
 ## Variables: 3
 ## $ date    &lt;date&gt; 1990-01-07, 1990-01-07, 1990-01-07
 ## $ plot    &lt;dbl&gt; 4, 4, 6
-## $ species &lt;chr&gt; &quot;DM&quot;, &quot;DM&quot;, &quot;RM&quot;</code></pre>
+## $ species &lt;chr&gt; &quot;DM&quot;, &quot;DS&quot;, &quot;RM&quot;</code></pre>
+<p>We can think of three types of join, two of which correspond with <code>dplyr</code> verbs:</p>
+<ol style="list-style-type: decimal">
+<li>Joins that <strong>mutate</strong> the table. These are joins that create a new variable in one table using
+observations from another.</li>
+<li>Joins that <strong>filter</strong> the table. These are joins that keep only a subset of observations from
+one table based on whether they match the observations in another.</li>
+<li>Joins that perform <strong>set operations</strong>. These are joins corresponding with the
+mathematical operation of intersection <span class="math inline">\(\cap\)</span>, union <span class="math inline">\(\cup\)</span>, and difference <span class="math inline">\(-\)</span>.</li>
+</ol>
+<blockquote>
+<p><strong>Note</strong> Joins always use two tables. To add a third relationship it would
+require joining the table created from the first join to another table. And so on.</p>
+</blockquote>
+<div id="keys" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Keys</h3>
+<p>A key is a variable or set of variables that uniquely identifies an observation
+in a table. In a simple case only one variable is sufficient, but often several variables
+are required.</p>
+<ul>
+<li>Primary key: a key that uniquely identifies the observation in its own table
+e.g. the combination of <code>date</code> and <code>plot</code> is unique to each set of observations in the <code>airtemp</code> table.</li>
+<li>Foreign key: a key that uniquely identifies the observation in another table.
+e.g. the combination of <code>date</code>, <code>plot</code> and <code>species</code> is unique to each set of observations in the <code>krat</code> table.</li>
+</ul>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">count</span>(date,plot)</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 3
+##   date        plot     n
+##   &lt;date&gt;     &lt;dbl&gt; &lt;int&gt;
+## 1 1990-01-07     1     1
+## 2 1990-01-07     4     1
+## 3 1990-01-07     8     1</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1">krat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">count</span>(date,plot,species)</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 4
+##   date        plot species     n
+##   &lt;date&gt;     &lt;dbl&gt; &lt;chr&gt;   &lt;int&gt;
+## 1 1990-01-07     4 DM          1
+## 2 1990-01-07     4 DS          1
+## 3 1990-01-07     6 RM          1</code></pre>
+<p>So joining <code>airtemp</code> and <code>krat</code> uses the <code>airtemp</code> primary key of <code>date</code> and <code>plot</code>.</p>
+<p>Keys can be both primary and foreign, as they might be primary for one table and foreign in another or vice versa.</p>
+<p>It’s a good idea to verify a key is primary i.e. uniquely identifies an observation.
+See the examples in <a href="https://r4ds.had.co.nz/relational-data.html#keys">R4DS keys</a></p>
+<p>If you discover your table lacks a primary key you can add one with <code>mutate()</code>.</p>
+</div>
+<div id="mutating-joins" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Mutating joins</h3>
+<p>These are joins that created new columns, hence they act like <code>dplyr::mutate</code>.</p>
+<p>From <code>dplyr</code> we have:</p>
+<ul>
+<li><code>inner_join()</code> : keeps only the observations with matching keys in both tables</li>
+<li><code>left_join()</code> : keeps all the observations in the left hand table</li>
+<li><code>right_join()</code> : keeps all the observations in the right hand tables</li>
+<li><code>full_join()</code> : keeps all the observations in both tables</li>
+</ul>
 <div id="inner-join" class="section level4">
 <h4><span class="header-section-number">3.3.2.1</span> Inner join</h4>
+<p>An inner join between <code>airtemp</code> and <code>krat</code> keeps only the observations which
+have match in both tables using the primary key of <code>date</code> and <code>plot</code>.</p>
 <p><img src="img/inner_join.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(krat)</a></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 2 x 4
 ##   date        plot airtemp species
@@ -778,7 +810,7 @@ See the examples in <a href="https://r4ds.had.co.nz/relational-data.html#keys">R
 <div id="left-join" class="section level4">
 <h4><span class="header-section-number">3.3.2.2</span> Left join</h4>
 <p><img src="img/left_join.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(krat)</a></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 4 x 4
 ##   date        plot airtemp species
@@ -791,7 +823,7 @@ See the examples in <a href="https://r4ds.had.co.nz/relational-data.html#keys">R
 <div id="right-join" class="section level4">
 <h4><span class="header-section-number">3.3.2.3</span> Right join</h4>
 <p><img src="img/right_join.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">right_join</span>(krat)</a></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">right_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 3 x 4
 ##   date        plot airtemp species
@@ -803,7 +835,7 @@ See the examples in <a href="https://r4ds.had.co.nz/relational-data.html#keys">R
 <div id="full-join" class="section level4">
 <h4><span class="header-section-number">3.3.2.4</span> Full join</h4>
 <p><img src="img/full_join.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(krat)</a></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 5 x 4
 ##   date        plot airtemp species
@@ -821,7 +853,7 @@ See the examples in <a href="https://r4ds.had.co.nz/relational-data.html#keys">R
 <div id="semi-join" class="section level4">
 <h4><span class="header-section-number">3.3.3.1</span> Semi join</h4>
 <p><img src="img/semi_join.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">semi_join</span>(krat)</a></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">semi_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 1 x 3
 ##   date        plot airtemp
@@ -831,7 +863,7 @@ See the examples in <a href="https://r4ds.had.co.nz/relational-data.html#keys">R
 <div id="anti-join" class="section level4">
 <h4><span class="header-section-number">3.3.3.2</span> Anti join</h4>
 <p><img src="img/anti_join.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">anti_join</span>(krat)</a></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">anti_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 2 x 3
 ##   date        plot airtemp

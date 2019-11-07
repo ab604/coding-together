@@ -197,3 +197,39 @@ knitr::include_graphics("../img/pivot_longer_R.png")
 ```{r, out.width='80%', fig.align='center', fig.cap='', echo=FALSE}
 knitr::include_graphics("../img/pivot_wider_R.png")
 ```
+
+## `dplyr::inner_join()`
+
+```{r, out.width='80%', fig.align='center', fig.cap='', echo=FALSE}
+knitr::include_graphics("../img/inner_join.png")
+```
+
+## `dplyr::left_join()`
+
+```{r, out.width='80%', fig.align='center', fig.cap='', echo=FALSE}
+knitr::include_graphics("../img/left_join.png")
+```
+
+## `dplyr::right_join()`
+
+```{r, out.width='80%', fig.align='center', fig.cap='', echo=FALSE}
+knitr::include_graphics("../img/right_join.png")
+```
+
+## `dplyr::full_join()`
+
+```{r, out.width='80%', fig.align='center', fig.cap='', echo=FALSE}
+knitr::include_graphics("../img/full_join.png")
+```
+
+## `dplyr::semi_join()`
+
+```{r, out.width='80%', fig.align='center', fig.cap='', echo=FALSE}
+knitr::include_graphics("../img/semi_join.png")
+```
+
+## `dplyr::anti_join()`
+
+```{r, out.width='80%', fig.align='center', fig.cap='', echo=FALSE}
+knitr::include_graphics("../img/anti_join.png")
+```

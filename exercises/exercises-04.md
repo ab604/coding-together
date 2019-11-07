@@ -94,3 +94,7 @@ fish_encounters %>% pivot_wider(
 ## Missing values
 
 ## Joins
+
+```{r}
+weather <- read_csv("https://raw.githubusercontent.com/ab604/coding-together/master/exercises/portal-weather-subset.csv")
+```

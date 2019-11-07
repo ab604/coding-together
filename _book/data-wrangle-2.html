@@ -211,6 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3.3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#filtering-joins"><i class="fa fa-check"></i><b>3.3.3</b> Filtering joins</a></li>
 <li class="chapter" data-level="3.3.4" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#set-operations"><i class="fa fa-check"></i><b>3.3.4</b> Set operations</a></li>
 <li class="chapter" data-level="3.3.5" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#duplicate-keys"><i class="fa fa-check"></i><b>3.3.5</b> Duplicate keys</a></li>
+<li class="chapter" data-level="3.3.6" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#binding-rows-and-columns"><i class="fa fa-check"></i><b>3.3.6</b> Binding rows and columns</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>4</b> Visualistion and communication</a><ul>
@@ -784,6 +785,20 @@ e.g. the combination of <code>date</code>, <code>plot</code> and <code>species<
 <p>It’s a good idea to verify a key is primary i.e. uniquely identifies an observation.
 See the examples in <a href="https://r4ds.had.co.nz/relational-data.html#keys">R4DS keys</a></p>
 <p>If you discover your table lacks a primary key you can add one with <code>mutate()</code>.</p>
+<p>Keys are called explicity using <code>by =</code> followed by the keys as a character vector.
+For example, here we call <code>by = c("plot","date)</code>.</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(krat, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;plot&quot;</span>,<span class="st">&quot;date&quot;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 2 x 4
+##   date        plot airtemp species
+##   &lt;date&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  
+## 1 1990-01-07     4     7.3 DM     
+## 2 1990-01-07     4     7.3 DS</code></pre>
+<p>If we implicitly let the join function choose the keys, we get an output telling
+us what was used.</p>
+<p>If we had a key that had a different name in both tables, we tell the join
+function that they are the same key by saying one variable is equal to another.
+For example if we had <code>plot</code> in one table and it was called <code>plot_id</code> in another,
+we could use <code>by = c("plot" = "plot_id")</code> to tell the join function that this is the key.</p>
 </div>
 <div id="mutating-joins" class="section level3">
 <h3><span class="header-section-number">3.3.2</span> Mutating joins</h3>
@@ -801,9 +816,16 @@ See the examples in <a href="https://r4ds.had.co.nz/relational-data.html#keys">R
 <p><code>inner_join()</code> : keeps only the observations with matching keys in both tables</p>
 </blockquote>
 <p>An inner join between <code>airtemp</code> and <code>krat</code> keeps only the observations which
-have match in both tables using the primary key of <code>date</code> and <code>plot</code>.</p>
-<p><img src="img/inner_join.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(krat)</a></code></pre></div>
+have match in both tables using the primary key of <code>date</code> and <code>plot</code> as shown
+in Figure <a href="data-wrangle-2.html#fig:inner-join-fig">3.3</a>.</p>
+
+<div class="figure" style="text-align: center"><span id="fig:inner-join-fig"></span>
+<img src="img/inner_join.png" alt="Inner join" width="100%" />
+<p class="caption">
+Figure 3.3: Inner join
+</p>
+</div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 2 x 4
 ##   date        plot airtemp species
@@ -817,9 +839,16 @@ have match in both tables using the primary key of <code>date</code> and <code>p
 <p><code>left_join()</code> : keeps all the observations in the left hand table</p>
 </blockquote>
 <p>An left join between <code>airtemp</code> and <code>krat</code> keeps all the observations in
-<code>airtemp</code> and fills the missing observations in <code>species</code> with <code>NA</code>.</p>
-<p><img src="img/left_join.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(krat)</a></code></pre></div>
+<code>airtemp</code> and fills the missing observations in <code>species</code> with <code>NA</code> as shown
+in Figure <a href="data-wrangle-2.html#fig:ljf">3.4</a>.</p>
+
+<div class="figure" style="text-align: center"><span id="fig:ljf"></span>
+<img src="img/left_join.png" alt="Left join" width="100%" />
+<p class="caption">
+Figure 3.4: Left join
+</p>
+</div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 4 x 4
 ##   date        plot airtemp species
@@ -835,9 +864,16 @@ have match in both tables using the primary key of <code>date</code> and <code>p
 <p><code>right_join()</code> : keeps all the observations in the right hand tables</p>
 </blockquote>
 <p>An right join between <code>airtemp</code> and <code>krat</code> keeps all the observations in
-<code>krat</code> and fills the missing observations in <code>airtemp</code> with <code>NA</code>.</p>
-<p><img src="img/right_join.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">right_join</span>(krat)</a></code></pre></div>
+<code>krat</code> and fills the missing observations in <code>airtemp</code> with <code>NA</code> as shown in
+Figure <a href="data-wrangle-2.html#fig:right-join-fig">3.5</a>.</p>
+
+<div class="figure" style="text-align: center"><span id="fig:right-join-fig"></span>
+<img src="img/right_join.png" alt="Right join" width="100%" />
+<p class="caption">
+Figure 3.5: Right join
+</p>
+</div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">right_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 3 x 4
 ##   date        plot airtemp species
@@ -852,9 +888,16 @@ have match in both tables using the primary key of <code>date</code> and <code>p
 <p><code>full_join()</code> : keeps all the observations in both tables</p>
 </blockquote>
 <p>An full join between <code>airtemp</code> and <code>krat</code> keeps all the observations in
-both tables and fills the missing observations in <code>airtemp</code> and <code>species</code> with <code>NA</code>.</p>
-<p><img src="img/full_join.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(krat)</a></code></pre></div>
+both tables and fills the missing observations in <code>airtemp</code> and <code>species</code> with <code>NA</code> as shown in
+Figure <a href="data-wrangle-2.html#fig:full-join-fig">3.6</a>.</p>
+
+<div class="figure" style="text-align: center"><span id="fig:full-join-fig"></span>
+<img src="img/full_join.png" alt="Full join" width="100%" />
+<p class="caption">
+Figure 3.6: Full join
+</p>
+</div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 5 x 4
 ##   date        plot airtemp species
@@ -878,9 +921,15 @@ that match the join without adding or removing columns.</p>
 have a match in the right hand table.</p>
 </blockquote>
 <p>A semi-join between between <code>airtemp</code> and <code>krat</code> keeps only the observation
-in <code>airtemp</code> that matches in <code>krat</code>.</p>
-<p><img src="img/semi_join.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">semi_join</span>(krat)</a></code></pre></div>
+in <code>airtemp</code> that matches in <code>krat</code> as showin in Figure <a href="data-wrangle-2.html#fig:semi-join-fig">3.7</a>.</p>
+
+<div class="figure" style="text-align: center"><span id="fig:semi-join-fig"></span>
+<img src="img/semi_join.png" alt="Semi join" width="100%" />
+<p class="caption">
+Figure 3.7: Semi join
+</p>
+</div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">semi_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 1 x 3
 ##   date        plot airtemp
@@ -894,9 +943,16 @@ in <code>airtemp</code> that matches in <code>krat</code>.</p>
 have a match in the right hand table.</p>
 </blockquote>
 <p>A anti-join between between <code>airtemp</code> and <code>krat</code> drops the observations
-in <code>airtemp</code> that match in <code>krat</code>.</p>
-<p><img src="img/anti_join.png" width="100%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">anti_join</span>(krat)</a></code></pre></div>
+in <code>airtemp</code> that match in <code>krat</code> as shown in
+Figure <a href="data-wrangle-2.html#fig:anti-join-fig">3.8</a>.</p>
+
+<div class="figure" style="text-align: center"><span id="fig:anti-join-fig"></span>
+<img src="img/anti_join.png" alt="Anti join" width="100%" />
+<p class="caption">
+Figure 3.8: Anti join
+</p>
+</div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">anti_join</span>(krat)</a></code></pre></div>
 <pre><code>## Joining, by = c(&quot;date&quot;, &quot;plot&quot;)</code></pre>
 <pre><code>## # A tibble: 2 x 3
 ##   date        plot airtemp
@@ -908,11 +964,46 @@ in <code>airtemp</code> that match in <code>krat</code>.</p>
 <div id="set-operations" class="section level3">
 <h3><span class="header-section-number">3.3.4</span> Set operations</h3>
 <p>These are joins corresponding with the
-mathematical operation of intersection <span class="math inline">\(\cap\)</span>, union <span class="math inline">\(\cup\)</span>, and difference <span class="math inline">\(-\)</span>.</p>
-<p><img src="img/set-operations.png" width="50%" style="display: block; margin: auto;" /></p>
+mathematical operation of intersection <span class="math inline">\(\cap\)</span>, union <span class="math inline">\(\cup\)</span>, and difference <span class="math inline">\(-\)</span>
+as shown in Figure <a href="data-wrangle-2.html#fig:set-operations">3.9</a>. These are <code>intersect()</code>, <code>union()</code>
+and <code>setdiff()</code>.</p>
+<p>See <a href="https://r4ds.had.co.nz/relational-data.html#set-operations">R4DS set operations</a>
+for examples of usage.</p>
+
+<div class="figure" style="text-align: center"><span id="fig:set-operations"></span>
+<img src="img/set-operations.png" alt="Set operations intersect(A,B), union(A,B) and setdiff(A,B)." width="50%" />
+<p class="caption">
+Figure 3.9: Set operations <code>intersect(A,B)</code>, <code>union(A,B)</code> and <code>setdiff(A,B)</code>.
+</p>
+</div>
 </div>
 <div id="duplicate-keys" class="section level3">
 <h3><span class="header-section-number">3.3.5</span> Duplicate keys</h3>
+<p>If we have duplicate keys in each tables which aren’t used as part of the join, then
+the join will create columns for both varaibles. For example, if we join <code>airtemp</code>
+with <code>krat</code> only using <code>plot</code> as a key, but <code>date</code> is in both, we reuturn <code>date.x</code> and
+<code>date.y</code> for <code>airtemp</code> and <code>krat</code> respecitively:</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1">airtemp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(krat, <span class="dt">by =</span> <span class="st">&quot;plot&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 5 x 5
+##   date.x      plot airtemp date.y     species
+##   &lt;date&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;     &lt;chr&gt;  
+## 1 1990-01-07     4     7.3 1990-01-07 DM     
+## 2 1990-01-07     4     7.3 1990-01-07 DS     
+## 3 1990-01-07     8     9.5 NA         &lt;NA&gt;   
+## 4 1990-01-07     1    11   NA         &lt;NA&gt;   
+## 5 NA             6    NA   1990-01-07 RM</code></pre>
+</div>
+<div id="binding-rows-and-columns" class="section level3">
+<h3><span class="header-section-number">3.3.6</span> Binding rows and columns</h3>
+<p>We can also join tables by binding rows or columns. Binding rows is useful when we have
+tables with different sets of observations for the same variables, such as
+when we have multiple replicates of an experiment. Binding columns can be done
+when we want to add a column from one table that corresponds with the observations in
+another.</p>
+<p>See <a href="https://dplyr.tidyverse.org/reference/bind.html"><code>dplyr bind</code></a> :</p>
+<p><em>“When row-binding, columns are matched by name, and any missing columns will be filled with NA.”</em></p>
+<p><em>When column-binding, rows are matched by position, so all data frames must have the same number of rows."</em></p>
+<p>These functions are <code>bind_rows</code> and <code>bind_cols</code>.</p>
 
 </div>
 </div>

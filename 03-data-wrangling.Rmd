@@ -449,6 +449,21 @@ See the examples in [R4DS keys](https://r4ds.had.co.nz/relational-data.html#keys
 
 If you discover your table lacks a primary key you can add one with `mutate()`.
 
+Keys are called explicity using `by =` followed by the keys as a character vector.
+For example, here we call `by = c("plot","date)`.
+
+```{r explicit-inner}
+airtemp %>% inner_join(krat, by = c("plot","date"))
+```
+
+If we implicitly let the join function choose the keys, we get an output telling
+us what was used.
+
+If we had a key that had a different name in both tables, we tell the join
+function that they are the same key by saying one variable is equal to another.
+For example if we had `plot` in one table and it was called `plot_id` in another,
+we could use `by = c("plot" = "plot_id")` to tell the join function that this is the key.
+
 ### Mutating joins
 
 These are joins that created new columns, hence they act like `dplyr::mutate`. 
@@ -465,9 +480,12 @@ From `dplyr` we have:
 > `inner_join()` : keeps only the observations with matching keys in both tables
 
 An inner join between `airtemp` and `krat` keeps only the observations which 
-have match in both tables using the primary key of `date` and `plot`.
+have match in both tables using the primary key of `date` and `plot` as shown 
+in Figure \@ref(fig:inner-join-fig).
 
-```{r inner-join-fig,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
+(ref:inner-join-fig) Inner join
+
+```{r inner-join-fig,fig.cap='(ref:inner-join-fig)',fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/inner_join.png")
 ```
 
@@ -481,11 +499,15 @@ airtemp %>% inner_join(krat)
 > `left_join()` : keeps all the observations in the left hand table 
 
 An left join between `airtemp` and `krat` keeps all the observations in
-`airtemp` and fills the missing observations in `species` with `NA`.
+`airtemp` and fills the missing observations in `species` with `NA` as shown 
+in Figure \@ref(fig:ljf).
 
-```{r left-join-fig,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
+(ref:left-join-fig) Left join
+
+```{r ljf,fig.cap='(ref:left-join-fig)',fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/left_join.png")
 ```
+
 
 ```{r left-join, cache=T}
 airtemp %>% left_join(krat)
@@ -496,9 +518,12 @@ airtemp %>% left_join(krat)
 > `right_join()` : keeps all the observations in the right hand tables
 
 An right join between `airtemp` and `krat` keeps all the observations in
-`krat` and fills the missing observations in `airtemp` with `NA`.
+`krat` and fills the missing observations in `airtemp` with `NA` as shown in 
+Figure \@ref(fig:right-join-fig).
 
-```{r right-join-fig,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
+(ref:right-join-fig) Right join
+
+```{r right-join-fig,fig.cap='(ref:right-join-fig)',fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/right_join.png")
 ```
 
@@ -510,9 +535,12 @@ airtemp %>% right_join(krat)
 > `full_join()` : keeps all the observations in both tables
 
 An full join between `airtemp` and `krat` keeps all the observations in
-both tables and fills the missing observations in `airtemp` and `species` with `NA`.
+both tables and fills the missing observations in `airtemp` and `species` with `NA` as shown in 
+Figure \@ref(fig:full-join-fig).
 
-```{r full-join-fig,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
+(ref:full-join-fig) Full join
+
+```{r full-join-fig,fig.cap='(ref:full-join-fig)',fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
 knitr::include_graphics("img/full_join.png")
 ```
 
@@ -533,9 +561,11 @@ that match the join without adding or removing columns.
 have a match in the right hand table.
 
 A semi-join between between `airtemp` and `krat` keeps only the observation
-in `airtemp` that matches in `krat`. 
+in `airtemp` that matches in `krat` as showin in Figure \@ref(fig:semi-join-fig).
 
-```{r semi-join-fig,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
+(ref:semi-join-fig) Semi join
+
+```{r semi-join-fig,fig.cap='(ref:semi-join-fig)',fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE, cache=TRUE}
 knitr::include_graphics("img/semi_join.png")
 ```
 
@@ -549,9 +579,12 @@ airtemp %>% semi_join(krat)
 have a match in the right hand table.
 
 A anti-join between between `airtemp` and `krat` drops the observations
-in `airtemp` that match in `krat`. 
+in `airtemp` that match in `krat` as shown in 
+Figure \@ref(fig:anti-join-fig).
 
-```{r anti-join-fig,fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE,cache=TRUE}
+(ref:anti-join-fig) Anti join
+
+```{r anti-join-fig,fig.cap='(ref:anti-join-fig)',fig.asp=1,out.width = '100%', fig.align='center', echo=FALSE, cache=TRUE}
 knitr::include_graphics("img/anti_join.png")
 ```
 
@@ -563,11 +596,44 @@ airtemp %>% anti_join(krat)
 ### Set operations
 
 These are joins corresponding with the 
-mathematical operation of intersection $\cap$, union $\cup$, and difference $-$.
+mathematical operation of intersection $\cap$, union $\cup$, and difference $-$ 
+as shown in Figure \@ref(fig:set-operations). These are `intersect()`, `union()`
+and `setdiff()`.
 
-```{r set-operations, fig.align='center',out.width = '50%', echo=FALSE,cache=TRUE}
+See [R4DS set operations](https://r4ds.had.co.nz/relational-data.html#set-operations)
+for examples of usage.
+
+(ref:set-ops) Set operations `intersect(A,B)`, `union(A,B)` and `setdiff(A,B)`.
+
+```{r set-operations,fig.cap='(ref:set-ops)', fig.align='center',out.width = '50%', echo=FALSE, cache=TRUE}
 knitr::include_graphics("img/set-operations.png")
 ```
 
 
 ### Duplicate keys
+
+If we have duplicate keys in each tables which aren't used as part of the join, then
+the join will create columns for both varaibles. For example, if we join `airtemp`
+with `krat` only using `plot` as a key, but `date` is in both, we reuturn `date.x` and
+`date.y` for `airtemp` and `krat` respecitively:
+
+```{r dup-keys}
+airtemp %>% full_join(krat, by = "plot")
+```
+
+
+### Binding rows and columns
+
+We can also join tables by binding rows or columns. Binding rows is useful when we have
+tables with different sets of observations for the same variables, such as
+when we have multiple replicates of an experiment. Binding columns can be done
+when we want to add a column from one table that corresponds with the observations in
+another.
+
+See [`dplyr bind`](https://dplyr.tidyverse.org/reference/bind.html) :
+
+*"When row-binding, columns are matched by name, and any missing columns will be filled with NA."* 
+
+*When column-binding, rows are matched by position, so all data frames must have the same number of rows."*
+
+These functions are `bind_rows` and `bind_cols`.

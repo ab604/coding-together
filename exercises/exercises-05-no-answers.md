@@ -2,7 +2,7 @@
 
 ## Warm-up
 
-+ Open the coding together book and change it to dark mode, and change the font to serif
++ Open the coding together online book and change it to dark mode, and change the font to serif
 + Download the PDF of the book
 + Find the part of the book describing `mutate()`: hint it's section 2.3.4
 + Find the tidyr cheatsheet on the internet

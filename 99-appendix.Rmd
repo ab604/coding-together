@@ -87,3 +87,14 @@ stocks <- tibble(
 stocks %>% write_csv("exercises/stocks.csv")
 ```
 
+Surveys with missing values
+
+```{r}
+# Create a table with missing values
+surveys_ms <- tibble(year = c(1991,1991,1991,1991,1992,1992,1992),
+                     qtr = c(1,2,3,4,1,2,4),
+                     mean_weight = c(3.75,2.50,NA,8.50,7.50,2.25,2.50))
+
+surveys_ms %>% write_csv("exercises/surveys_ms.csv")
+```
+

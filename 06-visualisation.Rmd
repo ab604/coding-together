@@ -1,5 +1,26 @@
 # Visualistion and communication {#viz}
 
+As mentioned right at the start, their are many types of data e.g. tables and
+audio files. And correspondingly there are many types of data visualisation e.g.
+statistical plots and maps. And visualisations we do for an exploration may
+be different to those we do for communication. 
+
+By the end of this chapter you will be able to:
+
+> + Use the `ggplot2` package to create exploratory plots and customize their plots
+> + Use geometrical objects and aesthetic mappings to create box plots, bar plots and
+time series plots
+> + Use facets to split plots into subplots according to variables
+> + Transform plots using statistcal mappings and catergorical variables (factors).
+> + Transform data positions and coordinates
+> + Use `ggplot2` themes and the `scales` package to customize plots
+> + Export figures for use in documents and presentations
+> + Create reports and presentations directly from RStudio
+
+But importantly it is up to you to determine what sort of visualiation is 
+appropriate for the task at hand and to use your critical judgement in 
+assessing a visualisation.
+
 ## Visualistion
 
 ### Exploratory plots

@@ -21,6 +21,13 @@ But importantly it is up to you to determine what sort of visualiation is
 appropriate for the task at hand and to use your critical judgement in 
 assessing a visualisation.
 
+[Albert Cairo](http://www.thefunctionalart.com/) is a journalist and academic
+specialising in data visualisation and has written and continues to write 
+extensively on the subject.
+
+[Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods by Cleveland and  McGill](https://www.jstor.org/stable/pdf/2288400.pdf?refreqid=excelsior%3Ab321aba183cce22a7f93335ca107eec6)
+
+
 ## Visualistion
 
 ### Exploratory plots

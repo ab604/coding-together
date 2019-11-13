@@ -58,15 +58,34 @@ datasaurus %>% group_by(dataset) %>% summarise(mean_x = mean(x),
                                                sd_y = sd(y))
 ```
 
+Let's remind ourselves of the basic form for creating plots with the `ggplot2` package: 
+
+```{r, eval=FALSE}
+ggplot(data = <DATA>) + 
+  <GEOM_FUNCTION(mapping = aes(<MAPPINGS>))>
+```
+
+> + We provide a data frame as an argument to the `ggplot` function
+> + Aesthetics (the variables we wish to plot) are mapped to a geometric 
+object such as points. 
+> + If we were to plot several `geoms()` on the same plot wanted to map the same aesthetics to each `geom()` we can pass the aesthetics argument to `ggplot()` directly: `ggplot(data = <DATA>,mapping = aes(<MAPPINGS>))`.
+> + We can also pipe data into `ggplot()` as we would for other functions.
+
+Here we use the basic form to plot the `datasaurus` but with the addition of `facet_wrap()`
+in which the first argument is `~` representing "formula" (a type of data structure) and the 
+second argument is the variable we wish to create individual plots for. 
+In words read this as *"facets depend upon the dataset"*:
+
 ```{r datasaurus-plot, cache=TRUE}
-datasaurus %>% 
-        ggplot(aes(x,y)) +
-        geom_point() +
+ ggplot(data = datasaurus) +
+        geom_point(mapping = aes(x,y)) +
         facet_wrap(~ dataset)
 ```
 
 
 ### Exploratory plots
+
+#### B
 
 ### Polished plots
 
@@ -86,5 +105,5 @@ Condensing her advice down she suggests:
 > + Make important information stand out using what we know about graphical perception
 > + Be consistent
 
-I created a short [example presentation about cleaning your teeth](https://docs.google.com/presentation/d/1ssXZYkuLzz9bXLeqmHmT66fpj7dpil0aQCY3yp36adA/edit?usp=sharing)
+I created a short [example presentation about cleaning your teeth](https://docs.google.com/presentation/d/e/2PACX-1vTa8VfB_jpB6fG4i157eNJb8sAyyKjJW06iZ8NNL1LPcB40w4NLLpK3TetbCuWSckX3wc8XuqdOpfnf/pub?start=false&loop=false&delayms=30000)
 following these ideas.

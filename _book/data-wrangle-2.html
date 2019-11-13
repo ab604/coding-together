@@ -442,9 +442,9 @@ package. (Base R can also do this, but we’re staying in the tidyverse where po
 variable. The calculation here being count the number of missing values in each
 column.</p>
 <p>We pipe <code>surveys</code> to the <code>map_dfr()</code> function where <code>dfr</code> means return a data frame.
-The <code>~</code> means we are applying a formula to the <code>surveys</code> input, which in this case
-the formula is going to be <code>sum(is.na(.))</code> where <code>.</code> is the argument for the input
-variable. The map function then does this for each variable in the <code>surveys</code> dataframe
+The <code>~</code> represents formula, meaning <em>“depends upon”</em>, such that <code>sum(is.na(.))</code> where <code>.</code>
+represents the input variable, depends upon the variables in <code>surveys</code>.
+The map function then does this for each variable in the <code>surveys</code> dataframe
 and returns the output as a data frame. I’ve piped the output to <code>glimpse()</code> for
 readability.</p>
 <p>In words what this syntax is saying is <strong>“take the surveys dataframe and for

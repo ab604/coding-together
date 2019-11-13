@@ -337,14 +337,32 @@ illustrate a problem with relying only on summary statistics to understand data.
 ## 11 v_lines      54.3   47.8  16.8  26.9
 ## 12 wide_lines   54.3   47.8  16.8  26.9
 ## 13 x_shape      54.3   47.8  16.8  26.9</code></pre>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1">datasaurus <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb142-2" title="2"><span class="st">        </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x,y)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb142-3" title="3"><span class="st">        </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb142-4" title="4"><span class="st">        </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>dataset)</a></code></pre></div>
+<p>Let’s remind ourselves of the basic form for creating plots with the <code>ggplot2</code> package:</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="op">&lt;</span>DATA<span class="op">&gt;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb142-2" title="2"><span class="st">  </span><span class="er">&lt;</span><span class="kw">GEOM_FUNCTION</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="op">&lt;</span>MAPPINGS<span class="op">&gt;</span>))<span class="op">&gt;</span></a></code></pre></div>
+<blockquote>
+<ul>
+<li>We provide a data frame as an argument to the <code>ggplot</code> function</li>
+<li>Aesthetics (the variables we wish to plot) are mapped to a geometric
+object such as points.</li>
+<li>If we were to plot several <code>geoms()</code> on the same plot wanted to map the same aesthetics to each <code>geom()</code> we can pass the aesthetics argument to <code>ggplot()</code> directly: <code>ggplot(data = &lt;DATA&gt;,mapping = aes(&lt;MAPPINGS&gt;))</code>.</li>
+<li>We can also pipe data into <code>ggplot()</code> as we would for other functions.</li>
+</ul>
+</blockquote>
+<p>Here we use the basic form to plot the <code>datasaurus</code> but with the addition of <code>facet_wrap()</code>
+in which the first argument is <code>~</code> representing “formula” (a type of data structure) and the
+second argument is the variable we wish to create individual plots for.
+In words read this as <em>“facets depend upon the dataset”</em>:</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1"> <span class="kw">ggplot</span>(<span class="dt">data =</span> datasaurus) <span class="op">+</span></a>
+<a class="sourceLine" id="cb143-2" title="2"><span class="st">        </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(x,y)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb143-3" title="3"><span class="st">        </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>dataset)</a></code></pre></div>
 <p><img src="coding-together_files/figure-html/datasaurus-plot-1.png" width="672" /></p>
 </div>
 <div id="exploratory-plots" class="section level3">
 <h3><span class="header-section-number">4.1.2</span> Exploratory plots</h3>
+<div id="b" class="section level4">
+<h4><span class="header-section-number">4.1.2.1</span> B</h4>
+</div>
 </div>
 <div id="polished-plots" class="section level3">
 <h3><span class="header-section-number">4.1.3</span> Polished plots</h3>
@@ -367,7 +385,7 @@ has written a fantastic step-by-step guide to creating effective slides.</p>
 <li>Be consistent</li>
 </ul>
 </blockquote>
-<p>I created a short <a href="https://docs.google.com/presentation/d/1ssXZYkuLzz9bXLeqmHmT66fpj7dpil0aQCY3yp36adA/edit?usp=sharing">example presentation about cleaning your teeth</a>
+<p>I created a short <a href="https://docs.google.com/presentation/d/e/2PACX-1vTa8VfB_jpB6fG4i157eNJb8sAyyKjJW06iZ8NNL1LPcB40w4NLLpK3TetbCuWSckX3wc8XuqdOpfnf/pub?start=false&amp;loop=false&amp;delayms=30000">example presentation about cleaning your teeth</a>
 following these ideas.</p>
 
 </div>

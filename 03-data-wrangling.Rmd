@@ -192,9 +192,9 @@ variable. The calculation here being count the number of missing values in each
 column.
 
 We pipe `surveys` to the `map_dfr()` function where `dfr` means return a data frame.
-The `~` means we are applying a formula to the `surveys` input, which in this case
-the formula is going to be `sum(is.na(.))` where `.` is the argument for the input 
-variable. The map function then does this for each variable in the `surveys` dataframe 
+The `~` represents formula, meaning *"depends upon"*, such that  `sum(is.na(.))` where `.` 
+represents the input variable, depends upon the variables in `surveys`. 
+The map function then does this for each variable in the `surveys` dataframe 
 and returns the output as a data frame. I've piped the output to `glimpse()` for 
 readability.
 

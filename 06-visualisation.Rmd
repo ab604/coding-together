@@ -4,7 +4,7 @@ Just as there are many types of data e.g. tables and
 audio files, correspondingly there are many types of data visualisation e.g.
 statistical plots and maps. Likewise visualisations we do for an exploration may
 be different to those we do for communication. Therefore we narrow the scope here
-to introduce some fundamentals of visualisation.
+to introduce some fundamentals of visualisation, presentations and reports.
 
 By the end of this chapter you will be able to:
 
@@ -18,15 +18,15 @@ time series plots
 > + Export figures for use in documents and presentations
 > + Create reports and presentations directly from RStudio
 
-These skills will enable to create visualisations for reports and presentations, 
+These skills will enable to start creating visualisations as well as
+reports and presentations using R, 
 but importantly it is up to 
 you to determine what sort of visualiation is 
 appropriate for the task at hand and for you to use your critical judgement in 
-assessing a visualisation.
+assessing a visualisation, presentation or report.
 
 ## Visualistion
 
-There are not fixed rules about visualisations, but there is a large body of work
 [Albert Cairo](http://www.thefunctionalart.com/) is a journalist and academic
 specialising in data visualisation and has written and continues to write 
 extensively on the subject.
@@ -75,3 +75,16 @@ datasaurus %>%
 Using R for report writing and presentations.
 
 ## Presentations
+
+My personal go-to for slide design guidance is [Melinda Seckington](https://missgeeky.com/2017/08/04/the-art-of-slide-design/). She
+has written a fantastic step-by-step guide to creating effective slides.
+
+Condensing her advice down she suggests:
+
+> + Focus on one point per slide
+> + Don't distract
+> + Make important information stand out using what we know about graphical perception
+> + Be consistent
+
+I created a short [example presentation about cleaning your teeth](https://docs.google.com/presentation/d/1ssXZYkuLzz9bXLeqmHmT66fpj7dpil0aQCY3yp36adA/edit?usp=sharing)
+following these ideas.

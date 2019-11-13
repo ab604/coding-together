@@ -1,9 +1,10 @@
 # Visualistion and communication {#viz}
 
-As mentioned right at the start, their are many types of data e.g. tables and
-audio files. And correspondingly there are many types of data visualisation e.g.
-statistical plots and maps. And visualisations we do for an exploration may
-be different to those we do for communication. 
+Just as there are many types of data e.g. tables and
+audio files, correspondingly there are many types of data visualisation e.g.
+statistical plots and maps. Likewise visualisations we do for an exploration may
+be different to those we do for communication. Therefore we narrow the scope here
+to introduce some fundamentals of visualisation.
 
 By the end of this chapter you will be able to:
 
@@ -17,18 +18,48 @@ time series plots
 > + Export figures for use in documents and presentations
 > + Create reports and presentations directly from RStudio
 
-But importantly it is up to you to determine what sort of visualiation is 
-appropriate for the task at hand and to use your critical judgement in 
+These skills will enable to create visualisations for reports and presentations, 
+but importantly it is up to 
+you to determine what sort of visualiation is 
+appropriate for the task at hand and for you to use your critical judgement in 
 assessing a visualisation.
 
+
+
+## Visualistion
+
+There are not fixed rules about visualisations, but there is a large body of work
 [Albert Cairo](http://www.thefunctionalart.com/) is a journalist and academic
 specialising in data visualisation and has written and continues to write 
 extensively on the subject.
 
 [Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods by Cleveland and  McGill](https://www.jstor.org/stable/pdf/2288400.pdf?refreqid=excelsior%3Ab321aba183cce22a7f93335ca107eec6)
 
+### Datasaurus
 
-## Visualistion
+[Datasaurus dozen](https://www.autodeskresearch.com/publications/samestats)
+
+```{r}
+datasaurus <- read_tsv("exercises/The Datasaurus Dozen/DatasaurusDozen.tsv")
+glimpse(datasaurus)
+datasaurus %>% distinct(dataset)
+```
+
+```{r}
+datasaurus %>% group_by(dataset) %>% summarise(mean_x = mean(x),
+                                               mean_y = mean(y),
+                                               sd_x = sd(x),
+                                               sd_y = sd(y))
+```
+
+```{r}
+datasaurus %>% 
+        group_by(dataset) %>% 
+        ggplot(aes(x,y)) +
+        geom_point() +
+        facet_wrap(~ dataset)
+```
+
 
 ### Exploratory plots
 

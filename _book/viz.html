@@ -216,8 +216,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>4</b> Visualistion and communication</a><ul>
 <li class="chapter" data-level="4.1" data-path="viz.html"><a href="viz.html#visualistion"><i class="fa fa-check"></i><b>4.1</b> Visualistion</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="viz.html"><a href="viz.html#exploratory-plots"><i class="fa fa-check"></i><b>4.1.1</b> Exploratory plots</a></li>
-<li class="chapter" data-level="4.1.2" data-path="viz.html"><a href="viz.html#polished-plots"><i class="fa fa-check"></i><b>4.1.2</b> Polished plots</a></li>
+<li class="chapter" data-level="4.1.1" data-path="viz.html"><a href="viz.html#datasaurus-dozen"><i class="fa fa-check"></i><b>4.1.1</b> Datasaurus dozen</a></li>
+<li class="chapter" data-level="4.1.2" data-path="viz.html"><a href="viz.html#exploratory-plots"><i class="fa fa-check"></i><b>4.1.2</b> Exploratory plots</a></li>
+<li class="chapter" data-level="4.1.3" data-path="viz.html"><a href="viz.html#polished-plots"><i class="fa fa-check"></i><b>4.1.3</b> Polished plots</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="viz.html"><a href="viz.html#reports"><i class="fa fa-check"></i><b>4.2</b> Reports</a></li>
 <li class="chapter" data-level="4.3" data-path="viz.html"><a href="viz.html#presentations"><i class="fa fa-check"></i><b>4.3</b> Presentations</a></li>
@@ -245,13 +246,108 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="viz" class="section level1">
 <h1><span class="header-section-number">4</span> Visualistion and communication</h1>
+<p>Just as there are many types of data e.g. tables and
+audio files, correspondingly there are many types of data visualisation e.g.
+statistical plots and maps. Likewise visualisations we do for an exploration may
+be different to those we do for communication. Therefore we narrow the scope here
+to introduce some fundamentals of visualisation.</p>
+<p>By the end of this chapter you will be able to:</p>
+<blockquote>
+<ul>
+<li>Use the <code>ggplot2</code> package to create exploratory plots and customize their plots</li>
+<li>Use geometrical objects and aesthetic mappings to create box plots, bar plots and
+time series plots</li>
+<li>Use facets to split plots into subplots according to variables</li>
+<li>Transform plots using statistcal mappings and catergorical variables (factors).</li>
+<li>Transform data positions and coordinates</li>
+<li>Use <code>ggplot2</code> themes and the <code>scales</code> package to customize plots</li>
+<li>Export figures for use in documents and presentations</li>
+<li>Create reports and presentations directly from RStudio</li>
+</ul>
+</blockquote>
+<p>These skills will enable to create visualisations for reports and presentations,
+but importantly it is up to
+you to determine what sort of visualiation is
+appropriate for the task at hand and for you to use your critical judgement in
+assessing a visualisation.</p>
 <div id="visualistion" class="section level2">
 <h2><span class="header-section-number">4.1</span> Visualistion</h2>
+<p>There are not fixed rules about visualisations, but there is a large body of work
+<a href="http://www.thefunctionalart.com/">Albert Cairo</a> is a journalist and academic
+specialising in data visualisation and has written and continues to write
+extensively on the subject.</p>
+<p><a href="https://www.jstor.org/stable/pdf/2288400.pdf?refreqid=excelsior%3Ab321aba183cce22a7f93335ca107eec6">Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods by Cleveland and McGill</a></p>
+<div id="datasaurus-dozen" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Datasaurus dozen</h3>
+<p>But why visualise data in the first place?</p>
+<p>Inspired by the <a href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet">Anscombe’s Quartet</a> and <a href="http://www.thefunctionalart.com/2016/08/download-datasaurus-never-trust-summary.html">Albert Cairo’s Datasaurus</a>, Justin Matejka and
+George Fitzmaurice
+created the <a href="https://www.autodeskresearch.com/publications/samestats">Datasaurus dozen</a> to
+illustrate a problem with relying only on summary statistics to understand data.</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1"><span class="co"># Download the Datasaurus Dozen</span></a>
+<a class="sourceLine" id="cb134-2" title="2">datasaurus &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="st">&quot;https://raw.githubusercontent.com/ab604/coding-together/master/exercises/DatasaurusDozen.tsv&quot;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   dataset = col_character(),
+##   x = col_double(),
+##   y = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1"><span class="co"># Quick look</span></a>
+<a class="sourceLine" id="cb136-2" title="2"><span class="kw">glimpse</span>(datasaurus)</a></code></pre></div>
+<pre><code>## Observations: 1,846
+## Variables: 3
+## $ dataset &lt;chr&gt; &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;...
+## $ x       &lt;dbl&gt; 55.3846, 51.5385, 46.1538, 42.8205, 40.7692, 38.7179, ...
+## $ y       &lt;dbl&gt; 97.1795, 96.0256, 94.4872, 91.4103, 88.3333, 84.8718, ...</code></pre>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1"><span class="co"># How many datasets</span></a>
+<a class="sourceLine" id="cb138-2" title="2">datasaurus <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">distinct</span>(dataset)</a></code></pre></div>
+<pre><code>## # A tibble: 13 x 1
+##    dataset   
+##    &lt;chr&gt;     
+##  1 dino      
+##  2 away      
+##  3 h_lines   
+##  4 v_lines   
+##  5 x_shape   
+##  6 star      
+##  7 high_lines
+##  8 dots      
+##  9 circle    
+## 10 bullseye  
+## 11 slant_up  
+## 12 slant_down
+## 13 wide_lines</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1">datasaurus <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(dataset) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">mean_x =</span> <span class="kw">mean</span>(x),</a>
+<a class="sourceLine" id="cb140-2" title="2">                                               <span class="dt">mean_y =</span> <span class="kw">mean</span>(y),</a>
+<a class="sourceLine" id="cb140-3" title="3">                                               <span class="dt">sd_x =</span> <span class="kw">sd</span>(x),</a>
+<a class="sourceLine" id="cb140-4" title="4">                                               <span class="dt">sd_y =</span> <span class="kw">sd</span>(y))</a></code></pre></div>
+<pre><code>## # A tibble: 13 x 5
+##    dataset    mean_x mean_y  sd_x  sd_y
+##    &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 away         54.3   47.8  16.8  26.9
+##  2 bullseye     54.3   47.8  16.8  26.9
+##  3 circle       54.3   47.8  16.8  26.9
+##  4 dino         54.3   47.8  16.8  26.9
+##  5 dots         54.3   47.8  16.8  26.9
+##  6 h_lines      54.3   47.8  16.8  26.9
+##  7 high_lines   54.3   47.8  16.8  26.9
+##  8 slant_down   54.3   47.8  16.8  26.9
+##  9 slant_up     54.3   47.8  16.8  26.9
+## 10 star         54.3   47.8  16.8  26.9
+## 11 v_lines      54.3   47.8  16.8  26.9
+## 12 wide_lines   54.3   47.8  16.8  26.9
+## 13 x_shape      54.3   47.8  16.8  26.9</code></pre>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1">datasaurus <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb142-2" title="2"><span class="st">        </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x,y)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb142-3" title="3"><span class="st">        </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb142-4" title="4"><span class="st">        </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>dataset)</a></code></pre></div>
+<p><img src="coding-together_files/figure-html/datasaurus-plot-1.png" width="672" /></p>
+</div>
 <div id="exploratory-plots" class="section level3">
-<h3><span class="header-section-number">4.1.1</span> Exploratory plots</h3>
+<h3><span class="header-section-number">4.1.2</span> Exploratory plots</h3>
 </div>
 <div id="polished-plots" class="section level3">
-<h3><span class="header-section-number">4.1.2</span> Polished plots</h3>
+<h3><span class="header-section-number">4.1.3</span> Polished plots</h3>
 </div>
 </div>
 <div id="reports" class="section level2">

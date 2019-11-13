@@ -24,8 +24,6 @@ you to determine what sort of visualiation is
 appropriate for the task at hand and for you to use your critical judgement in 
 assessing a visualisation.
 
-
-
 ## Visualistion
 
 There are not fixed rules about visualisations, but there is a large body of work
@@ -35,26 +33,33 @@ extensively on the subject.
 
 [Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods by Cleveland and  McGill](https://www.jstor.org/stable/pdf/2288400.pdf?refreqid=excelsior%3Ab321aba183cce22a7f93335ca107eec6)
 
-### Datasaurus
+### Datasaurus dozen
 
-[Datasaurus dozen](https://www.autodeskresearch.com/publications/samestats)
+But why visualise data in the first place?
 
-```{r}
-datasaurus <- read_tsv("exercises/The Datasaurus Dozen/DatasaurusDozen.tsv")
+Inspired by the [Anscombe's Quartet](https://en.wikipedia.org/wiki/Anscombe%27s_quartet) and [Albert Cairo's Datasaurus](http://www.thefunctionalart.com/2016/08/download-datasaurus-never-trust-summary.html), Justin Matejka and
+George Fitzmaurice
+created the [Datasaurus dozen](https://www.autodeskresearch.com/publications/samestats) to 
+illustrate a problem with relying only on summary statistics to understand data.
+
+```{r datasaurus-dl, cache=TRUE}
+# Download the Datasaurus Dozen
+datasaurus <- read_tsv("https://raw.githubusercontent.com/ab604/coding-together/master/exercises/DatasaurusDozen.tsv")
+# Quick look
 glimpse(datasaurus)
+# How many datasets
 datasaurus %>% distinct(dataset)
 ```
 
-```{r}
+```{r datasaurus-summary, cache=TRUE}
 datasaurus %>% group_by(dataset) %>% summarise(mean_x = mean(x),
                                                mean_y = mean(y),
                                                sd_x = sd(x),
                                                sd_y = sd(y))
 ```
 
-```{r}
+```{r datasaurus-plot, cache=TRUE}
 datasaurus %>% 
-        group_by(dataset) %>% 
         ggplot(aes(x,y)) +
         geom_point() +
         facet_wrap(~ dataset)

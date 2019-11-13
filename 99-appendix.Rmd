@@ -1,5 +1,12 @@
 ## Apendix {-}
 
+Create `by_quarter` data
+
+```{r}
+by_quarter %>% write_csv("exercises/surveys-by-quarter.csv")
+```
+
+
 Create weather data for lesson
 
 ```{r create-portal-weather-subset, eval=FALSE}

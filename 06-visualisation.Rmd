@@ -33,6 +33,58 @@ extensively on the subject.
 
 [Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods by Cleveland and  McGill](https://www.jstor.org/stable/pdf/2288400.pdf?refreqid=excelsior%3Ab321aba183cce22a7f93335ca107eec6)
 
+```{r}
+viz_dat <- tibble(Country =LETTERS[seq( from = 5, to = 1 )],
+                  Percent = c(0.22,0.25,0.34,0.29,0.32)) 
+```
+
+```{r echo=FALSE,eval=FALSE}
+
+blank_theme <- theme_minimal() +
+  theme(legend.position = "",
+  axis.ticks = element_blank(),
+              axis.text.x = element_blank(),
+              axis.text.y = element_blank(),
+              axis.title.x = element_blank(),
+              axis.title.y = element_blank(),
+              panel.grid.major = element_blank(), 
+              panel.grid.minor = element_blank(),
+  panel.border = element_blank(),
+  panel.grid=element_blank(),
+  plot.title=element_text(size=14, face="bold")
+  )
+
+viz_dat %>% ggplot(aes(Country,Percent)) +
+        geom_bar(stat = "identity") + 
+        coord_flip() +
+
+viz_dat %>% ggplot(aes(Country,Percent)) +
+        geom_segment(aes(x=Country, xend=Country, y=0, yend=Percent)) +
+        geom_point() +
+        coord_flip()
+
+viz_dat %>% ggplot(aes(Country,Percent)) +
+        geom_point() +
+        coord_flip()
+
+viz_dat %>% ggplot(aes(Country,c(2,3,2.2,1.8,2.1), size = Percent, label = Country)) +
+        geom_point(colour = 'blue') +
+        geom_text(hjust = 0, nudge_x = 0.2, size = 6) +
+        blank_theme
+
+viz_dat %>% ggplot(aes(area =Percent,label = Country)) +
+        geom_treemap() + geom_treemap_text()
+
+viz_dat %>% ggplot(aes(x ="", fill=Percent, y = Percent)) +
+        geom_bar(stat = "identity", color = "white") + 
+        ylim(0,1) +
+        coord_polar(theta = "y") +
+        theme_void()+
+        facet_wrap(~ Country) +
+        blank_theme
+```
+
+
 ### Datasaurus dozen
 
 But why visualise data in the first place?
@@ -85,9 +137,121 @@ In words read this as *"facets depend upon the dataset"*:
 
 ### Exploratory plots
 
-#### B
+Using `facet_wrap(~ rodent_type)` gives us this plot:
 
-### Polished plots
+```{r,by_quarter_plot,echo=TRUE,cache=TRUE}
+ggplot(data = by_quarter,
+       mapping = aes(x=quarter,y=mean_captures,colour=plot_type)) +
+  geom_line() +
+  geom_point() +
+  facet_wrap(~ rodent_type)
+```
+
+#### Boxplots
+
+There are many other types of plot we may wish to create when exploring data. 
+The previous plot showed us changes with time, but we might want to look at
+averages and spread or other statistical summaries of the data.
+
+### Boxplots
+
+Box-plots are a standard way to plot the distribution of a data set. Plotting 
+the data this way means that we drop the dynamic information, the time dimension,
+but gain a compact summarised view of the variability of the number of captures.
+
+In the following code we use the `boxplot()` geom, and this time swap the mapping
+such that colour maps to the rodent type, and plots are faceted according to the plot type.
+
+```{r,by_quarter_box_1,purl=FALSE,echo=TRUE}
+ggplot(data= by_quarter,
+       mapping = aes(x = rodent_type, 
+                     y = mean_captures, 
+                     colour = rodent_type)) +
+  geom_boxplot() +
+  facet_wrap(~ plot_type)
+```
+
+### Position adjustments
+
+Another common adjustment we might make to our plots is to adjust the position 
+of the data.
+
+Recall the `mpg` data set for cars and our plot showing the fuel efficiency
+versus the size of the engine. Many of the points are actually over plotted 
+such that we can't see them.
+
+By adding a bit of random noise to the position each data point, called `jitter`
+we can spread the points out and see them more clearly. This is seen in the 
+second plot below, where the `postion = "jitter"` argument has been provided
+to the `geom_point()` function.
+
+It's a little counter intuitive to add noise to a plot, but when we're trying to
+explore data for patterns it can be very useful.
+
+```{r,mpg_jitter,purl=FALSE,echo=TRUE}
+# Without jitter
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, colour = class))
+# With jitter
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, colour = class),
+             position = "jitter")
+```
+
+Let's add points to our box-plot and for the challenge try comparing the plot
+to one where the points are jittered.
+
+```{r,by_quarter_box_2,purl=FALSE,echo=TRUE}
+# Boxplot without jitter
+ggplot(data= by_quarter,
+       mapping = aes(x = rodent_type, y = mean_captures, 
+                     colour = rodent_type)) +
+  geom_boxplot() +
+  geom_point(position = "jitter", alpha = 0.5) +
+  facet_wrap(~ plot_type)
+```
+
+### Statistical transformations
+
+Next we'll plot bar charts. 
+
+These simple plots actually reveal subtleties in 
+plots. In the following code we take the `by_month_genus` subset and create
+a bar chart of `genus`, filling the bars with colour according to `rodent_type`.
+
+```{r,by_month_bar_1,purl=FALSE,echo=TRUE}
+# Create a bar plot of species monthly average captures 
+surveys_subset %>% 
+        filter(rodent_type != "Other") %>% 
+        group_by(year,month,species_id,rodent_type,plot_type) %>% 
+        summarise(captures = n()/31) %>% 
+        ggplot() +
+        geom_bar(mapping = aes(x = fct_reorder(species_id,captures), 
+                               y = captures, fill=rodent_type), 
+                 stat = "identity") + 
+        facet_grid(~ plot_type) +
+        coord_flip()
+```
+
+## Themes and customisations
+
+When we're exploring our data we generally don't mind if the labels and colours
+etc... are a bit messy. But when we want to publish or communicate our findings
+to others we want everything to be just so.
+
+This is where the code can become quite complicated and it's hard to provide
+a general case. However, the underlying template remains the same:
+
+```{r ggplot-full-template,,eval=FALSE}
+ggplot(data = <DATA>) + 
+  <GEOM_FUNCTION>(
+     mapping = aes(<MAPPINGS>),
+     stat = <STAT>, 
+     position = <POSITION>
+  ) +
+  <COORDINATE_FUNCTION> +
+  <FACET_FUNCTION>
+```
 
 ## Reports
 

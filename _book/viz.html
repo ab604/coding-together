@@ -218,10 +218,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1" data-path="viz.html"><a href="viz.html#visualistion"><i class="fa fa-check"></i><b>4.1</b> Visualistion</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="viz.html"><a href="viz.html#datasaurus-dozen"><i class="fa fa-check"></i><b>4.1.1</b> Datasaurus dozen</a></li>
 <li class="chapter" data-level="4.1.2" data-path="viz.html"><a href="viz.html#exploratory-plots"><i class="fa fa-check"></i><b>4.1.2</b> Exploratory plots</a></li>
-<li class="chapter" data-level="4.1.3" data-path="viz.html"><a href="viz.html#polished-plots"><i class="fa fa-check"></i><b>4.1.3</b> Polished plots</a></li>
+<li class="chapter" data-level="4.1.3" data-path="viz.html"><a href="viz.html#boxplots-1"><i class="fa fa-check"></i><b>4.1.3</b> Boxplots</a></li>
+<li class="chapter" data-level="4.1.4" data-path="viz.html"><a href="viz.html#position-adjustments"><i class="fa fa-check"></i><b>4.1.4</b> Position adjustments</a></li>
+<li class="chapter" data-level="4.1.5" data-path="viz.html"><a href="viz.html#statistical-transformations"><i class="fa fa-check"></i><b>4.1.5</b> Statistical transformations</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="viz.html"><a href="viz.html#reports"><i class="fa fa-check"></i><b>4.2</b> Reports</a></li>
-<li class="chapter" data-level="4.3" data-path="viz.html"><a href="viz.html#presentations"><i class="fa fa-check"></i><b>4.3</b> Presentations</a></li>
+<li class="chapter" data-level="4.2" data-path="viz.html"><a href="viz.html#themes-and-customisations"><i class="fa fa-check"></i><b>4.2</b> Themes and customisations</a></li>
+<li class="chapter" data-level="4.3" data-path="viz.html"><a href="viz.html#reports"><i class="fa fa-check"></i><b>4.3</b> Reports</a></li>
+<li class="chapter" data-level="4.4" data-path="viz.html"><a href="viz.html#presentations"><i class="fa fa-check"></i><b>4.4</b> Presentations</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>5</b> Exploratory data analysis</a></li>
 <li class="divider"></li>
@@ -277,6 +280,8 @@ assessing a visualisation, presentation or report.</p>
 specialising in data visualisation and has written and continues to write
 extensively on the subject.</p>
 <p><a href="https://www.jstor.org/stable/pdf/2288400.pdf?refreqid=excelsior%3Ab321aba183cce22a7f93335ca107eec6">Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods by Cleveland and McGill</a></p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1">viz_dat &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">Country =</span>LETTERS[<span class="kw">seq</span>( <span class="dt">from =</span> <span class="dv">5</span>, <span class="dt">to =</span> <span class="dv">1</span> )],</a>
+<a class="sourceLine" id="cb134-2" title="2">                  <span class="dt">Percent =</span> <span class="kw">c</span>(<span class="fl">0.22</span>,<span class="fl">0.25</span>,<span class="fl">0.34</span>,<span class="fl">0.29</span>,<span class="fl">0.32</span>)) </a></code></pre></div>
 <div id="datasaurus-dozen" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Datasaurus dozen</h3>
 <p>But why visualise data in the first place?</p>
@@ -284,23 +289,23 @@ extensively on the subject.</p>
 George Fitzmaurice
 created the <a href="https://www.autodeskresearch.com/publications/samestats">Datasaurus dozen</a> to
 illustrate a problem with relying only on summary statistics to understand data.</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1"><span class="co"># Download the Datasaurus Dozen</span></a>
-<a class="sourceLine" id="cb134-2" title="2">datasaurus &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="st">&quot;https://raw.githubusercontent.com/ab604/coding-together/master/exercises/DatasaurusDozen.tsv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1"><span class="co"># Download the Datasaurus Dozen</span></a>
+<a class="sourceLine" id="cb135-2" title="2">datasaurus &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="st">&quot;https://raw.githubusercontent.com/ab604/coding-together/master/exercises/DatasaurusDozen.tsv&quot;</span>)</a></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   dataset = col_character(),
 ##   x = col_double(),
 ##   y = col_double()
 ## )</code></pre>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1"><span class="co"># Quick look</span></a>
-<a class="sourceLine" id="cb136-2" title="2"><span class="kw">glimpse</span>(datasaurus)</a></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" title="1"><span class="co"># Quick look</span></a>
+<a class="sourceLine" id="cb137-2" title="2"><span class="kw">glimpse</span>(datasaurus)</a></code></pre></div>
 <pre><code>## Observations: 1,846
 ## Variables: 3
 ## $ dataset &lt;chr&gt; &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;...
 ## $ x       &lt;dbl&gt; 55.3846, 51.5385, 46.1538, 42.8205, 40.7692, 38.7179, ...
 ## $ y       &lt;dbl&gt; 97.1795, 96.0256, 94.4872, 91.4103, 88.3333, 84.8718, ...</code></pre>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1"><span class="co"># How many datasets</span></a>
-<a class="sourceLine" id="cb138-2" title="2">datasaurus <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">distinct</span>(dataset)</a></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" title="1"><span class="co"># How many datasets</span></a>
+<a class="sourceLine" id="cb139-2" title="2">datasaurus <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">distinct</span>(dataset)</a></code></pre></div>
 <pre><code>## # A tibble: 13 x 1
 ##    dataset   
 ##    &lt;chr&gt;     
@@ -317,10 +322,10 @@ illustrate a problem with relying only on summary statistics to understand data.
 ## 11 slant_up  
 ## 12 slant_down
 ## 13 wide_lines</code></pre>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1">datasaurus <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(dataset) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">mean_x =</span> <span class="kw">mean</span>(x),</a>
-<a class="sourceLine" id="cb140-2" title="2">                                               <span class="dt">mean_y =</span> <span class="kw">mean</span>(y),</a>
-<a class="sourceLine" id="cb140-3" title="3">                                               <span class="dt">sd_x =</span> <span class="kw">sd</span>(x),</a>
-<a class="sourceLine" id="cb140-4" title="4">                                               <span class="dt">sd_y =</span> <span class="kw">sd</span>(y))</a></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1">datasaurus <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(dataset) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">mean_x =</span> <span class="kw">mean</span>(x),</a>
+<a class="sourceLine" id="cb141-2" title="2">                                               <span class="dt">mean_y =</span> <span class="kw">mean</span>(y),</a>
+<a class="sourceLine" id="cb141-3" title="3">                                               <span class="dt">sd_x =</span> <span class="kw">sd</span>(x),</a>
+<a class="sourceLine" id="cb141-4" title="4">                                               <span class="dt">sd_y =</span> <span class="kw">sd</span>(y))</a></code></pre></div>
 <pre><code>## # A tibble: 13 x 5
 ##    dataset    mean_x mean_y  sd_x  sd_y
 ##    &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -338,8 +343,8 @@ illustrate a problem with relying only on summary statistics to understand data.
 ## 12 wide_lines   54.3   47.8  16.8  26.9
 ## 13 x_shape      54.3   47.8  16.8  26.9</code></pre>
 <p>Let’s remind ourselves of the basic form for creating plots with the <code>ggplot2</code> package:</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="op">&lt;</span>DATA<span class="op">&gt;</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb142-2" title="2"><span class="st">  </span><span class="er">&lt;</span><span class="kw">GEOM_FUNCTION</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="op">&lt;</span>MAPPINGS<span class="op">&gt;</span>))<span class="op">&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="op">&lt;</span>DATA<span class="op">&gt;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb143-2" title="2"><span class="st">  </span><span class="er">&lt;</span><span class="kw">GEOM_FUNCTION</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="op">&lt;</span>MAPPINGS<span class="op">&gt;</span>))<span class="op">&gt;</span></a></code></pre></div>
 <blockquote>
 <ul>
 <li>We provide a data frame as an argument to the <code>ggplot</code> function</li>
@@ -353,27 +358,119 @@ object such as points.</li>
 in which the first argument is <code>~</code> representing “formula” (a type of data structure) and the
 second argument is the variable we wish to create individual plots for.
 In words read this as <em>“facets depend upon the dataset”</em>:</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1"> <span class="kw">ggplot</span>(<span class="dt">data =</span> datasaurus) <span class="op">+</span></a>
-<a class="sourceLine" id="cb143-2" title="2"><span class="st">        </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(x,y)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb143-3" title="3"><span class="st">        </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>dataset)</a></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" title="1"> <span class="kw">ggplot</span>(<span class="dt">data =</span> datasaurus) <span class="op">+</span></a>
+<a class="sourceLine" id="cb144-2" title="2"><span class="st">        </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(x,y)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb144-3" title="3"><span class="st">        </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>dataset)</a></code></pre></div>
 <p><img src="coding-together_files/figure-html/datasaurus-plot-1.png" width="672" /></p>
 </div>
 <div id="exploratory-plots" class="section level3">
 <h3><span class="header-section-number">4.1.2</span> Exploratory plots</h3>
-<div id="b" class="section level4">
-<h4><span class="header-section-number">4.1.2.1</span> B</h4>
+<p>Using <code>facet_wrap(~ rodent_type)</code> gives us this plot:</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> by_quarter,</a>
+<a class="sourceLine" id="cb145-2" title="2">       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>quarter,<span class="dt">y=</span>mean_captures,<span class="dt">colour=</span>plot_type)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb145-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb145-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb145-5" title="5"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>rodent_type)</a></code></pre></div>
+<pre><code>## Warning: Removed 2 rows containing missing values (geom_path).</code></pre>
+<pre><code>## Warning: Removed 5 rows containing missing values (geom_point).</code></pre>
+<p><img src="coding-together_files/figure-html/by_quarter_plot-1.png" width="672" /></p>
+<div id="boxplots" class="section level4">
+<h4><span class="header-section-number">4.1.2.1</span> Boxplots</h4>
+<p>There are many other types of plot we may wish to create when exploring data.
+The previous plot showed us changes with time, but we might want to look at
+averages and spread or other statistical summaries of the data.</p>
 </div>
 </div>
-<div id="polished-plots" class="section level3">
-<h3><span class="header-section-number">4.1.3</span> Polished plots</h3>
+<div id="boxplots-1" class="section level3">
+<h3><span class="header-section-number">4.1.3</span> Boxplots</h3>
+<p>Box-plots are a standard way to plot the distribution of a data set. Plotting
+the data this way means that we drop the dynamic information, the time dimension,
+but gain a compact summarised view of the variability of the number of captures.</p>
+<p>In the following code we use the <code>boxplot()</code> geom, and this time swap the mapping
+such that colour maps to the rodent type, and plots are faceted according to the plot type.</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data=</span> by_quarter,</a>
+<a class="sourceLine" id="cb148-2" title="2">       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> rodent_type, </a>
+<a class="sourceLine" id="cb148-3" title="3">                     <span class="dt">y =</span> mean_captures, </a>
+<a class="sourceLine" id="cb148-4" title="4">                     <span class="dt">colour =</span> rodent_type)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb148-5" title="5"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb148-6" title="6"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>plot_type)</a></code></pre></div>
+<p><img src="coding-together_files/figure-html/by_quarter_box_1-1.png" width="672" /></p>
 </div>
+<div id="position-adjustments" class="section level3">
+<h3><span class="header-section-number">4.1.4</span> Position adjustments</h3>
+<p>Another common adjustment we might make to our plots is to adjust the position
+of the data.</p>
+<p>Recall the <code>mpg</code> data set for cars and our plot showing the fuel efficiency
+versus the size of the engine. Many of the points are actually over plotted
+such that we can’t see them.</p>
+<p>By adding a bit of random noise to the position each data point, called <code>jitter</code>
+we can spread the points out and see them more clearly. This is seen in the
+second plot below, where the <code>postion = "jitter"</code> argument has been provided
+to the <code>geom_point()</code> function.</p>
+<p>It’s a little counter intuitive to add noise to a plot, but when we’re trying to
+explore data for patterns it can be very useful.</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" title="1"><span class="co"># Without jitter</span></a>
+<a class="sourceLine" id="cb149-2" title="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb149-3" title="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">colour =</span> class))</a></code></pre></div>
+<p><img src="coding-together_files/figure-html/mpg_jitter-1.png" width="672" /></p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" title="1"><span class="co"># With jitter</span></a>
+<a class="sourceLine" id="cb150-2" title="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb150-3" title="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy, <span class="dt">colour =</span> class),</a>
+<a class="sourceLine" id="cb150-4" title="4">             <span class="dt">position =</span> <span class="st">&quot;jitter&quot;</span>)</a></code></pre></div>
+<p><img src="coding-together_files/figure-html/mpg_jitter-2.png" width="672" /></p>
+<p>Let’s add points to our box-plot and for the challenge try comparing the plot
+to one where the points are jittered.</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" title="1"><span class="co"># Boxplot without jitter</span></a>
+<a class="sourceLine" id="cb151-2" title="2"><span class="kw">ggplot</span>(<span class="dt">data=</span> by_quarter,</a>
+<a class="sourceLine" id="cb151-3" title="3">       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> rodent_type, <span class="dt">y =</span> mean_captures, </a>
+<a class="sourceLine" id="cb151-4" title="4">                     <span class="dt">colour =</span> rodent_type)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb151-5" title="5"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb151-6" title="6"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="st">&quot;jitter&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb151-7" title="7"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>plot_type)</a></code></pre></div>
+<p><img src="coding-together_files/figure-html/by_quarter_box_2-1.png" width="672" /></p>
+</div>
+<div id="statistical-transformations" class="section level3">
+<h3><span class="header-section-number">4.1.5</span> Statistical transformations</h3>
+<p>Next we’ll plot bar charts.</p>
+<p>These simple plots actually reveal subtleties in
+plots. In the following code we take the <code>by_month_genus</code> subset and create
+a bar chart of <code>genus</code>, filling the bars with colour according to <code>rodent_type</code>.</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" title="1"><span class="co"># Create a bar plot of species monthly average captures </span></a>
+<a class="sourceLine" id="cb152-2" title="2">surveys_subset <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb152-3" title="3"><span class="st">        </span><span class="kw">filter</span>(rodent_type <span class="op">!=</span><span class="st"> &quot;Other&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb152-4" title="4"><span class="st">        </span><span class="kw">group_by</span>(year,month,species_id,rodent_type,plot_type) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb152-5" title="5"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">captures =</span> <span class="kw">n</span>()<span class="op">/</span><span class="dv">31</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb152-6" title="6"><span class="st">        </span><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb152-7" title="7"><span class="st">        </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">fct_reorder</span>(species_id,captures), </a>
+<a class="sourceLine" id="cb152-8" title="8">                               <span class="dt">y =</span> captures, <span class="dt">fill=</span>rodent_type), </a>
+<a class="sourceLine" id="cb152-9" title="9">                 <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb152-10" title="10"><span class="st">        </span><span class="kw">facet_grid</span>(<span class="op">~</span><span class="st"> </span>plot_type) <span class="op">+</span></a>
+<a class="sourceLine" id="cb152-11" title="11"><span class="st">        </span><span class="kw">coord_flip</span>()</a></code></pre></div>
+<p><img src="coding-together_files/figure-html/by_month_bar_1-1.png" width="672" /></p>
+</div>
+</div>
+<div id="themes-and-customisations" class="section level2">
+<h2><span class="header-section-number">4.2</span> Themes and customisations</h2>
+<p>When we’re exploring our data we generally don’t mind if the labels and colours
+etc… are a bit messy. But when we want to publish or communicate our findings
+to others we want everything to be just so.</p>
+<p>This is where the code can become quite complicated and it’s hard to provide
+a general case. However, the underlying template remains the same:</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="op">&lt;</span>DATA<span class="op">&gt;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb153-2" title="2"><span class="st">  </span><span class="er">&lt;</span>GEOM_FUNCTION<span class="op">&gt;</span>(</a>
+<a class="sourceLine" id="cb153-3" title="3">     <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="op">&lt;</span>MAPPINGS<span class="op">&gt;</span>),</a>
+<a class="sourceLine" id="cb153-4" title="4">     <span class="dt">stat =</span> <span class="op">&lt;</span>STAT<span class="op">&gt;</span>, </a>
+<a class="sourceLine" id="cb153-5" title="5">     <span class="dt">position =</span> <span class="op">&lt;</span>POSITION<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb153-6" title="6"><span class="st">  </span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb153-7" title="7"><span class="st">  </span><span class="er">&lt;</span>COORDINATE_FUNCTION<span class="op">&gt;</span><span class="st"> </span><span class="op">+</span></a>
+<a class="sourceLine" id="cb153-8" title="8"><span class="st">  </span><span class="er">&lt;</span>FACET_FUNCTION<span class="op">&gt;</span></a></code></pre></div>
 </div>
 <div id="reports" class="section level2">
-<h2><span class="header-section-number">4.2</span> Reports</h2>
+<h2><span class="header-section-number">4.3</span> Reports</h2>
 <p>Using R for report writing and presentations.</p>
 </div>
 <div id="presentations" class="section level2">
-<h2><span class="header-section-number">4.3</span> Presentations</h2>
+<h2><span class="header-section-number">4.4</span> Presentations</h2>
 <p>My personal go-to for slide design guidance is <a href="https://missgeeky.com/2017/08/04/the-art-of-slide-design/">Melinda Seckington</a>. She
 has written a fantastic step-by-step guide to creating effective slides.</p>
 <p>Condensing her advice down she suggests:</p>

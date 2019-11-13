@@ -1,0 +1,568 @@
+rodent_type,plot_type,quarter,mean_captures
+Granivore,Control,1977.3,5
+Granivore,Control,1977.4,2.6666666666666665
+Granivore,Control,1978.1,3.6666666666666665
+Granivore,Control,1978.2,3
+Granivore,Control,1978.3,4.333333333333333
+Granivore,Control,1978.4,1.3333333333333333
+Granivore,Control,1979.1,1.6666666666666667
+Granivore,Control,1979.3,2
+Granivore,Control,1979.4,1.6666666666666667
+Granivore,Control,1980.1,7.333333333333333
+Granivore,Control,1980.2,2
+Granivore,Control,1980.3,2.3333333333333335
+Granivore,Control,1980.4,3
+Granivore,Control,1981.1,2.6666666666666665
+Granivore,Control,1981.2,5
+Granivore,Control,1981.3,2.6666666666666665
+Granivore,Control,1981.4,5
+Granivore,Control,1982.1,14.333333333333334
+Granivore,Control,1982.2,6.333333333333333
+Granivore,Control,1982.3,10.666666666666666
+Granivore,Control,1982.4,7.333333333333333
+Granivore,Control,1983.1,14.333333333333334
+Granivore,Control,1983.2,10.666666666666666
+Granivore,Control,1983.3,5
+Granivore,Control,1983.4,1.6666666666666667
+Granivore,Control,1984.1,1.3333333333333333
+Granivore,Control,1984.2,2.3333333333333335
+Granivore,Control,1984.3,2
+Granivore,Control,1984.4,1.3333333333333333
+Granivore,Control,1985.1,3
+Granivore,Control,1985.2,3
+Granivore,Control,1985.3,3.3333333333333335
+Granivore,Control,1985.4,5.333333333333333
+Granivore,Control,1986.1,1.6666666666666667
+Granivore,Control,1986.2,3
+Granivore,Control,1986.3,0.6666666666666666
+Granivore,Control,1986.4,5
+Granivore,Control,1987.1,5.333333333333333
+Granivore,Control,1987.2,10.666666666666666
+Granivore,Control,1987.3,9
+Granivore,Control,1987.4,12.666666666666666
+Granivore,Control,1988.1,11
+Granivore,Control,1988.2,5
+Granivore,Control,1988.3,5
+Granivore,Control,1988.4,8.333333333333334
+Granivore,Control,1989.1,20.333333333333332
+Granivore,Control,1989.2,8
+Granivore,Control,1989.3,4
+Granivore,Control,1989.4,12.333333333333334
+Granivore,Control,1990.1,7.666666666666667
+Granivore,Control,1990.2,0.3333333333333333
+Granivore,Control,1990.3,0.3333333333333333
+Granivore,Control,1990.4,1.3333333333333333
+Granivore,Control,1991.1,5
+Granivore,Control,1991.2,3.3333333333333335
+Granivore,Control,1991.3,5.666666666666667
+Granivore,Control,1991.4,11.333333333333334
+Granivore,Control,1992.1,10
+Granivore,Control,1992.2,3
+Granivore,Control,1992.3,13.666666666666666
+Granivore,Control,1992.4,3.3333333333333335
+Granivore,Control,1993.1,6.333333333333333
+Granivore,Control,1993.2,5
+Granivore,Control,1993.3,4.666666666666667
+Granivore,Control,1993.4,1
+Granivore,Control,1994.1,0.3333333333333333
+Granivore,Control,1994.2,1.6666666666666667
+Granivore,Control,1994.3,2.3333333333333335
+Granivore,Control,1994.4,2.6666666666666665
+Granivore,Control,1995.1,0.6666666666666666
+Granivore,Control,1995.2,3.6666666666666665
+Granivore,Control,1995.3,28.333333333333332
+Granivore,Control,1995.4,17.666666666666668
+Granivore,Control,1996.1,17
+Granivore,Control,1996.2,26.333333333333332
+Granivore,Control,1996.3,18.666666666666668
+Granivore,Control,1996.4,10.666666666666666
+Granivore,Control,1997.1,16.666666666666668
+Granivore,Control,1997.2,36.333333333333336
+Granivore,Control,1997.3,25
+Granivore,Control,1997.4,3.6666666666666665
+Granivore,Control,1998.1,1
+Granivore,Control,1998.2,11.666666666666666
+Granivore,Control,1998.3,17.333333333333332
+Granivore,Control,1998.4,1.3333333333333333
+Granivore,Control,1999.1,3
+Granivore,Control,1999.2,5.666666666666667
+Granivore,Control,1999.3,1.3333333333333333
+Granivore,Control,1999.4,18.666666666666668
+Granivore,Control,2000.1,17.333333333333332
+Granivore,Control,2000.2,10
+Granivore,Control,2000.3,24.666666666666668
+Granivore,Control,2000.4,1
+Granivore,Control,2001.1,6
+Granivore,Control,2001.2,11
+Granivore,Control,2001.3,27.333333333333332
+Granivore,Control,2001.4,9
+Granivore,Control,2002.1,6.666666666666667
+Granivore,Control,2002.2,26.666666666666668
+Granivore,Control,2002.3,16
+Granivore,Control,2002.4,17.333333333333332
+Granivore,Control,NA,3.3333333333333335
+Granivore,Long-term Krat Exclosure,1977.3,0.6666666666666666
+Granivore,Long-term Krat Exclosure,1977.4,1
+Granivore,Long-term Krat Exclosure,1978.1,1
+Granivore,Long-term Krat Exclosure,1978.2,0.3333333333333333
+Granivore,Long-term Krat Exclosure,1978.3,5.333333333333333
+Granivore,Long-term Krat Exclosure,1978.4,3.3333333333333335
+Granivore,Long-term Krat Exclosure,1979.1,0.3333333333333333
+Granivore,Long-term Krat Exclosure,1979.2,1.6666666666666667
+Granivore,Long-term Krat Exclosure,1979.3,4.666666666666667
+Granivore,Long-term Krat Exclosure,1979.4,4.333333333333333
+Granivore,Long-term Krat Exclosure,1980.1,17.333333333333332
+Granivore,Long-term Krat Exclosure,1980.2,4.666666666666667
+Granivore,Long-term Krat Exclosure,1980.3,4.333333333333333
+Granivore,Long-term Krat Exclosure,1980.4,2
+Granivore,Long-term Krat Exclosure,1981.1,5
+Granivore,Long-term Krat Exclosure,1981.2,5.333333333333333
+Granivore,Long-term Krat Exclosure,1981.3,1.6666666666666667
+Granivore,Long-term Krat Exclosure,1981.4,9.666666666666666
+Granivore,Long-term Krat Exclosure,1982.1,26
+Granivore,Long-term Krat Exclosure,1982.2,14
+Granivore,Long-term Krat Exclosure,1982.3,16.666666666666668
+Granivore,Long-term Krat Exclosure,1982.4,11
+Granivore,Long-term Krat Exclosure,1983.1,12.333333333333334
+Granivore,Long-term Krat Exclosure,1983.2,13.666666666666666
+Granivore,Long-term Krat Exclosure,1983.3,6
+Granivore,Long-term Krat Exclosure,1983.4,7
+Granivore,Long-term Krat Exclosure,1984.1,3.6666666666666665
+Granivore,Long-term Krat Exclosure,1984.2,6
+Granivore,Long-term Krat Exclosure,1984.3,4.333333333333333
+Granivore,Long-term Krat Exclosure,1984.4,1.3333333333333333
+Granivore,Long-term Krat Exclosure,1985.1,6.666666666666667
+Granivore,Long-term Krat Exclosure,1985.2,6
+Granivore,Long-term Krat Exclosure,1985.3,3.6666666666666665
+Granivore,Long-term Krat Exclosure,1985.4,4.333333333333333
+Granivore,Long-term Krat Exclosure,1986.1,2.6666666666666665
+Granivore,Long-term Krat Exclosure,1986.2,6
+Granivore,Long-term Krat Exclosure,1986.3,5
+Granivore,Long-term Krat Exclosure,1986.4,5
+Granivore,Long-term Krat Exclosure,1987.1,10.666666666666666
+Granivore,Long-term Krat Exclosure,1987.2,17
+Granivore,Long-term Krat Exclosure,1987.3,17
+Granivore,Long-term Krat Exclosure,1987.4,11.666666666666666
+Granivore,Long-term Krat Exclosure,1988.1,18.666666666666668
+Granivore,Long-term Krat Exclosure,1988.2,8.333333333333334
+Granivore,Long-term Krat Exclosure,1988.3,6.333333333333333
+Granivore,Long-term Krat Exclosure,1988.4,6
+Granivore,Long-term Krat Exclosure,1989.1,16.666666666666668
+Granivore,Long-term Krat Exclosure,1989.2,16.333333333333332
+Granivore,Long-term Krat Exclosure,1989.3,6.666666666666667
+Granivore,Long-term Krat Exclosure,1989.4,15.666666666666666
+Granivore,Long-term Krat Exclosure,1990.1,15.666666666666666
+Granivore,Long-term Krat Exclosure,1990.2,11.666666666666666
+Granivore,Long-term Krat Exclosure,1990.3,5
+Granivore,Long-term Krat Exclosure,1990.4,11
+Granivore,Long-term Krat Exclosure,1991.1,10
+Granivore,Long-term Krat Exclosure,1991.2,4
+Granivore,Long-term Krat Exclosure,1991.3,7
+Granivore,Long-term Krat Exclosure,1991.4,14
+Granivore,Long-term Krat Exclosure,1992.1,9.333333333333334
+Granivore,Long-term Krat Exclosure,1992.2,3
+Granivore,Long-term Krat Exclosure,1992.3,12.666666666666666
+Granivore,Long-term Krat Exclosure,1992.4,3.3333333333333335
+Granivore,Long-term Krat Exclosure,1993.1,5.333333333333333
+Granivore,Long-term Krat Exclosure,1993.2,7.333333333333333
+Granivore,Long-term Krat Exclosure,1993.3,11
+Granivore,Long-term Krat Exclosure,1993.4,5.666666666666667
+Granivore,Long-term Krat Exclosure,1994.1,4
+Granivore,Long-term Krat Exclosure,1994.2,8
+Granivore,Long-term Krat Exclosure,1994.3,10.333333333333334
+Granivore,Long-term Krat Exclosure,1994.4,6.666666666666667
+Granivore,Long-term Krat Exclosure,1995.1,2.6666666666666665
+Granivore,Long-term Krat Exclosure,1995.2,6.666666666666667
+Granivore,Long-term Krat Exclosure,1995.3,23
+Granivore,Long-term Krat Exclosure,1995.4,20
+Granivore,Long-term Krat Exclosure,1996.1,17
+Granivore,Long-term Krat Exclosure,1996.2,36.333333333333336
+Granivore,Long-term Krat Exclosure,1996.3,18.333333333333332
+Granivore,Long-term Krat Exclosure,1996.4,10
+Granivore,Long-term Krat Exclosure,1997.1,13.333333333333334
+Granivore,Long-term Krat Exclosure,1997.2,37.666666666666664
+Granivore,Long-term Krat Exclosure,1997.3,23.666666666666668
+Granivore,Long-term Krat Exclosure,1997.4,5.333333333333333
+Granivore,Long-term Krat Exclosure,1998.1,2
+Granivore,Long-term Krat Exclosure,1998.2,9.333333333333334
+Granivore,Long-term Krat Exclosure,1998.3,10.333333333333334
+Granivore,Long-term Krat Exclosure,1998.4,1.3333333333333333
+Granivore,Long-term Krat Exclosure,1999.1,2.3333333333333335
+Granivore,Long-term Krat Exclosure,1999.2,6
+Granivore,Long-term Krat Exclosure,1999.3,1.3333333333333333
+Granivore,Long-term Krat Exclosure,1999.4,6
+Granivore,Long-term Krat Exclosure,2000.1,6.666666666666667
+Granivore,Long-term Krat Exclosure,2000.2,3.6666666666666665
+Granivore,Long-term Krat Exclosure,2000.3,10
+Granivore,Long-term Krat Exclosure,2000.4,1
+Granivore,Long-term Krat Exclosure,2001.1,1.6666666666666667
+Granivore,Long-term Krat Exclosure,2001.2,2.6666666666666665
+Granivore,Long-term Krat Exclosure,2001.3,11
+Granivore,Long-term Krat Exclosure,2001.4,5
+Granivore,Long-term Krat Exclosure,2002.1,5
+Granivore,Long-term Krat Exclosure,2002.2,14
+Granivore,Long-term Krat Exclosure,2002.3,6.666666666666667
+Granivore,Long-term Krat Exclosure,2002.4,6
+Granivore,Long-term Krat Exclosure,NA,2
+Kangaroo Rat,Control,1977.3,22.666666666666668
+Kangaroo Rat,Control,1977.4,31
+Kangaroo Rat,Control,1978.1,25.333333333333332
+Kangaroo Rat,Control,1978.2,39.333333333333336
+Kangaroo Rat,Control,1978.3,36.666666666666664
+Kangaroo Rat,Control,1978.4,26
+Kangaroo Rat,Control,1979.1,22
+Kangaroo Rat,Control,1979.2,16
+Kangaroo Rat,Control,1979.3,22.333333333333332
+Kangaroo Rat,Control,1979.4,19
+Kangaroo Rat,Control,1980.1,57.666666666666664
+Kangaroo Rat,Control,1980.2,34.666666666666664
+Kangaroo Rat,Control,1980.3,26
+Kangaroo Rat,Control,1980.4,37.333333333333336
+Kangaroo Rat,Control,1981.1,37.666666666666664
+Kangaroo Rat,Control,1981.2,73
+Kangaroo Rat,Control,1981.3,29.666666666666668
+Kangaroo Rat,Control,1981.4,29
+Kangaroo Rat,Control,1982.1,42
+Kangaroo Rat,Control,1982.2,40
+Kangaroo Rat,Control,1982.3,49.333333333333336
+Kangaroo Rat,Control,1982.4,49.666666666666664
+Kangaroo Rat,Control,1983.1,45.666666666666664
+Kangaroo Rat,Control,1983.2,39.333333333333336
+Kangaroo Rat,Control,1983.3,35.666666666666664
+Kangaroo Rat,Control,1983.4,42
+Kangaroo Rat,Control,1984.1,20
+Kangaroo Rat,Control,1984.2,26.666666666666668
+Kangaroo Rat,Control,1984.3,30
+Kangaroo Rat,Control,1984.4,21.666666666666668
+Kangaroo Rat,Control,1985.1,29.333333333333332
+Kangaroo Rat,Control,1985.2,46.333333333333336
+Kangaroo Rat,Control,1985.3,35.666666666666664
+Kangaroo Rat,Control,1985.4,45.666666666666664
+Kangaroo Rat,Control,1986.1,14
+Kangaroo Rat,Control,1986.2,32
+Kangaroo Rat,Control,1986.3,30.333333333333332
+Kangaroo Rat,Control,1986.4,29
+Kangaroo Rat,Control,1987.1,22
+Kangaroo Rat,Control,1987.2,38.666666666666664
+Kangaroo Rat,Control,1987.3,40.333333333333336
+Kangaroo Rat,Control,1987.4,21
+Kangaroo Rat,Control,1988.1,42
+Kangaroo Rat,Control,1988.2,33.666666666666664
+Kangaroo Rat,Control,1988.3,28
+Kangaroo Rat,Control,1988.4,31
+Kangaroo Rat,Control,1989.1,28.666666666666668
+Kangaroo Rat,Control,1989.2,28
+Kangaroo Rat,Control,1989.3,27
+Kangaroo Rat,Control,1989.4,34.333333333333336
+Kangaroo Rat,Control,1990.1,52.666666666666664
+Kangaroo Rat,Control,1990.2,38.666666666666664
+Kangaroo Rat,Control,1990.3,33.333333333333336
+Kangaroo Rat,Control,1990.4,42.333333333333336
+Kangaroo Rat,Control,1991.1,41.666666666666664
+Kangaroo Rat,Control,1991.2,30
+Kangaroo Rat,Control,1991.3,26.333333333333332
+Kangaroo Rat,Control,1991.4,31.333333333333332
+Kangaroo Rat,Control,1992.1,27.666666666666668
+Kangaroo Rat,Control,1992.2,29.666666666666668
+Kangaroo Rat,Control,1992.3,32
+Kangaroo Rat,Control,1992.4,15
+Kangaroo Rat,Control,1993.1,22.333333333333332
+Kangaroo Rat,Control,1993.2,18.666666666666668
+Kangaroo Rat,Control,1993.3,15.666666666666666
+Kangaroo Rat,Control,1993.4,20.333333333333332
+Kangaroo Rat,Control,1994.1,22.333333333333332
+Kangaroo Rat,Control,1994.2,24
+Kangaroo Rat,Control,1994.3,15.333333333333334
+Kangaroo Rat,Control,1994.4,25.666666666666668
+Kangaroo Rat,Control,1995.1,25
+Kangaroo Rat,Control,1995.2,34
+Kangaroo Rat,Control,1995.3,28
+Kangaroo Rat,Control,1995.4,34.666666666666664
+Kangaroo Rat,Control,1996.1,42.666666666666664
+Kangaroo Rat,Control,1996.2,39.333333333333336
+Kangaroo Rat,Control,1996.3,27.333333333333332
+Kangaroo Rat,Control,1996.4,40
+Kangaroo Rat,Control,1997.1,53
+Kangaroo Rat,Control,1997.2,54.666666666666664
+Kangaroo Rat,Control,1997.3,49
+Kangaroo Rat,Control,1997.4,45.666666666666664
+Kangaroo Rat,Control,1998.1,50
+Kangaroo Rat,Control,1998.2,42.333333333333336
+Kangaroo Rat,Control,1998.3,31.666666666666668
+Kangaroo Rat,Control,1998.4,45
+Kangaroo Rat,Control,1999.1,45.333333333333336
+Kangaroo Rat,Control,1999.2,40.666666666666664
+Kangaroo Rat,Control,1999.3,0.6666666666666666
+Kangaroo Rat,Control,1999.4,13.666666666666666
+Kangaroo Rat,Control,2000.1,21
+Kangaroo Rat,Control,2000.2,13
+Kangaroo Rat,Control,2000.3,21.666666666666668
+Kangaroo Rat,Control,2000.4,14
+Kangaroo Rat,Control,2001.1,18
+Kangaroo Rat,Control,2001.2,24
+Kangaroo Rat,Control,2001.3,25.666666666666668
+Kangaroo Rat,Control,2001.4,30.666666666666668
+Kangaroo Rat,Control,2002.1,32.333333333333336
+Kangaroo Rat,Control,2002.2,41.666666666666664
+Kangaroo Rat,Control,2002.3,14.666666666666666
+Kangaroo Rat,Control,2002.4,35.666666666666664
+Kangaroo Rat,Control,NA,9
+Kangaroo Rat,Long-term Krat Exclosure,1977.3,11.666666666666666
+Kangaroo Rat,Long-term Krat Exclosure,1977.4,3.3333333333333335
+Kangaroo Rat,Long-term Krat Exclosure,1978.1,2.6666666666666665
+Kangaroo Rat,Long-term Krat Exclosure,1978.2,0.6666666666666666
+Kangaroo Rat,Long-term Krat Exclosure,1978.3,0.3333333333333333
+Kangaroo Rat,Long-term Krat Exclosure,1979.4,2.3333333333333335
+Kangaroo Rat,Long-term Krat Exclosure,1980.1,4.333333333333333
+Kangaroo Rat,Long-term Krat Exclosure,1980.2,2.3333333333333335
+Kangaroo Rat,Long-term Krat Exclosure,1980.4,5.333333333333333
+Kangaroo Rat,Long-term Krat Exclosure,1981.1,3
+Kangaroo Rat,Long-term Krat Exclosure,1981.2,2.6666666666666665
+Kangaroo Rat,Long-term Krat Exclosure,1982.3,0.6666666666666666
+Kangaroo Rat,Long-term Krat Exclosure,1982.4,2.6666666666666665
+Kangaroo Rat,Long-term Krat Exclosure,1983.1,2.3333333333333335
+Kangaroo Rat,Long-term Krat Exclosure,1983.2,0.3333333333333333
+Kangaroo Rat,Long-term Krat Exclosure,1983.4,0.6666666666666666
+Kangaroo Rat,Long-term Krat Exclosure,1984.1,0.3333333333333333
+Kangaroo Rat,Long-term Krat Exclosure,1984.2,1
+Kangaroo Rat,Long-term Krat Exclosure,1984.3,0.6666666666666666
+Kangaroo Rat,Long-term Krat Exclosure,1985.1,2.6666666666666665
+Kangaroo Rat,Long-term Krat Exclosure,1985.2,3.6666666666666665
+Kangaroo Rat,Long-term Krat Exclosure,1985.3,2.6666666666666665
+Kangaroo Rat,Long-term Krat Exclosure,1985.4,3.3333333333333335
+Kangaroo Rat,Long-term Krat Exclosure,1986.3,0.3333333333333333
+Kangaroo Rat,Long-term Krat Exclosure,1987.4,0.3333333333333333
+Kangaroo Rat,Long-term Krat Exclosure,1988.1,1.3333333333333333
+Kangaroo Rat,Long-term Krat Exclosure,1989.1,0.3333333333333333
+Kangaroo Rat,Long-term Krat Exclosure,1990.4,1
+Kangaroo Rat,Long-term Krat Exclosure,1991.1,1.6666666666666667
+Kangaroo Rat,Long-term Krat Exclosure,1991.2,1.6666666666666667
+Kangaroo Rat,Long-term Krat Exclosure,1993.3,1
+Kangaroo Rat,Long-term Krat Exclosure,1995.1,0.6666666666666666
+Kangaroo Rat,Long-term Krat Exclosure,1995.2,1
+Kangaroo Rat,Long-term Krat Exclosure,1995.4,1.6666666666666667
+Kangaroo Rat,Long-term Krat Exclosure,1996.1,5
+Kangaroo Rat,Long-term Krat Exclosure,1996.2,4.333333333333333
+Kangaroo Rat,Long-term Krat Exclosure,1996.3,2.3333333333333335
+Kangaroo Rat,Long-term Krat Exclosure,1996.4,2.3333333333333335
+Kangaroo Rat,Long-term Krat Exclosure,1997.1,4.333333333333333
+Kangaroo Rat,Long-term Krat Exclosure,1997.2,4.333333333333333
+Kangaroo Rat,Long-term Krat Exclosure,1997.3,2.3333333333333335
+Kangaroo Rat,Long-term Krat Exclosure,1997.4,2
+Kangaroo Rat,Long-term Krat Exclosure,1998.1,1.3333333333333333
+Kangaroo Rat,Long-term Krat Exclosure,1998.2,0.3333333333333333
+Kangaroo Rat,Long-term Krat Exclosure,1998.4,0.6666666666666666
+Kangaroo Rat,Long-term Krat Exclosure,1999.1,3
+Kangaroo Rat,Long-term Krat Exclosure,1999.2,1.6666666666666667
+Kangaroo Rat,Long-term Krat Exclosure,2001.3,0.3333333333333333
+Kangaroo Rat,Long-term Krat Exclosure,2001.4,1.3333333333333333
+Kangaroo Rat,Long-term Krat Exclosure,2002.1,4.333333333333333
+Kangaroo Rat,Long-term Krat Exclosure,2002.2,5.666666666666667
+Kangaroo Rat,Long-term Krat Exclosure,2002.3,1
+Kangaroo Rat,Long-term Krat Exclosure,2002.4,1.3333333333333333
+Other,Control,1977.3,3.6666666666666665
+Other,Control,1977.4,9.333333333333334
+Other,Control,1978.1,7.333333333333333
+Other,Control,1978.2,5
+Other,Control,1978.3,4.666666666666667
+Other,Control,1978.4,10.666666666666666
+Other,Control,1979.1,3.3333333333333335
+Other,Control,1979.2,3
+Other,Control,1979.3,7.333333333333333
+Other,Control,1979.4,8.666666666666666
+Other,Control,1980.1,12.666666666666666
+Other,Control,1980.2,5.333333333333333
+Other,Control,1980.3,7.333333333333333
+Other,Control,1980.4,10
+Other,Control,1981.1,7.333333333333333
+Other,Control,1981.2,10
+Other,Control,1981.3,5
+Other,Control,1981.4,10
+Other,Control,1982.1,13
+Other,Control,1982.2,8.666666666666666
+Other,Control,1982.3,12.666666666666666
+Other,Control,1982.4,12
+Other,Control,1983.1,8
+Other,Control,1983.2,6.333333333333333
+Other,Control,1983.3,14.333333333333334
+Other,Control,1983.4,11.333333333333334
+Other,Control,1984.1,3.3333333333333335
+Other,Control,1984.2,7.666666666666667
+Other,Control,1984.3,17
+Other,Control,1984.4,4.333333333333333
+Other,Control,1985.1,8.333333333333334
+Other,Control,1985.2,7.333333333333333
+Other,Control,1985.3,9.666666666666666
+Other,Control,1985.4,16
+Other,Control,1986.1,4
+Other,Control,1986.2,8
+Other,Control,1986.3,7.333333333333333
+Other,Control,1986.4,9
+Other,Control,1987.1,8.666666666666666
+Other,Control,1987.2,13.333333333333334
+Other,Control,1987.3,18.333333333333332
+Other,Control,1987.4,10
+Other,Control,1988.1,14.666666666666666
+Other,Control,1988.2,13
+Other,Control,1988.3,8.666666666666666
+Other,Control,1988.4,11
+Other,Control,1989.1,17
+Other,Control,1989.2,9
+Other,Control,1989.3,11.333333333333334
+Other,Control,1989.4,13.333333333333334
+Other,Control,1990.1,13.333333333333334
+Other,Control,1990.2,5.333333333333333
+Other,Control,1990.3,4.666666666666667
+Other,Control,1990.4,8.333333333333334
+Other,Control,1991.1,9.333333333333334
+Other,Control,1991.2,8
+Other,Control,1991.3,7.666666666666667
+Other,Control,1991.4,10.333333333333334
+Other,Control,1992.1,9.333333333333334
+Other,Control,1992.2,3.3333333333333335
+Other,Control,1992.3,7
+Other,Control,1992.4,5
+Other,Control,1993.1,3.3333333333333335
+Other,Control,1993.2,3
+Other,Control,1993.3,3.3333333333333335
+Other,Control,1993.4,5.666666666666667
+Other,Control,1994.1,2.6666666666666665
+Other,Control,1994.2,3.3333333333333335
+Other,Control,1994.3,2.3333333333333335
+Other,Control,1994.4,2.6666666666666665
+Other,Control,1995.1,1.3333333333333333
+Other,Control,1995.2,3.6666666666666665
+Other,Control,1995.3,6
+Other,Control,1995.4,7
+Other,Control,1996.1,3
+Other,Control,1996.2,5
+Other,Control,1996.3,7
+Other,Control,1996.4,12
+Other,Control,1997.1,11
+Other,Control,1997.2,25
+Other,Control,1997.3,27
+Other,Control,1997.4,21
+Other,Control,1998.1,15.333333333333334
+Other,Control,1998.2,13.333333333333334
+Other,Control,1998.3,18.333333333333332
+Other,Control,1998.4,14.333333333333334
+Other,Control,1999.1,15
+Other,Control,1999.2,13.333333333333334
+Other,Control,1999.3,2
+Other,Control,1999.4,13
+Other,Control,2000.1,29.333333333333332
+Other,Control,2000.2,14
+Other,Control,2000.3,36.666666666666664
+Other,Control,2000.4,17
+Other,Control,2001.1,15
+Other,Control,2001.2,12.666666666666666
+Other,Control,2001.3,28.333333333333332
+Other,Control,2001.4,35
+Other,Control,2002.1,20.666666666666668
+Other,Control,2002.2,28.333333333333332
+Other,Control,2002.3,13.666666666666666
+Other,Control,2002.4,52.666666666666664
+Other,Control,NA,8.666666666666666
+Other,Long-term Krat Exclosure,1977.3,2
+Other,Long-term Krat Exclosure,1977.4,3
+Other,Long-term Krat Exclosure,1978.1,4.333333333333333
+Other,Long-term Krat Exclosure,1978.2,2.3333333333333335
+Other,Long-term Krat Exclosure,1978.3,3.6666666666666665
+Other,Long-term Krat Exclosure,1978.4,2
+Other,Long-term Krat Exclosure,1979.1,1
+Other,Long-term Krat Exclosure,1979.2,1
+Other,Long-term Krat Exclosure,1979.3,3
+Other,Long-term Krat Exclosure,1979.4,2.3333333333333335
+Other,Long-term Krat Exclosure,1980.1,4.333333333333333
+Other,Long-term Krat Exclosure,1980.2,1.3333333333333333
+Other,Long-term Krat Exclosure,1980.3,2.6666666666666665
+Other,Long-term Krat Exclosure,1980.4,4
+Other,Long-term Krat Exclosure,1981.1,1.3333333333333333
+Other,Long-term Krat Exclosure,1981.2,1
+Other,Long-term Krat Exclosure,1981.3,3.3333333333333335
+Other,Long-term Krat Exclosure,1981.4,2.6666666666666665
+Other,Long-term Krat Exclosure,1982.1,3.3333333333333335
+Other,Long-term Krat Exclosure,1982.2,5.666666666666667
+Other,Long-term Krat Exclosure,1982.3,4
+Other,Long-term Krat Exclosure,1982.4,4.333333333333333
+Other,Long-term Krat Exclosure,1983.1,3
+Other,Long-term Krat Exclosure,1983.2,3.6666666666666665
+Other,Long-term Krat Exclosure,1983.3,5
+Other,Long-term Krat Exclosure,1983.4,5.333333333333333
+Other,Long-term Krat Exclosure,1984.1,1.6666666666666667
+Other,Long-term Krat Exclosure,1984.2,6.333333333333333
+Other,Long-term Krat Exclosure,1984.3,7
+Other,Long-term Krat Exclosure,1984.4,3.6666666666666665
+Other,Long-term Krat Exclosure,1985.1,1.3333333333333333
+Other,Long-term Krat Exclosure,1985.2,2.6666666666666665
+Other,Long-term Krat Exclosure,1985.3,2.6666666666666665
+Other,Long-term Krat Exclosure,1985.4,4
+Other,Long-term Krat Exclosure,1986.1,0.6666666666666666
+Other,Long-term Krat Exclosure,1986.2,4.666666666666667
+Other,Long-term Krat Exclosure,1986.3,3
+Other,Long-term Krat Exclosure,1986.4,1.6666666666666667
+Other,Long-term Krat Exclosure,1987.1,2
+Other,Long-term Krat Exclosure,1987.2,4.333333333333333
+Other,Long-term Krat Exclosure,1987.3,7.666666666666667
+Other,Long-term Krat Exclosure,1987.4,2.6666666666666665
+Other,Long-term Krat Exclosure,1988.1,6.666666666666667
+Other,Long-term Krat Exclosure,1988.2,5.666666666666667
+Other,Long-term Krat Exclosure,1988.3,4
+Other,Long-term Krat Exclosure,1988.4,9.333333333333334
+Other,Long-term Krat Exclosure,1989.1,10.666666666666666
+Other,Long-term Krat Exclosure,1989.2,7.666666666666667
+Other,Long-term Krat Exclosure,1989.3,6.666666666666667
+Other,Long-term Krat Exclosure,1989.4,9.333333333333334
+Other,Long-term Krat Exclosure,1990.1,9
+Other,Long-term Krat Exclosure,1990.2,3.6666666666666665
+Other,Long-term Krat Exclosure,1990.3,1.6666666666666667
+Other,Long-term Krat Exclosure,1990.4,4
+Other,Long-term Krat Exclosure,1991.1,4.333333333333333
+Other,Long-term Krat Exclosure,1991.2,4.333333333333333
+Other,Long-term Krat Exclosure,1991.3,4.666666666666667
+Other,Long-term Krat Exclosure,1991.4,12
+Other,Long-term Krat Exclosure,1992.1,6.333333333333333
+Other,Long-term Krat Exclosure,1992.2,4.333333333333333
+Other,Long-term Krat Exclosure,1992.3,2.3333333333333335
+Other,Long-term Krat Exclosure,1992.4,1.3333333333333333
+Other,Long-term Krat Exclosure,1993.1,2.6666666666666665
+Other,Long-term Krat Exclosure,1993.2,2.3333333333333335
+Other,Long-term Krat Exclosure,1993.3,1.6666666666666667
+Other,Long-term Krat Exclosure,1993.4,2
+Other,Long-term Krat Exclosure,1994.1,2.3333333333333335
+Other,Long-term Krat Exclosure,1994.2,0.3333333333333333
+Other,Long-term Krat Exclosure,1994.3,0.6666666666666666
+Other,Long-term Krat Exclosure,1994.4,1.6666666666666667
+Other,Long-term Krat Exclosure,1995.1,1.3333333333333333
+Other,Long-term Krat Exclosure,1995.2,2
+Other,Long-term Krat Exclosure,1995.3,1.6666666666666667
+Other,Long-term Krat Exclosure,1995.4,3
+Other,Long-term Krat Exclosure,1996.1,0.3333333333333333
+Other,Long-term Krat Exclosure,1996.2,4
+Other,Long-term Krat Exclosure,1996.3,2.6666666666666665
+Other,Long-term Krat Exclosure,1996.4,6.666666666666667
+Other,Long-term Krat Exclosure,1997.1,3.6666666666666665
+Other,Long-term Krat Exclosure,1997.2,12.333333333333334
+Other,Long-term Krat Exclosure,1997.3,19.333333333333332
+Other,Long-term Krat Exclosure,1997.4,16
+Other,Long-term Krat Exclosure,1998.1,9.333333333333334
+Other,Long-term Krat Exclosure,1998.2,15
+Other,Long-term Krat Exclosure,1998.3,24.666666666666668
+Other,Long-term Krat Exclosure,1998.4,22.333333333333332
+Other,Long-term Krat Exclosure,1999.1,16
+Other,Long-term Krat Exclosure,1999.2,21.333333333333332
+Other,Long-term Krat Exclosure,1999.3,2
+Other,Long-term Krat Exclosure,1999.4,13.666666666666666
+Other,Long-term Krat Exclosure,2000.1,13.333333333333334
+Other,Long-term Krat Exclosure,2000.2,12
+Other,Long-term Krat Exclosure,2000.3,21.333333333333332
+Other,Long-term Krat Exclosure,2000.4,9.666666666666666
+Other,Long-term Krat Exclosure,2001.1,9.333333333333334
+Other,Long-term Krat Exclosure,2001.2,9.333333333333334
+Other,Long-term Krat Exclosure,2001.3,27.333333333333332
+Other,Long-term Krat Exclosure,2001.4,28
+Other,Long-term Krat Exclosure,2002.1,21.666666666666668
+Other,Long-term Krat Exclosure,2002.2,27.666666666666668
+Other,Long-term Krat Exclosure,2002.3,14.666666666666666
+Other,Long-term Krat Exclosure,2002.4,46
+Other,Long-term Krat Exclosure,NA,4.333333333333333

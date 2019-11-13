@@ -22,8 +22,11 @@ always_allow_html: yes
 library(tidyverse)
 library(lubridate)
 library(dslabs)
+library(scales)
+library(forcats)
 library(janitor)
 library(here)
+library(treemapify)
 #library(DiagrammeR)
 # automatically create a bib database for R packages
 knitr::write_bib(c(
@@ -33,7 +36,7 @@ here()
 surveys <- read_csv("exercises/portal_data_joined.csv")
 surveys_spread <- read_csv("exercises/surveys_spread.csv")
 surveys_gw <- read_csv("exercises/surveys_grouped_weight.csv")
-#rodent_data <- read_csv("exercises/portal_rodent.csv")
+by_quarter <- read_csv("exercises/surveys-by-quarter.csv")
 weather <- read_csv("exercises/portal-weather-subset.csv")
 ```
 

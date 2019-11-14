@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5 Exploratory data analysis | Coding togetheR</title>
   <meta name="description" content="Materials for the Coding TogetheR workshops" />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5 Exploratory data analysis | Coding togetheR" />
   <meta property="og:type" content="book" />
@@ -39,6 +39,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -214,17 +217,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3.6" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#binding-rows-and-columns"><i class="fa fa-check"></i><b>3.3.6</b> Binding rows and columns</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>4</b> Visualistion and communication</a><ul>
-<li class="chapter" data-level="4.1" data-path="viz.html"><a href="viz.html#visualistion"><i class="fa fa-check"></i><b>4.1</b> Visualistion</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="viz.html"><a href="viz.html#datasaurus-dozen"><i class="fa fa-check"></i><b>4.1.1</b> Datasaurus dozen</a></li>
-<li class="chapter" data-level="4.1.2" data-path="viz.html"><a href="viz.html#exploratory-plots"><i class="fa fa-check"></i><b>4.1.2</b> Exploratory plots</a></li>
-<li class="chapter" data-level="4.1.3" data-path="viz.html"><a href="viz.html#boxplots-1"><i class="fa fa-check"></i><b>4.1.3</b> Boxplots</a></li>
-<li class="chapter" data-level="4.1.4" data-path="viz.html"><a href="viz.html#position-adjustments"><i class="fa fa-check"></i><b>4.1.4</b> Position adjustments</a></li>
-<li class="chapter" data-level="4.1.5" data-path="viz.html"><a href="viz.html#statistical-transformations"><i class="fa fa-check"></i><b>4.1.5</b> Statistical transformations</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="viz.html"><a href="viz.html#themes-and-customisations"><i class="fa fa-check"></i><b>4.2</b> Themes and customisations</a></li>
-<li class="chapter" data-level="4.3" data-path="viz.html"><a href="viz.html#reports"><i class="fa fa-check"></i><b>4.3</b> Reports</a></li>
-<li class="chapter" data-level="4.4" data-path="viz.html"><a href="viz.html#presentations"><i class="fa fa-check"></i><b>4.4</b> Presentations</a></li>
+<li class="chapter" data-level="4" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>4</b> Visualisation and communication</a><ul>
+<li class="chapter" data-level="4.1" data-path="viz.html"><a href="viz.html#visualisation"><i class="fa fa-check"></i><b>4.1</b> Visualisation</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>5</b> Exploratory data analysis</a></li>
 <li class="divider"></li>
@@ -284,11 +278,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({

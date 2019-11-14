@@ -105,3 +105,9 @@ surveys_ms <- tibble(year = c(1991,1991,1991,1991,1992,1992,1992),
 surveys_ms %>% write_csv("exercises/surveys_ms.csv")
 ```
 
+Surveys subset
+
+```{r}
+surveys_subset %>% write_csv("exercises/surveys_subset.csv")
+```
+

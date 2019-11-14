@@ -58,12 +58,12 @@ but this is best illustrated by some plotting some example data.
 Figure \@ref(fig:viz-plot) illustrates plotting the same percentages for five Countries seven 
 ways corresponding with Cleveland and McGill's hierarchy.
 
-```{r viz_dat, echo=TRUE, cache=TRUE}
+```{r viz_dat, echo=TRUE, cache=F}
 viz_dat <- tibble(Country =LETTERS[seq( from = 5, to = 1 )],
                   Percent = c(0.22,0.25,0.34,0.29,0.32)) 
 ```
 
-```{r echo=FALSE, cache=TRUE}
+```{r echo=FALSE, cache=F}
 
 blank_theme <- theme_minimal() +
   theme(legend.position = "",
@@ -114,7 +114,7 @@ p7 <- viz_dat %>% ggplot(aes(x =Country,y =1, fill= Percent)) +
 ```
 
 
-(ref:viz-plot) The same percentages for five Countries A-E is plotted seven ways to illustrate the differences in ease of making comparisons depending the plot type. The percentages are A:22%, B:25%, C:34%, D:29% and E:32% in all plots.
+(ref:viz-plot) The same percentages for five Countries A-E is plotted seven ways to illustrate the differences in ease of making comparisons depending the plot type. The percentages are A:32%, B:29%, C:34%, D:25% and E:22% in all plots.
 
 ```{r viz-plot,fig.cap='(ref:viz-plot)', echo=FALSE, cache=F}
 plot_grid(p1,p2,p3,p4,p5,p6,p7)

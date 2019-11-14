@@ -233,3 +233,9 @@ knitr::include_graphics("../img/semi_join.png")
 ```{r, out.width='80%', fig.align='center', fig.cap='', echo=FALSE}
 knitr::include_graphics("../img/anti_join.png")
 ```
+
+## 
+
+```{r, out.width='80%',fig.align='center', fig.cap='', echo=FALSE}
+knitr::include_graphics("../img/viz-plot.png")
+```

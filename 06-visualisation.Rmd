@@ -92,9 +92,9 @@ p3 <- viz_dat %>% ggplot(aes(Country,Percent)) +
         geom_point() +
         coord_flip()
 
-p4 <- viz_dat %>% ggplot(aes(Country,c(2,3,2.2,1.8,2.1), size = Percent, label = Country)) +
-        geom_point(colour = 'blue') +
-        geom_text(hjust = 0, nudge_x = 0.35, size = 3) +
+p4 <- viz_dat %>% ggplot(aes(Country, 1, size = Percent, label = Country)) +
+        geom_point(colour = 'grey') +
+        geom_text(hjust = 0.4, nudge_x = 0.35, size = 5) +
         blank_theme
 
 p5 <- viz_dat %>% ggplot(aes(area =Percent,label = Country)) +
@@ -116,7 +116,7 @@ p7 <- viz_dat %>% ggplot(aes(x =Country,y =1, fill= Percent)) +
 
 (ref:viz-plot) The same percentages for five Countries A-E is plotted seven ways to illustrate the differences in ease of making comparisons depending the plot type. The percentages are A:22%, B:25%, C:34%, D:29% and E:32% in all plots.
 
-```{r viz-plot,fig.cap='(ref:viz-plot)', echo=FALSE, cache=T}
+```{r viz-plot,fig.cap='(ref:viz-plot)', echo=FALSE, cache=F}
 plot_grid(p1,p2,p3,p4,p5,p6,p7)
 ```
 

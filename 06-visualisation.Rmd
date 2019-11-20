@@ -37,6 +37,8 @@ But for a brief overview, two questions one might immediately have are:
 1. Why visualise our data in the first place?
 2. What do we know about what makes an effective visualisation?
 
+### Making comparisons
+
 Starting with the second question, a helpful set of principles for statistical 
 visualisations is the work of Cleveland and McGill, namely:
 [Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods by Cleveland and  McGill](https://www.jstor.org/stable/pdf/2288400.pdf?refreqid=excelsior%3Ab321aba183cce22a7f93335ca107eec6).
@@ -120,7 +122,9 @@ p7 <- viz_dat %>% ggplot(aes(x =Country,y =1, fill= Percent)) +
 plot_grid(p1,p2,p3,p4,p5,p6,p7)
 ```
 
-<!--- 
+The message here is that when choosing a visualisation for comparisons between 
+sets of observations the best place to start is with plotting the observations on 
+a common scale.
 
 ### Datasaurus dozen
 
@@ -140,6 +144,10 @@ glimpse(datasaurus)
 datasaurus %>% distinct(dataset)
 ```
 
+We have a bakers' dozen of datasets, each with 1,846 observations for 
+variables `x` and `y`. Let's look at the mean and standard deviation for each 
+variable using a grouped summary and the `mean()` and standard deviation `sd()` functions. 
+
 ```{r datasaurus-summary, cache=TRUE}
 datasaurus %>% group_by(dataset) %>% summarise(mean_x = mean(x),
                                                mean_y = mean(y),
@@ -147,7 +155,7 @@ datasaurus %>% group_by(dataset) %>% summarise(mean_x = mean(x),
                                                sd_y = sd(y))
 ```
 
-Let's remind ourselves of the basic form for creating plots with the `ggplot2` package: 
+The basic form for creating plots with the `ggplot2` package is as follows:
 
 ```{r, eval=FALSE}
 ggplot(data = <DATA>) + 
@@ -174,11 +182,32 @@ In words read this as *"facets depend upon the dataset"*:
 
 ### Other considerations
 
+Rafeal Irizarry on [Why dynamite plots must die](https://simplystatistics.org/2019/02/21/dynamite-plots-must-die/)
+
 ### Exploratory plots
 
-Using `facet_wrap(~ rodent_type)` gives us this plot:
+As the name implies, the point of an exploratory plot is to explore our data. 
+This can happen before, during or after tidying/transforming data, and as discussed in 
+[The Art of Data Science](https://leanpub.com/artofdatascience) serves two key
+purposes:
 
-```{r,by_quarter_plot,echo=TRUE,cache=TRUE}
+1. Creating expectations
+2. Checking for deviations from our expectations.
+
+In Chapter \@ref(data-wrangle-1) having transformed the Portal rodent surveys data 
+into a table summarising the rodent observations per three month period per
+plot type (control or exclosure). The original paper was exploring the hypothesis
+that kangaroo rat and granivore populations were in competition for resources in their habitat.
+
+We plotted the average number of captures over time as a line and point plot,
+coloured according to plot type, and facetting the plot according to animal type.
+
+Here we are exploring the effect of the exlosure on the animal populations over
+time, and the variation in populations over time in both plot types.
+
+(ref:by-q-tp) The average number of captures over time as a line and point plot, coloured according to plot type, and facetting the plot according to animal type.
+
+```{r by-quarter-time-plot,fig.cap='(ref:by-q-tp)',fig.asp=1, out.width = '100%', fig.align='center',echo=TRUE,cache=TRUE, warning=FALSE}
 ggplot(data = by_quarter,
        mapping = aes(x=quarter,y=mean_captures,colour=plot_type)) +
   geom_line() +
@@ -186,17 +215,23 @@ ggplot(data = by_quarter,
   facet_wrap(~ rodent_type)
 ```
 
+Expectations created by this plot for example are that the populations fluctuate
+quite a lot over time, and the exclosure appears to work well with few kangaroo
+rats observed in those plots.
+
+What is less clear is what the effect of the exclosure is having, if any, on the
+granivore population, suggesting we might wish to try a different type of plot.
+
 #### Boxplots
 
-There are many other types of plot we may wish to create when exploring data. 
-The previous plot showed us changes with time, but we might want to look at
-averages and spread or other statistical summaries of the data.
-
-### Boxplots
+The previous plot showed us changes with time, but
+averages and spread or other statistical summaries of the data might be more informative
+for understanding the effect of exlosure on granivore populations.
 
 Box-plots are a standard way to plot the distribution of a data set. Plotting 
 the data this way means that we drop the dynamic information, the time dimension,
-but gain a compact summarised view of the variability of the number of captures.
+but gain a compact summarised view of the variability of the number of captures,
+and hopefully evidence of any changes in granivore population following exclosure.
 
 In the following code we use the `boxplot()` geom, and this time swap the mapping
 such that colour maps to the rodent type, and plots are faceted according to the plot type.
@@ -209,6 +244,9 @@ ggplot(data= by_quarter,
   geom_boxplot() +
   facet_wrap(~ plot_type)
 ```
+
+Comparing the median bar and the interquartile range, we can see evidence suggesting
+a modest increase in the granivore population when kangaroo rats are excluded.
 
 ### Position adjustments
 
@@ -237,11 +275,11 @@ ggplot(data = mpg) +
              position = "jitter")
 ```
 
-Let's add points to our box-plot and for the challenge try comparing the plot
+Let's add points to our box-plot and try comparing the plot
 to one where the points are jittered.
 
 ```{r,by_quarter_box_2,purl=FALSE,echo=TRUE}
-# Boxplot without jitter
+# Boxplot with points and jitter
 ggplot(data= by_quarter,
        mapping = aes(x = rodent_type, y = mean_captures, 
                      colour = rodent_type)) +

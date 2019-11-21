@@ -1,6 +1,12 @@
 # Coding together week 7 - visualisations
 
+## Warm-up
++ Complete the quiz
++ Open RStudio and set-up a week 7 project and Rmarkdown file
++ Create a chunk that loads the tidyverse and run it.
 + Recreate the `mpg` scatter plot from week 1
+
+## Why visualise
 
 Plot the datasaurus with x and y and aesthetics and a point geometric object.
 To plot each dataset on a different plot, add a facet layer with `facet_wrap(~ dataset)`
@@ -29,4 +35,24 @@ ggplot(data= by_quarter,
   geom_point(position = "jitter", alpha = 0.5) +
   facet_wrap(~ plot_type)
 ```
+## Facets
 
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_grid(drv ~ cyl)
+```
+
+## Statistical transformations
+
+```
+library(dslabs)
+data(heights)
+
+```
+
+## Position adjustments
+
+## Coordinate adjustments
+
+## Themes and customisations

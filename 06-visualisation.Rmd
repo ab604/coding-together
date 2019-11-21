@@ -25,14 +25,27 @@ you to determine what sort of visualisation is
 appropriate for the task at hand and for you to use your critical judgement in 
 assessing a visualisation, presentation or report.
 
-## Visualisation
+## Visualisation overview
 
 For a deeper understanding of the art of data visualisation, a good place to start
 is with the work of [Albert Cairo](http://www.thefunctionalart.com/), 
 a journalist and academic specialising in data visualisation who has written and continues to write 
 extensively on the subject. 
 
-But for a brief overview, two questions one might immediately have are:
+Betsy Mason has written an article that summarises many of the key ideas:
+[Why scientists need to be better at data visualization](https://www.knowablemagazine.org/article/mind/2019/science-data-visualization)
+including the issues around how we perceive shade and hue, that can make plots such
+as heatmaps problematic.
+
+Rafeal Irizarry has also written about [Why dynamite plots must die](https://simplystatistics.org/2019/02/21/dynamite-plots-must-die/). These
+are very common plots in biomedical science, but are far from optimal.
+
+The point here is not to tell you explicitly what plots to make, or that heatmaps
+are bad etc., but to encourage you to think about what type of plot is best for the 
+task in hand. Choosing to plot your data in a certain way because, *"that's what
+everyone else does"* is unlikely to be the best reason.
+
+To begin with two questions one might immediately have are:
 
 1. Why visualise our data in the first place?
 2. What do we know about what makes an effective visualisation?
@@ -124,11 +137,50 @@ plot_grid(p1,p2,p3,p4,p5,p6,p7)
 
 The message here is that when choosing a visualisation for comparisons between 
 sets of observations the best place to start is with plotting the observations on 
-a common scale.
+a common scale (but not necessarily finish).
+
+## `ggplot2()`
+
+In his paper [A layered grammar of graphics](http://vita.had.co.nz/papers/layered-grammar.pdf)
+Hadley Wickham discusses the theory behind the `ggplot2()` package. As with tidyverse
+the aim was to create a consistent system for building plots. 
+
+The key components of a plot are:
+
++ data with aesthetic mappings e.g. position on an axis, colour or size.
++ geometric objects e.g. points, lines.
+
+To this other components or layers can be added, such as facets or statistical transformations
+to make increasingly complex plots.
+
+As `ggplot2()` was first released in 2007 it preceded the `magrittr` package in 
+2014 from which we get the pipe `%>%` it has one syntax difference that is sure
+to catch you out. Whilst we can pipe into a `ggplot()` function, we build the plots using
+the plus sign `+` to add our next layer. 
+
+Likewise, forgetting to use the aesthetic function `aes()` within a layer is a common
+mistake I make. Aesthetics and geometries are related, so for example you can't
+set the shape aesthetic of a line. I usually make this mistake with colour and fill
+aesthetics, where I try to use one when I need the other.
+
+The basic form for creating plots with the `ggplot2` package is as follows:
+
+```{r, eval=FALSE}
+ggplot(data = <DATA>) + 
+  <GEOM_FUNCTION(mapping = aes(<MAPPINGS>))>
+```
+
+To recap: 
+
+> + We provide a data frame as an argument to the `ggplot()` function
+> + Variables in the data frame are mapped to visual properties using the aesthetics function `aes()` 
+> + The aesthetics are mapped to a geometric object such as points using a layer with a `geom()` function. 
+> + If we were to plot several `geoms()` on the same plot wanted to map the same aesthetics to each `geom()` we can pass the aesthetics argument to `ggplot()` directly: `ggplot(data = <DATA>,mapping = aes(<MAPPINGS>))`.
+> + We can also pipe data into `ggplot()` as we would for other functions.
 
 ### Datasaurus dozen
 
-But why visualise data in the first place?
+Returning to the first question: Why visualise data in the first place?
 
 Inspired by the [Anscombe's Quartet](https://en.wikipedia.org/wiki/Anscombe%27s_quartet) and [Albert Cairo's Datasaurus](http://www.thefunctionalart.com/2016/08/download-datasaurus-never-trust-summary.html), Justin Matejka and
 George Fitzmaurice
@@ -155,19 +207,6 @@ datasaurus %>% group_by(dataset) %>% summarise(mean_x = mean(x),
                                                sd_y = sd(y))
 ```
 
-The basic form for creating plots with the `ggplot2` package is as follows:
-
-```{r, eval=FALSE}
-ggplot(data = <DATA>) + 
-  <GEOM_FUNCTION(mapping = aes(<MAPPINGS>))>
-```
-
-> + We provide a data frame as an argument to the `ggplot` function
-> + Aesthetics (the variables we wish to plot) are mapped to a geometric 
-object such as points. 
-> + If we were to plot several `geoms()` on the same plot wanted to map the same aesthetics to each `geom()` we can pass the aesthetics argument to `ggplot()` directly: `ggplot(data = <DATA>,mapping = aes(<MAPPINGS>))`.
-> + We can also pipe data into `ggplot()` as we would for other functions.
-
 Here we use the basic form to plot the `datasaurus` but with the addition of `facet_wrap()`
 in which the first argument is `~` representing "formula" (a type of data structure) and the 
 second argument is the variable we wish to create individual plots for. 
@@ -179,17 +218,15 @@ In words read this as *"facets depend upon the dataset"*:
         facet_wrap(~ dataset)
 ```
 
-
-### Other considerations
-
-Rafeal Irizarry on [Why dynamite plots must die](https://simplystatistics.org/2019/02/21/dynamite-plots-must-die/)
+The message here is that plotting the data reveals structure that is not apparent
+from summary statistics. Therefore if possible: **plot early, and plot often.**
 
 ### Exploratory plots
 
 As the name implies, the point of an exploratory plot is to explore our data. 
 This can happen before, during or after tidying/transforming data, and as discussed in 
 [The Art of Data Science](https://leanpub.com/artofdatascience) serves two key
-purposes:
+purposes that we saw with the Datasaurus:
 
 1. Creating expectations
 2. Checking for deviations from our expectations.
@@ -222,10 +259,82 @@ rats observed in those plots.
 What is less clear is what the effect of the exclosure is having, if any, on the
 granivore population, suggesting we might wish to try a different type of plot.
 
+### Statistical transformations
+
+Often we want to transform the data as part of the plotting process, for example
+to create plots that reveal statistical information such as distributions or 
+averages. For these we can use geoms which are statistical in nature or to
+which we provide statistical arguments.
+
+#### Barplots
+
+These simple plots actually reveal subtleties in 
+plots. In the following code we take the `by_month_species` subset and create
+a bar chart of `species_id`, filling the bars with colour according to `rodent_type`.
+
+```{r,by-month-bar,purl=FALSE,echo=TRUE}
+# Create a bar plot of genus from by_month_species 
+by_month_species <- surveys_subset %>% 
+        filter(rodent_type != "Other") %>% 
+        group_by(year,month,species_id,rodent_type,plot_type) %>% 
+        summarise(captures = n()/31)
+
+by_month_species %>% 
+  ggplot() +
+  geom_bar(mapping = aes(x = species_id, fill=rodent_type)) + 
+  facet_wrap(~ plot_type)
+```
+
+
+We see that the code has automatically created a count variable on the y-axis 
+for each species_id plotted as a bar on the x-axis. 
+
+This is because the `geom_bar()` algorithm automatically performs a statistical
+transformation of the mapped variable. That is to say it performs a count and 
+bins the data according to the genus. This means we have a chart where the bar
+height corresponds to the number of rows for each species_id.
+
+But this isn't a count of the captures, it's how many rows each species_id appears
+in of `by_month_species`. Remember how we summarised this data to calculate captures per month.
+
+Often when people talk about bar charts they are referring to when the height
+of the bar is a variable present in the data, here that would be the `captures` 
+column.
+In this kind of situation we need to map the y-axis too, and change the
+default `geom_bar()` statistical transformation to `stat = "identity"` so that
+it takes the values provided in the `captures` column to determine the height of
+the bar.
+
+To reiterate: **if you are trying to create a bar chart using x and y variables
+contained in your data set, you need to set `geom_bar(stat = "identity")`.** 
+
+```{r,by-month-bar-stat,purl=FALSE,echo=TRUE}
+# Create a bar plot of genus from by_month_species using y = captures and 
+# stat = "identity" 
+by_month_species %>% 
+  ggplot() +
+  geom_bar(mapping = aes(x = species_id, y = captures, fill=rodent_type), stat = "identity") + 
+  facet_wrap(~ plot_type) 
+```
+
+Let's check this by looking at `PE` in the control plots and counting the rows and comparing that
+to summing the number of captures. Note we need to `ungroup()` before doing another
+summary. There are 132 rows, but only 11 captures.
+
+```{r}
+# How many rows for PE
+by_month_species %>% 
+  filter(species_id == "PE", plot_type == "Control") %>% ungroup() %>% tally()
+# How many captures for PE
+by_month_species %>% 
+  filter(species_id == "PE", plot_type == "Control") %>% ungroup() %>% 
+  summarise(total = sum(captures))
+```
+
 #### Boxplots
 
-The previous plot showed us changes with time, but
-averages and spread or other statistical summaries of the data might be more informative
+The previous exploratory plot showed us changes with time, but
+averages and spread or other statistical summaries of the surveys data might be more informative
 for understanding the effect of exlosure on granivore populations.
 
 Box-plots are a standard way to plot the distribution of a data set. Plotting 
@@ -288,26 +397,88 @@ ggplot(data= by_quarter,
   facet_wrap(~ plot_type)
 ```
 
-### Statistical transformations
+We can also apply positional adjustments to other plots such as barplots.
+We can combine aesthetic `fill = species_id` with `position = "fill"` in 
+`geom_bar()` to create a separate bar for each species and put plot_type on 
+the x axis for `by_month_species` plots bars of length 1, but filled
+with the proportion of captures for that species.
 
-Next we'll plot bar charts. 
+```{r,by-month-bar-dodge,purl=FALSE,echo=TRUE}
+# Create a bar plot of genus from by_month_species using x = plot_id and 
+# stat = "identity" 
+by_month_species %>%
+  ggplot() +
+  geom_bar(mapping = aes(x = plot_type, y = captures,  fill=species_id), 
+           position = "fill" , stat = "identity") 
+```
 
-These simple plots actually reveal subtleties in 
-plots. In the following code we take the `by_month_genus` subset and create
-a bar chart of `genus`, filling the bars with colour according to `rodent_type`.
+Perhaps not that useful given what we know about making comparisons.
 
-```{r,by_month_bar_1,purl=FALSE,echo=TRUE}
-# Create a bar plot of species monthly average captures 
-surveys_subset %>% 
-        filter(rodent_type != "Other") %>% 
-        group_by(year,month,species_id,rodent_type,plot_type) %>% 
-        summarise(captures = n()/31) %>% 
-        ggplot() +
-        geom_bar(mapping = aes(x = fct_reorder(species_id,captures), 
-                               y = captures, fill=rodent_type), 
-                 stat = "identity") + 
-        facet_grid(~ plot_type) +
-        coord_flip()
+For more positional adjustments, check out the help files `?postion_jitter`,
+`?position_dodge`, `?position_fill`, `?position_identity`,  and 
+`?position_stack`.
+
+### Coordinate adjustments
+
+Previously, we plotted `by_month_species` and sometimes it's tricky when there are
+lots of labels on the x-axis, so let's flip the plot round using `coord_flip()` to improve things:
+
+```{r,by-month-bar-5,purl=FALSE,echo=TRUE}
+# Flip the coordinates to make the labels more readable 
+ggplot(by_month_species) +
+  geom_bar(mapping = aes(x = species_id, y = captures, fill = rodent_type), 
+           stat = "identity") + 
+  facet_grid(~ plot_type) +
+  coord_flip()
+```
+
+#### Factors
+
+Finally for this plot, it would be nice to put the bars in order of size. We
+can do this by converting the genus to a factor.
+
+Recall that factors are how R represents categorical variables, variables with
+a limited number of values, such as genus.
+
+Also recall **factors look like strings, but behave like integers**. That is to 
+say they are strings of characters with associated values called levels 
+that can be used to order catergories.
+
+This is why factors are useful, especially when we want to place things in 
+non-alphabetical order. We can take advantage of factor levels to order things
+as we wish.
+
+Check out the [forcats](http://forcats.tidyverse.org/) tidyverse package to 
+explore the power of factors, but here to give you a taste of what is possible
+we're going to use the `forcats` package `fct_reorder()` function to convert 
+`species_id` into a factor and in doing so set the level according to to the number 
+of captures. In this way we can order the bars in our plot according to the 
+number of captures and see the pattern more clearly.
+
+In `fct_reorder()`, the first argument is the variable we wish to make into a 
+factor `species_id`, and the second argument is variable we wish to use to create 
+the order. Here we want to order according to the number of captures, 
+so `captures` is the second argument. 
+
+Note we still keep x and y mappings, but now x is now a function of both the 
+genus and the capture columns.
+
+This gives us a nice ordered bar chart by genus and number of captures during 
+the experimental period. 
+
+**We can clearly see that kangaroo rat exclosure works,
+and that this corresponds with an increase in granivore captures these plots.**
+
+```{r,by_month_bar_6,purl=FALSE,echo=TRUE}
+# Load the forcats tidyverse package
+library(forcats)
+
+# Order the rodents according to number of captures
+ggplot(by_month_species) +
+  geom_bar(mapping = aes(x = fct_reorder(species_id, captures), y = captures, 
+                          fill = rodent_type), stat = "identity") + 
+  facet_grid(~ plot_type) +
+  coord_flip()
 ```
 
 ## Themes and customisations
@@ -329,6 +500,53 @@ ggplot(data = <DATA>) +
   <COORDINATE_FUNCTION> +
   <FACET_FUNCTION>
 ```
+
+It's unlikely that you'll need to statistical transformations, positional 
+adjustments, coordinate adjustments, and facets all in the same plot, but this 
+provides an idea of what is possible. Remember the aim is clarity, not to
+make something complicated just because you can.
+
+This template we can use to add all the additional functions and arguments that 
+will change the plot to make it exactly how we want. It takes time, but remember 
+code is reusable. Solve it once and you've solved it forever.
+
+For all the possible customisations check out the 
+[ggplot2 documentation](http://ggplot2.tidyverse.org/reference/index.html), and
+this chapter of R for data science: 
+[Graphics for communication](http://r4ds.had.co.nz/graphics-for-communication.html#themes)
+
+But here's a few common changes.
+
+### Changing colours, labels, themes and adding titles
+
+Recall our box-plot with points overlaid. Following the facet function, 
+we're going add a succession of functions to change the colours 
+`scale_colour_brewer()`, change the axis labels, 
+add a title using `labs()` and change the theme.
+
+Themes deal with non-data elements e.g. the grid, the axes etc. There are
+a range of built-in themes and packages of themes such as `ggthemes`. Here
+we'll use the built-in theme, `theme_bw()` that gives a simple layout.
+
+```{r,by-quarter-box4,purl=FALSE,echo=TRUE}
+
+ggplot(data= by_quarter,
+       mapping = aes(x = rodent_type, y = mean_captures, 
+                     colour = rodent_type)) +
+  geom_boxplot() +
+  geom_point(position = "jitter") +
+  facet_wrap(~ plot_type) +
+  scale_colour_brewer(palette = "Set1") +
+  labs(title = "Quarterly average captures of rodents between 1977 and 1990",
+       x = "Rodent type",
+       y = "Number of captures",
+       colour = "Rodent type") +
+  theme_bw()
+
+```
+
+Check out `?scale_colour_brewer` and `?scale_fill_brewer` for more information 
+on colour schemes for discrete data. And `?scale_color_continuous` for creating colour gradients for continuous data. 
 
 ## Reports
 

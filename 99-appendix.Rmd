@@ -111,3 +111,9 @@ Surveys subset
 surveys_subset %>% write_csv("exercises/surveys_subset.csv")
 ```
 
+By month species
+
+```{r}
+by_month_species %>% write_csv("exercises/by_month_species.csv")
+```
+

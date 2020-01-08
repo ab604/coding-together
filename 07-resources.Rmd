@@ -1,0 +1,86 @@
+# Resources {#resources}
+
+We've only scratched the surface of what is possible using R,
+but what we've tried to cover in these materials are some
+practical steps to approaching data analysis following
+these ideas:
+
+*"There are 5 core activities of data analysis:*
+
+ 1. *Stating and refining the question*
+ 2. *Exploring the data*
+ 3. *Building formal statistical models*
+ 4. *Interpreting the results*
+ 5. *Communicating the results"*
+
+These are the epicycles of data analysis.
+
+*"More specifically, for each of the five core activities, it is critical that you engage in the following steps:*
+
+ 1. *Setting Expectations,*
+ 2. *Collecting information (data), comparing the data to your expectations, and if the expectations don’t match,*
+ 3. *Revising your expectations or fixing the data so your data and your expectations match."*
+
+[Epicycle of Analysis, The Art of Data Science, Peng & Matsui](https://bookdown.org/rdpeng/artofdatascience/epicycle-of-analysis.html)
+
+In terms of these materials and R skills, this translates to:
+
+1. Importing data.
+2. Tidying and cleaning the data.
+3. Transforming the data.
+4. Plotting the data.
+5. Exporting data and plots.
+
+Those processes will enable you (indeed force you) to better state and refine
+your questions, putting you into a good postion to consider
+whether you need to revise your experimental/data collection
+plan, and give you the foundation to go onto learning how to build statistical or other models R, or indeed in other languages. And to these things in reproducible ways.
+
+## The R community
+
+I mostly learn R through the online community, initially through the [Simply Statistics](https://simplystatistics.org/about/) 
+blog which introduced me to R. Here's an entirely arbitrary collection of community people and links I discovered:
+
+### Twitter
+
++ [Mara Averick](https://twitter.com/dataandme)
++ [Hadley Wickham](https://twitter.com/hadleywickham)
++ [Charlotte Wickham](https://twitter.com/CVWickham)
++ [Jesse Mostipak](https://twitter.com/kierisi)
++ [Jenny Bryan](https://twitter.com/JennyBryan)
++ [Alison Hill](https://twitter.com/apreshill)
++ [Allison Horst](https://twitter.com/allison_horst)
++ [David Robinson](https://twitter.com/drob)
++ [Malcolm Barrett](https://twitter.com/malco_barrett)
++ [Nicholas Tierney](https://twitter.com/nj_tierney)
++ [Julia Silge](https://twitter.com/juliasilge)
++ [Colin Fay](https://twitter.com/_ColinFay)
++ [Greg Wilson](https://twitter.com/gvwilson)
++ [Thomas Lin Pedersen](https://twitter.com/thomasp85)
++ [Garrett Grolemund](https://twitter.com/StatGarrett)
++ [Yihui Xie](https://twitter.com/xieyihui)
+
+### R4DS and rOpenSci and The Carpentries
+
+These are useful places to go for advice, materials, and packages
+
++ [R for data science](https://www.rfordatasci.com/) and
+[R for data science twitter](https://twitter.com/R4DScommunity) 
++ [The Carpentries](https://carpentries.org/)
++ [rOpenSci](https://ropensci.org/) and [rOpenSci twitter](https://twitter.com/rOpenSci)
+
+## Online books and tutorials
+
++ [Swirl](https://swirlstats.com/)
++ [Introduction to Data Science, Rafael A. Irizarry](https://rafalab.github.io/dsbook/)
++ [Hands-On Programming with R, Garrett Grolemund](https://rstudio-education.github.io/hopr/)
++ [The Art of Data Science,Roger D. Peng and Elizabeth Matsui](https://bookdown.org/rdpeng/artofdatascience/)
++ [How to name files, Jenny Bryan](https://speakerdeck.com/jennybc/how-to-name-files)
++ [Effective presentation design, Melinda Seckington](https://missgeeky.com/2017/08/04/the-art-of-slide-design/)
+
+### A list of R conferences and meetings
+
+Find R people in real life wherever you are:
+[A list of R conferences and meetings](https://jumpingrivers.github.io/meetingsR/)
+
+## References

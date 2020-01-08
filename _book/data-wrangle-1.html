@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Data wrangling I | Coding togetheR</title>
   <meta name="description" content="Materials for the Coding TogetheR workshops" />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Data wrangling I | Coding togetheR" />
   <meta property="og:type" content="book" />
@@ -39,6 +39,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -228,10 +231,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="viz.html"><a href="viz.html#themes-and-customisations"><i class="fa fa-check"></i><b>4.3</b> Themes and customisations</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="viz.html"><a href="viz.html#changing-colours-labels-themes-and-adding-titles"><i class="fa fa-check"></i><b>4.3.1</b> Changing colours, labels, themes and adding titles</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="viz.html"><a href="viz.html#reports"><i class="fa fa-check"></i><b>4.4</b> Reports</a></li>
-<li class="chapter" data-level="4.5" data-path="viz.html"><a href="viz.html#presentations"><i class="fa fa-check"></i><b>4.5</b> Presentations</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>5</b> Exploratory data analysis</a></li>
+<li class="chapter" data-level="5" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>5</b> Resources</a><ul>
+<li class="chapter" data-level="5.1" data-path="resources.html"><a href="resources.html#the-r-community"><i class="fa fa-check"></i><b>5.1</b> The R community</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="resources.html"><a href="resources.html#twitter"><i class="fa fa-check"></i><b>5.1.1</b> Twitter</a></li>
+<li class="chapter" data-level="5.1.2" data-path="resources.html"><a href="resources.html#r4ds-and-ropensci-and-the-carpentries"><i class="fa fa-check"></i><b>5.1.2</b> R4DS and rOpenSci and The Carpentries</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="resources.html"><a href="resources.html#online-books-and-tutorials"><i class="fa fa-check"></i><b>5.2</b> Online books and tutorials</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="resources.html"><a href="resources.html#a-list-of-r-conferences-and-meetings"><i class="fa fa-check"></i><b>5.2.1</b> A list of R conferences and meetings</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="resources.html"><a href="resources.html#references"><i class="fa fa-check"></i><b>5.3</b> References</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -530,20 +540,20 @@ Figure 2.4: <code>dplyr::filter()</code>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="co"># Filter observations that only occurred from 1985 onwards</span></a>
 <a class="sourceLine" id="cb32-2" title="2"> <span class="kw">filter</span>(surveys, year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1985</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 25,290 x 13
-##    record_id month   day  year plot_id species_id sex   hindfoot_length
-##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;
-##  1     10606     7    24  1985       2 NL         F                  30
-##  2     10617     7    24  1985       2 NL         M                  32
-##  3     10627     7    24  1985       2 NL         F                  32
-##  4     10720     8    20  1985       2 NL         F                  31
-##  5     10923    10    13  1985       2 NL         F                  31
-##  6     10949    10    13  1985       2 NL         F                  33
-##  7     11215    12     8  1985       2 NL         F                  32
-##  8     11329     3     9  1986       2 NL         M                  34
-##  9     11496     5    11  1986       2 NL         F                  31
-## 10     11498     5    11  1986       2 NL         F                  31
-## # ... with 25,280 more rows, and 5 more variables: weight &lt;dbl&gt;,
-## #   genus &lt;chr&gt;, species &lt;chr&gt;, taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
+##    record_id month   day  year plot_id species_id sex   hindfoot_length weight
+##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;
+##  1     10606     7    24  1985       2 NL         F                  30     91
+##  2     10617     7    24  1985       2 NL         M                  32    186
+##  3     10627     7    24  1985       2 NL         F                  32    174
+##  4     10720     8    20  1985       2 NL         F                  31    106
+##  5     10923    10    13  1985       2 NL         F                  31    136
+##  6     10949    10    13  1985       2 NL         F                  33    148
+##  7     11215    12     8  1985       2 NL         F                  32    160
+##  8     11329     3     9  1986       2 NL         M                  34    240
+##  9     11496     5    11  1986       2 NL         F                  31    163
+## 10     11498     5    11  1986       2 NL         F                  31     82
+## # … with 25,280 more rows, and 4 more variables: genus &lt;chr&gt;, species &lt;chr&gt;,
+## #   taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
 <p>An example using Boolean logic, would be to use the “or” operator <code>|</code> to filter
 for the observations only occurring on <code>plot_type</code>’s control or long term kangaroo
 rat exclusion. This time we assign the output to a new data frame called <code>surveys_filtered</code>.</p>
@@ -594,38 +604,38 @@ Figure 2.5: <code>dplyr::arrange()</code>
 </div>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1">surveys <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(record_id)</a></code></pre></div>
 <pre><code>## # A tibble: 34,786 x 13
-##    record_id month   day  year plot_id species_id sex   hindfoot_length
-##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;
-##  1         1     7    16  1977       2 NL         M                  32
-##  2         2     7    16  1977       3 NL         M                  33
-##  3         3     7    16  1977       2 DM         F                  37
-##  4         4     7    16  1977       7 DM         M                  36
-##  5         5     7    16  1977       3 DM         M                  35
-##  6         6     7    16  1977       1 PF         M                  14
-##  7         7     7    16  1977       2 PE         F                  NA
-##  8         8     7    16  1977       1 DM         M                  37
-##  9         9     7    16  1977       1 DM         F                  34
-## 10        10     7    16  1977       6 PF         F                  20
-## # ... with 34,776 more rows, and 5 more variables: weight &lt;dbl&gt;,
-## #   genus &lt;chr&gt;, species &lt;chr&gt;, taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
+##    record_id month   day  year plot_id species_id sex   hindfoot_length weight
+##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;
+##  1         1     7    16  1977       2 NL         M                  32     NA
+##  2         2     7    16  1977       3 NL         M                  33     NA
+##  3         3     7    16  1977       2 DM         F                  37     NA
+##  4         4     7    16  1977       7 DM         M                  36     NA
+##  5         5     7    16  1977       3 DM         M                  35     NA
+##  6         6     7    16  1977       1 PF         M                  14     NA
+##  7         7     7    16  1977       2 PE         F                  NA     NA
+##  8         8     7    16  1977       1 DM         M                  37     NA
+##  9         9     7    16  1977       1 DM         F                  34     NA
+## 10        10     7    16  1977       6 PF         F                  20     NA
+## # … with 34,776 more rows, and 4 more variables: genus &lt;chr&gt;, species &lt;chr&gt;,
+## #   taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
 <p>Or we could use <code>arrange()</code> to find the record with the shortest hindfoot.
 <em>Note:</em> <code>arrange()</code> defaults to ascending order.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1">surveys <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(hindfoot_length)</a></code></pre></div>
 <pre><code>## # A tibble: 34,786 x 13
-##    record_id month   day  year plot_id species_id sex   hindfoot_length
-##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;
-##  1     31400     9    30  2000      19 PB         M                   2
-##  2     10067     3    16  1985      19 RM         M                   6
-##  3     19567     1     8  1992      19 BA         M                   6
-##  4     19015     9     9  1991      19 BA         F                   7
-##  5     21036     8    19  1993      21 PF         F                   7
-##  6     31457     9    31  2000       6 RM         M                   8
-##  7     19191    10    11  1991      13 PF         F                   8
-##  8      5801     4    29  1982       7 RM         &lt;NA&gt;                8
-##  9     33647     3    14  2002       3 PF         M                   9
-## 10     20562    12    22  1992       5 RM         F                   9
-## # ... with 34,776 more rows, and 5 more variables: weight &lt;dbl&gt;,
-## #   genus &lt;chr&gt;, species &lt;chr&gt;, taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
+##    record_id month   day  year plot_id species_id sex   hindfoot_length weight
+##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;
+##  1     31400     9    30  2000      19 PB         M                   2     30
+##  2     10067     3    16  1985      19 RM         M                   6     16
+##  3     19567     1     8  1992      19 BA         M                   6      8
+##  4     19015     9     9  1991      19 BA         F                   7     11
+##  5     21036     8    19  1993      21 PF         F                   7      6
+##  6     31457     9    31  2000       6 RM         M                   8      8
+##  7     19191    10    11  1991      13 PF         F                   8     15
+##  8      5801     4    29  1982       7 RM         &lt;NA&gt;                8     16
+##  9     33647     3    14  2002       3 PF         M                   9      8
+## 10     20562    12    22  1992       5 RM         F                   9     17
+## # … with 34,776 more rows, and 4 more variables: genus &lt;chr&gt;, species &lt;chr&gt;,
+## #   taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
 <p>To find the Cactus Mouse, (<code>species_id == "PE"</code>) with the longest hindfoot we combine
 <code>filter()</code> with <code>arrangee()</code> using the pipe:</p>
 <p><em>Hint</em> Use the <code>desc()</code> function to arrange from biggest to smallest.</p>
@@ -633,20 +643,20 @@ Figure 2.5: <code>dplyr::arrange()</code>
 <a class="sourceLine" id="cb41-2" title="2"><span class="st">        </span><span class="kw">filter</span>(species_id <span class="op">==</span><span class="st"> &quot;PE&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb41-3" title="3"><span class="st">        </span><span class="kw">arrange</span>(<span class="kw">desc</span>(hindfoot_length))</a></code></pre></div>
 <pre><code>## # A tibble: 1,299 x 13
-##    record_id month   day  year plot_id species_id sex   hindfoot_length
-##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;
-##  1      1202     9     3  1978       7 PE         F                  30
-##  2       517     1     8  1978       2 PE         M                  26
-##  3     32443     8    25  2001      23 PE         F                  24
-##  4      5080    12    30  1981      15 PE         F                  23
-##  5      5090    12    30  1981      15 PE         F                  23
-##  6     33700     3    14  2002       9 PE         F                  23
-##  7       604     2    18  1978       2 PE         M                  22
-##  8     12459     3     2  1987       2 PE         F                  22
-##  9     13992     1    24  1988       2 PE         M                  22
-## 10     14516     5    15  1988       2 PE         F                  22
-## # ... with 1,289 more rows, and 5 more variables: weight &lt;dbl&gt;,
-## #   genus &lt;chr&gt;, species &lt;chr&gt;, taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
+##    record_id month   day  year plot_id species_id sex   hindfoot_length weight
+##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;
+##  1      1202     9     3  1978       7 PE         F                  30     24
+##  2       517     1     8  1978       2 PE         M                  26     22
+##  3     32443     8    25  2001      23 PE         F                  24     24
+##  4      5080    12    30  1981      15 PE         F                  23     23
+##  5      5090    12    30  1981      15 PE         F                  23     18
+##  6     33700     3    14  2002       9 PE         F                  23     23
+##  7       604     2    18  1978       2 PE         M                  22     25
+##  8     12459     3     2  1987       2 PE         F                  22     27
+##  9     13992     1    24  1988       2 PE         M                  22     24
+## 10     14516     5    15  1988       2 PE         F                  22     25
+## # … with 1,289 more rows, and 4 more variables: genus &lt;chr&gt;, species &lt;chr&gt;,
+## #   taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
 </div>
 <div id="select-columns-with-select" class="section level3">
 <h3><span class="header-section-number">2.3.3</span> Select columns with <code>select()</code></h3>
@@ -680,26 +690,26 @@ Figure 2.6: <code>dplyr::select()</code>
 ##  8  1978 Control  
 ##  9  1978 Control  
 ## 10  1978 Control  
-## # ... with 34,776 more rows</code></pre>
+## # … with 34,776 more rows</code></pre>
 <p>We can also use negative selection by adding a minus sign <code>-</code> to variables we
 wish to discard. Here we discard <code>sex</code>,<code>hindfoot_length</code> and <code>weight</code> from the
 <code>surveys_filtered</code> object and keep everything else:</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="co"># Select everything except sex, hindfoot and weight</span></a>
 <a class="sourceLine" id="cb45-2" title="2">surveys_filtered <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>sex,<span class="op">-</span>hindfoot_length,<span class="op">-</span>weight)</a></code></pre></div>
 <pre><code>## # A tibble: 20,729 x 10
-##    record_id month   day  year plot_id species_id genus species taxa 
-##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;
-##  1         1     7    16  1977       2 NL         Neot~ albigu~ Rode~
-##  2        72     8    19  1977       2 NL         Neot~ albigu~ Rode~
-##  3       224     9    13  1977       2 NL         Neot~ albigu~ Rode~
-##  4       266    10    16  1977       2 NL         Neot~ albigu~ Rode~
-##  5       349    11    12  1977       2 NL         Neot~ albigu~ Rode~
-##  6       363    11    12  1977       2 NL         Neot~ albigu~ Rode~
-##  7       435    12    10  1977       2 NL         Neot~ albigu~ Rode~
-##  8       506     1     8  1978       2 NL         Neot~ albigu~ Rode~
-##  9       588     2    18  1978       2 NL         Neot~ albigu~ Rode~
-## 10       661     3    11  1978       2 NL         Neot~ albigu~ Rode~
-## # ... with 20,719 more rows, and 1 more variable: plot_type &lt;chr&gt;</code></pre>
+##    record_id month   day  year plot_id species_id genus  species taxa  plot_type
+##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;    
+##  1         1     7    16  1977       2 NL         Neoto… albigu… Rode… Control  
+##  2        72     8    19  1977       2 NL         Neoto… albigu… Rode… Control  
+##  3       224     9    13  1977       2 NL         Neoto… albigu… Rode… Control  
+##  4       266    10    16  1977       2 NL         Neoto… albigu… Rode… Control  
+##  5       349    11    12  1977       2 NL         Neoto… albigu… Rode… Control  
+##  6       363    11    12  1977       2 NL         Neoto… albigu… Rode… Control  
+##  7       435    12    10  1977       2 NL         Neoto… albigu… Rode… Control  
+##  8       506     1     8  1978       2 NL         Neoto… albigu… Rode… Control  
+##  9       588     2    18  1978       2 NL         Neoto… albigu… Rode… Control  
+## 10       661     3    11  1978       2 NL         Neoto… albigu… Rode… Control  
+## # … with 20,719 more rows</code></pre>
 </div>
 <div id="create-new-variables-with-mutate" class="section level3">
 <h3><span class="header-section-number">2.3.4</span> Create new variables with <code>mutate()</code></h3>
@@ -830,7 +840,7 @@ same value. Here we supply the value “Other” for the remaining species: <cod
 ##  8 OT         Other       
 ##  9 DO         Kangaroo Rat
 ## 10 OX         Other       
-## # ... with 32 more rows</code></pre>
+## # … with 32 more rows</code></pre>
 </div>
 <div id="grouped-summaries-with-group_by-and-summarise" class="section level3">
 <h3><span class="header-section-number">2.3.5</span> Grouped summaries with <code>group_by()</code> and <code>summarise()</code></h3>
@@ -887,7 +897,7 @@ which is what would happen if we used <code>mean(weight, na.rm = TRUE)</code>.</
 ##  8 OX         Other              21.2 
 ##  9 PB         Other              31.8 
 ## 10 PE         Granivore          21.4 
-## # ... with 13 more rows</code></pre>
+## # … with 13 more rows</code></pre>
 </div>
 </div>
 <div id="using-dpylr-to-explore-the-effect-of-kangaroo-rat-exclusion-on-granivore-populations" class="section level2">
@@ -974,7 +984,7 @@ total number of captures for each group per quarter. A quarter of a year is
 ##  8 Granivore   Control     1979.          2   
 ##  9 Granivore   Control     1979.          1.67
 ## 10 Granivore   Control     1980.          7.33
-## # ... with 557 more rows</code></pre>
+## # … with 557 more rows</code></pre>
 <p>These steps have taken us from a table of 34,786 observations to a table of 567 observations.</p>
 </div>
 <div id="create-a-plot-with-ggplot" class="section level3">
@@ -1028,11 +1038,13 @@ of the plot and add a title.</p>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -1040,12 +1052,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -1057,6 +1068,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Data wrangling II | Coding togetheR</title>
   <meta name="description" content="Materials for the Coding TogetheR workshops" />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Data wrangling II | Coding togetheR" />
   <meta property="og:type" content="book" />
@@ -39,6 +39,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -228,10 +231,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="viz.html"><a href="viz.html#themes-and-customisations"><i class="fa fa-check"></i><b>4.3</b> Themes and customisations</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="viz.html"><a href="viz.html#changing-colours-labels-themes-and-adding-titles"><i class="fa fa-check"></i><b>4.3.1</b> Changing colours, labels, themes and adding titles</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="viz.html"><a href="viz.html#reports"><i class="fa fa-check"></i><b>4.4</b> Reports</a></li>
-<li class="chapter" data-level="4.5" data-path="viz.html"><a href="viz.html#presentations"><i class="fa fa-check"></i><b>4.5</b> Presentations</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>5</b> Exploratory data analysis</a></li>
+<li class="chapter" data-level="5" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>5</b> Resources</a><ul>
+<li class="chapter" data-level="5.1" data-path="resources.html"><a href="resources.html#the-r-community"><i class="fa fa-check"></i><b>5.1</b> The R community</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="resources.html"><a href="resources.html#twitter"><i class="fa fa-check"></i><b>5.1.1</b> Twitter</a></li>
+<li class="chapter" data-level="5.1.2" data-path="resources.html"><a href="resources.html#r4ds-and-ropensci-and-the-carpentries"><i class="fa fa-check"></i><b>5.1.2</b> R4DS and rOpenSci and The Carpentries</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="resources.html"><a href="resources.html#online-books-and-tutorials"><i class="fa fa-check"></i><b>5.2</b> Online books and tutorials</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="resources.html"><a href="resources.html#a-list-of-r-conferences-and-meetings"><i class="fa fa-check"></i><b>5.2.1</b> A list of R conferences and meetings</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="resources.html"><a href="resources.html#references"><i class="fa fa-check"></i><b>5.3</b> References</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -322,7 +332,7 @@ Figure 3.1: <code>tidyr::pivot_longer</code> The genus of the rodents have been 
 ##  8       1 Reithrodontomys       11.4 
 ##  9       1 Sigmodon              NA   
 ## 10       1 Spermophilus          NA   
-## # ... with 230 more rows</code></pre>
+## # … with 230 more rows</code></pre>
 </div>
 <div id="tidyrpivot_wider" class="section level3">
 <h3><span class="header-section-number">3.1.2</span> <code>tidyr::pivot_wider</code></h3>
@@ -357,7 +367,7 @@ Figure 3.2: <code>tidyr::pivot_wider</code> From long table <code>surveys_gw</co
 ##  8      21    6.67        28.2      42.7    138.      24.6        9.19
 ##  9       4   NA           23.0      57.5    164.      28.1        7.82
 ## 10       6   NA           24.9      58.6    180.      25.9        7.81
-## # ... with 14 more rows, and 4 more variables: Peromyscus &lt;dbl&gt;,
+## # … with 14 more rows, and 4 more variables: Peromyscus &lt;dbl&gt;,
 ## #   Reithrodontomys &lt;dbl&gt;, Sigmodon &lt;dbl&gt;, Spermophilus &lt;dbl&gt;</code></pre>
 </div>
 </div>
@@ -499,19 +509,19 @@ of 30,676 observations:</p>
 <a class="sourceLine" id="cb81-3" title="3"><span class="st">        </span><span class="kw">glimpse</span>()</a></code></pre></div>
 <pre><code>## Observations: 30,676
 ## Variables: 13
-## $ record_id       &lt;dbl&gt; 845, 1164, 1261, 1756, 1818, 1882, 2133, 2184,...
-## $ month           &lt;dbl&gt; 5, 8, 9, 4, 5, 7, 10, 11, 1, 5, 5, 7, 10, 11, ...
-## $ day             &lt;dbl&gt; 6, 5, 4, 29, 30, 4, 25, 17, 16, 18, 18, 8, 1, ...
-## $ year            &lt;dbl&gt; 1978, 1978, 1978, 1979, 1979, 1979, 1979, 1979...
-## $ plot_id         &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2...
-## $ species_id      &lt;chr&gt; &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;...
-## $ sex             &lt;chr&gt; &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;...
-## $ hindfoot_length &lt;dbl&gt; 32, 34, 32, 33, 32, 32, 33, 30, 33, 31, 33, 30...
-## $ weight          &lt;dbl&gt; 204, 199, 197, 166, 184, 206, 274, 186, 184, 8...
-## $ genus           &lt;chr&gt; &quot;Neotoma&quot;, &quot;Neotoma&quot;, &quot;Neotoma&quot;, &quot;Neotoma&quot;, &quot;N...
-## $ species         &lt;chr&gt; &quot;albigula&quot;, &quot;albigula&quot;, &quot;albigula&quot;, &quot;albigula&quot;...
-## $ taxa            &lt;chr&gt; &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Roden...
-## $ plot_type       &lt;chr&gt; &quot;Control&quot;, &quot;Control&quot;, &quot;Control&quot;, &quot;Control&quot;, &quot;C...</code></pre>
+## $ record_id       &lt;dbl&gt; 845, 1164, 1261, 1756, 1818, 1882, 2133, 2184, 2406, …
+## $ month           &lt;dbl&gt; 5, 8, 9, 4, 5, 7, 10, 11, 1, 5, 5, 7, 10, 11, 1, 2, 3…
+## $ day             &lt;dbl&gt; 6, 5, 4, 29, 30, 4, 25, 17, 16, 18, 18, 8, 1, 23, 25,…
+## $ year            &lt;dbl&gt; 1978, 1978, 1978, 1979, 1979, 1979, 1979, 1979, 1980,…
+## $ plot_id         &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,…
+## $ species_id      &lt;chr&gt; &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;,…
+## $ sex             &lt;chr&gt; &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;, &quot;F&quot;…
+## $ hindfoot_length &lt;dbl&gt; 32, 34, 32, 33, 32, 32, 33, 30, 33, 31, 33, 30, 34, 3…
+## $ weight          &lt;dbl&gt; 204, 199, 197, 166, 184, 206, 274, 186, 184, 87, 174,…
+## $ genus           &lt;chr&gt; &quot;Neotoma&quot;, &quot;Neotoma&quot;, &quot;Neotoma&quot;, &quot;Neotoma&quot;, &quot;Neotoma&quot;…
+## $ species         &lt;chr&gt; &quot;albigula&quot;, &quot;albigula&quot;, &quot;albigula&quot;, &quot;albigula&quot;, &quot;albi…
+## $ taxa            &lt;chr&gt; &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Ro…
+## $ plot_type       &lt;chr&gt; &quot;Control&quot;, &quot;Control&quot;, &quot;Control&quot;, &quot;Control&quot;, &quot;Control&quot;…</code></pre>
 <p><code>drop_na()</code> can accept variables arguments, meaning only the observations with
 missing values in those columns will be dropped.</p>
 <p>For example, here we drop only missing <code>weight</code> observations, so the rows which
@@ -521,19 +531,19 @@ have missing values for <code>hindfoot_length</code> or <code>sex</code> are kep
 <a class="sourceLine" id="cb83-3" title="3"><span class="st">        </span><span class="kw">glimpse</span>()</a></code></pre></div>
 <pre><code>## Observations: 32,283
 ## Variables: 13
-## $ record_id       &lt;dbl&gt; 588, 845, 990, 1164, 1261, 1453, 1756, 1818, 1...
-## $ month           &lt;dbl&gt; 2, 5, 6, 8, 9, 11, 4, 5, 7, 10, 11, 1, 5, 5, 7...
-## $ day             &lt;dbl&gt; 18, 6, 9, 5, 4, 5, 29, 30, 4, 25, 17, 16, 18, ...
-## $ year            &lt;dbl&gt; 1978, 1978, 1978, 1978, 1978, 1978, 1979, 1979...
-## $ plot_id         &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2...
-## $ species_id      &lt;chr&gt; &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;...
-## $ sex             &lt;chr&gt; &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;...
-## $ hindfoot_length &lt;dbl&gt; NA, 32, NA, 34, 32, NA, 33, 32, 32, 33, 30, 33...
-## $ weight          &lt;dbl&gt; 218, 204, 200, 199, 197, 218, 166, 184, 206, 2...
-## $ genus           &lt;chr&gt; &quot;Neotoma&quot;, &quot;Neotoma&quot;, &quot;Neotoma&quot;, &quot;Neotoma&quot;, &quot;N...
-## $ species         &lt;chr&gt; &quot;albigula&quot;, &quot;albigula&quot;, &quot;albigula&quot;, &quot;albigula&quot;...
-## $ taxa            &lt;chr&gt; &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Roden...
-## $ plot_type       &lt;chr&gt; &quot;Control&quot;, &quot;Control&quot;, &quot;Control&quot;, &quot;Control&quot;, &quot;C...</code></pre>
+## $ record_id       &lt;dbl&gt; 588, 845, 990, 1164, 1261, 1453, 1756, 1818, 1882, 21…
+## $ month           &lt;dbl&gt; 2, 5, 6, 8, 9, 11, 4, 5, 7, 10, 11, 1, 5, 5, 7, 10, 1…
+## $ day             &lt;dbl&gt; 18, 6, 9, 5, 4, 5, 29, 30, 4, 25, 17, 16, 18, 18, 8, …
+## $ year            &lt;dbl&gt; 1978, 1978, 1978, 1978, 1978, 1978, 1979, 1979, 1979,…
+## $ plot_id         &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,…
+## $ species_id      &lt;chr&gt; &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;, &quot;NL&quot;,…
+## $ sex             &lt;chr&gt; &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;…
+## $ hindfoot_length &lt;dbl&gt; NA, 32, NA, 34, 32, NA, 33, 32, 32, 33, 30, 33, 31, 3…
+## $ weight          &lt;dbl&gt; 218, 204, 200, 199, 197, 218, 166, 184, 206, 274, 186…
+## $ genus           &lt;chr&gt; &quot;Neotoma&quot;, &quot;Neotoma&quot;, &quot;Neotoma&quot;, &quot;Neotoma&quot;, &quot;Neotoma&quot;…
+## $ species         &lt;chr&gt; &quot;albigula&quot;, &quot;albigula&quot;, &quot;albigula&quot;, &quot;albigula&quot;, &quot;albi…
+## $ taxa            &lt;chr&gt; &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Ro…
+## $ plot_type       &lt;chr&gt; &quot;Control&quot;, &quot;Control&quot;, &quot;Control&quot;, &quot;Control&quot;, &quot;Control&quot;…</code></pre>
 </div>
 <div id="completing-missing-values" class="section level3">
 <h3><span class="header-section-number">3.2.3</span> Completing missing values</h3>
@@ -600,7 +610,7 @@ have six observations on two species.</p>
 ## 2 DM                2.5 
 ## 3 DM                8.5 
 ## 4 DS                7.5 
-## 5 DS               NA   
+## 5 DS                5.5 
 ## 6 DS                2.5</code></pre>
 <p>Another common strategy is to impute missing values by using the mean or the
 median of exisiting values for the same variable.</p>
@@ -647,19 +657,19 @@ rats.</p>
 <a class="sourceLine" id="cb95-4" title="4">krats <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()</a></code></pre></div>
 <pre><code>## Observations: 16,127
 ## Variables: 13
-## $ record_id       &lt;dbl&gt; 3, 226, 233, 245, 251, 257, 259, 268, 346, 350...
-## $ month           &lt;dbl&gt; 7, 9, 9, 10, 10, 10, 10, 10, 11, 11, 11, 11, 1...
-## $ day             &lt;dbl&gt; 16, 13, 13, 16, 16, 16, 16, 16, 12, 12, 12, 12...
-## $ year            &lt;dbl&gt; 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977...
-## $ plot_id         &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2...
-## $ species_id      &lt;chr&gt; &quot;DM&quot;, &quot;DM&quot;, &quot;DM&quot;, &quot;DM&quot;, &quot;DM&quot;, &quot;DM&quot;, &quot;DM&quot;, &quot;DM&quot;...
-## $ sex             &lt;chr&gt; &quot;F&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;...
-## $ hindfoot_length &lt;dbl&gt; 37, 37, 25, 37, 36, 37, 36, 36, 37, 37, 38, 36...
-## $ weight          &lt;dbl&gt; NA, 51, 44, 39, 49, 47, 41, 55, 36, 47, 44, 40...
-## $ genus           &lt;chr&gt; &quot;Dipodomys&quot;, &quot;Dipodomys&quot;, &quot;Dipodomys&quot;, &quot;Dipodo...
-## $ species         &lt;chr&gt; &quot;merriami&quot;, &quot;merriami&quot;, &quot;merriami&quot;, &quot;merriami&quot;...
-## $ taxa            &lt;chr&gt; &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Roden...
-## $ plot_type       &lt;chr&gt; &quot;Control&quot;, &quot;Control&quot;, &quot;Control&quot;, &quot;Control&quot;, &quot;C...</code></pre>
+## $ record_id       &lt;dbl&gt; 3, 226, 233, 245, 251, 257, 259, 268, 346, 350, 354, …
+## $ month           &lt;dbl&gt; 7, 9, 9, 10, 10, 10, 10, 10, 11, 11, 11, 11, 12, 12, …
+## $ day             &lt;dbl&gt; 16, 13, 13, 16, 16, 16, 16, 16, 12, 12, 12, 12, 10, 1…
+## $ year            &lt;dbl&gt; 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977, 1977,…
+## $ plot_id         &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,…
+## $ species_id      &lt;chr&gt; &quot;DM&quot;, &quot;DM&quot;, &quot;DM&quot;, &quot;DM&quot;, &quot;DM&quot;, &quot;DM&quot;, &quot;DM&quot;, &quot;DM&quot;, &quot;DM&quot;,…
+## $ sex             &lt;chr&gt; &quot;F&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;M&quot;, &quot;F&quot;, &quot;F&quot;, &quot;M&quot;, &quot;M&quot;…
+## $ hindfoot_length &lt;dbl&gt; 37, 37, 25, 37, 36, 37, 36, 36, 37, 37, 38, 36, 37, 3…
+## $ weight          &lt;dbl&gt; NA, 51, 44, 39, 49, 47, 41, 55, 36, 47, 44, 40, 42, 5…
+## $ genus           &lt;chr&gt; &quot;Dipodomys&quot;, &quot;Dipodomys&quot;, &quot;Dipodomys&quot;, &quot;Dipodomys&quot;, &quot;…
+## $ species         &lt;chr&gt; &quot;merriami&quot;, &quot;merriami&quot;, &quot;merriami&quot;, &quot;merriami&quot;, &quot;merr…
+## $ taxa            &lt;chr&gt; &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Rodent&quot;, &quot;Ro…
+## $ plot_type       &lt;chr&gt; &quot;Control&quot;, &quot;Control&quot;, &quot;Control&quot;, &quot;Control&quot;, &quot;Control&quot;…</code></pre>
 <p>How many missing values are there in <code>krats</code> and for which variables?</p>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1"><span class="co"># How many missing values</span></a>
 <a class="sourceLine" id="cb97-2" title="2">krats <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">map_dfr</span>(<span class="op">~</span><span class="st"> </span><span class="kw">sum</span>(<span class="kw">is.na</span>(.))) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()</a></code></pre></div>
@@ -840,7 +850,7 @@ Figure 3.3: Inner join
 ##   date        plot airtemp species
 ##   &lt;date&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  
 ## 1 1990-01-07     4     7.3 DM     
-## 2 1990-01-07     4     7.3 DM</code></pre>
+## 2 1990-01-07     4     7.3 DS</code></pre>
 </div>
 <div id="left-join" class="section level4">
 <h4><span class="header-section-number">3.3.2.2</span> Left join</h4>
@@ -863,7 +873,7 @@ Figure 3.4: Left join
 ##   date        plot airtemp species
 ##   &lt;date&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  
 ## 1 1990-01-07     4     7.3 DM     
-## 2 1990-01-07     4     7.3 DM     
+## 2 1990-01-07     4     7.3 DS     
 ## 3 1990-01-07     8     9.5 &lt;NA&gt;   
 ## 4 1990-01-07     1    11   &lt;NA&gt;</code></pre>
 </div>
@@ -888,7 +898,7 @@ Figure 3.5: Right join
 ##   date        plot airtemp species
 ##   &lt;date&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  
 ## 1 1990-01-07     4     7.3 DM     
-## 2 1990-01-07     4     7.3 DM     
+## 2 1990-01-07     4     7.3 DS     
 ## 3 1990-01-07     6    NA   RM</code></pre>
 </div>
 <div id="full-join" class="section level4">
@@ -912,7 +922,7 @@ Figure 3.6: Full join
 ##   date        plot airtemp species
 ##   &lt;date&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  
 ## 1 1990-01-07     4     7.3 DM     
-## 2 1990-01-07     4     7.3 DM     
+## 2 1990-01-07     4     7.3 DS     
 ## 3 1990-01-07     8     9.5 &lt;NA&gt;   
 ## 4 1990-01-07     1    11   &lt;NA&gt;   
 ## 5 1990-01-07     6    NA   RM</code></pre>
@@ -1028,11 +1038,13 @@ another.</p>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -1040,12 +1052,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -1057,6 +1068,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

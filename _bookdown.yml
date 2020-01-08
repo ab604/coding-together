@@ -1,7 +1,7 @@
 book_filename: "coding-together"
 rmd_files: ["index.Rmd", "01-introduction.Rmd", 
 "02-data-wrangling.Rmd","03-data-wrangling.Rmd",
-"06-visualisation.Rmd","05-explore-model.Rmd"]
+"06-visualisation.Rmd","07-resources.Rmd"]
 delete_merged_file: true
 language:
   ui:

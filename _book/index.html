@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Coding togetheR</title>
   <meta name="description" content="Materials for the Coding TogetheR workshops" />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Coding togetheR" />
   <meta property="og:type" content="book" />
@@ -39,6 +39,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -228,10 +231,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="viz.html"><a href="viz.html#themes-and-customisations"><i class="fa fa-check"></i><b>4.3</b> Themes and customisations</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="viz.html"><a href="viz.html#changing-colours-labels-themes-and-adding-titles"><i class="fa fa-check"></i><b>4.3.1</b> Changing colours, labels, themes and adding titles</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="viz.html"><a href="viz.html#reports"><i class="fa fa-check"></i><b>4.4</b> Reports</a></li>
-<li class="chapter" data-level="4.5" data-path="viz.html"><a href="viz.html#presentations"><i class="fa fa-check"></i><b>4.5</b> Presentations</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>5</b> Exploratory data analysis</a></li>
+<li class="chapter" data-level="5" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>5</b> Resources</a><ul>
+<li class="chapter" data-level="5.1" data-path="resources.html"><a href="resources.html#the-r-community"><i class="fa fa-check"></i><b>5.1</b> The R community</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="resources.html"><a href="resources.html#twitter"><i class="fa fa-check"></i><b>5.1.1</b> Twitter</a></li>
+<li class="chapter" data-level="5.1.2" data-path="resources.html"><a href="resources.html#r4ds-and-ropensci-and-the-carpentries"><i class="fa fa-check"></i><b>5.1.2</b> R4DS and rOpenSci and The Carpentries</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="resources.html"><a href="resources.html#online-books-and-tutorials"><i class="fa fa-check"></i><b>5.2</b> Online books and tutorials</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="resources.html"><a href="resources.html#a-list-of-r-conferences-and-meetings"><i class="fa fa-check"></i><b>5.2.1</b> A list of R conferences and meetings</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="resources.html"><a href="resources.html#references"><i class="fa fa-check"></i><b>5.3</b> References</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -255,7 +265,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Coding togetheR</h1>
 <p class="author"><em>Alistair Bailey</em></p>
-<p class="date"><em>November 21 2019</em></p>
+<p class="date"><em>January 08 2020</em></p>
 </div>
 <div id="welcome" class="section level1 unnumbered">
 <h1>Welcome</h1>
@@ -274,10 +284,10 @@ The main sources used here are: <a href="https://r4ds.had.co.nz/">R for data sci
 <a href="https://rstudio-education.github.io/hopr/">Hands on Programming in R</a>,
 <a href="https://swirlstats.com/">swiRlstats</a> and
 <a href="http://teachtogether.tech/en/">Teaching Tech togetheR</a>.</p>
-<p>It was written using R <span class="citation">(R Core Team <a href="#ref-R-base">2019</a>)</span> in RStudio
-<span class="citation">(RStudio Team <a href="#ref-rstudioteam2018">2018</a>)</span> using the bookdown package <span class="citation">(Xie <a href="#ref-R-bookdown">2019</a>)</span>.</p>
-<p>To follow these materials you will need an up to date version of R <span class="citation">(R Core Team <a href="#ref-R-base">2019</a>)</span> and RStudio
-<span class="citation">(RStudio Team <a href="#ref-rstudioteam2018">2018</a>)</span>. This may require requesting permission to install software
+<p>It was written using R <span class="citation">(R Core Team <a href="#ref-R-base" role="doc-biblioref">2019</a>)</span> in RStudio
+<span class="citation">(RStudio Team <a href="#ref-rstudioteam2018" role="doc-biblioref">2018</a>)</span> using the bookdown package <span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2019</a>)</span>.</p>
+<p>To follow these materials you will need an up to date version of R <span class="citation">(R Core Team <a href="#ref-R-base" role="doc-biblioref">2019</a>)</span> and RStudio
+<span class="citation">(RStudio Team <a href="#ref-rstudioteam2018" role="doc-biblioref">2018</a>)</span>. This may require requesting permission to install software
 from Isolutions if you have a University laptop.</p>
 <div id="r-and-rstudio" class="section level2 unnumbered">
 <h2>R and RStudio</h2>
@@ -297,7 +307,7 @@ window and press <code>Enter</code> to install the <code>tidyverse</code>,<code>
 </div>
 <div id="who-is-coding-together-for" class="section level2 unnumbered">
 <h2>Who is coding togetheR for?</h2>
-<p>Following the lesson design process of <span class="citation">(Wilson <a href="#ref-Wilson2018">2018</a>)</span>:</p>
+<p>Following the lesson design process of <span class="citation">(Wilson <a href="#ref-Wilson2018" role="doc-biblioref">2018</a>)</span>:</p>
 <p><strong>Arshad</strong></p>
 <blockquote>
 <p>As a PhD student in ecology Arshad doesn’t have any formal coding training,
@@ -363,11 +373,13 @@ on inappropriate behaviour</a>.</p>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -375,12 +387,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -392,6 +403,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

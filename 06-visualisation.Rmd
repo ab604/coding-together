@@ -16,7 +16,7 @@ time series plots
 > + Transform data positions and coordinates
 > + Use `ggplot2` themes and the `scales` package to customize plots
 > + Export figures for use in documents and presentations
-> + Create reports and presentations directly from RStudio
+<!-- > + Create reports and presentations directly from RStudio -->
 
 These skills will enable to start creating visualisations as well as
 reports and presentations using R, 
@@ -548,21 +548,21 @@ ggplot(data= by_quarter,
 Check out `?scale_colour_brewer` and `?scale_fill_brewer` for more information 
 on colour schemes for discrete data. And `?scale_color_continuous` for creating colour gradients for continuous data. 
 
-## Reports
+<!-- ## Reports -->
 
-Using R for report writing and presentations.
+<!-- Using R for report writing and presentations. -->
 
-## Presentations
+<!-- ## Presentations -->
 
-My personal go-to for slide design guidance is [Melinda Seckington](https://missgeeky.com/2017/08/04/the-art-of-slide-design/). She
-has written a fantastic step-by-step guide to creating effective slides.
+<!-- My personal go-to for slide design guidance is [Melinda Seckington](https://missgeeky.com/2017/08/04/the-art-of-slide-design/). She -->
+<!-- has written a fantastic step-by-step guide to creating effective slides. -->
 
-Condensing her advice down she suggests:
+<!-- Condensing her advice down she suggests: -->
 
-> + Focus on one point per slide
-> + Don't distract
-> + Make important information stand out using what we know about graphical perception
-> + Be consistent
+<!-- > + Focus on one point per slide -->
+<!-- > + Don't distract -->
+<!-- > + Make important information stand out using what we know about graphical perception -->
+<!-- > + Be consistent -->
 
-I created a short [example presentation about cleaning your teeth](https://docs.google.com/presentation/d/e/2PACX-1vTa8VfB_jpB6fG4i157eNJb8sAyyKjJW06iZ8NNL1LPcB40w4NLLpK3TetbCuWSckX3wc8XuqdOpfnf/pub?start=false&loop=false&delayms=30000)
-following these ideas.
+<!-- I created a short [example presentation about cleaning your teeth](https://docs.google.com/presentation/d/e/2PACX-1vTa8VfB_jpB6fG4i157eNJb8sAyyKjJW06iZ8NNL1LPcB40w4NLLpK3TetbCuWSckX3wc8XuqdOpfnf/pub?start=false&loop=false&delayms=30000) -->
+<!-- following these ideas. -->

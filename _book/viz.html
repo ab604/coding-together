@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 Visualisation and communication | Coding togetheR</title>
   <meta name="description" content="Materials for the Coding TogetheR workshops" />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 Visualisation and communication | Coding togetheR" />
   <meta property="og:type" content="book" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="data-wrangle-2.html"/>
-<link rel="next" href="eda.html"/>
+<link rel="next" href="resources.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -39,6 +39,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -228,10 +231,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="viz.html"><a href="viz.html#themes-and-customisations"><i class="fa fa-check"></i><b>4.3</b> Themes and customisations</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="viz.html"><a href="viz.html#changing-colours-labels-themes-and-adding-titles"><i class="fa fa-check"></i><b>4.3.1</b> Changing colours, labels, themes and adding titles</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="viz.html"><a href="viz.html#reports"><i class="fa fa-check"></i><b>4.4</b> Reports</a></li>
-<li class="chapter" data-level="4.5" data-path="viz.html"><a href="viz.html#presentations"><i class="fa fa-check"></i><b>4.5</b> Presentations</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>5</b> Exploratory data analysis</a></li>
+<li class="chapter" data-level="5" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>5</b> Resources</a><ul>
+<li class="chapter" data-level="5.1" data-path="resources.html"><a href="resources.html#the-r-community"><i class="fa fa-check"></i><b>5.1</b> The R community</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="resources.html"><a href="resources.html#twitter"><i class="fa fa-check"></i><b>5.1.1</b> Twitter</a></li>
+<li class="chapter" data-level="5.1.2" data-path="resources.html"><a href="resources.html#r4ds-and-ropensci-and-the-carpentries"><i class="fa fa-check"></i><b>5.1.2</b> R4DS and rOpenSci and The Carpentries</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="resources.html"><a href="resources.html#online-books-and-tutorials"><i class="fa fa-check"></i><b>5.2</b> Online books and tutorials</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="resources.html"><a href="resources.html#a-list-of-r-conferences-and-meetings"><i class="fa fa-check"></i><b>5.2.1</b> A list of R conferences and meetings</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="resources.html"><a href="resources.html#references"><i class="fa fa-check"></i><b>5.3</b> References</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -269,8 +279,8 @@ time series plots</li>
 <li>Transform plots using statistical mappings and categorical variables (factors).</li>
 <li>Transform data positions and coordinates</li>
 <li>Use <code>ggplot2</code> themes and the <code>scales</code> package to customize plots</li>
-<li>Export figures for use in documents and presentations</li>
-<li>Create reports and presentations directly from RStudio</li>
+<li>Export figures for use in documents and presentations
+<!-- > + Create reports and presentations directly from RStudio --></li>
 </ul>
 </blockquote>
 <p>These skills will enable to start creating visualisations as well as
@@ -386,9 +396,9 @@ illustrate a problem with relying only on summary statistics to understand data.
 <a class="sourceLine" id="cb138-2" title="2"><span class="kw">glimpse</span>(datasaurus)</a></code></pre></div>
 <pre><code>## Observations: 1,846
 ## Variables: 3
-## $ dataset &lt;chr&gt; &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;...
-## $ x       &lt;dbl&gt; 55.3846, 51.5385, 46.1538, 42.8205, 40.7692, 38.7179, ...
-## $ y       &lt;dbl&gt; 97.1795, 96.0256, 94.4872, 91.4103, 88.3333, 84.8718, ...</code></pre>
+## $ dataset &lt;chr&gt; &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;, &quot;dino&quot;, &quot;dino…
+## $ x       &lt;dbl&gt; 55.3846, 51.5385, 46.1538, 42.8205, 40.7692, 38.7179, 35.6410…
+## $ y       &lt;dbl&gt; 97.1795, 96.0256, 94.4872, 91.4103, 88.3333, 84.8718, 79.8718…</code></pre>
 <div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1"><span class="co"># How many datasets</span></a>
 <a class="sourceLine" id="cb140-2" title="2">datasaurus <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">distinct</span>(dataset)</a></code></pre></div>
 <pre><code>## # A tibble: 13 x 1
@@ -716,28 +726,20 @@ we’ll use the built-in theme, <code>theme_bw()</code> that gives a simple layo
 <p><img src="coding-together_files/figure-html/by-quarter-box4-1.png" width="672" /></p>
 <p>Check out <code>?scale_colour_brewer</code> and <code>?scale_fill_brewer</code> for more information
 on colour schemes for discrete data. And <code>?scale_color_continuous</code> for creating colour gradients for continuous data.</p>
-</div>
-</div>
-<div id="reports" class="section level2">
-<h2><span class="header-section-number">4.4</span> Reports</h2>
-<p>Using R for report writing and presentations.</p>
-</div>
-<div id="presentations" class="section level2">
-<h2><span class="header-section-number">4.5</span> Presentations</h2>
-<p>My personal go-to for slide design guidance is <a href="https://missgeeky.com/2017/08/04/the-art-of-slide-design/">Melinda Seckington</a>. She
-has written a fantastic step-by-step guide to creating effective slides.</p>
-<p>Condensing her advice down she suggests:</p>
-<blockquote>
-<ul>
-<li>Focus on one point per slide</li>
-<li>Don’t distract</li>
-<li>Make important information stand out using what we know about graphical perception</li>
-<li>Be consistent</li>
-</ul>
-</blockquote>
-<p>I created a short <a href="https://docs.google.com/presentation/d/e/2PACX-1vTa8VfB_jpB6fG4i157eNJb8sAyyKjJW06iZ8NNL1LPcB40w4NLLpK3TetbCuWSckX3wc8XuqdOpfnf/pub?start=false&amp;loop=false&amp;delayms=30000">example presentation about cleaning your teeth</a>
-following these ideas.</p>
+<!-- ## Reports -->
+<!-- Using R for report writing and presentations. -->
+<!-- ## Presentations -->
+<!-- My personal go-to for slide design guidance is [Melinda Seckington](https://missgeeky.com/2017/08/04/the-art-of-slide-design/). She -->
+<!-- has written a fantastic step-by-step guide to creating effective slides. -->
+<!-- Condensing her advice down she suggests: -->
+<!-- > + Focus on one point per slide -->
+<!-- > + Don't distract -->
+<!-- > + Make important information stand out using what we know about graphical perception -->
+<!-- > + Be consistent -->
+<!-- I created a short [example presentation about cleaning your teeth](https://docs.google.com/presentation/d/e/2PACX-1vTa8VfB_jpB6fG4i157eNJb8sAyyKjJW06iZ8NNL1LPcB40w4NLLpK3TetbCuWSckX3wc8XuqdOpfnf/pub?start=false&loop=false&delayms=30000) -->
+<!-- following these ideas. -->
 
+</div>
 </div>
 </div>
             </section>
@@ -746,16 +748,18 @@ following these ideas.</p>
         </div>
       </div>
 <a href="data-wrangle-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="eda.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -763,12 +767,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -780,6 +783,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

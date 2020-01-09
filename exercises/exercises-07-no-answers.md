@@ -1,9 +1,6 @@
 # Coding together week 7 - visualisations
 
-# Coding together week 7 - visualisations
-
 ## Warm-up
-+ Complete the quiz
 + Open RStudio and set-up a week 7 project and Rmarkdown file
 + Create a chunk that loads the tidyverse and run it.
 + Recreate the `mpg` scatter plot from week 1

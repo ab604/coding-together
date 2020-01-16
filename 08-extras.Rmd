@@ -1,22 +1,11 @@
 # Extras {#extras}
 
+## Functions
+
 ## Working with Excel spreadsheets
 
-```{r xl}
-library(readxl)
+### Gapminder
 
-xl_sheet <- read_excel("exercises/protein_level_merged_table_empai_reshaped_selected_cols13.1.2020.xlsx")
+## Combining plots with patchwork
 
-# Some extra columns to be removed, renaming variables. 
-# Variables that are mixtures of numbers and characters
-glimpse(xl_sheet)
-
-xl_sub <- xl_sheet %>% select(Accession,Protein.FDR.Confidence.Ahood.080419.OH.3.001,
-                    emPAI.Ahood.080419.OH.3.001)
-
-xl_sub %>% mutate(prot_fdr_03 = case_when(Protein.FDR.Confidence.Ahood.080419.OH.3.001 == "0" ~ "Low",
-                                          TRUE ~  Protein.FDR.Confidence.Ahood.080419.OH.3.001))
-```
-
-
-
+## Pseudocode

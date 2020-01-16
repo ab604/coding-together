@@ -239,3 +239,52 @@ knitr::include_graphics("../img/anti_join.png")
 ```{r, out.width='80%',fig.align='center', fig.cap='', echo=FALSE}
 knitr::include_graphics("../img/viz-plot.png")
 ```
+
+## Functions
+
+Name,body and set of arguments
+
+```{r eval=FALSE, echo=TRUE}
+# Roll two dice function
+roll <- function(){
+  die <- 1:6
+  dice <- sample(die, size = 2, replace = TRUE)
+  sum(dice)
+}
+```
+
+```{r, out.width='25%', fig.align='center', fig.cap=''}
+knitr::include_graphics('img/dice.jpg')
+```
+
+## Functions
+
+```{r, out.width='50%', fig.align='center', fig.cap=''}
+knitr::include_graphics('img/dnd_dice.JPG')
+```
+
+##
+
+```{r, out.width='100%', fig.align='center', fig.cap=''}
+knitr::include_graphics('img/r-dice-function-07-10-2018.png')
+```
+
+## GDP calculator
+
+```{r eval=FALSE, echo=TRUE}
+# Takes a dataset and multiplies the population column
+# with the GDP per capita column.
+calcGDP <- function(dat, yr=NULL, ctry=NULL) {
+  # Is there a year argument?
+  if(!is.null(yr)) {
+   dat <- dat %>% filter(year == yr)
+  }
+  # Is there a country argument?
+  if (!is.null(ctry)) {
+   dat <- dat %>% filter(country == ctry)
+  }
+  # Create new GDP column
+  new <- dat %>% mutate(gdp = pop * gdpPercap)
+  return(new)
+}
+```

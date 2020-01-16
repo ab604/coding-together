@@ -4,10 +4,162 @@
 
 ### Function
 
+```{r}
+# Extract functiom
+die <- 1:6
+dice <- sample(die, size = 2, replace = TRUE)
+sum(dice)
+
+
+# Roll two dice function
+roll <- function(){
+  die <- 1:6
+  dice <- sample(die, size = 2, replace = TRUE)
+  sum(dice)
+}
+
+# Roll two dice of any size
+roll_n <- function(die = 1:6) {
+  dice <- sample(die, size = 2, replace = TRUE)
+  sum(dice)
+}
+```
+
+
 ## Working with Excel spreadsheets
 
+### `readxl` package
+
+```{r eval=FALSE}
+df <- read_excel("<name and extension of your file>")
+```
+
+In other words, the default is to read the first sheet(tab) in the specified workbook. If your workbook is a little more complicated than this, you can crack it open and list the sheet names with the following excel_sheets function:
+
+```{r eval=FALSE}
+excel_sheets("<name and extension of your file>")
+```
+
+References to sheet names are direct and therefore do require quotes:
+
+
+```{r eval=FALSE}
+read_excel("<name and extension of your file>",
+           sheet="Sheet 3")
+```
+
+Sheet indexing starts at 1, so alternatively, you could load in the third tab in with the following code:
+
+```{r eval=FALSE}
+read_excel("<name and extension of your file>",
+           sheet=3)
+```
+
+In the read_excel function, if the `col_names` argument is left to its default value of `TRUE`, you will import the first line of the worksheet as the header names. In line with tibble and tidyverse standards, the readxl column header names are formed exactly as they were written in Excel.
+
+Alternatively, if you wish to skip using header specified column-names and instead “number columns sequentially from `X1` to `XN`”, then set this argument to false: i.e. `col_names = FALSE`
+
+For example, if you want to set a three column excel sheet to contain the data as dates in the first column, characters in the second, and numeric values in the third, you would need the following lines of code:
+
+```{r , eval=FALSE}
+read_excel("<name and extension of your file>",
+           col_types = c("date", "numeric", "text"))
+```
+
+
+For the final of the most useful additional arguments available in read_excel, if you wish to skip rows before setting column names, there is the skip argument. This works exceptionally well for dealing with those intricately crafted database reports you enjoy so much.
+
+Let’s say, for example, those daily reports you receive with a lovely logo, five rows of report generation details, and the column headers in the sixth row. Getting this imported quickly and tidily into R requires only the following code:
+
+```{r, eval=FALSE}
+read_excel("<name and extension of your file>",
+           skip = 5)
+```
+           
 ### Gapminder
 
+```{r, eval=FALSE}
+install.packages("gapminder")
+```
+
+## Map functions
+
+```{r}
+paths <- dir("~/Desktop/mind-the-gap/csv/country", full.names = TRUE)
+paths <- paths %>% set_names(str_replace(basename(paths), ".csv", ""))
+paths %>%
+  map_dfr(~ read.csv(.x), .id = "country") %>%
+  as_tibble()
+
+
+path <- "~/Desktop/mind-the-gap/excel/gapminder-year.xlsx"
+sheets <- set_names(excel_sheets(path))
+
+read_excel(path, sheet = sheets[[1]])
+map_dfr(sheets, ~ read_excel(path, sheet = .x), .id = "year")
+
+# replicate for excel/gapminder-country.xlsx to create gapminder data
+path <- "exercises/gapminder/excel/gapminder-country.xlsx"
+sheets <- set_names(excel_sheets(path))
+
+read_excel(path, sheet = sheets[[1]])
+map_dfr(sheets, ~ read_excel(path, sheet = .x), .id = "country")
+
+```
+
+
+```{r gapminder-function}
+# Takes a dataset and multiplies the population column
+# with the GDP per capita column.
+calcGDP <- function(dat, yr=NULL, ctry=NULL) {
+  # Is there a year argument?
+  if(!is.null(yr)) {
+   dat <- dat %>% filter(year == yr)
+  }
+  # Is there a country argument?
+  if (!is.null(ctry)) {
+   dat <- dat %>% filter(country == ctry)
+  }
+  # Create new GDP column
+  new <- dat %>% mutate(gdp = pop * gdpPercap)
+  return(new)
+}
+```
+
+```{r}
+gapminder %>% filter(year == 2007 & continent %in% c("Europe","Africa")) %>% 
+  ggplot(aes(x = gdpPercap,y = lifeExp, colour = continent, size = lifeExp)) +
+  geom_point(alpha = 0.5) +
+  scale_x_log10() +
+        theme_minimal()
+
+lifexp_bubble <- gapminder %>% filter(year == 2007) %>% 
+  ggplot(aes(x = gdpPercap,y = lifeExp, colour = continent, size = lifeExp)) +
+  geom_point(alpha = 0.5) +
+  scale_x_log10() +
+  theme_minimal()
+```
+
+```{r}
+europe_bar <- gapminder %>%
+  filter(continent == "Europe" & year == 1997) %>% 
+  ggplot(aes(x = fct_reorder(country, pop),y = pop, 
+             fill = lifeExp)) +
+  geom_bar(stat = "identity") +
+  coord_flip()
+
+lifexp_box <- gapminder %>% ggplot(aes(x = fct_reorder(continent,lifeExp), y = lifeExp)) +
+  geom_boxplot() 
+```
+
+
 ## Combining plots with patchwork
+
+```{r}
+lifexp_bubble / (europe_bar + lifexp_box)
+
+lifexp_bubble / (europe_bar + lifexp_box) + plot_annotation(tag_levels = "A")
+```
+
 
 ## Pseudocode

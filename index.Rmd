@@ -27,7 +27,8 @@ library(forcats)
 library(janitor)
 library(here)
 library(treemapify)
-library(cowplot)
+#library(cowplot)
+library(patchwork)
 #library(DiagrammeR)
 # automatically create a bib database for R packages
 knitr::write_bib(c(
@@ -42,6 +43,7 @@ weather <- read_csv("exercises/portal-weather-subset.csv")
 datasaurus <- read_tsv("exercises/DatasaurusDozen.tsv")
 surveys_subset <- read_csv("exercises/surveys_subset.csv")
 by_month_species <- read_csv("exercises/by_month_species.csv")
+gapminder <- read_csv("exercises/gapminder_data.csv")
 ```
 
 # Welcome {-}

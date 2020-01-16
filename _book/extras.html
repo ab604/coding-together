@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Extras | Coding togetheR</title>
+  <meta name="description" content="Materials for the Coding TogetheR workshops" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Extras | Coding togetheR" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://ab604.github.io/docs/coding-together-2019/" />
+  <meta property="og:image" content="https://ab604.github.io/docs/coding-together-2019/img/Carrick-bend-Guten-Verrill-modified.png" />
+  <meta property="og:description" content="Materials for the Coding TogetheR workshops" />
+  <meta name="github-repo" content="ab604/coding-together" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Extras | Coding togetheR" />
+  <meta name="twitter:site" content="@alistair604" />
+  <meta name="twitter:description" content="Materials for the Coding TogetheR workshops" />
+  <meta name="twitter:image" content="https://ab604.github.io/docs/coding-together-2019/img/Carrick-bend-Guten-Verrill-modified.png" />
+
+<meta name="author" content="Alistair Bailey" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="viz.html"/>
+<link rel="next" href="resources.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Coding togetheR</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-and-rstudio"><i class="fa fa-check"></i>R and RStudio</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#who-is-coding-together-for"><i class="fa fa-check"></i>Who is coding togetheR for?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#code-of-conduct"><i class="fa fa-check"></i>Code of conduct</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1</b> Getting started</a><ul>
+<li class="chapter" data-level="1.1" data-path="getting-started.html"><a href="getting-started.html#coding-is-for-everyone"><i class="fa fa-check"></i><b>1.1</b> Coding is for everyone</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started.html"><a href="getting-started.html#a-little-background-and-philosophy"><i class="fa fa-check"></i><b>1.2</b> A little background and philosophy</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="getting-started.html"><a href="getting-started.html#what-is-r"><i class="fa fa-check"></i><b>1.2.1</b> What is R?</a></li>
+<li class="chapter" data-level="1.2.2" data-path="getting-started.html"><a href="getting-started.html#why-learn-to-code-at-all"><i class="fa fa-check"></i><b>1.2.2</b> Why learn to code at all?</a></li>
+<li class="chapter" data-level="1.2.3" data-path="getting-started.html"><a href="getting-started.html#a-little-goes-a-long-way"><i class="fa fa-check"></i><b>1.2.3</b> A little goes a long way</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="getting-started.html"><a href="getting-started.html#rstudio"><i class="fa fa-check"></i><b>1.3</b> RStudio</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="getting-started.html"><a href="getting-started.html#what-is-real"><i class="fa fa-check"></i><b>1.3.1</b> What is real?</a></li>
+<li class="chapter" data-level="1.3.2" data-path="getting-started.html"><a href="getting-started.html#file-structure"><i class="fa fa-check"></i><b>1.3.2</b> Where am I?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="getting-started.html"><a href="getting-started.html#install-packages"><i class="fa fa-check"></i><b>1.4</b> Installing and loading packages</a></li>
+<li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#functions-1"><i class="fa fa-check"></i><b>1.5</b> Using functions</a></li>
+<li class="chapter" data-level="1.6" data-path="getting-started.html"><a href="getting-started.html#getting-help"><i class="fa fa-check"></i><b>1.6</b> Getting help</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="getting-started.html"><a href="getting-started.html#using-to-access-r-function-help-pages"><i class="fa fa-check"></i><b>1.6.1</b> Using <code>?</code> to access R function help pages</a></li>
+<li class="chapter" data-level="1.6.2" data-path="getting-started.html"><a href="getting-started.html#using-google-to-find-r-answers"><i class="fa fa-check"></i><b>1.6.2</b> Using Google to find R answers</a></li>
+<li class="chapter" data-level="1.6.3" data-path="getting-started.html"><a href="getting-started.html#asking-questions"><i class="fa fa-check"></i><b>1.6.3</b> Asking questions</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="getting-started.html"><a href="getting-started.html#workflow"><i class="fa fa-check"></i><b>1.7</b> A project orientated workflow</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="getting-started.html"><a href="getting-started.html#rstudio-projects"><i class="fa fa-check"></i><b>1.7.1</b> RStudio Projects</a></li>
+<li class="chapter" data-level="1.7.2" data-path="getting-started.html"><a href="getting-started.html#r-notebooks-and-r-scripts"><i class="fa fa-check"></i><b>1.7.2</b> R notebooks and R scripts</a></li>
+<li class="chapter" data-level="1.7.3" data-path="getting-started.html"><a href="getting-started.html#here"><i class="fa fa-check"></i><b>1.7.3</b> Level up with the <code>here</code> package</a></li>
+<li class="chapter" data-level="1.7.4" data-path="getting-started.html"><a href="getting-started.html#names"><i class="fa fa-check"></i><b>1.7.4</b> Naming things</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="getting-started.html"><a href="getting-started.html#tidy-data"><i class="fa fa-check"></i><b>1.8</b> The tidyverse and tidy data</a></li>
+<li class="chapter" data-level="1.9" data-path="getting-started.html"><a href="getting-started.html#r-atoms"><i class="fa fa-check"></i><b>1.9</b> Atoms of R</a></li>
+<li class="chapter" data-level="1.10" data-path="getting-started.html"><a href="getting-started.html#assignment"><i class="fa fa-check"></i><b>1.10</b> Assigning objects</a><ul>
+<li class="chapter" data-level="1.10.1" data-path="getting-started.html"><a href="getting-started.html#indexing-and-subsetting"><i class="fa fa-check"></i><b>1.10.1</b> Indexing and subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="getting-started.html"><a href="getting-started.html#lists-matrices-and-arrays"><i class="fa fa-check"></i><b>1.11</b> Lists, matrices and arrays</a><ul>
+<li class="chapter" data-level="1.11.1" data-path="getting-started.html"><a href="getting-started.html#matrices-and-arrays"><i class="fa fa-check"></i><b>1.11.1</b> Matrices and arrays</a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="getting-started.html"><a href="getting-started.html#factors"><i class="fa fa-check"></i><b>1.12</b> Factors</a></li>
+<li class="chapter" data-level="1.13" data-path="getting-started.html"><a href="getting-started.html#data-frames"><i class="fa fa-check"></i><b>1.13</b> Data frames</a><ul>
+<li class="chapter" data-level="1.13.1" data-path="getting-started.html"><a href="getting-started.html#attributes"><i class="fa fa-check"></i><b>1.13.1</b> Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="1.14" data-path="getting-started.html"><a href="getting-started.html#plotting-data"><i class="fa fa-check"></i><b>1.14</b> Plotting data</a></li>
+<li class="chapter" data-level="1.15" data-path="getting-started.html"><a href="getting-started.html#exporting-data"><i class="fa fa-check"></i><b>1.15</b> Exporting data</a><ul>
+<li class="chapter" data-level="1.15.1" data-path="getting-started.html"><a href="getting-started.html#readr"><i class="fa fa-check"></i><b>1.15.1</b> readr</a></li>
+<li class="chapter" data-level="1.15.2" data-path="getting-started.html"><a href="getting-started.html#ggsave"><i class="fa fa-check"></i><b>1.15.2</b> ggsave</a></li>
+<li class="chapter" data-level="1.15.3" data-path="getting-started.html"><a href="getting-started.html#exercise"><i class="fa fa-check"></i><b>1.15.3</b> Exercise</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html"><i class="fa fa-check"></i><b>2</b> Data wrangling I</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#data-organisation-in-spreadsheets"><i class="fa fa-check"></i><b>2.1</b> Data organisation in spreadsheets</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#flat-formats-and-excel-files"><i class="fa fa-check"></i><b>2.1.1</b> Flat formats and Excel files</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#portal-project"><i class="fa fa-check"></i><b>2.2</b> The Portal Project data</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#downloading-and-importing-the-data"><i class="fa fa-check"></i><b>2.2.1</b> Downloading and importing the data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#dplyr"><i class="fa fa-check"></i><b>2.3</b> <code>dplyr</code></a><ul>
+<li class="chapter" data-level="2.3.1" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#filter-rows-with-filter"><i class="fa fa-check"></i><b>2.3.1</b> Filter rows with <code>filter()</code></a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#arrange-rows-with-arrange"><i class="fa fa-check"></i><b>2.3.2</b> Arrange rows with <code>arrange()</code></a></li>
+<li class="chapter" data-level="2.3.3" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#select-columns-with-select"><i class="fa fa-check"></i><b>2.3.3</b> Select columns with <code>select()</code></a></li>
+<li class="chapter" data-level="2.3.4" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#create-new-variables-with-mutate"><i class="fa fa-check"></i><b>2.3.4</b> Create new variables with <code>mutate()</code></a></li>
+<li class="chapter" data-level="2.3.5" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#grouped-summaries-with-group_by-and-summarise"><i class="fa fa-check"></i><b>2.3.5</b> Grouped summaries with <code>group_by()</code> and <code>summarise()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#using-dpylr-to-explore-the-effect-of-kangaroo-rat-exclusion-on-granivore-populations"><i class="fa fa-check"></i><b>2.4</b> Using <code>dpylr</code> to explore the effect of Kangaroo Rat exclusion on Granivore populations</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#re-cap-of-filter-and-mutate"><i class="fa fa-check"></i><b>2.4.1</b> Re-cap of <code>filter()</code> and <code>mutate()</code></a></li>
+<li class="chapter" data-level="2.4.2" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#use-lubridate-to-create-new-time-variables"><i class="fa fa-check"></i><b>2.4.2</b> Use <code>lubridate</code> to create new time variables</a></li>
+<li class="chapter" data-level="2.4.3" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#group-and-summarise-the-data-into-quarterly-observations"><i class="fa fa-check"></i><b>2.4.3</b> Group and summarise the data into quarterly observations</a></li>
+<li class="chapter" data-level="2.4.4" data-path="data-wrangle-1.html"><a href="data-wrangle-1.html#create-a-plot-with-ggplot"><i class="fa fa-check"></i><b>2.4.4</b> Create a plot with <code>ggplot</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html"><i class="fa fa-check"></i><b>3</b> Data wrangling II</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#reshaping-data-with-pivots"><i class="fa fa-check"></i><b>3.1</b> Reshaping data with pivots</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#tidyrpivot_longer"><i class="fa fa-check"></i><b>3.1.1</b> <code>tidyr::pivot_longer</code></a></li>
+<li class="chapter" data-level="3.1.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#tidyrpivot_wider"><i class="fa fa-check"></i><b>3.1.2</b> <code>tidyr::pivot_wider</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#missing-values"><i class="fa fa-check"></i><b>3.2</b> Missing values</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#find-na"><i class="fa fa-check"></i><b>3.2.1</b> Checking for explicit missing values using R</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#dropping-missing-values"><i class="fa fa-check"></i><b>3.2.2</b> Dropping missing values</a></li>
+<li class="chapter" data-level="3.2.3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#completing-missing-values"><i class="fa fa-check"></i><b>3.2.3</b> Completing missing values</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#joining-tables"><i class="fa fa-check"></i><b>3.3</b> Joining tables</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#keys"><i class="fa fa-check"></i><b>3.3.1</b> Keys</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#mutating-joins"><i class="fa fa-check"></i><b>3.3.2</b> Mutating joins</a></li>
+<li class="chapter" data-level="3.3.3" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#filtering-joins"><i class="fa fa-check"></i><b>3.3.3</b> Filtering joins</a></li>
+<li class="chapter" data-level="3.3.4" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#set-operations"><i class="fa fa-check"></i><b>3.3.4</b> Set operations</a></li>
+<li class="chapter" data-level="3.3.5" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#duplicate-keys"><i class="fa fa-check"></i><b>3.3.5</b> Duplicate keys</a></li>
+<li class="chapter" data-level="3.3.6" data-path="data-wrangle-2.html"><a href="data-wrangle-2.html#binding-rows-and-columns"><i class="fa fa-check"></i><b>3.3.6</b> Binding rows and columns</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="viz.html"><a href="viz.html"><i class="fa fa-check"></i><b>4</b> Visualisation and communication</a><ul>
+<li class="chapter" data-level="4.1" data-path="viz.html"><a href="viz.html#visualisation-overview"><i class="fa fa-check"></i><b>4.1</b> Visualisation overview</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="viz.html"><a href="viz.html#making-comparisons"><i class="fa fa-check"></i><b>4.1.1</b> Making comparisons</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="viz.html"><a href="viz.html#ggplot2"><i class="fa fa-check"></i><b>4.2</b> <code>ggplot2()</code></a><ul>
+<li class="chapter" data-level="4.2.1" data-path="viz.html"><a href="viz.html#datasaurus-dozen"><i class="fa fa-check"></i><b>4.2.1</b> Datasaurus dozen</a></li>
+<li class="chapter" data-level="4.2.2" data-path="viz.html"><a href="viz.html#exploratory-plots"><i class="fa fa-check"></i><b>4.2.2</b> Exploratory plots</a></li>
+<li class="chapter" data-level="4.2.3" data-path="viz.html"><a href="viz.html#statistical-transformations"><i class="fa fa-check"></i><b>4.2.3</b> Statistical transformations</a></li>
+<li class="chapter" data-level="4.2.4" data-path="viz.html"><a href="viz.html#position-adjustments"><i class="fa fa-check"></i><b>4.2.4</b> Position adjustments</a></li>
+<li class="chapter" data-level="4.2.5" data-path="viz.html"><a href="viz.html#coordinate-adjustments"><i class="fa fa-check"></i><b>4.2.5</b> Coordinate adjustments</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="viz.html"><a href="viz.html#themes-and-customisations"><i class="fa fa-check"></i><b>4.3</b> Themes and customisations</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="viz.html"><a href="viz.html#changing-colours-labels-themes-and-adding-titles"><i class="fa fa-check"></i><b>4.3.1</b> Changing colours, labels, themes and adding titles</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="extras.html"><a href="extras.html"><i class="fa fa-check"></i><b>5</b> Extras</a><ul>
+<li class="chapter" data-level="5.1" data-path="extras.html"><a href="extras.html#pseudocode"><i class="fa fa-check"></i><b>5.1</b> Pseudocode</a></li>
+<li class="chapter" data-level="5.2" data-path="extras.html"><a href="extras.html#functions"><i class="fa fa-check"></i><b>5.2</b> Functions</a></li>
+<li class="chapter" data-level="5.3" data-path="extras.html"><a href="extras.html#working-with-excel-spreadsheets"><i class="fa fa-check"></i><b>5.3</b> Working with Excel spreadsheets</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="extras.html"><a href="extras.html#gapminder"><i class="fa fa-check"></i><b>5.3.1</b> Gapminder</a></li>
+<li class="chapter" data-level="5.3.2" data-path="extras.html"><a href="extras.html#readxl-package"><i class="fa fa-check"></i><b>5.3.2</b> <code>readxl</code> package</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="extras.html"><a href="extras.html#map-functions"><i class="fa fa-check"></i><b>5.4</b> Map functions</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="extras.html"><a href="extras.html#lollipop-plot-function"><i class="fa fa-check"></i><b>5.4.1</b> Lollipop plot function</a></li>
+<li class="chapter" data-level="5.4.2" data-path="extras.html"><a href="extras.html#create-three-gapminder-plots"><i class="fa fa-check"></i><b>5.4.2</b> Create three gapminder plots</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="extras.html"><a href="extras.html#combining-plots-with-patchwork"><i class="fa fa-check"></i><b>5.5</b> Combining plots with patchwork</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>6</b> Resources</a><ul>
+<li class="chapter" data-level="6.1" data-path="resources.html"><a href="resources.html#the-r-community"><i class="fa fa-check"></i><b>6.1</b> The R community</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="resources.html"><a href="resources.html#twitter"><i class="fa fa-check"></i><b>6.1.1</b> Twitter</a></li>
+<li class="chapter" data-level="6.1.2" data-path="resources.html"><a href="resources.html#r4ds-and-ropensci-and-the-carpentries"><i class="fa fa-check"></i><b>6.1.2</b> R4DS and rOpenSci and The Carpentries</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="resources.html"><a href="resources.html#online-books-and-tutorials"><i class="fa fa-check"></i><b>6.2</b> Online books and tutorials</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="resources.html"><a href="resources.html#a-list-of-r-conferences-and-meetings"><i class="fa fa-check"></i><b>6.2.1</b> A list of R conferences and meetings</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="resources.html"><a href="resources.html#references"><i class="fa fa-check"></i><b>6.3</b> References</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Coding togetheR</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="extras" class="section level1">
+<h1><span class="header-section-number">5</span> Extras</h1>
+<p>This chapter extra chapter introduces:</p>
+<blockquote>
+<ul>
+<li>Using pseudocode before writing your actual code</li>
+<li>Writing your own functions</li>
+<li>Working with excel spreadsheets</li>
+<li>Using <code>patchwork</code> to combine plots</li>
+</ul>
+</blockquote>
+<div id="pseudocode" class="section level2">
+<h2><span class="header-section-number">5.1</span> Pseudocode</h2>
+<p><a href="https://www.bbc.co.uk/bitesize/guides/z3bq7ty/revision/2">Pseudocode</a> is the idea
+that we write down the steps of what we want to do in plain language
+to help us think about the actual code syntax we need to write.</p>
+<p>For example, with the Portal surveys data we had a table with observations for
+several plot types in, but we were only interested in the control and long-term kangaroo rat exclosure
+plots.</p>
+<p>So that step in pseudocode is:</p>
+<p><code>I want make a table with only the observations  for control and long-term kangaroo rat exclosure from the survey data.</code></p>
+<p>In steps:</p>
+<ol style="list-style-type: decimal">
+<li>Pipe the <code>surveys</code> table to the filter function.</li>
+<li>Pass arguments to the filter function to filter for observations equal to the control plot type or
+observations equal to the long-term kangaroo rat exclosure plot type.</li>
+</ol>
+<p>In R code this becomes:</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" title="1">surveys <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb161-2" title="2"><span class="st">        </span><span class="kw">filter</span>(plot_type <span class="op">==</span><span class="st"> &quot;Control&quot;</span> <span class="op">|</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb161-3" title="3"><span class="st">        </span>plot_type <span class="op">==</span><span class="st"> &quot;Long-term Krat Exclosure&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 20,729 x 13
+##    record_id month   day  year plot_id species_id sex   hindfoot_length weight
+##        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;
+##  1         1     7    16  1977       2 NL         M                  32     NA
+##  2        72     8    19  1977       2 NL         M                  31     NA
+##  3       224     9    13  1977       2 NL         &lt;NA&gt;               NA     NA
+##  4       266    10    16  1977       2 NL         &lt;NA&gt;               NA     NA
+##  5       349    11    12  1977       2 NL         &lt;NA&gt;               NA     NA
+##  6       363    11    12  1977       2 NL         &lt;NA&gt;               NA     NA
+##  7       435    12    10  1977       2 NL         &lt;NA&gt;               NA     NA
+##  8       506     1     8  1978       2 NL         &lt;NA&gt;               NA     NA
+##  9       588     2    18  1978       2 NL         M                  NA    218
+## 10       661     3    11  1978       2 NL         &lt;NA&gt;               NA     NA
+## # … with 20,719 more rows, and 4 more variables: genus &lt;chr&gt;, species &lt;chr&gt;,
+## #   taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
+<p>It can take a while and some research to figure out how to translate pseudocode
+to R code, and there is often more than one way to acheive the same result,
+but the point of the pseudocode is that it forces us to be specific about what
+we want to do. You may even have to re-write the pseudocode several times or
+talk to someone else to refine the question and then steps required to answer it.</p>
+<p>The same approach can be used in many other areas of problem solving, such as
+experimental design.</p>
+</div>
+<div id="functions" class="section level2">
+<h2><span class="header-section-number">5.2</span> Functions</h2>
+<p>Functions are objects, and comprise of three parts:</p>
+<ol style="list-style-type: decimal">
+<li>Name : short, but meaningful is advised</li>
+<li>Arguments: the inputs to the function</li>
+<li>Body: the code that does something with the arguments to create an output.</li>
+</ol>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" title="1"><span class="op">&lt;</span>name<span class="op">&gt;</span><span class="st"> </span><span class="er">&lt;</span><span class="op">-</span><span class="st"> </span><span class="cf">function</span>(<span class="op">&lt;</span>arguments<span class="op">&gt;</span>){</a>
+<a class="sourceLine" id="cb163-2" title="2">        <span class="op">&lt;</span>body<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb163-3" title="3">}</a></code></pre></div>
+<p>The body will generally use other functions, strung together to create our new
+function.</p>
+<p>Let’s illustrate this by creating a function to simulate rolling a pair of dice,
+as per <a href="https://rstudio-education.github.io/hopr/basics.html#the-function-constructor">Hands on Programming with R</a></p>
+<p><img src="img/dice.jpg" width="25%" style="display: block; margin: auto;" /></p>
+<p>First we write some code that will become our function:</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" title="1"><span class="co"># Assign the numbers to a die</span></a>
+<a class="sourceLine" id="cb164-2" title="2">die &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></a>
+<a class="sourceLine" id="cb164-3" title="3"><span class="co"># Sample the die numbers twice</span></a>
+<a class="sourceLine" id="cb164-4" title="4">dice &lt;-<span class="st"> </span><span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb164-5" title="5"><span class="co"># Add them together</span></a>
+<a class="sourceLine" id="cb164-6" title="6"><span class="kw">sum</span>(dice)</a></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>Now we put those elements as the body of a function, and assign it to a function
+called <code>roll</code> with no arguments:</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" title="1"><span class="co"># Roll two dice function</span></a>
+<a class="sourceLine" id="cb166-2" title="2">roll &lt;-<span class="st"> </span><span class="cf">function</span>(){</a>
+<a class="sourceLine" id="cb166-3" title="3">  die &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></a>
+<a class="sourceLine" id="cb166-4" title="4">  dice &lt;-<span class="st"> </span><span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb166-5" title="5">  <span class="kw">sum</span>(dice)</a>
+<a class="sourceLine" id="cb166-6" title="6">}</a></code></pre></div>
+<p>What about doing this for a die of any number of sides?</p>
+<p><img src="img/dnd_dice.JPG" width="50%" style="display: block; margin: auto;" /></p>
+<p>We remove the <code>die</code> object from the body of the function and turn it into an
+argument that can take a sequence of integer values. Here we provide a default
+of 1 to 6. It’s good practice to supply a default argument.</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" title="1"><span class="co"># Roll two dice of any size</span></a>
+<a class="sourceLine" id="cb167-2" title="2">roll_n &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">die =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>) {</a>
+<a class="sourceLine" id="cb167-3" title="3">  dice &lt;-<span class="st"> </span><span class="kw">sample</span>(die, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb167-4" title="4">  <span class="kw">sum</span>(dice)</a>
+<a class="sourceLine" id="cb167-5" title="5">}</a></code></pre></div>
+<p><img src="img/r-dice-function-07-10-2018.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="working-with-excel-spreadsheets" class="section level2">
+<h2><span class="header-section-number">5.3</span> Working with Excel spreadsheets</h2>
+<div id="gapminder" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Gapminder</h3>
+<p>The <a href="https://www.gapminder.org/">Gapminder Foundation</a>:</p>
+<blockquote>
+<p>The mission of Gapminder Foundation is to fight devastating ignorance with a fact-based worldview that everyone can understand.</p>
+</blockquote>
+<p>For example, the famously created a<a href="https://www.gapminder.org/tools/#$chart-type=bubbles">a bubble chart of the life expectancy vs. income around the world</a>.</p>
+<p>All sorts of data is available on their website and can be downloaded in various formats.
+Here we have a set of data for income, and life expectancy in countries around the
+world recorded between 1952 and 2007. (This version of gapminder data originated from <a href="https://github.com/hadley/tidyverse-booster">Tidyverse Booster, Hadley Wickham</a>.)</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" title="1"><span class="co"># Download the gapminder data</span></a>
+<a class="sourceLine" id="cb168-2" title="2"><span class="kw">download.file</span>(<span class="st">&quot;https://github.com/ab604/ab604.github.io/raw/master/docs/gapminder.zip&quot;</span>,</a>
+<a class="sourceLine" id="cb168-3" title="3">              <span class="dt">destfile =</span> <span class="st">&quot;gapminder.zip&quot;</span>)</a>
+<a class="sourceLine" id="cb168-4" title="4"></a>
+<a class="sourceLine" id="cb168-5" title="5"><span class="co"># Unzip the the gapminder data</span></a>
+<a class="sourceLine" id="cb168-6" title="6"><span class="kw">unzip</span>(<span class="st">&quot;gapminder.zip&quot;</span>)</a></code></pre></div>
+<p>There should now be a <code>gapminder</code> directory in your working directory containing
+a folder of csv files and excel files. These contain the same data, but split in
+various ways: by country, by year or by continent.</p>
+<p>We’re going to work with the excel data, where the data is split across multiple
+sheets in the same file.</p>
+</div>
+<div id="readxl-package" class="section level3">
+<h3><span class="header-section-number">5.3.2</span> <code>readxl</code> package</h3>
+<p>We’ll be using tidyverse package <code>readxl</code> for importing the excel data.</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" title="1"><span class="kw">library</span>(readxl)</a></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" title="1">df &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;&lt;name and extension of your file&gt;&quot;</span>)</a></code></pre></div>
+<p>In other words, the default is to read the first sheet(tab) in the specified workbook. If your workbook is a little more complicated than this, you can crack it open and list the sheet names with the following excel_sheets function:</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" title="1"><span class="kw">excel_sheets</span>(<span class="st">&quot;&lt;name and extension of your file&gt;&quot;</span>)</a></code></pre></div>
+<p>For example, lets look at the sheets in <code>gapminder-country.xlsx</code> :</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" title="1"><span class="kw">excel_sheets</span>(<span class="st">&quot;gapminder/excel/gapminder-country.xlsx&quot;</span>)</a></code></pre></div>
+<pre><code>##   [1] &quot;Afghanistan&quot;              &quot;Albania&quot;                 
+##   [3] &quot;Algeria&quot;                  &quot;Angola&quot;                  
+##   [5] &quot;Argentina&quot;                &quot;Australia&quot;               
+##   [7] &quot;Austria&quot;                  &quot;Bahrain&quot;                 
+##   [9] &quot;Bangladesh&quot;               &quot;Belgium&quot;                 
+##  [11] &quot;Benin&quot;                    &quot;Bolivia&quot;                 
+##  [13] &quot;Bosnia and Herzegovina&quot;   &quot;Botswana&quot;                
+##  [15] &quot;Brazil&quot;                   &quot;Bulgaria&quot;                
+##  [17] &quot;Burkina Faso&quot;             &quot;Burundi&quot;                 
+##  [19] &quot;Cambodia&quot;                 &quot;Cameroon&quot;                
+##  [21] &quot;Canada&quot;                   &quot;Central African Republic&quot;
+##  [23] &quot;Chad&quot;                     &quot;Chile&quot;                   
+##  [25] &quot;China&quot;                    &quot;Colombia&quot;                
+##  [27] &quot;Comoros&quot;                  &quot;Congo, Dem. Rep.&quot;        
+##  [29] &quot;Congo, Rep.&quot;              &quot;Costa Rica&quot;              
+##  [31] &quot;Cote d&#39;Ivoire&quot;            &quot;Croatia&quot;                 
+##  [33] &quot;Cuba&quot;                     &quot;Czech Republic&quot;          
+##  [35] &quot;Denmark&quot;                  &quot;Djibouti&quot;                
+##  [37] &quot;Dominican Republic&quot;       &quot;Ecuador&quot;                 
+##  [39] &quot;Egypt&quot;                    &quot;El Salvador&quot;             
+##  [41] &quot;Equatorial Guinea&quot;        &quot;Eritrea&quot;                 
+##  [43] &quot;Ethiopia&quot;                 &quot;Finland&quot;                 
+##  [45] &quot;France&quot;                   &quot;Gabon&quot;                   
+##  [47] &quot;Gambia&quot;                   &quot;Germany&quot;                 
+##  [49] &quot;Ghana&quot;                    &quot;Greece&quot;                  
+##  [51] &quot;Guatemala&quot;                &quot;Guinea&quot;                  
+##  [53] &quot;Guinea-Bissau&quot;            &quot;Haiti&quot;                   
+##  [55] &quot;Honduras&quot;                 &quot;Hong Kong, China&quot;        
+##  [57] &quot;Hungary&quot;                  &quot;Iceland&quot;                 
+##  [59] &quot;India&quot;                    &quot;Indonesia&quot;               
+##  [61] &quot;Iran&quot;                     &quot;Iraq&quot;                    
+##  [63] &quot;Ireland&quot;                  &quot;Israel&quot;                  
+##  [65] &quot;Italy&quot;                    &quot;Jamaica&quot;                 
+##  [67] &quot;Japan&quot;                    &quot;Jordan&quot;                  
+##  [69] &quot;Kenya&quot;                    &quot;Korea, Dem. Rep.&quot;        
+##  [71] &quot;Korea, Rep.&quot;              &quot;Kuwait&quot;                  
+##  [73] &quot;Lebanon&quot;                  &quot;Lesotho&quot;                 
+##  [75] &quot;Liberia&quot;                  &quot;Libya&quot;                   
+##  [77] &quot;Madagascar&quot;               &quot;Malawi&quot;                  
+##  [79] &quot;Malaysia&quot;                 &quot;Mali&quot;                    
+##  [81] &quot;Mauritania&quot;               &quot;Mauritius&quot;               
+##  [83] &quot;Mexico&quot;                   &quot;Mongolia&quot;                
+##  [85] &quot;Montenegro&quot;               &quot;Morocco&quot;                 
+##  [87] &quot;Mozambique&quot;               &quot;Myanmar&quot;                 
+##  [89] &quot;Namibia&quot;                  &quot;Nepal&quot;                   
+##  [91] &quot;Netherlands&quot;              &quot;New Zealand&quot;             
+##  [93] &quot;Nicaragua&quot;                &quot;Niger&quot;                   
+##  [95] &quot;Nigeria&quot;                  &quot;Norway&quot;                  
+##  [97] &quot;Oman&quot;                     &quot;Pakistan&quot;                
+##  [99] &quot;Panama&quot;                   &quot;Paraguay&quot;                
+## [101] &quot;Peru&quot;                     &quot;Philippines&quot;             
+## [103] &quot;Poland&quot;                   &quot;Portugal&quot;                
+## [105] &quot;Puerto Rico&quot;              &quot;Reunion&quot;                 
+## [107] &quot;Romania&quot;                  &quot;Rwanda&quot;                  
+## [109] &quot;Sao Tome and Principe&quot;    &quot;Saudi Arabia&quot;            
+## [111] &quot;Senegal&quot;                  &quot;Serbia&quot;                  
+## [113] &quot;Sierra Leone&quot;             &quot;Singapore&quot;               
+## [115] &quot;Slovak Republic&quot;          &quot;Slovenia&quot;                
+## [117] &quot;Somalia&quot;                  &quot;South Africa&quot;            
+## [119] &quot;Spain&quot;                    &quot;Sri Lanka&quot;               
+## [121] &quot;Sudan&quot;                    &quot;Swaziland&quot;               
+## [123] &quot;Sweden&quot;                   &quot;Switzerland&quot;             
+## [125] &quot;Syria&quot;                    &quot;Taiwan&quot;                  
+## [127] &quot;Tanzania&quot;                 &quot;Thailand&quot;                
+## [129] &quot;Togo&quot;                     &quot;Trinidad and Tobago&quot;     
+## [131] &quot;Tunisia&quot;                  &quot;Turkey&quot;                  
+## [133] &quot;Uganda&quot;                   &quot;United Kingdom&quot;          
+## [135] &quot;United States&quot;            &quot;Uruguay&quot;                 
+## [137] &quot;Venezuela&quot;                &quot;Vietnam&quot;                 
+## [139] &quot;West Bank and Gaza&quot;       &quot;Yemen, Rep.&quot;             
+## [141] &quot;Zambia&quot;                   &quot;Zimbabwe&quot;</code></pre>
+<p>References to sheet names are direct and therefore do require quotes:</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" title="1"><span class="kw">read_excel</span>(<span class="st">&quot;&lt;name and extension of your file&gt;&quot;</span>,</a>
+<a class="sourceLine" id="cb174-2" title="2">           <span class="dt">sheet=</span><span class="st">&quot;Sheet 3&quot;</span>)</a></code></pre></div>
+<p>For example let’s load just the United Kingdom sheet and assign it to <code>uk_dat</code>:</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" title="1">uk_dat &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;gapminder/excel/gapminder-country.xlsx&quot;</span>,</a>
+<a class="sourceLine" id="cb175-2" title="2">           <span class="dt">sheet=</span><span class="st">&quot;United Kingdom&quot;</span>)</a></code></pre></div>
+<p>Sheet indexing starts at 1, so alternatively, you could load in the third tab in with the following code:</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" title="1"><span class="kw">read_excel</span>(<span class="st">&quot;&lt;name and extension of your file&gt;&quot;</span>,</a>
+<a class="sourceLine" id="cb176-2" title="2">           <span class="dt">sheet=</span><span class="dv">3</span>)</a></code></pre></div>
+<p>In the read_excel function, if the <code>col_names</code> argument is left to its default value of <code>TRUE</code>, you will import the first line of the worksheet as the header names. In line with tibble and tidyverse standards, the readxl column header names are formed exactly as they were written in Excel.</p>
+<p>Alternatively, if you wish to skip using header specified column-names and instead “number columns sequentially from <code>X1</code> to <code>XN</code>”, then set this argument to false: i.e. <code>col_names = FALSE</code></p>
+<p>For example, if you want to set a three column excel sheet to contain the data as dates in the first column, characters in the second, and numeric values in the third, you would need the following lines of code:</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" title="1"><span class="kw">read_excel</span>(<span class="st">&quot;&lt;name and extension of your file&gt;&quot;</span>,</a>
+<a class="sourceLine" id="cb177-2" title="2">           <span class="dt">col_types =</span> <span class="kw">c</span>(<span class="st">&quot;date&quot;</span>, <span class="st">&quot;numeric&quot;</span>, <span class="st">&quot;text&quot;</span>))</a></code></pre></div>
+<p>For the final of the most useful additional arguments available in read_excel, if you wish to skip rows before setting column names, there is the skip argument. This works exceptionally well for dealing with those intricately crafted database reports you enjoy so much.</p>
+<p>Let’s say, for example, those daily reports you receive with a lovely logo, five rows of report generation details, and the column headers in the sixth row. Getting this imported quickly and tidily into R requires only the following code:</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1"><span class="kw">read_excel</span>(<span class="st">&quot;&lt;name and extension of your file&gt;&quot;</span>,</a>
+<a class="sourceLine" id="cb178-2" title="2">           <span class="dt">skip =</span> <span class="dv">5</span>)</a></code></pre></div>
+</div>
+</div>
+<div id="map-functions" class="section level2">
+<h2><span class="header-section-number">5.4</span> Map functions</h2>
+<p>Let’s think about how we might read a number of excel sheets into a single
+data frame. We met <a href="https://purrr.tidyverse.org/reference/map.html">map functions</a> in Chapter <a href="data-wrangle-2.html#data-wrangle-2">3</a>.</p>
+<p>Map functions allow us to iterate an operation:</p>
+<blockquote>
+<p>The map functions transform their input by applying a function to each element and returning a vector the same length as the input.</p>
+</blockquote>
+<p>There are lots of examples of using them in <a href="https://r4ds.had.co.nz/iteration.html#the-map-functions">R4DS map functions</a>.</p>
+<p>Let’s state the problem in pseudocode terms. The gapminder year spreadsheet contains
+a sheet for every year between 1952 and 2007 recording life expectancy, population,
+country and continent:</p>
+<blockquote>
+<p>We’d like to read all the sheets of the gapminder year spreadsheet into a single
+table that adds a column to indicate the year of the observations.</p>
+</blockquote>
+<p>In steps:</p>
+<ol style="list-style-type: decimal">
+<li>Create an object with the path to the spreadsheet</li>
+<li>Create an object with the names of the individual sheetss in the spreadsheet</li>
+<li>Read every sheet into a single data frame, creating a year variable from the sheet name</li>
+</ol>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" title="1"><span class="co"># Get the path to the gapminder year spreadsheet</span></a>
+<a class="sourceLine" id="cb179-2" title="2">path &lt;-<span class="st"> &quot;gapminder/excel/gapminder-year.xlsx&quot;</span></a>
+<a class="sourceLine" id="cb179-3" title="3"><span class="co"># Create a named character vector using the sheet names</span></a>
+<a class="sourceLine" id="cb179-4" title="4">sheets &lt;-<span class="st"> </span><span class="kw">set_names</span>(<span class="kw">excel_sheets</span>(path))</a>
+<a class="sourceLine" id="cb179-5" title="5"></a>
+<a class="sourceLine" id="cb179-6" title="6"><span class="co"># Check code for the first sheet</span></a>
+<a class="sourceLine" id="cb179-7" title="7"><span class="kw">read_excel</span>(path, <span class="dt">sheet =</span> sheets[[<span class="dv">1</span>]])</a>
+<a class="sourceLine" id="cb179-8" title="8"></a>
+<a class="sourceLine" id="cb179-9" title="9"><span class="co"># Now map all sheets to a single data frame and create a year variable from </span></a>
+<a class="sourceLine" id="cb179-10" title="10"><span class="co"># the sheet name</span></a>
+<a class="sourceLine" id="cb179-11" title="11"><span class="kw">map_dfr</span>(sheets, <span class="op">~</span><span class="st"> </span><span class="kw">read_excel</span>(path, <span class="dt">sheet =</span> .x), <span class="dt">.id =</span> <span class="st">&quot;year&quot;</span>)</a></code></pre></div>
+<p>Now try the same approach to create the gapminder data using the <code>gapminder/excel/gapminder-country.xlsx</code>
+spreadsheet combining all the invidual country sheets into a single table:</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1"><span class="co"># replicate for excel/gapminder-country.xlsx to create gapminder data</span></a>
+<a class="sourceLine" id="cb180-2" title="2">path &lt;-<span class="st"> &quot;gapminder/excel/gapminder-country.xlsx&quot;</span></a>
+<a class="sourceLine" id="cb180-3" title="3"><span class="co"># Create a named character vector using the sheet names</span></a>
+<a class="sourceLine" id="cb180-4" title="4">sheets &lt;-<span class="st"> </span><span class="kw">set_names</span>(<span class="kw">excel_sheets</span>(path))</a>
+<a class="sourceLine" id="cb180-5" title="5"></a>
+<a class="sourceLine" id="cb180-6" title="6"><span class="co"># Check code for first sheet</span></a>
+<a class="sourceLine" id="cb180-7" title="7"><span class="kw">read_excel</span>(path, <span class="dt">sheet =</span> sheets[[<span class="dv">1</span>]])</a>
+<a class="sourceLine" id="cb180-8" title="8"><span class="co"># Now map all sheets to a single data frame and create a country variable from </span></a>
+<a class="sourceLine" id="cb180-9" title="9"><span class="co"># the sheet name</span></a>
+<a class="sourceLine" id="cb180-10" title="10">gapminder &lt;-<span class="st"> </span><span class="kw">map_dfr</span>(sheets, <span class="op">~</span><span class="st"> </span><span class="kw">read_excel</span>(path, <span class="dt">sheet =</span> .x), <span class="dt">.id =</span> <span class="st">&quot;country&quot;</span>)</a></code></pre></div>
+<p>Let’s look at the gapminder data</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" title="1"><span class="kw">glimpse</span>(gapminder)</a></code></pre></div>
+<pre><code>## Observations: 1,704
+## Variables: 6
+## $ country   &lt;chr&gt; &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanistan&quot;,…
+## $ year      &lt;dbl&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997,…
+## $ pop       &lt;dbl&gt; 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 1…
+## $ continent &lt;chr&gt; &quot;Asia&quot;, &quot;Asia&quot;, &quot;Asia&quot;, &quot;Asia&quot;, &quot;Asia&quot;, &quot;Asia&quot;, &quot;Asia&quot;, &quot;As…
+## $ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 40.…
+## $ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.1134,…</code></pre>
+<p>Let’s make a function to caluclate the GDP, representing the total
+income for each country and year where: <code>GDP = pop * gdpPercap</code></p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" title="1"><span class="co"># Takes a dataset and multiplies the population column</span></a>
+<a class="sourceLine" id="cb183-2" title="2"><span class="co"># with the GDP per capita column.</span></a>
+<a class="sourceLine" id="cb183-3" title="3">calcGDP &lt;-<span class="st"> </span><span class="cf">function</span>(dat, <span class="dt">yr=</span><span class="ot">NULL</span>, <span class="dt">ctry=</span><span class="ot">NULL</span>) {</a>
+<a class="sourceLine" id="cb183-4" title="4">  <span class="co"># Is there a year argument?</span></a>
+<a class="sourceLine" id="cb183-5" title="5">  <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.null</span>(yr)) {</a>
+<a class="sourceLine" id="cb183-6" title="6">   dat &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span>yr)</a>
+<a class="sourceLine" id="cb183-7" title="7">  }</a>
+<a class="sourceLine" id="cb183-8" title="8">  <span class="co"># Is there a country argument?</span></a>
+<a class="sourceLine" id="cb183-9" title="9">  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(ctry)) {</a>
+<a class="sourceLine" id="cb183-10" title="10">   dat &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> </span>ctry)</a>
+<a class="sourceLine" id="cb183-11" title="11">  }</a>
+<a class="sourceLine" id="cb183-12" title="12">  <span class="co"># Create new GDP column</span></a>
+<a class="sourceLine" id="cb183-13" title="13">  new &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">gdp =</span> pop <span class="op">*</span><span class="st"> </span>gdpPercap)</a>
+<a class="sourceLine" id="cb183-14" title="14">  <span class="kw">return</span>(new)</a>
+<a class="sourceLine" id="cb183-15" title="15">}</a></code></pre></div>
+<p>Let’s use our function to calculate the GDP for every country and every year:</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" title="1"><span class="kw">calcGDP</span>(gapminder)</a></code></pre></div>
+<div id="lollipop-plot-function" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> Lollipop plot function</h3>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" title="1">plot_lollipop &lt;-</a>
+<a class="sourceLine" id="cb185-2" title="2"><span class="st">        </span><span class="cf">function</span>(<span class="dt">dat =</span> gapminder,</a>
+<a class="sourceLine" id="cb185-3" title="3">                 <span class="dt">cnt =</span> <span class="st">&quot;Europe&quot;</span>,</a>
+<a class="sourceLine" id="cb185-4" title="4">                 <span class="dt">yr =</span> <span class="dv">1997</span>) {</a>
+<a class="sourceLine" id="cb185-5" title="5">                dat <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb185-6" title="6"><span class="st">                        </span><span class="kw">mutate</span>(<span class="dt">cpop =</span> <span class="kw">fct_reorder</span>(country, pop)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb185-7" title="7"><span class="st">                        </span><span class="kw">filter</span>(continent <span class="op">==</span><span class="st"> </span>cnt <span class="op">&amp;</span><span class="st"> </span>year <span class="op">==</span><span class="st"> </span>yr) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb185-8" title="8"><span class="st">                        </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cpop, <span class="dt">y =</span> pop)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb185-9" title="9"><span class="st">                        </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb185-10" title="10"><span class="st">                        </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(</a>
+<a class="sourceLine" id="cb185-11" title="11">                                <span class="dt">xend =</span> cpop,</a>
+<a class="sourceLine" id="cb185-12" title="12">                                <span class="dt">y =</span> <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb185-13" title="13">                                <span class="dt">yend =</span> pop</a>
+<a class="sourceLine" id="cb185-14" title="14">                        )) <span class="op">+</span></a>
+<a class="sourceLine" id="cb185-15" title="15"><span class="st">                        </span><span class="kw">coord_flip</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb185-16" title="16"><span class="st">                        </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Population&quot;</span>,</a>
+<a class="sourceLine" id="cb185-17" title="17">                             <span class="dt">y =</span> <span class="st">&quot;Country&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb185-18" title="18"><span class="st">                        </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb185-19" title="19">        }</a>
+<a class="sourceLine" id="cb185-20" title="20"></a>
+<a class="sourceLine" id="cb185-21" title="21"><span class="kw">plot_lollipop</span>()</a></code></pre></div>
+<p><img src="coding-together_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p>Just to illustrate how this can be extended further using a loop to iterate.
+See <a href="https://r4ds.had.co.nz/iteration.html#for-loops">R4DS for loops</a>.</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" title="1"><span class="co"># Create a vector of continent names</span></a>
+<a class="sourceLine" id="cb186-2" title="2">con_names &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(continent) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">distinct</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pull</span>() </a>
+<a class="sourceLine" id="cb186-3" title="3"></a>
+<a class="sourceLine" id="cb186-4" title="4"><span class="co"># Plot all the continent lollipop plots for 1997 using a for loop</span></a>
+<a class="sourceLine" id="cb186-5" title="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(con_names)) {</a>
+<a class="sourceLine" id="cb186-6" title="6">        <span class="kw">print</span>(<span class="kw">plot_lollipop</span>(gapminder,con_names[i], <span class="dv">1997</span>))</a>
+<a class="sourceLine" id="cb186-7" title="7">} </a></code></pre></div>
+<p><img src="coding-together_files/figure-html/unnamed-chunk-21-1.png" width="672" /><img src="coding-together_files/figure-html/unnamed-chunk-21-2.png" width="672" /><img src="coding-together_files/figure-html/unnamed-chunk-21-3.png" width="672" /><img src="coding-together_files/figure-html/unnamed-chunk-21-4.png" width="672" /><img src="coding-together_files/figure-html/unnamed-chunk-21-5.png" width="672" /></p>
+</div>
+<div id="create-three-gapminder-plots" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> Create three gapminder plots</h3>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" title="1"><span class="co"># Asia 1952 lollipop</span></a>
+<a class="sourceLine" id="cb187-2" title="2">asia_lollipop &lt;-<span class="st"> </span><span class="kw">plot_lollipop</span>(gapminder, <span class="st">&quot;Asia&quot;</span>, <span class="dv">1952</span>)</a>
+<a class="sourceLine" id="cb187-3" title="3"></a>
+<a class="sourceLine" id="cb187-4" title="4"><span class="co"># Life expectancy boxplot</span></a>
+<a class="sourceLine" id="cb187-5" title="5">lifexp_box &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">fct_reorder</span>(continent,lifeExp), <span class="dt">y =</span> lifeExp)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb187-6" title="6"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb187-7" title="7"><span class="st">        </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Continent&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Life expectancy&quot;</span>)</a>
+<a class="sourceLine" id="cb187-8" title="8"></a>
+<a class="sourceLine" id="cb187-9" title="9"><span class="co"># Life expectancy bubble plot for 2007</span></a>
+<a class="sourceLine" id="cb187-10" title="10">lifexp_bubble &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2007</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb187-11" title="11"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap,<span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent, <span class="dt">size =</span> pop)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb187-12" title="12"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb187-13" title="13"><span class="st">  </span><span class="kw">scale_x_log10</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb187-14" title="14"><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb187-15" title="15"><span class="st">        </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;GDP per capita&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Life expectancy&quot;</span>)</a></code></pre></div>
+</div>
+</div>
+<div id="combining-plots-with-patchwork" class="section level2">
+<h2><span class="header-section-number">5.5</span> Combining plots with patchwork</h2>
+<p>See the <a href="https://patchwork.data-imaginist.com/">patchwork website</a> for lots more
+guidance. The basic syntax is <code>+</code> to add a plot.</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" title="1">asia_lollipop <span class="op">+</span><span class="st"> </span>lifexp_box</a></code></pre></div>
+<p><img src="coding-together_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p>Use brackets <code>()</code> to group plots and backslash <code>\</code> to create a new row:</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" title="1">lifexp_bubble <span class="op">/</span><span class="st"> </span>(asia_lollipop <span class="op">+</span><span class="st"> </span>lifexp_box)</a></code></pre></div>
+<p><img src="coding-together_files/figure-html/gapminder-patchwork-1.png" width="672" /></p>
+<p>And <code>plot_annotation(tag_levels = "A")</code> with tag labels to add plot labels.</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1">lifexp_bubble <span class="op">/</span><span class="st"> </span>(asia_lollipop <span class="op">|</span><span class="st"> </span>lifexp_box) <span class="op">+</span><span class="st"> </span><span class="kw">plot_annotation</span>(<span class="dt">tag_levels =</span> <span class="st">&quot;A&quot;</span>)</a></code></pre></div>
+<p><img src="coding-together_files/figure-html/gapminder-patchwork-with-labels-1.png" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="viz.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["coding-together.pdf"],
+"toc": {
+"collapse": "section"
+},
+"css": "style.css"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

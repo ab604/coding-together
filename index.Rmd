@@ -27,8 +27,9 @@ library(forcats)
 library(janitor)
 library(here)
 library(treemapify)
-#library(cowplot)
+library(cowplot)
 library(patchwork)
+library(readxl)
 #library(DiagrammeR)
 # automatically create a bib database for R packages
 knitr::write_bib(c(

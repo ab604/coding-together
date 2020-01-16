@@ -1,23 +1,109 @@
 # Extras {#extras}
 
+This chapter extra chapter introduces: 
+
+> + Using pseudocode before writing your actual code
+> + Writing your own functions
+> + Working with excel spreadsheets
+> + Using `patchwork` to combine plots
+
+## Pseudocode
+
+[Pseudocode](https://www.bbc.co.uk/bitesize/guides/z3bq7ty/revision/2) is the idea
+that we write down the steps of what we want to do in plain language 
+to help us think about the actual code syntax we need to write.
+
+For example, with the Portal surveys data we had a table with observations for
+several plot types in, but we were only interested in the control and long-term kangaroo rat exclosure
+plots.
+
+So that step in pseudocode is: 
+
+`I want make a table with only the observations 
+for control and long-term kangaroo rat exclosure from the survey data.`
+
+In steps:
+
+1. Pipe the `surveys` table to the filter function.
+2. Pass arguments to the filter function to filter for observations equal to the control plot type or 
+observations equal to the long-term kangaroo rat exclosure plot type.
+
+In R code this becomes:
+
+```{r,eval}
+surveys %>% 
+        filter(plot_type == "Control" | 
+        plot_type == "Long-term Krat Exclosure")
+```
+
+It can take a while and some research to figure out how to translate pseudocode
+to R code, and there is often more than one way to acheive the same result, 
+but the point of the pseudocode is that it forces us to be specific about what 
+we want to do. You may even have to re-write the pseudocode several times or
+talk to someone else to refine the question and then steps required to answer it.
+
+The same approach can be used in many other areas of problem solving, such as
+experimental design.
+
 ## Functions
 
-### Function
+Functions are objects, and comprise of three parts:
 
-```{r}
-# Extract functiom
+1. Name : short, but meaningful is advised
+2. Arguments: the inputs to the function
+3. Body: the code that does something with the arguments to create an output.
+
+```{r function-structure, eval=FALSE}
+<name> <- function(<arguments>){
+        <body>
+}
+```
+
+
+The body will generally use other functions, strung together to create our new 
+function.
+
+Let's illustrate this by creating a function to simulate rolling a pair of dice,
+as per [Hands on Programming with R](https://rstudio-education.github.io/hopr/basics.html#the-function-constructor)
+
+```{r die, out.width='25%', fig.align='center', fig.cap='', echo=FALSE}
+knitr::include_graphics('img/dice.jpg')
+```
+
+First we write some code that will become our function:
+
+```{r die-parts}
+# Assign the numbers to a die
 die <- 1:6
+# Sample the die numbers twice
 dice <- sample(die, size = 2, replace = TRUE)
+# Add them together
 sum(dice)
+```
 
+Now we put those elements as the body of a function, and assign it to a function
+called `roll` with no arguments:
 
+```{r die-function}
 # Roll two dice function
 roll <- function(){
   die <- 1:6
   dice <- sample(die, size = 2, replace = TRUE)
   sum(dice)
 }
+```
 
+What about doing this for a die of any number of sides? 
+
+```{r dnd-dice, out.width='50%', fig.align='center', fig.cap='', echo=FALSE}
+knitr::include_graphics('img/dnd_dice.JPG')
+```
+
+We remove the `die` object from the body of the function and turn it into an
+argument that can take a sequence of integer values. Here we provide a default
+of 1 to 6. It's good practice to supply a default argument.
+
+```{r die2-function}
 # Roll two dice of any size
 roll_n <- function(die = 1:6) {
   dice <- sample(die, size = 2, replace = TRUE)
@@ -25,10 +111,48 @@ roll_n <- function(die = 1:6) {
 }
 ```
 
+```{r, out.width='100%', fig.align='center', fig.cap='', echo=FALSE}
+knitr::include_graphics('img/r-dice-function-07-10-2018.png')
+```
 
 ## Working with Excel spreadsheets
 
+### Gapminder
+
+The [Gapminder Foundation](https://www.gapminder.org/):
+
+> The mission of Gapminder Foundation is to fight devastating ignorance with a fact-based worldview that everyone can understand.
+
+For example, the famously created a[a bubble chart of the life expectancy vs. income around the world](https://www.gapminder.org/tools/#$chart-type=bubbles).
+
+All sorts of data is available on their website and can be downloaded in various formats.
+Here we have a set of data for income, and life expectancy in countries around the
+world recorded between 1952 and 2007. (This version of gapminder data originated from [Tidyverse Booster, Hadley Wickham](https://github.com/hadley/tidyverse-booster).)
+
+```{r gapminder data, eval=FALSE}
+# Download the gapminder data
+download.file("https://github.com/ab604/ab604.github.io/raw/master/docs/gapminder.zip",
+              destfile = "gapminder.zip")
+
+# Unzip the the gapminder data
+unzip("gapminder.zip")
+```
+
+There should now be a `gapminder` directory in your working directory containing
+a folder of csv files and excel files. These contain the same data, but split in 
+various ways: by country, by year or by continent.
+
+We're going to work with the excel data, where the data is split across multiple
+sheets in the same file.
+
 ### `readxl` package
+
+We'll be using tidyverse package `readxl` for importing the excel data.
+
+```{r, eval=FALSE}
+library(readxl)
+```
+
 
 ```{r eval=FALSE}
 df <- read_excel("<name and extension of your file>")
@@ -40,13 +164,26 @@ In other words, the default is to read the first sheet(tab) in the specified wor
 excel_sheets("<name and extension of your file>")
 ```
 
-References to sheet names are direct and therefore do require quotes:
+For example, lets look at the sheets in `gapminder-country.xlsx` :
 
+```{r}
+excel_sheets("gapminder/excel/gapminder-country.xlsx")
+```
+
+References to sheet names are direct and therefore do require quotes:
 
 ```{r eval=FALSE}
 read_excel("<name and extension of your file>",
            sheet="Sheet 3")
 ```
+
+For example let's load just the United Kingdom sheet and assign it to `uk_dat`:
+
+```{r eval=FALSE}
+uk_dat <- read_excel("gapminder/excel/gapminder-country.xlsx",
+           sheet="United Kingdom")
+```
+
 
 Sheet indexing starts at 1, so alternatively, you could load in the third tab in with the following code:
 
@@ -76,39 +213,71 @@ read_excel("<name and extension of your file>",
            skip = 5)
 ```
            
-### Gapminder
-
-```{r, eval=FALSE}
-install.packages("gapminder")
-```
 
 ## Map functions
 
-```{r}
-paths <- dir("~/Desktop/mind-the-gap/csv/country", full.names = TRUE)
-paths <- paths %>% set_names(str_replace(basename(paths), ".csv", ""))
-paths %>%
-  map_dfr(~ read.csv(.x), .id = "country") %>%
-  as_tibble()
+Let's think about how we might read a number of excel sheets into a single
+data frame. We met [map functions](https://purrr.tidyverse.org/reference/map.html) in Chapter \@ref(data-wrangle-2).
 
+Map functions allow us to iterate an operation:
 
-path <- "~/Desktop/mind-the-gap/excel/gapminder-year.xlsx"
+> The map functions transform their input by applying a function to each element and returning a vector the same length as the input.
+
+There are lots of examples of using them in [R4DS map functions](https://r4ds.had.co.nz/iteration.html#the-map-functions).
+
+Let's state the problem in pseudocode terms. The gapminder year spreadsheet contains
+a sheet for every year between 1952 and 2007 recording life expectancy, population,
+country and continent:
+
+> We'd like to read all the sheets of the gapminder year spreadsheet into a single
+table that adds a column to indicate the year of the observations.
+
+In steps:
+
+1. Create an object with the path to the spreadsheet
+2. Create an object with the names of the individual sheetss in the spreadsheet
+3. Read every sheet into a single data frame, creating a year variable from the sheet name
+
+```{r map-excel-year, eval=FALSE}
+# Get the path to the gapminder year spreadsheet
+path <- "gapminder/excel/gapminder-year.xlsx"
+# Create a named character vector using the sheet names
 sheets <- set_names(excel_sheets(path))
 
+# Check code for the first sheet
 read_excel(path, sheet = sheets[[1]])
+
+# Now map all sheets to a single data frame and create a year variable from 
+# the sheet name
 map_dfr(sheets, ~ read_excel(path, sheet = .x), .id = "year")
-
-# replicate for excel/gapminder-country.xlsx to create gapminder data
-path <- "exercises/gapminder/excel/gapminder-country.xlsx"
-sheets <- set_names(excel_sheets(path))
-
-read_excel(path, sheet = sheets[[1]])
-map_dfr(sheets, ~ read_excel(path, sheet = .x), .id = "country")
-
 ```
 
+Now try the same approach to create the gapminder data using the `gapminder/excel/gapminder-country.xlsx`
+spreadsheet combining all the invidual country sheets into a single table: 
 
-```{r gapminder-function}
+```{r map-excel-country, eval=FALSE}
+# replicate for excel/gapminder-country.xlsx to create gapminder data
+path <- "gapminder/excel/gapminder-country.xlsx"
+# Create a named character vector using the sheet names
+sheets <- set_names(excel_sheets(path))
+
+# Check code for first sheet
+read_excel(path, sheet = sheets[[1]])
+# Now map all sheets to a single data frame and create a country variable from 
+# the sheet name
+gapminder <- map_dfr(sheets, ~ read_excel(path, sheet = .x), .id = "country")
+```
+
+Let's look at the gapminder data
+
+```{r gapminder-glimpse}
+glimpse(gapminder)
+```
+
+Let's make a function to caluclate the GDP, representing the total 
+income for each country and year where: `GDP = pop * gdpPercap` 
+
+```{r gapminder-function, eval=FALSE}
 # Takes a dataset and multiplies the population column
 # with the GDP per capita column.
 calcGDP <- function(dat, yr=NULL, ctry=NULL) {
@@ -126,40 +295,90 @@ calcGDP <- function(dat, yr=NULL, ctry=NULL) {
 }
 ```
 
-```{r}
-gapminder %>% filter(year == 2007 & continent %in% c("Europe","Africa")) %>% 
-  ggplot(aes(x = gdpPercap,y = lifeExp, colour = continent, size = lifeExp)) +
-  geom_point(alpha = 0.5) +
-  scale_x_log10() +
-        theme_minimal()
+Let's use our function to calculate the GDP for every country and every year:
 
-lifexp_bubble <- gapminder %>% filter(year == 2007) %>% 
-  ggplot(aes(x = gdpPercap,y = lifeExp, colour = continent, size = lifeExp)) +
-  geom_point(alpha = 0.5) +
-  scale_x_log10() +
-  theme_minimal()
+```{r, eval=FALSE}
+calcGDP(gapminder)
 ```
 
-```{r}
-europe_bar <- gapminder %>%
-  filter(continent == "Europe" & year == 1997) %>% 
-  ggplot(aes(x = fct_reorder(country, pop),y = pop, 
-             fill = lifeExp)) +
-  geom_bar(stat = "identity") +
-  coord_flip()
 
+### Lollipop plot function
+
+```{r}
+plot_lollipop <-
+        function(dat = gapminder,
+                 cnt = "Europe",
+                 yr = 1997) {
+                dat %>%
+                        mutate(cpop = fct_reorder(country, pop)) %>%
+                        filter(continent == cnt & year == yr) %>%
+                        ggplot(aes(x = cpop, y = pop)) +
+                        geom_point() +
+                        geom_segment(aes(
+                                xend = cpop,
+                                y = 0,
+                                yend = pop
+                        )) +
+                        coord_flip() +
+                        labs(x = "Population",
+                             y = "Country") +
+                        theme(legend.position = "")
+        }
+
+plot_lollipop()
+```
+
+Just to illustrate how this can be extended further using a loop to iterate.
+See [R4DS for loops](https://r4ds.had.co.nz/iteration.html#for-loops).
+
+```{r}
+# Create a vector of continent names
+con_names <- gapminder %>% select(continent) %>% distinct() %>% pull() 
+
+# Plot all the continent lollipop plots for 1997 using a for loop
+for (i in 1:length(con_names)) {
+        print(plot_lollipop(gapminder,con_names[i], 1997))
+} 
+```
+
+
+### Create three gapminder plots
+
+```{r}
+# Asia 1952 lollipop
+asia_lollipop <- plot_lollipop(gapminder, "Asia", 1952)
+
+# Life expectancy boxplot
 lifexp_box <- gapminder %>% ggplot(aes(x = fct_reorder(continent,lifeExp), y = lifeExp)) +
-  geom_boxplot() 
-```
+  geom_boxplot() +
+        labs(x = "Continent", y = "Life expectancy")
 
+# Life expectancy bubble plot for 2007
+lifexp_bubble <- gapminder %>% filter(year == 2007) %>% 
+  ggplot(aes(x = gdpPercap,y = lifeExp, colour = continent, size = pop)) +
+  geom_point(alpha = 0.5) +
+  scale_x_log10() +
+  theme_minimal() +
+        labs(x = "GDP per capita", y = "Life expectancy")
+```
 
 ## Combining plots with patchwork
 
-```{r}
-lifexp_bubble / (europe_bar + lifexp_box)
+See the [patchwork website](https://patchwork.data-imaginist.com/) for lots more
+guidance. The basic syntax is `+` to add a plot. 
 
-lifexp_bubble / (europe_bar + lifexp_box) + plot_annotation(tag_levels = "A")
+```{r}
+asia_lollipop + lifexp_box
 ```
 
+Use brackets `()` to group plots and backslash `\` to create a new row:
 
-## Pseudocode
+```{r gapminder-patchwork}
+lifexp_bubble / (asia_lollipop + lifexp_box)
+```
+
+And `plot_annotation(tag_levels = "A")` with tag labels to add plot labels.
+
+```{r gapminder-patchwork-with-labels}
+lifexp_bubble / (asia_lollipop | lifexp_box) + plot_annotation(tag_levels = "A")
+```

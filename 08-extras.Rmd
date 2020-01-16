@@ -1,6 +1,6 @@
 # Extras {#extras}
 
-This chapter extra chapter introduces: 
+This extra chapter introduces: 
 
 > + Using pseudocode before writing your actual code
 > + Writing your own functions
@@ -371,14 +371,16 @@ guidance. The basic syntax is `+` to add a plot.
 asia_lollipop + lifexp_box
 ```
 
-Use brackets `()` to group plots and backslash `\` to create a new row:
+Use brackets `()` to group plots and forwardslash `/` to create a new row:
 
 ```{r gapminder-patchwork}
-lifexp_bubble / (asia_lollipop + lifexp_box)
+lifexp_bubble / 
+        (asia_lollipop + lifexp_box)
 ```
 
 And `plot_annotation(tag_levels = "A")` with tag labels to add plot labels.
 
 ```{r gapminder-patchwork-with-labels}
-lifexp_bubble / (asia_lollipop | lifexp_box) + plot_annotation(tag_levels = "A")
+lifexp_bubble / (asia_lollipop | lifexp_box) + 
+        plot_annotation(tag_levels = "A")
 ```

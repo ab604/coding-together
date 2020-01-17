@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Extras | Coding togetheR</title>
+  <title>5 Functions, excel and combining plots | Coding togetheR</title>
   <meta name="description" content="Materials for the Coding TogetheR workshops" />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Extras | Coding togetheR" />
+  <meta property="og:title" content="5 Functions, excel and combining plots | Coding togetheR" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://ab604.github.io/docs/coding-together-2019/" />
   <meta property="og:image" content="https://ab604.github.io/docs/coding-together-2019/img/Carrick-bend-Guten-Verrill-modified.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ab604/coding-together" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Extras | Coding togetheR" />
+  <meta name="twitter:title" content="5 Functions, excel and combining plots | Coding togetheR" />
   <meta name="twitter:site" content="@alistair604" />
   <meta name="twitter:description" content="Materials for the Coding TogetheR workshops" />
   <meta name="twitter:image" content="https://ab604.github.io/docs/coding-together-2019/img/Carrick-bend-Guten-Verrill-modified.png" />
@@ -232,7 +232,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.1" data-path="viz.html"><a href="viz.html#changing-colours-labels-themes-and-adding-titles"><i class="fa fa-check"></i><b>4.3.1</b> Changing colours, labels, themes and adding titles</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="extras.html"><a href="extras.html"><i class="fa fa-check"></i><b>5</b> Extras</a><ul>
+<li class="chapter" data-level="5" data-path="extras.html"><a href="extras.html"><i class="fa fa-check"></i><b>5</b> Functions, excel and combining plots</a><ul>
 <li class="chapter" data-level="5.1" data-path="extras.html"><a href="extras.html#pseudocode"><i class="fa fa-check"></i><b>5.1</b> Pseudocode</a></li>
 <li class="chapter" data-level="5.2" data-path="extras.html"><a href="extras.html#functions"><i class="fa fa-check"></i><b>5.2</b> Functions</a></li>
 <li class="chapter" data-level="5.3" data-path="extras.html"><a href="extras.html#working-with-excel-spreadsheets"><i class="fa fa-check"></i><b>5.3</b> Working with Excel spreadsheets</a><ul>
@@ -241,9 +241,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="extras.html"><a href="extras.html#map-functions"><i class="fa fa-check"></i><b>5.4</b> Map functions</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="extras.html"><a href="extras.html#lollipop-plot-function"><i class="fa fa-check"></i><b>5.4.1</b> Lollipop plot function</a></li>
-<li class="chapter" data-level="5.4.2" data-path="extras.html"><a href="extras.html#create-three-gapminder-plots"><i class="fa fa-check"></i><b>5.4.2</b> Create three gapminder plots</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="extras.html"><a href="extras.html#combining-plots-with-patchwork"><i class="fa fa-check"></i><b>5.5</b> Combining plots with patchwork</a></li>
+<li class="chapter" data-level="5.5" data-path="extras.html"><a href="extras.html#combining-plots-with-patchwork"><i class="fa fa-check"></i><b>5.5</b> Combining plots with patchwork</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="extras.html"><a href="extras.html#create-four-gapminder-plots"><i class="fa fa-check"></i><b>5.5.1</b> Create four gapminder plots</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>6</b> Resources</a><ul>
 <li class="chapter" data-level="6.1" data-path="resources.html"><a href="resources.html#the-r-community"><i class="fa fa-check"></i><b>6.1</b> The R community</a><ul>
@@ -276,7 +277,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="extras" class="section level1">
-<h1><span class="header-section-number">5</span> Extras</h1>
+<h1><span class="header-section-number">5</span> Functions, excel and combining plots</h1>
 <p>This extra chapter introduces:</p>
 <blockquote>
 <ul>
@@ -333,7 +334,7 @@ experimental design.</p>
 <h2><span class="header-section-number">5.2</span> Functions</h2>
 <p>Functions are objects, and comprise of three parts:</p>
 <ol style="list-style-type: decimal">
-<li>Name : short, but meaningful is advised</li>
+<li>Name: short, but meaningful is advised</li>
 <li>Arguments: the inputs to the function</li>
 <li>Body: the code that does something with the arguments to create an output.</li>
 </ol>
@@ -381,7 +382,7 @@ of 1 to 6. It’s good practice to supply a default argument.</p>
 <blockquote>
 <p>The mission of Gapminder Foundation is to fight devastating ignorance with a fact-based worldview that everyone can understand.</p>
 </blockquote>
-<p>For example, the famously created a<a href="https://www.gapminder.org/tools/#$chart-type=bubbles">a bubble chart of the life expectancy vs. income around the world</a>.</p>
+<p>For example, the famously created <a href="https://www.gapminder.org/tools/#$chart-type=bubbles">a bubble chart of the life expectancy vs. income around the world</a>.</p>
 <p>All sorts of data is available on their website and can be downloaded in various formats.
 Here we have a set of data for income, and life expectancy in countries around the
 world recorded between 1952 and 2007. (This version of gapminder data originated from <a href="https://github.com/hadley/tidyverse-booster">Tidyverse Booster, Hadley Wickham</a>.)</p>
@@ -399,10 +400,15 @@ sheets in the same file.</p>
 </div>
 <div id="readxl-package" class="section level3">
 <h3><span class="header-section-number">5.3.2</span> <code>readxl</code> package</h3>
-<p>We’ll be using tidyverse package <code>readxl</code> for importing the excel data.</p>
+<p>We’ll be using tidyverse package <code>readxl</code> for importing the excel data. Some of
+the notes below are based on a tutorial by <a href="https://twitter.com/willems_karlijn">Karlijn Willems</a></p>
 <div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" title="1"><span class="kw">library</span>(readxl)</a></code></pre></div>
+<p>The basic syntax is similar to <code>read_csv</code> or <code>read_tsv</code> from the <code>readr</code> package
+where you pass the file path and name as a character vector to the <code>read_excel</code> function.</p>
 <div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" title="1">df &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;&lt;name and extension of your file&gt;&quot;</span>)</a></code></pre></div>
-<p>In other words, the default is to read the first sheet(tab) in the specified workbook. If your workbook is a little more complicated than this, you can crack it open and list the sheet names with the following excel_sheets function:</p>
+<p>The default is to read the first sheet in the workbook. If your workbook has
+multiple sheets you can open and list the sheet names with the <code>excel_sheets</code> function.
+Individual sheets must be read as individual tables.</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" title="1"><span class="kw">excel_sheets</span>(<span class="st">&quot;&lt;name and extension of your file&gt;&quot;</span>)</a></code></pre></div>
 <p>For example, lets look at the sheets in <code>gapminder-country.xlsx</code> :</p>
 <div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" title="1"><span class="kw">excel_sheets</span>(<span class="st">&quot;gapminder/excel/gapminder-country.xlsx&quot;</span>)</a></code></pre></div>
@@ -477,24 +483,29 @@ sheets in the same file.</p>
 ## [137] &quot;Venezuela&quot;                &quot;Vietnam&quot;                 
 ## [139] &quot;West Bank and Gaza&quot;       &quot;Yemen, Rep.&quot;             
 ## [141] &quot;Zambia&quot;                   &quot;Zimbabwe&quot;</code></pre>
-<p>References to sheet names are direct and therefore do require quotes:</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" title="1"><span class="kw">read_excel</span>(<span class="st">&quot;&lt;name and extension of your file&gt;&quot;</span>,</a>
-<a class="sourceLine" id="cb174-2" title="2">           <span class="dt">sheet=</span><span class="st">&quot;Sheet 3&quot;</span>)</a></code></pre></div>
-<p>For example let’s load just the United Kingdom sheet and assign it to <code>uk_dat</code>:</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" title="1">uk_dat &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;gapminder/excel/gapminder-country.xlsx&quot;</span>,</a>
-<a class="sourceLine" id="cb175-2" title="2">           <span class="dt">sheet=</span><span class="st">&quot;United Kingdom&quot;</span>)</a></code></pre></div>
-<p>Sheet indexing starts at 1, so alternatively, you could load in the third tab in with the following code:</p>
+<p>And then load the United Kingdom sheet and assign it to <code>uk_dat</code>:</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" title="1">uk_dat &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;gapminder/excel/gapminder-country.xlsx&quot;</span>,</a>
+<a class="sourceLine" id="cb174-2" title="2">           <span class="dt">sheet=</span><span class="st">&quot;United Kingdom&quot;</span>)</a></code></pre></div>
+<p>References to sheet names are character vectors and therefore do require quotes.</p>
+<p>Sheet indexing starts at 1, so alternatively, you could load in the 134th sheet for the UK with the following code:</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" title="1"><span class="kw">read_excel</span>(<span class="st">&quot;gapminder/excel/gapminder-country.xlsx&quot;</span>,</a>
+<a class="sourceLine" id="cb175-2" title="2">           <span class="dt">sheet=</span><span class="dv">134</span>)</a></code></pre></div>
+<p>In the read_excel function, if the <code>col_names</code> argument is left to its default value of <code>TRUE</code>, you will import the first line of the worksheet as the header names.</p>
+<p>Alternatively, if you wish to skip using header specified column-names and instead “number columns sequentially from <code>...1</code> to <code>...N</code>”, then set this argument to false: i.e. <code>col_names = FALSE</code></p>
+<p>Likewise you can override the default data types assigned by <code>read_excel</code> using
+the <code>col_types</code> argument.
+For example, if you wanted to set a three column excel sheet to contain the data
+as dates in the first column, characters in the second, and numeric values in the third,
+you would need the following lines of code:</p>
 <div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" title="1"><span class="kw">read_excel</span>(<span class="st">&quot;&lt;name and extension of your file&gt;&quot;</span>,</a>
-<a class="sourceLine" id="cb176-2" title="2">           <span class="dt">sheet=</span><span class="dv">3</span>)</a></code></pre></div>
-<p>In the read_excel function, if the <code>col_names</code> argument is left to its default value of <code>TRUE</code>, you will import the first line of the worksheet as the header names. In line with tibble and tidyverse standards, the readxl column header names are formed exactly as they were written in Excel.</p>
-<p>Alternatively, if you wish to skip using header specified column-names and instead “number columns sequentially from <code>X1</code> to <code>XN</code>”, then set this argument to false: i.e. <code>col_names = FALSE</code></p>
-<p>For example, if you want to set a three column excel sheet to contain the data as dates in the first column, characters in the second, and numeric values in the third, you would need the following lines of code:</p>
+<a class="sourceLine" id="cb176-2" title="2">           <span class="dt">col_types =</span> <span class="kw">c</span>(<span class="st">&quot;date&quot;</span>, <span class="st">&quot;numeric&quot;</span>, <span class="st">&quot;text&quot;</span>))</a></code></pre></div>
+<p>For the final of the most useful additional arguments available in read_excel,
+if you wish to skip rows before setting column names, there is the <code>skip</code> argument.</p>
+<p>For example, if the spreadsheet had blank rows or other information in the first
+five rows, and the column headers in the sixth row, using <code>skip = 5</code> will read
+the spreadsheet correctly.</p>
 <div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" title="1"><span class="kw">read_excel</span>(<span class="st">&quot;&lt;name and extension of your file&gt;&quot;</span>,</a>
-<a class="sourceLine" id="cb177-2" title="2">           <span class="dt">col_types =</span> <span class="kw">c</span>(<span class="st">&quot;date&quot;</span>, <span class="st">&quot;numeric&quot;</span>, <span class="st">&quot;text&quot;</span>))</a></code></pre></div>
-<p>For the final of the most useful additional arguments available in read_excel, if you wish to skip rows before setting column names, there is the skip argument. This works exceptionally well for dealing with those intricately crafted database reports you enjoy so much.</p>
-<p>Let’s say, for example, those daily reports you receive with a lovely logo, five rows of report generation details, and the column headers in the sixth row. Getting this imported quickly and tidily into R requires only the following code:</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1"><span class="kw">read_excel</span>(<span class="st">&quot;&lt;name and extension of your file&gt;&quot;</span>,</a>
-<a class="sourceLine" id="cb178-2" title="2">           <span class="dt">skip =</span> <span class="dv">5</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb177-2" title="2">           <span class="dt">skip =</span> <span class="dv">5</span>)</a></code></pre></div>
 </div>
 </div>
 <div id="map-functions" class="section level2">
@@ -519,31 +530,35 @@ table that adds a column to indicate the year of the observations.</p>
 <li>Create an object with the names of the individual sheetss in the spreadsheet</li>
 <li>Read every sheet into a single data frame, creating a year variable from the sheet name</li>
 </ol>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" title="1"><span class="co"># Get the path to the gapminder year spreadsheet</span></a>
-<a class="sourceLine" id="cb179-2" title="2">path &lt;-<span class="st"> &quot;gapminder/excel/gapminder-year.xlsx&quot;</span></a>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1"><span class="co"># Get the path to the gapminder year spreadsheet</span></a>
+<a class="sourceLine" id="cb178-2" title="2">path &lt;-<span class="st"> &quot;gapminder/excel/gapminder-year.xlsx&quot;</span></a>
+<a class="sourceLine" id="cb178-3" title="3"><span class="co"># Create a named character vector using the sheet names</span></a>
+<a class="sourceLine" id="cb178-4" title="4">sheets &lt;-<span class="st"> </span><span class="kw">set_names</span>(<span class="kw">excel_sheets</span>(path))</a>
+<a class="sourceLine" id="cb178-5" title="5"></a>
+<a class="sourceLine" id="cb178-6" title="6"><span class="co"># Check code for the first sheet</span></a>
+<a class="sourceLine" id="cb178-7" title="7"><span class="kw">read_excel</span>(path, <span class="dt">sheet =</span> sheets[[<span class="dv">1</span>]])</a>
+<a class="sourceLine" id="cb178-8" title="8"></a>
+<a class="sourceLine" id="cb178-9" title="9"><span class="co"># Now map all sheets to a single data frame and create a year variable from </span></a>
+<a class="sourceLine" id="cb178-10" title="10"><span class="co"># the sheet name</span></a>
+<a class="sourceLine" id="cb178-11" title="11"><span class="kw">map_dfr</span>(sheets, <span class="op">~</span><span class="st"> </span><span class="kw">read_excel</span>(path, <span class="dt">sheet =</span> .x), <span class="dt">.id =</span> <span class="st">&quot;year&quot;</span>)</a></code></pre></div>
+<p>Now try the same approach to create the gapminder data using the <code>gapminder/excel/gapminder-country.xlsx</code>
+spreadsheet combining all the invidual country sheets into a single table:</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" title="1"><span class="co"># replicate for excel/gapminder-country.xlsx to create gapminder data</span></a>
+<a class="sourceLine" id="cb179-2" title="2">path &lt;-<span class="st"> &quot;gapminder/excel/gapminder-country.xlsx&quot;</span></a>
 <a class="sourceLine" id="cb179-3" title="3"><span class="co"># Create a named character vector using the sheet names</span></a>
 <a class="sourceLine" id="cb179-4" title="4">sheets &lt;-<span class="st"> </span><span class="kw">set_names</span>(<span class="kw">excel_sheets</span>(path))</a>
 <a class="sourceLine" id="cb179-5" title="5"></a>
-<a class="sourceLine" id="cb179-6" title="6"><span class="co"># Check code for the first sheet</span></a>
+<a class="sourceLine" id="cb179-6" title="6"><span class="co"># Check code for first sheet</span></a>
 <a class="sourceLine" id="cb179-7" title="7"><span class="kw">read_excel</span>(path, <span class="dt">sheet =</span> sheets[[<span class="dv">1</span>]])</a>
-<a class="sourceLine" id="cb179-8" title="8"></a>
-<a class="sourceLine" id="cb179-9" title="9"><span class="co"># Now map all sheets to a single data frame and create a year variable from </span></a>
-<a class="sourceLine" id="cb179-10" title="10"><span class="co"># the sheet name</span></a>
-<a class="sourceLine" id="cb179-11" title="11"><span class="kw">map_dfr</span>(sheets, <span class="op">~</span><span class="st"> </span><span class="kw">read_excel</span>(path, <span class="dt">sheet =</span> .x), <span class="dt">.id =</span> <span class="st">&quot;year&quot;</span>)</a></code></pre></div>
-<p>Now try the same approach to create the gapminder data using the <code>gapminder/excel/gapminder-country.xlsx</code>
-spreadsheet combining all the invidual country sheets into a single table:</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1"><span class="co"># replicate for excel/gapminder-country.xlsx to create gapminder data</span></a>
-<a class="sourceLine" id="cb180-2" title="2">path &lt;-<span class="st"> &quot;gapminder/excel/gapminder-country.xlsx&quot;</span></a>
-<a class="sourceLine" id="cb180-3" title="3"><span class="co"># Create a named character vector using the sheet names</span></a>
-<a class="sourceLine" id="cb180-4" title="4">sheets &lt;-<span class="st"> </span><span class="kw">set_names</span>(<span class="kw">excel_sheets</span>(path))</a>
-<a class="sourceLine" id="cb180-5" title="5"></a>
-<a class="sourceLine" id="cb180-6" title="6"><span class="co"># Check code for first sheet</span></a>
-<a class="sourceLine" id="cb180-7" title="7"><span class="kw">read_excel</span>(path, <span class="dt">sheet =</span> sheets[[<span class="dv">1</span>]])</a>
-<a class="sourceLine" id="cb180-8" title="8"><span class="co"># Now map all sheets to a single data frame and create a country variable from </span></a>
-<a class="sourceLine" id="cb180-9" title="9"><span class="co"># the sheet name</span></a>
-<a class="sourceLine" id="cb180-10" title="10">gapminder &lt;-<span class="st"> </span><span class="kw">map_dfr</span>(sheets, <span class="op">~</span><span class="st"> </span><span class="kw">read_excel</span>(path, <span class="dt">sheet =</span> .x), <span class="dt">.id =</span> <span class="st">&quot;country&quot;</span>)</a></code></pre></div>
-<p>Let’s look at the gapminder data</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" title="1"><span class="kw">glimpse</span>(gapminder)</a></code></pre></div>
+<a class="sourceLine" id="cb179-8" title="8"><span class="co"># Now map all sheets to a single data frame and create a country variable from </span></a>
+<a class="sourceLine" id="cb179-9" title="9"><span class="co"># the sheet name</span></a>
+<a class="sourceLine" id="cb179-10" title="10">gapminder &lt;-<span class="st"> </span><span class="kw">map_dfr</span>(sheets, <span class="op">~</span><span class="st"> </span><span class="kw">read_excel</span>(path, <span class="dt">sheet =</span> .x), <span class="dt">.id =</span> <span class="st">&quot;country&quot;</span>)</a></code></pre></div>
+<p>Here the map function takes each value in <code>sheets</code> as passes it as <code>.x</code> to the
+sheet argument of <code>read_excel</code> and also it as the value for a new variable <code>country</code>
+created by the <code>.id</code> argument so that each observation in the new combined table
+corresponds with the country sheet from which it derived.</p>
+<p>Let’s look at the gapminder table we created for all the countries.</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1"><span class="kw">glimpse</span>(gapminder)</a></code></pre></div>
 <pre><code>## Observations: 1,704
 ## Variables: 6
 ## $ country   &lt;chr&gt; &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanistan&quot;,…
@@ -552,94 +567,143 @@ spreadsheet combining all the invidual country sheets into a single table:</p>
 ## $ continent &lt;chr&gt; &quot;Asia&quot;, &quot;Asia&quot;, &quot;Asia&quot;, &quot;Asia&quot;, &quot;Asia&quot;, &quot;Asia&quot;, &quot;Asia&quot;, &quot;As…
 ## $ lifeExp   &lt;dbl&gt; 28.801, 30.332, 31.997, 34.020, 36.088, 38.438, 39.854, 40.…
 ## $ gdpPercap &lt;dbl&gt; 779.4453, 820.8530, 853.1007, 836.1971, 739.9811, 786.1134,…</code></pre>
-<p>Let’s make a function to caluclate the GDP, representing the total
-income for each country and year where: <code>GDP = pop * gdpPercap</code></p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" title="1"><span class="co"># Takes a dataset and multiplies the population column</span></a>
-<a class="sourceLine" id="cb183-2" title="2"><span class="co"># with the GDP per capita column.</span></a>
-<a class="sourceLine" id="cb183-3" title="3">calcGDP &lt;-<span class="st"> </span><span class="cf">function</span>(dat, <span class="dt">yr=</span><span class="ot">NULL</span>, <span class="dt">ctry=</span><span class="ot">NULL</span>) {</a>
-<a class="sourceLine" id="cb183-4" title="4">  <span class="co"># Is there a year argument?</span></a>
-<a class="sourceLine" id="cb183-5" title="5">  <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.null</span>(yr)) {</a>
-<a class="sourceLine" id="cb183-6" title="6">   dat &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span>yr)</a>
-<a class="sourceLine" id="cb183-7" title="7">  }</a>
-<a class="sourceLine" id="cb183-8" title="8">  <span class="co"># Is there a country argument?</span></a>
-<a class="sourceLine" id="cb183-9" title="9">  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(ctry)) {</a>
-<a class="sourceLine" id="cb183-10" title="10">   dat &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(country <span class="op">==</span><span class="st"> </span>ctry)</a>
-<a class="sourceLine" id="cb183-11" title="11">  }</a>
-<a class="sourceLine" id="cb183-12" title="12">  <span class="co"># Create new GDP column</span></a>
-<a class="sourceLine" id="cb183-13" title="13">  new &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">gdp =</span> pop <span class="op">*</span><span class="st"> </span>gdpPercap)</a>
-<a class="sourceLine" id="cb183-14" title="14">  <span class="kw">return</span>(new)</a>
-<a class="sourceLine" id="cb183-15" title="15">}</a></code></pre></div>
-<p>Let’s use our function to calculate the GDP for every country and every year:</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" title="1"><span class="kw">calcGDP</span>(gapminder)</a></code></pre></div>
 <div id="lollipop-plot-function" class="section level3">
 <h3><span class="header-section-number">5.4.1</span> Lollipop plot function</h3>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" title="1">plot_lollipop &lt;-</a>
-<a class="sourceLine" id="cb185-2" title="2"><span class="st">        </span><span class="cf">function</span>(<span class="dt">dat =</span> gapminder,</a>
-<a class="sourceLine" id="cb185-3" title="3">                 <span class="dt">cnt =</span> <span class="st">&quot;Europe&quot;</span>,</a>
-<a class="sourceLine" id="cb185-4" title="4">                 <span class="dt">yr =</span> <span class="dv">1997</span>) {</a>
-<a class="sourceLine" id="cb185-5" title="5">                dat <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb185-6" title="6"><span class="st">                        </span><span class="kw">mutate</span>(<span class="dt">cpop =</span> <span class="kw">fct_reorder</span>(country, pop)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb185-7" title="7"><span class="st">                        </span><span class="kw">filter</span>(continent <span class="op">==</span><span class="st"> </span>cnt <span class="op">&amp;</span><span class="st"> </span>year <span class="op">==</span><span class="st"> </span>yr) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb185-8" title="8"><span class="st">                        </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cpop, <span class="dt">y =</span> pop)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb185-9" title="9"><span class="st">                        </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb185-10" title="10"><span class="st">                        </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(</a>
-<a class="sourceLine" id="cb185-11" title="11">                                <span class="dt">xend =</span> cpop,</a>
-<a class="sourceLine" id="cb185-12" title="12">                                <span class="dt">y =</span> <span class="dv">0</span>,</a>
-<a class="sourceLine" id="cb185-13" title="13">                                <span class="dt">yend =</span> pop</a>
-<a class="sourceLine" id="cb185-14" title="14">                        )) <span class="op">+</span></a>
-<a class="sourceLine" id="cb185-15" title="15"><span class="st">                        </span><span class="kw">coord_flip</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb185-16" title="16"><span class="st">                        </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Population&quot;</span>,</a>
-<a class="sourceLine" id="cb185-17" title="17">                             <span class="dt">y =</span> <span class="st">&quot;Country&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb185-18" title="18"><span class="st">                        </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb185-19" title="19">        }</a>
-<a class="sourceLine" id="cb185-20" title="20"></a>
-<a class="sourceLine" id="cb185-21" title="21"><span class="kw">plot_lollipop</span>()</a></code></pre></div>
-<p><img src="coding-together_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
-<p>Just to illustrate how this can be extended further using a loop to iterate.
-See <a href="https://r4ds.had.co.nz/iteration.html#for-loops">R4DS for loops</a>.</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" title="1"><span class="co"># Create a vector of continent names</span></a>
-<a class="sourceLine" id="cb186-2" title="2">con_names &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(continent) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">distinct</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pull</span>() </a>
-<a class="sourceLine" id="cb186-3" title="3"></a>
-<a class="sourceLine" id="cb186-4" title="4"><span class="co"># Plot all the continent lollipop plots for 1997 using a for loop</span></a>
-<a class="sourceLine" id="cb186-5" title="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(con_names)) {</a>
-<a class="sourceLine" id="cb186-6" title="6">        <span class="kw">print</span>(<span class="kw">plot_lollipop</span>(gapminder,con_names[i], <span class="dv">1997</span>))</a>
-<a class="sourceLine" id="cb186-7" title="7">} </a></code></pre></div>
-<p><img src="coding-together_files/figure-html/unnamed-chunk-21-1.png" width="672" /><img src="coding-together_files/figure-html/unnamed-chunk-21-2.png" width="672" /><img src="coding-together_files/figure-html/unnamed-chunk-21-3.png" width="672" /><img src="coding-together_files/figure-html/unnamed-chunk-21-4.png" width="672" /><img src="coding-together_files/figure-html/unnamed-chunk-21-5.png" width="672" /></p>
-</div>
-<div id="create-three-gapminder-plots" class="section level3">
-<h3><span class="header-section-number">5.4.2</span> Create three gapminder plots</h3>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" title="1"><span class="co"># Asia 1952 lollipop</span></a>
-<a class="sourceLine" id="cb187-2" title="2">asia_lollipop &lt;-<span class="st"> </span><span class="kw">plot_lollipop</span>(gapminder, <span class="st">&quot;Asia&quot;</span>, <span class="dv">1952</span>)</a>
-<a class="sourceLine" id="cb187-3" title="3"></a>
-<a class="sourceLine" id="cb187-4" title="4"><span class="co"># Life expectancy boxplot</span></a>
-<a class="sourceLine" id="cb187-5" title="5">lifexp_box &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">fct_reorder</span>(continent,lifeExp), <span class="dt">y =</span> lifeExp)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb187-6" title="6"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb187-7" title="7"><span class="st">        </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Continent&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Life expectancy&quot;</span>)</a>
-<a class="sourceLine" id="cb187-8" title="8"></a>
-<a class="sourceLine" id="cb187-9" title="9"><span class="co"># Life expectancy bubble plot for 2007</span></a>
-<a class="sourceLine" id="cb187-10" title="10">lifexp_bubble &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2007</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb187-11" title="11"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap,<span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent, <span class="dt">size =</span> pop)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb187-12" title="12"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb187-13" title="13"><span class="st">  </span><span class="kw">scale_x_log10</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb187-14" title="14"><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb187-15" title="15"><span class="st">        </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;GDP per capita&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Life expectancy&quot;</span>)</a></code></pre></div>
+<p>Imagine we wanted to create a plot showing the population in each country,
+for any continent, for any of the years when the gapminder survey was carried out.
+Rather writing the code for each plot every time, we could write a function where
+we can pass the continent and year as arguments.</p>
+<p>In the code below we create a lollipop plot, which is a sort of barplot, using
+two geoms, point and segment.</p>
+<p>Step wise the body of the function does the following:</p>
+<ol style="list-style-type: decimal">
+<li>Mutate the data to create a new <code>cpop</code> factor variable of each country ordered
+according to the population variable.</li>
+<li>The data is then filtered for observations corresponding to the continent and year arguments.</li>
+<li>Call <code>ggplot</code> with aesthetics <code>x = cpop</code> and <code>y = pop</code>.</li>
+<li>Add a point geom.</li>
+<li>Add a segment for the lollipop stick going from each <code>cpop</code> on the x-axis, starting
+at 0 on the y-axis to the the <code>pop</code> value.</li>
+<li>Turn the plot 90 degrees</li>
+<li>Change the axis labels</li>
+<li>Hide the legend</li>
+</ol>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" title="1">plot_lollipop &lt;-</a>
+<a class="sourceLine" id="cb182-2" title="2"><span class="st">        </span><span class="cf">function</span>(<span class="dt">dat =</span> gapminder,</a>
+<a class="sourceLine" id="cb182-3" title="3">                 <span class="dt">cnt =</span> <span class="st">&quot;Europe&quot;</span>,</a>
+<a class="sourceLine" id="cb182-4" title="4">                 <span class="dt">yr =</span> <span class="dv">1997</span>) {</a>
+<a class="sourceLine" id="cb182-5" title="5">                dat <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb182-6" title="6"><span class="st">                        </span><span class="kw">mutate</span>(<span class="dt">cpop =</span> <span class="kw">fct_reorder</span>(country, pop)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb182-7" title="7"><span class="st">                        </span><span class="kw">filter</span>(continent <span class="op">==</span><span class="st"> </span>cnt <span class="op">&amp;</span><span class="st"> </span>year <span class="op">==</span><span class="st"> </span>yr) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb182-8" title="8"><span class="st">                        </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> cpop, <span class="dt">y =</span> pop)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb182-9" title="9"><span class="st">                        </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb182-10" title="10"><span class="st">                        </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(</a>
+<a class="sourceLine" id="cb182-11" title="11">                                <span class="dt">xend =</span> cpop,</a>
+<a class="sourceLine" id="cb182-12" title="12">                                <span class="dt">y =</span> <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb182-13" title="13">                                <span class="dt">yend =</span> pop</a>
+<a class="sourceLine" id="cb182-14" title="14">                        )) <span class="op">+</span></a>
+<a class="sourceLine" id="cb182-15" title="15"><span class="st">                        </span><span class="kw">coord_flip</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb182-16" title="16"><span class="st">                        </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Population&quot;</span>,</a>
+<a class="sourceLine" id="cb182-17" title="17">                             <span class="dt">y =</span> <span class="st">&quot;Country&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb182-18" title="18"><span class="st">                        </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb182-19" title="19">        }</a>
+<a class="sourceLine" id="cb182-20" title="20"></a>
+<a class="sourceLine" id="cb182-21" title="21"><span class="co"># Use the function with default arguments</span></a>
+<a class="sourceLine" id="cb182-22" title="22"><span class="kw">plot_lollipop</span>()</a></code></pre></div>
+<p><img src="coding-together_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p>Just to illustrate how this can be extended further using a map function again
+to iterate through each continent. See <a href="https://r4ds.had.co.nz/iteration.html">R4DS on iteration</a>.</p>
+<p>This shows how functions can automate a task with a little bit of upfront effort.
+Here we pass each value of <code>con_names</code> to our <code>plot_lollipop</code> function <code>cnt</code> argument
+as <code>.x</code> in the same way we did for <code>sheet =</code> in when using <code>map_dfr</code> with <code>read_excel</code>.</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" title="1"><span class="co"># Create a vector of continent names</span></a>
+<a class="sourceLine" id="cb183-2" title="2">con_names &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(continent) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">distinct</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pull</span>() </a>
+<a class="sourceLine" id="cb183-3" title="3"></a>
+<a class="sourceLine" id="cb183-4" title="4"><span class="co"># Plot using map function as before</span></a>
+<a class="sourceLine" id="cb183-5" title="5"><span class="kw">map</span>(con_names, <span class="op">~</span><span class="st"> </span><span class="kw">plot_lollipop</span>(gapminder, .x, <span class="dv">1997</span>))</a></code></pre></div>
+<pre><code>## [[1]]</code></pre>
+<p><img src="coding-together_files/figure-html/map-lollipop-plot-1.png" width="672" /></p>
+<pre><code>## 
+## [[2]]</code></pre>
+<p><img src="coding-together_files/figure-html/map-lollipop-plot-2.png" width="672" /></p>
+<pre><code>## 
+## [[3]]</code></pre>
+<p><img src="coding-together_files/figure-html/map-lollipop-plot-3.png" width="672" /></p>
+<pre><code>## 
+## [[4]]</code></pre>
+<p><img src="coding-together_files/figure-html/map-lollipop-plot-4.png" width="672" /></p>
+<pre><code>## 
+## [[5]]</code></pre>
+<p><img src="coding-together_files/figure-html/map-lollipop-plot-5.png" width="672" /></p>
 </div>
 </div>
 <div id="combining-plots-with-patchwork" class="section level2">
 <h2><span class="header-section-number">5.5</span> Combining plots with patchwork</h2>
 <p>See the <a href="https://patchwork.data-imaginist.com/">patchwork website</a> for lots more
-guidance. The basic syntax is <code>+</code> to add a plot.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" title="1">asia_lollipop <span class="op">+</span><span class="st"> </span>lifexp_box</a></code></pre></div>
-<p><img src="coding-together_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
-<p>Use brackets <code>()</code> to group plots and forwardslash <code>/</code> to create a new row:</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" title="1">lifexp_bubble <span class="op">/</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb189-2" title="2"><span class="st">        </span>(asia_lollipop <span class="op">+</span><span class="st"> </span>lifexp_box)</a></code></pre></div>
+guidance.</p>
+<div id="create-four-gapminder-plots" class="section level3">
+<h3><span class="header-section-number">5.5.1</span> Create four gapminder plots</h3>
+<p>Let’s create four plots from the gapminder data:</p>
+<ol style="list-style-type: decimal">
+<li>A bubble plot for life expectancy vs. gdp per capita in 1952
+2 A bubble plot for life expectancy vs. gdp per capita in 2007</li>
+<li>A life expectancy boxplot for each continent in 1952</li>
+<li>A life expectancy boxplot for each continent in 2007</li>
+</ol>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" title="1"><span class="co"># Life expectancy bubble plot for 2007</span></a>
+<a class="sourceLine" id="cb189-2" title="2">bubble_<span class="dv">1952</span> &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">1952</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb189-3" title="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap,<span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent, <span class="dt">size =</span> pop)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb189-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb189-5" title="5"><span class="st">  </span><span class="kw">scale_x_log10</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb189-6" title="6"><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb189-7" title="7"><span class="st">        </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;GDP per capita&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Life expectancy&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb189-8" title="8"><span class="st">                        </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb189-9" title="9"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;1952&quot;</span>)</a>
+<a class="sourceLine" id="cb189-10" title="10">  </a>
+<a class="sourceLine" id="cb189-11" title="11"></a>
+<a class="sourceLine" id="cb189-12" title="12"><span class="co"># Life expectancy bubble plot for 2007</span></a>
+<a class="sourceLine" id="cb189-13" title="13">bubble_<span class="dv">2007</span> &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2007</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb189-14" title="14"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> gdpPercap,<span class="dt">y =</span> lifeExp, <span class="dt">colour =</span> continent, <span class="dt">size =</span> pop)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb189-15" title="15"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb189-16" title="16"><span class="st">  </span><span class="kw">scale_x_log10</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb189-17" title="17"><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb189-18" title="18"><span class="st">        </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;GDP per capita&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Life expectancy&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb189-19" title="19"><span class="st">                        </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb189-20" title="20"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;2007&quot;</span>)</a>
+<a class="sourceLine" id="cb189-21" title="21"></a>
+<a class="sourceLine" id="cb189-22" title="22"><span class="co"># Life expectancy boxplot for 1952</span></a>
+<a class="sourceLine" id="cb189-23" title="23">box_<span class="dv">1952</span> &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb189-24" title="24"><span class="st">  </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">1952</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb189-25" title="25"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">fct_reorder</span>(continent,lifeExp), </a>
+<a class="sourceLine" id="cb189-26" title="26">             <span class="dt">y =</span> lifeExp)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb189-27" title="27"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb189-28" title="28"><span class="st">        </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Continent&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Life expectancy&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb189-29" title="29"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;1952&quot;</span>)</a>
+<a class="sourceLine" id="cb189-30" title="30"></a>
+<a class="sourceLine" id="cb189-31" title="31"><span class="co"># Life expectancy boxplot for 2007</span></a>
+<a class="sourceLine" id="cb189-32" title="32">box_<span class="dv">2007</span> &lt;-<span class="st"> </span>gapminder <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb189-33" title="33"><span class="st">  </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2007</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb189-34" title="34"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">fct_reorder</span>(continent,lifeExp), </a>
+<a class="sourceLine" id="cb189-35" title="35">             <span class="dt">y =</span> lifeExp)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb189-36" title="36"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb189-37" title="37"><span class="st">        </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Continent&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Life expectancy&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb189-38" title="38"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;2007&quot;</span>)</a></code></pre></div>
+<p>The basic syntax is <code>+</code> to add a plot. Let’s plot the two boxplots.</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1">box_<span class="dv">1952</span> <span class="op">+</span><span class="st"> </span>box_<span class="dv">2007</span></a></code></pre></div>
+<p><img src="coding-together_files/figure-html/patch-1-1.png" width="672" /></p>
+<p>Use brackets <code>()</code> to group plots and forwardslash <code>/</code> to create a new row.
+Now plot the bubble plots, each one on its own row, and group the boxplots onto
+a single row:</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" title="1">bubble_<span class="dv">1952</span> <span class="op">/</span><span class="st"> </span>bubble_<span class="dv">2007</span> <span class="op">/</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb191-2" title="2"><span class="st">        </span>(box_<span class="dv">1952</span> <span class="op">+</span><span class="st"> </span>box_<span class="dv">2007</span>)</a></code></pre></div>
 <p><img src="coding-together_files/figure-html/gapminder-patchwork-1.png" width="672" /></p>
 <p>And <code>plot_annotation(tag_levels = "A")</code> with tag labels to add plot labels.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1">lifexp_bubble <span class="op">/</span><span class="st"> </span>(asia_lollipop <span class="op">|</span><span class="st"> </span>lifexp_box) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb190-2" title="2"><span class="st">        </span><span class="kw">plot_annotation</span>(<span class="dt">tag_levels =</span> <span class="st">&quot;A&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" title="1">bubble_<span class="dv">1952</span> <span class="op">/</span><span class="st"> </span>bubble_<span class="dv">2007</span> <span class="op">/</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb192-2" title="2"><span class="st">        </span>(box_<span class="dv">1952</span> <span class="op">+</span><span class="st"> </span>box_<span class="dv">2007</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb192-3" title="3"><span class="st">        </span><span class="kw">plot_annotation</span>(<span class="dt">tag_levels =</span> <span class="st">&quot;A&quot;</span>)</a></code></pre></div>
 <p><img src="coding-together_files/figure-html/gapminder-patchwork-with-labels-1.png" width="672" /></p>
 
+</div>
 </div>
 </div>
             </section>

@@ -1,4 +1,4 @@
-# Extras {#extras}
+# Functions, excel and combining plots {#extras}
 
 This extra chapter introduces: 
 
@@ -49,7 +49,7 @@ experimental design.
 
 Functions are objects, and comprise of three parts:
 
-1. Name : short, but meaningful is advised
+1. Name: short, but meaningful is advised
 2. Arguments: the inputs to the function
 3. Body: the code that does something with the arguments to create an output.
 
@@ -123,7 +123,7 @@ The [Gapminder Foundation](https://www.gapminder.org/):
 
 > The mission of Gapminder Foundation is to fight devastating ignorance with a fact-based worldview that everyone can understand.
 
-For example, the famously created a[a bubble chart of the life expectancy vs. income around the world](https://www.gapminder.org/tools/#$chart-type=bubbles).
+For example, the famously created [a bubble chart of the life expectancy vs. income around the world](https://www.gapminder.org/tools/#$chart-type=bubbles).
 
 All sorts of data is available on their website and can be downloaded in various formats.
 Here we have a set of data for income, and life expectancy in countries around the
@@ -147,18 +147,23 @@ sheets in the same file.
 
 ### `readxl` package
 
-We'll be using tidyverse package `readxl` for importing the excel data.
+We'll be using tidyverse package `readxl` for importing the excel data. Some of
+the notes below are based on a tutorial by [Karlijn Willems](https://twitter.com/willems_karlijn)
 
 ```{r, eval=FALSE}
 library(readxl)
 ```
 
+The basic syntax is similar to `read_csv` or `read_tsv` from the `readr` package
+where you pass the file path and name as a character vector to the `read_excel` function.
 
 ```{r eval=FALSE}
 df <- read_excel("<name and extension of your file>")
 ```
 
-In other words, the default is to read the first sheet(tab) in the specified workbook. If your workbook is a little more complicated than this, you can crack it open and list the sheet names with the following excel_sheets function:
+The default is to read the first sheet in the workbook. If your workbook has
+multiple sheets you can open and list the sheet names with the  `excel_sheets` function.
+Individual sheets must be read as individual tables.
 
 ```{r eval=FALSE}
 excel_sheets("<name and extension of your file>")
@@ -170,33 +175,31 @@ For example, lets look at the sheets in `gapminder-country.xlsx` :
 excel_sheets("gapminder/excel/gapminder-country.xlsx")
 ```
 
-References to sheet names are direct and therefore do require quotes:
-
-```{r eval=FALSE}
-read_excel("<name and extension of your file>",
-           sheet="Sheet 3")
-```
-
-For example let's load just the United Kingdom sheet and assign it to `uk_dat`:
+And then load the United Kingdom sheet and assign it to `uk_dat`:
 
 ```{r eval=FALSE}
 uk_dat <- read_excel("gapminder/excel/gapminder-country.xlsx",
            sheet="United Kingdom")
 ```
 
+References to sheet names are character vectors and therefore do require quotes.
 
-Sheet indexing starts at 1, so alternatively, you could load in the third tab in with the following code:
+Sheet indexing starts at 1, so alternatively, you could load in the 134th sheet for the UK with the following code:
 
 ```{r eval=FALSE}
-read_excel("<name and extension of your file>",
-           sheet=3)
+read_excel("gapminder/excel/gapminder-country.xlsx",
+           sheet=134)
 ```
 
-In the read_excel function, if the `col_names` argument is left to its default value of `TRUE`, you will import the first line of the worksheet as the header names. In line with tibble and tidyverse standards, the readxl column header names are formed exactly as they were written in Excel.
+In the read_excel function, if the `col_names` argument is left to its default value of `TRUE`, you will import the first line of the worksheet as the header names.
 
-Alternatively, if you wish to skip using header specified column-names and instead “number columns sequentially from `X1` to `XN`”, then set this argument to false: i.e. `col_names = FALSE`
+Alternatively, if you wish to skip using header specified column-names and instead “number columns sequentially from `...1` to `...N`”, then set this argument to false: i.e. `col_names = FALSE`
 
-For example, if you want to set a three column excel sheet to contain the data as dates in the first column, characters in the second, and numeric values in the third, you would need the following lines of code:
+Likewise you can override the default data types assigned by `read_excel` using
+the `col_types` argument.
+For example, if you wanted to set a three column excel sheet to contain the data 
+as dates in the first column, characters in the second, and numeric values in the third, 
+you would need the following lines of code:
 
 ```{r , eval=FALSE}
 read_excel("<name and extension of your file>",
@@ -204,9 +207,12 @@ read_excel("<name and extension of your file>",
 ```
 
 
-For the final of the most useful additional arguments available in read_excel, if you wish to skip rows before setting column names, there is the skip argument. This works exceptionally well for dealing with those intricately crafted database reports you enjoy so much.
+For the final of the most useful additional arguments available in read_excel, 
+if you wish to skip rows before setting column names, there is the `skip` argument. 
 
-Let’s say, for example, those daily reports you receive with a lovely logo, five rows of report generation details, and the column headers in the sixth row. Getting this imported quickly and tidily into R requires only the following code:
+For example, if the spreadsheet had blank rows or other information in the first
+five rows, and the column headers in the sixth row, using `skip = 5` will read
+the spreadsheet correctly.
 
 ```{r, eval=FALSE}
 read_excel("<name and extension of your file>",
@@ -268,41 +274,39 @@ read_excel(path, sheet = sheets[[1]])
 gapminder <- map_dfr(sheets, ~ read_excel(path, sheet = .x), .id = "country")
 ```
 
-Let's look at the gapminder data
+Here the map function takes each value in `sheets` as passes it as `.x` to the
+sheet argument of `read_excel` and also it as the value for a new variable `country`
+created by the `.id` argument so that each observation in the new combined table
+corresponds with the country sheet from which it derived.
+
+Let's look at the gapminder table we created for all the countries.
 
 ```{r gapminder-glimpse}
 glimpse(gapminder)
 ```
 
-Let's make a function to caluclate the GDP, representing the total 
-income for each country and year where: `GDP = pop * gdpPercap` 
-
-```{r gapminder-function, eval=FALSE}
-# Takes a dataset and multiplies the population column
-# with the GDP per capita column.
-calcGDP <- function(dat, yr=NULL, ctry=NULL) {
-  # Is there a year argument?
-  if(!is.null(yr)) {
-   dat <- dat %>% filter(year == yr)
-  }
-  # Is there a country argument?
-  if (!is.null(ctry)) {
-   dat <- dat %>% filter(country == ctry)
-  }
-  # Create new GDP column
-  new <- dat %>% mutate(gdp = pop * gdpPercap)
-  return(new)
-}
-```
-
-Let's use our function to calculate the GDP for every country and every year:
-
-```{r, eval=FALSE}
-calcGDP(gapminder)
-```
-
-
 ### Lollipop plot function
+
+Imagine we wanted to create a plot showing the population in each country,
+for any continent, for any of the years when the gapminder survey was carried out.
+Rather writing the code for each plot every time, we could write a function where
+we can pass the continent and year as arguments.
+
+In the code below we create a lollipop plot, which is a sort of barplot, using 
+two geoms, point and segment. 
+
+Step wise the body of the function does the following:
+
+1. Mutate the data to create a new `cpop` factor variable of each country ordered
+according to the population variable.
+2. The data is then filtered for observations corresponding to the continent and year arguments.
+3. Call `ggplot` with aesthetics `x = cpop` and `y = pop`.
+4. Add a point geom.
+5. Add a segment for the lollipop stick going from each `cpop` on the x-axis, starting
+at 0 on the y-axis to the the `pop` value.
+6. Turn the plot 90 degrees
+7. Change the axis labels
+8. Hide the legend
 
 ```{r}
 plot_lollipop <-
@@ -325,62 +329,99 @@ plot_lollipop <-
                         theme(legend.position = "")
         }
 
+# Use the function with default arguments
 plot_lollipop()
 ```
 
-Just to illustrate how this can be extended further using a loop to iterate.
-See [R4DS for loops](https://r4ds.had.co.nz/iteration.html#for-loops).
+Just to illustrate how this can be extended further using a map function again 
+to iterate through each continent. See [R4DS on iteration](https://r4ds.had.co.nz/iteration.html).
 
-```{r}
+This shows how functions can automate a task with a little bit of upfront effort.
+Here we pass each value of `con_names` to our `plot_lollipop` function `cnt` argument
+as `.x` in the same way we did for `sheet =` in when using `map_dfr` with `read_excel`.
+
+```{r map-lollipop-plot}
 # Create a vector of continent names
 con_names <- gapminder %>% select(continent) %>% distinct() %>% pull() 
 
-# Plot all the continent lollipop plots for 1997 using a for loop
-for (i in 1:length(con_names)) {
-        print(plot_lollipop(gapminder,con_names[i], 1997))
-} 
-```
-
-
-### Create three gapminder plots
-
-```{r}
-# Asia 1952 lollipop
-asia_lollipop <- plot_lollipop(gapminder, "Asia", 1952)
-
-# Life expectancy boxplot
-lifexp_box <- gapminder %>% ggplot(aes(x = fct_reorder(continent,lifeExp), y = lifeExp)) +
-  geom_boxplot() +
-        labs(x = "Continent", y = "Life expectancy")
-
-# Life expectancy bubble plot for 2007
-lifexp_bubble <- gapminder %>% filter(year == 2007) %>% 
-  ggplot(aes(x = gdpPercap,y = lifeExp, colour = continent, size = pop)) +
-  geom_point(alpha = 0.5) +
-  scale_x_log10() +
-  theme_minimal() +
-        labs(x = "GDP per capita", y = "Life expectancy")
+# Plot using map function as before
+map(con_names, ~ plot_lollipop(gapminder, .x, 1997))
 ```
 
 ## Combining plots with patchwork
 
 See the [patchwork website](https://patchwork.data-imaginist.com/) for lots more
-guidance. The basic syntax is `+` to add a plot. 
+guidance.
+
+### Create four gapminder plots
+
+Let's create four plots from the gapminder data:
+
+1. A bubble plot for life expectancy vs. gdp per capita in 1952
+2  A bubble plot for life expectancy vs. gdp per capita in 2007
+3. A life expectancy boxplot for each continent in 1952
+4. A life expectancy boxplot for each continent in 2007
 
 ```{r}
-asia_lollipop + lifexp_box
+# Life expectancy bubble plot for 2007
+bubble_1952 <- gapminder %>% filter(year == 1952) %>% 
+  ggplot(aes(x = gdpPercap,y = lifeExp, colour = continent, size = pop)) +
+  geom_point(alpha = 0.5) +
+  scale_x_log10() +
+  theme_minimal() +
+        labs(x = "GDP per capita", y = "Life expectancy") +
+                        theme(legend.position = "") +
+  ggtitle("1952")
+  
+
+# Life expectancy bubble plot for 2007
+bubble_2007 <- gapminder %>% filter(year == 2007) %>% 
+  ggplot(aes(x = gdpPercap,y = lifeExp, colour = continent, size = pop)) +
+  geom_point(alpha = 0.5) +
+  scale_x_log10() +
+  theme_minimal() +
+        labs(x = "GDP per capita", y = "Life expectancy") +
+                        theme(legend.position = "") +
+  ggtitle("2007")
+
+# Life expectancy boxplot for 1952
+box_1952 <- gapminder %>% 
+  filter(year == 1952) %>% 
+  ggplot(aes(x = fct_reorder(continent,lifeExp), 
+             y = lifeExp)) +
+  geom_boxplot() +
+        labs(x = "Continent", y = "Life expectancy") +
+  ggtitle("1952")
+
+# Life expectancy boxplot for 2007
+box_2007 <- gapminder %>% 
+  filter(year == 2007) %>% 
+  ggplot(aes(x = fct_reorder(continent,lifeExp), 
+             y = lifeExp)) +
+  geom_boxplot() +
+        labs(x = "Continent", y = "Life expectancy") +
+  ggtitle("2007")
 ```
 
-Use brackets `()` to group plots and forwardslash `/` to create a new row:
+The basic syntax is `+` to add a plot. Let's plot the two boxplots.
+
+```{r patch-1}
+box_1952 + box_2007
+```
+
+Use brackets `()` to group plots and forwardslash `/` to create a new row.
+Now plot the bubble plots, each one on its own row, and group the boxplots onto
+a single row:
 
 ```{r gapminder-patchwork}
-lifexp_bubble / 
-        (asia_lollipop + lifexp_box)
+bubble_1952 / bubble_2007 / 
+        (box_1952 + box_2007)
 ```
 
 And `plot_annotation(tag_levels = "A")` with tag labels to add plot labels.
 
 ```{r gapminder-patchwork-with-labels}
-lifexp_bubble / (asia_lollipop | lifexp_box) + 
+bubble_1952 / bubble_2007 / 
+        (box_1952 + box_2007) + 
         plot_annotation(tag_levels = "A")
 ```

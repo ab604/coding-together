@@ -77,6 +77,7 @@ These are useful places to go for advice, materials, and packages
 + [The Art of Data Science,Roger D. Peng and Elizabeth Matsui](https://bookdown.org/rdpeng/artofdatascience/)
 + [How to name files, Jenny Bryan](https://speakerdeck.com/jennybc/how-to-name-files)
 + [Effective presentation design, Melinda Seckington](https://missgeeky.com/2017/08/04/the-art-of-slide-design/)
++ [Fundamentals of Data Visualization, Claus O. Wilke](https://serialmentor.com/dataviz/)
 
 ### A list of R conferences and meetings
 

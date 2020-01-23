@@ -1,0 +1,79 @@
+---
+title: "Coding TogetheR Report"
+author: "Alistair Bailey"
+date: "23/01/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+library(tidyverse)
+library(lubridate)
+library(glue)
+library(scales)
+library(janitor)
+library(here)
+library(patchwork)
+```
+
+## Load data
+
+Coding together surveys
+
+```{r data}
+
+# Set colours 
+# Marine-1, Horizon-1, Horizon-3, Marine-2, Horizon-2, Horizon 5, Marine 5,Neutral 2
+my_cols <- c("#005C84","#FCBC00","#E73037","#74C9E5",
+             "#EF7D00","#8D3970","#4BB694","#758D9A")
+
+
+pre <- read_csv("pre-workshop-survey-2020-10-18.csv")
+post <- read_csv("post-workshop-survey-2020-01-23.csv")
+
+
+pre_piv <- pre %>% pivot_longer(-Timestamp,names_to = "question", values_to = "answer") %>% 
+        select(-Timestamp) %>% 
+        filter(answer %in% c("Yes - without help","No","Yes - with documentation")) %>% 
+        group_by(question) %>% mutate(q_n = group_indices()) %>% 
+        ungroup() %>% 
+        group_by(question, q_n, answer) %>% 
+        summarise(n = n()) %>% mutate(freq = n/sum(n),
+                                      survey = "A")
+
+post_piv <- post %>% pivot_longer(-Timestamp,names_to = "question", values_to = "answer") %>% 
+        select(-Timestamp) %>% mutate(survey = "B") %>% 
+        filter(answer %in% c("Yes - without help","No","Yes - with documentation")) %>% 
+        group_by(question) %>% mutate(q_n = group_indices()) %>% 
+        ungroup() %>% 
+        group_by(question, q_n, answer) %>%
+        summarise(n = n()) %>% mutate(freq = n/sum(n),
+                                      survey = "B")
+
+surveys <- bind_rows(pre_piv,post_piv)
+```
+
+## Plot data
+
+1. Could you import data from a spreadsheet and create a new variable (column) as a function of the existing variables? For example create a new column in the table containing the mean value of three other columns?	
+2. Could you import data from a spreadsheet and subset specific rows and columns from the data and assign them to a new object?
+3. Could you import data from a spreadsheet and use a function to tell you number of observations (rows) and variables (columns) the data set contains?	
+4. Could you import data from a spreadsheet, select two variables, and then create a plot of points to explore the relationship between these variables on an x-y axis?	
+5. Would you be able to export tabular data in R to a spreadsheet, for example a csv or excel file?
+
+```{r plot}
+# Short questions
+
+surveys %>% 
+        ggplot(aes(x = survey, y = freq, fill = answer)) +
+        geom_bar(stat = "identity") +
+        scale_fill_manual(values = my_cols[3:1]) +
+        facet_wrap(~ q_n) +
+        theme_minimal() +
+        theme(legend.position = "bottom") +
+        scale_y_continuous(labels = label_percent()) +
+        labs(x = "", y = "") #+
+        #theme(strip.text.x = element_blank())
+        
+```
+

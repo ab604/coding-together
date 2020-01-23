@@ -1,0 +1,24 @@
+Timestamp,What operating system do you use on the laptop you will bring to the workshops? ,"Using R, could you import data from a spreadsheet and use a function to tell you number of observations (rows) and variables (columns) the data set contains?","Using R, could you import data from a spreadsheet and subset specific rows and columns from the data and assign them to a new object?","Using R, could you import data from a spreadsheet, select two variables, and then create a plot of points to explore the relationship between these variables on an x-y axis?","Using R, could you import data from a spreadsheet and create a new variable (column) as a function of the existing variables? For example create a new column in the table containing the mean value of three other columns? ","Would you be able to export tabular data in R to a spreadsheet, for example a csv or excel file?"
+26/04/2019 15:11:15,Mac,Yes - with documentation,Yes - without help,Yes - with documentation,Yes - with documentation,Yes - with documentation
+26/04/2019 15:14:19,Mac,Yes - with documentation,Yes - with documentation,No,No,Yes - with documentation
+26/04/2019 15:17:31,Windows,Yes - with documentation,Yes - with documentation,No,No,Yes - with documentation
+26/04/2019 15:43:16,Windows,No,No,No,No,No
+26/04/2019 15:43:44,Windows,Yes - with documentation,No,Yes - with documentation,No,Yes - with documentation
+26/04/2019 15:44:42,Mac,Yes - without help,Yes - with documentation,Yes - with documentation,No,Yes - with documentation
+26/04/2019 16:01:19,Windows,Yes - with documentation,Yes - with documentation,Yes - with documentation,Yes - with documentation,No
+26/04/2019 16:34:09,Mac,Yes - with documentation,No,Yes - with documentation,No,Yes - with documentation
+29/04/2019 09:07:05,Windows,Yes - without help,Yes - without help,Yes - with documentation,Yes - with documentation,Yes - without help
+29/04/2019 11:09:02,Windows,No,No,No,No,No
+30/04/2019 11:51:06,Windows,No,No,No,No,No
+30/04/2019 14:42:55,Mac,Yes - with documentation,Yes - with documentation,Yes - with documentation,No,Yes - with documentation
+01/05/2019 11:24:24,Windows,Yes - without help,Yes - with documentation,Yes - with documentation,No,Yes - with documentation
+01/05/2019 11:33:27,Mac,Yes - with documentation,Yes - with documentation,Yes - with documentation,Yes - with documentation,Yes - with documentation
+01/05/2019 11:49:58,Windows,Yes - with documentation,No,Yes - with documentation,No,Yes - with documentation
+01/05/2019 13:36:44,Mac,Yes - with documentation,Yes - with documentation,Yes - with documentation,Yes - with documentation,Yes - with documentation
+01/05/2019 23:35:17,Windows,No,No,No,No,No
+09/10/2019 14:26:54,Windows,No,No,No,No,No
+10/10/2019 09:29:51,Windows,No,No,No,No,No
+10/10/2019 11:17:38,Windows,No,No,No,No,Yes - with documentation
+10/10/2019 13:53:49,Windows,Yes - with documentation,No,Yes - with documentation,No,Yes - with documentation
+16/10/2019 11:22:31,Mac,No,No,No,No,No
+18/10/2019 15:09:43,Windows,No,No,No,No,No
